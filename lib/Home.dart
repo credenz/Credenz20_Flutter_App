@@ -6,7 +6,6 @@ import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
 import 'commons/collap_nav_dr.dart';
 import 'theme.dart';
-import 'theme.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -97,17 +96,15 @@ class _HomeState extends State<Home> {
         shape: CircularNotchedRectangle(),
 
         child: Container(
-          // color: Colors.black12,
-          // color: Colors.deepPurple[500],
+
             height: 60,
             child: Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Row(
-
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                // Row(
+                //   children: <Widget>[
                     MaterialButton(
 
                       // minWidth: 40,
@@ -144,14 +141,19 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                    )
-                  ],
+                    ),
+                Expanded(flex: 1,
+                  child: SizedBox(),
+
                 ),
-                // SizedBox(width: 48,),
-                Row(
-                  // mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                //   ],
+                // ),
+                // Spacer(flex: 1,),
+                // SizedBox(width: 70,),
+                // Row(
+                //   // mainAxisSize: MainAxisSize.max,
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: <Widget>[
                     MaterialButton(
                       // minWidth: 40,
                       onPressed: (){
@@ -188,8 +190,8 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
-                  ],
-                )
+                //   ],
+                // )
 
               ],
             )
