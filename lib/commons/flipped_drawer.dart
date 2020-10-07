@@ -20,8 +20,8 @@ class _SlideDrawerState extends State<SlideDrawer>
     with TickerProviderStateMixin {
 
   bool _canBeDragged = false;
-  double _offsetFromRight = 60;
-  double _minDragStartEdge = 60;
+  double _offsetFromRight = 90;
+  double _minDragStartEdge = 90;
 
   double get _maxSlide => MediaQuery.of(context).size.width - _offsetFromRight;
   double get _maxDragStartEdge => _maxSlide - 16;

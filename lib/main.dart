@@ -1,4 +1,5 @@
 import 'package:credenz20/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Home.dart';
@@ -42,16 +43,12 @@ class MenuDrawer extends StatelessWidget {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       stops: [0.0, 1.0],
-      colors: [
-        Color(0xFF43CEA2),
-        Color(0xFF1D6DBD),
-      ],
+
+        colors: [Color(0xFF3d3251), Color(0xFF272034)]
     ),
   );
 
-  BoxDecoration get _color => BoxDecoration(
-    color: Colors.teal[500],
-  );
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +56,7 @@ class MenuDrawer extends StatelessWidget {
       shadowColor: Colors.transparent,
       borderOnForeground: false,
       child: Container(
+        decoration: _gradient ,
         child: SafeArea(
           child: Theme(
             data: ThemeData(brightness: Brightness.dark),
@@ -67,25 +65,55 @@ class MenuDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(0,0,0,10),
+                  child: DrawerHeader(
+                    decoration: BoxDecoration(
+                      //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
+                        image: DecorationImage(
+                            image: AssetImage("lib/images/icon.jpg"),
+                            fit: BoxFit.contain
+                        )
+                    ),
+                    child: SizedBox(width: MediaQuery.of(context).size.width-130,)
+                  ),
+                ),
+
                 ListTile(
-                  leading: Icon(Icons.rss_feed),
-                  title: Text('News'),
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('About Us'),
                 ),
                 ListTile(
                   leading: Icon(Icons.favorite_border),
-                  title: Text('Favourites'),
+                  title: Text('PISB'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.map),
-                  title: Text('Map'),
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('PING'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text('Settings'),
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('Sponsors'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.person_outline),
-                  title: Text('Profile'),
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('Contact Us'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('My Events'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('Edit Profile'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('Visit Website'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('Privacy Policy'),
                 ),
               ],
             ),
