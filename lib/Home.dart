@@ -4,7 +4,7 @@ import 'BottomNav/About.dart';
 import 'BottomNav/Contact.dart';
 import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
-import 'commons/collap_nav_dr.dart';
+import 'commons/flipped_drawer.dart';
 import 'theme.dart';
 
 class Home extends StatefulWidget {
@@ -59,23 +59,29 @@ class _HomeState extends State<Home> {
     return Scaffold(
 
       //Tanuj's Code
-      appBar: AppBar(
+      /*appBar: AppBar(
         centerTitle: true,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         backgroundColor: drawerBackgroundColor,
-        title: Text(widget.title),
-
-      ),
-      drawer: CollapsingNavDraw(),
+        title: Text(widget.title),*/
+        appBar : AppBar(
+          leading: Builder(
+            builder: (context) {
+              return IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () => SlideDrawer.of(context)?.toggle(),
+              );
+            },
+          ),
+          title: Text(widget.title),
+          backgroundColor: drawerBackgroundColor,
+        ),
+      //drawer: FlipDrawer(),
 
       //Vaibhav's Code
 
-      /* body: PageStorage(
-        child: currentScreen,
-        bucket: bucket,
-      ),
-*/
+
 
       bottomNavigationBar: Stack(
         children: <Widget>[

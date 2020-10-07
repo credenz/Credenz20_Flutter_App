@@ -2,7 +2,7 @@ import 'package:credenz20/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'Home.dart';
-import 'commons/collap_nav_dr.dart';
+import 'commons/flipped_drawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +29,69 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: Home(title: 'Credenz\'20'),
+      home: SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'20")),
+
+    );
+  }
+}
+
+class MenuDrawer extends StatelessWidget {
+
+  BoxDecoration get _gradient => BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      stops: [0.0, 1.0],
+      colors: [
+        Color(0xFF43CEA2),
+        Color(0xFF1D6DBD),
+      ],
+    ),
+  );
+
+  BoxDecoration get _color => BoxDecoration(
+    color: Colors.teal[500],
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      shadowColor: Colors.transparent,
+      borderOnForeground: false,
+      child: Container(
+        child: SafeArea(
+          child: Theme(
+            data: ThemeData(brightness: Brightness.dark),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ListTile(
+                  leading: Icon(Icons.rss_feed),
+                  title: Text('News'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite_border),
+                  title: Text('Favourites'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.map),
+                  title: Text('Map'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Settings'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.person_outline),
+                  title: Text('Profile'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
