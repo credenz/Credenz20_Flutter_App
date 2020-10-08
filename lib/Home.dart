@@ -4,7 +4,7 @@ import 'BottomNav/About.dart';
 import 'BottomNav/Contact.dart';
 import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
-import 'commons/flipped_drawer.dart';
+import 'commons/slide_drawer.dart';
 import 'theme.dart';
 
 class Home extends StatefulWidget {
@@ -66,6 +66,7 @@ class _HomeState extends State<Home> {
         backgroundColor: drawerBackgroundColor,
         title: Text(widget.title),*/
         appBar : AppBar(
+          centerTitle: true,
           leading: Builder(
             builder: (context) {
               return IconButton(
@@ -74,6 +75,17 @@ class _HomeState extends State<Home> {
               );
             },
           ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // do something
+              },
+            )
+          ],
           title: Text(widget.title),
           backgroundColor: drawerBackgroundColor,
         ),

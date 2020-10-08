@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:credenz20/extra_lib/controller.dart';
 import 'package:flutter/material.dart';
 
+
 class SlideDrawer extends StatefulWidget {
 final Widget drawer;
 final Widget child;
@@ -43,7 +44,7 @@ class _SlideDrawerState extends State<SlideDrawer>
   _initAnimation() {
     _animation = CurvedAnimationController(
       vsync: this, duration: Duration(milliseconds: 250),
-      curve: Curves.linear, // curve value from shared.dart
+      curve: Curves.easeInOut, // curve value from shared.dart
     );
 
     _animation.addListener(() => setState(() {}));

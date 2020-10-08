@@ -1,3 +1,196 @@
+import 'package:credenz20/nav_pages/Contact%20Us.dart';
+import 'package:credenz20/nav_pages/about_us.dart';
+import 'package:credenz20/nav_pages/editprofile.dart';
+import 'package:credenz20/nav_pages/myevents.dart';
+import 'package:credenz20/nav_pages/ping.dart';
+import 'package:credenz20/nav_pages/pisb.dart';
+import 'package:credenz20/nav_pages/sponsors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+class MenuDrawer extends StatelessWidget {
+
+  BoxDecoration get _gradient => BoxDecoration(
+    gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        stops: [0.0, 1.0],
+
+        colors: [Color(0xFF3d3251), Color(0xFF272034)]
+    ),
+  );
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      shadowColor: Colors.transparent,
+      borderOnForeground: false,
+      child: Container(
+        decoration: _gradient ,
+        child: SafeArea(
+          child: Theme(
+            data: ThemeData(brightness: Brightness.dark),
+            child: Container(
+              padding: EdgeInsets.fromLTRB(0,10,0,0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0,0,0,10),
+                    child: DrawerHeader(
+                        decoration: BoxDecoration(
+                          //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
+                            image: DecorationImage(
+                                image: AssetImage("lib/images/icon.png"),
+                                fit: BoxFit.contain
+                            )
+                        ),
+                        child: SizedBox(width: MediaQuery.of(context).size.width-130,)
+                    ),
+                  ),
+
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('About Us'),
+                    onTap: () {
+                     // Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => AboutUs()));
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('PISB'),
+                    onTap: () {
+                     // Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => Pisb()));
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('PING'),
+                    onTap: () {
+                      //Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => Ping()));
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('Sponsors'),
+                    onTap: () {
+                      //Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => Sponsors()));
+                    },
+                  ),
+                  Divider(
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('My Events'),
+                    onTap: () {
+                     // Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => MyEvents()));
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('Edit Profile'),
+                    onTap: () {
+                      //Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => EditProfile()));
+                    },
+                  ),
+                  Divider(
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('Contact Us'),
+                    onTap: () {
+                      //Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => ContactUs()));
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('Visit Website'),
+                    onTap: () {
+
+                    },
+                  ),
+                  Divider(
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.favorite_border),
+                    title: Text('Privacy Policy'),
+                    onTap: () {
+
+                    },
+                  ),
+                  Divider(
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        SignInButton(
+                            Buttons.Facebook,
+                            mini: true,
+                            onPressed: () {}
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        SignInButton(
+                            Buttons.Pinterest,
+                            mini: true,
+                            onPressed: () {}
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        SignInButton(
+                          Buttons.LinkedIn,
+                          mini: true,
+                          onPressed: () {},
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        SignInButton(
+                            Buttons.Twitter,
+                            mini: true,
+                            onPressed: () {}
+                        ),
+                      ]
+
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
 /*
 import 'package:credenz20/models/nav_model.dart';
 import 'package:credenz20/nav_pages/editprofile.dart';
@@ -134,7 +327,7 @@ DrawerHeader(
 import 'dart:math';
 
 import 'package:credenz20/extra_lib/controller.dart';
-import 'package:credenz20/commons/flipped_drawer.dart';
+import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:flutter/material.dart';
 
 class FlipDrawer extends StatefulWidget {
@@ -312,4 +505,4 @@ class _FlipDrawerState extends State<FlipDrawer>
     );
   }
 }
-
+*/
