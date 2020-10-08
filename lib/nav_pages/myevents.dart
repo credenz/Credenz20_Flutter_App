@@ -7,7 +7,7 @@ class MyEvents extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: drawerBackgroundColor,
-        title: Text("MY EVENTS"),
+        title: Text("My Events"),
       ),
     );
   }

@@ -1,8 +1,9 @@
-import 'package:credenz20/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:credenz20/commons/collap_nav_dr.dart';
 import 'Home.dart';
-import 'commons/collap_nav_dr.dart';
+import 'commons/slide_drawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,9 +30,12 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: Home(title: 'Credenz\'20'),
+      home: SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'20")),
+
     );
   }
 }
+
+
 
 

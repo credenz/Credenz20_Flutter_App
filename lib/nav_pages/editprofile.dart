@@ -7,7 +7,7 @@ class EditProfile extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: drawerBackgroundColor,
-        title: Text("EDIT PROFILE"),
+        title: Text("Edit Profile"),
       ),
     );
   }
