@@ -10,9 +10,9 @@ class _NotiState extends State<Noti> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Notification"),
-      ),
+      backgroundColor: Colors.orange,
+
+
     );
   }
 }

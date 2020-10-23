@@ -1,4 +1,4 @@
-import 'package:credenz20/nav_pages/Contact%20Us.dart';
+import 'package:credenz20/BottomNav/Contact.dart';
 import 'package:credenz20/nav_pages/about_us.dart';
 import 'package:credenz20/nav_pages/editprofile.dart';
 import 'package:credenz20/nav_pages/myevents.dart';
@@ -44,7 +44,7 @@ class MenuDrawer extends StatelessWidget {
                         decoration: BoxDecoration(
                           //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
                             image: DecorationImage(
-                                image: AssetImage("lib/images/icon.png"),
+                                image: AssetImage("images/icon.png"),
                                 fit: BoxFit.contain
                             )
                         ),
@@ -116,7 +116,7 @@ class MenuDrawer extends StatelessWidget {
                     onTap: () {
                       //Navigator.of(context).pop();
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => ContactUs()));
+                          builder: (BuildContext context) => Contact()));
                     },
                   ),
                   ListTile(
