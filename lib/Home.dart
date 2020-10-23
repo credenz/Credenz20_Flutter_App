@@ -130,6 +130,7 @@ class _HomeState extends State<Home> {
         child: Icon(Icons.all_inclusive),
         tooltip: 'Increment',
         elevation: 2.0,
+
         backgroundColor: drawerBackgroundColor,
         onPressed: () {
           setState(() {

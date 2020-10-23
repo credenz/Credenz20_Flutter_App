@@ -9,14 +9,18 @@ class Events extends StatefulWidget {
 
 class _EventsState extends State<Events> {
   List<AssetImage> eventimages = [
-    AssetImage('images/clash.png'),
-    AssetImage('images/credenz13.png'),
-    AssetImage('images/credenz13.png'),
-    AssetImage('images/credenz13.png'),
-    AssetImage('images/credenz13.png'),
-    AssetImage('images/credenz13.png'),
-    AssetImage('images/credenz13.png'),
-    AssetImage('images/credenz13.png'),
+    AssetImage('images/clash1.png'),
+    AssetImage('images/contraption.png'),
+    AssetImage('images/cretronix.png'),
+    AssetImage('images/enigma.png'),
+    AssetImage('images/datawizwhite.png'),
+    AssetImage('images/nth.png'),
+    AssetImage('images/paper.png'),
+    AssetImage('images/pixelate.png'),
+    AssetImage('images/quiz.png'),
+    AssetImage('images/revb.png'),
+    AssetImage('images/roboliga.png'),
+    AssetImage('images/xodia.png'),
   ];
 
   @override
@@ -26,35 +30,22 @@ class _EventsState extends State<Events> {
         padding: const EdgeInsets.all(4),
         child: new StaggeredGridView.countBuilder(
           crossAxisCount: 4,
-          itemCount: 8,
+          itemCount: 12,
           itemBuilder: (BuildContext context, int index) => new Container(
             color: drawerBackgroundColor,
-            child: new Center(
-              child:Container(
-                width: 50,
-                height: 50  ,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+            child: Container(
+              width: 10,
+              height: 10,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
 
-                  image: DecorationImage(
-                    // fit: BoxFit.fill,
-                    image: AssetImage('images/credenz13.png'),
-                  fit: BoxFit.cover,
-                  ),
-
+                image: DecorationImage(
+                  // fit: BoxFit.fill,
+                image: eventimages[index],
+                fit: BoxFit.fitHeight,
                 ),
-              )
-              // child: new CircleAvatar(
-              //   backgroundColor: Colors.transparent,
-              //   // radius: 35,
-              //   // backgroundImage: AssetImage("assets/images/example.jpeg"),
-              //
-              //   // backgroundImage: eventimages[index],
-              //   child: new Image(
-              //     image: AssetImage('images/credenz13.png'),
-              //     fit: BoxFit.cover, //AssetImage(eventimages[0]),
-              //   ),
-              // ),
+
+              ),
             ),
           ),
           staggeredTileBuilder: (int index) =>
