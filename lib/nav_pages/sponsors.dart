@@ -1,4 +1,4 @@
-import 'package:credenz20/theme.dart';
+import 'file:///C:/Users/asus/Documents/GitHub/Credenz20_Flutter_App/lib/constants/theme.dart';
 import 'package:flutter/material.dart';
 class Sponsors extends StatelessWidget {
   @override

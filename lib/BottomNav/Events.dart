@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../theme.dart';
+import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
   @override
