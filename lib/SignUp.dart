@@ -4,8 +4,10 @@ import 'package:credenz20/constants/API.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'Home.dart';
 import 'constants/styles.dart';
 import 'constants/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -22,16 +24,24 @@ class _SignUpState extends State<SignUp> {
   String userName;
 
 
+
+
   makeRequest()async{
     String url=signUpUrl;
     Map<String,String>headers={"Content-Type":"application/json"};
-    String body='{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
+    String body='{"username":"${userName.trim()}","name":"${name.trim()}","password":"${password.trim()}","email":"${email.trim()}","phoneno":"${phoneNumber.trim()}","clgname":"${collegeName.trim()}"}';
     http.Response response=await http.post(url,body: body,headers: headers);
     print(url);
     print(body);
     print(response.body);
     print(response.statusCode);
     if(response.statusCode==200){
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String accessToken=jsonDecode(response.body)['accessToken'];
+      await prefs.setString('accessToken', accessToken);
+      Fluttertoast.showToast(msg: 'SignedUp');
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")), (route) => false);
+
 
     }else{
       String msg=jsonDecode(response.body)['message'];
