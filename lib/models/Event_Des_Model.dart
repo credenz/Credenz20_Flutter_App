@@ -50,7 +50,8 @@ Widget tabcontroller() {
       ],
     ),
     // Other parts of the app are exacly same as default TabBar widget
-    body: Container(child: _mainbody()),
+    body: Container(
+        child: _mainbody()),
   );
 }
 
@@ -62,6 +63,7 @@ class _EventDesState extends State<EventDes> {
     return MaterialApp(
       home: Material(
         child: Stack(
+
           children: <Widget>[
             CardSliverAppBar(
               height: 250,
@@ -86,18 +88,21 @@ class _EventDesState extends State<EventDes> {
                 color: Colors.red,
                 iconSize: 30.0,
               ),
-              body: Column(
-                children: <Widget>[
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height -
-                        2.5 * AppBar().preferredSize.height,
-                    child: DefaultTabController(
-                      length: 5,
-                      child: tabcontroller(),
+              body: Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height -
+                          1.8* AppBar().preferredSize.height,
+                      child: DefaultTabController(
+                        length: 5,
+                        child: tabcontroller(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Container(
