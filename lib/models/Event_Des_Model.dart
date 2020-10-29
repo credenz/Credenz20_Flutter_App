@@ -50,7 +50,7 @@ Widget tabcontroller() {
       ],
     ),
     // Other parts of the app are exacly same as default TabBar widget
-    body: _mainbody(),
+    body: Container(child: _mainbody()),
   );
 }
 
@@ -61,56 +61,62 @@ class _EventDesState extends State<EventDes> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Material(
-        child: CardSliverAppBar(
-          height: 250,
-          background: Image.asset("gifs/space2.gif", fit: BoxFit.fitHeight),
-          title: Text("Enigma",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-          card: AssetImage('images/enigma4.png'),
-          backButton: true,
-          backButtonColors: [Colors.white, Colors.black],
-          action: IconButton(
-            onPressed: () {
-              setState(() {
-                favorite = !favorite;
-              });
-            },
-            icon: favorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
-            color: Colors.red,
-            iconSize: 30.0,
-          ),
-          body: Column(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height -
-                    2.5 * AppBar().preferredSize.height,
-                child: DefaultTabController(
-                  length: 5,
-                  child: tabcontroller(),
-                ),
+        child: Stack(
+          children: <Widget>[
+            CardSliverAppBar(
+              height: 250,
+              background: Image.asset("gifs/space2.gif", fit: BoxFit.fitHeight),
+              title: Text("Enigma",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
+              card: AssetImage('images/enigma4.png'),
+              backButton: true,
+              backButtonColors: [Colors.white, Colors.black],
+              action: IconButton(
+                onPressed: () {
+                  setState(() {
+                    favorite = !favorite;
+                  });
+                },
+                icon: favorite
+                    ? Icon(Icons.favorite)
+                    : Icon(Icons.favorite_border),
+                color: Colors.red,
+                iconSize: 30.0,
               ),
-              Container(
-                alignment: Alignment.bottomCenter,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    RaisedButton(
-                      onPressed: () {},
-                      textColor: Colors.white,
-                      color: drawerBackgroundColor,
-                      child: const Text('Register Now',
-                          style: TextStyle(fontSize: 20)),
+              body: Column(
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height -
+                        2.5 * AppBar().preferredSize.height,
+                    child: DefaultTabController(
+                      length: 5,
+                      child: tabcontroller(),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  RaisedButton(
+                    onPressed: () {},
+                    textColor: Colors.white,
+                    color: drawerBackgroundColor,
+                    child: const Text('Register Now',
+                        style: TextStyle(fontSize: 20)),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
