@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../theme.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:toast/toast.dart';
+import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
   @override
@@ -35,7 +36,6 @@ class _EventsState extends State<Events> {
           crossAxisCount: 4,
           itemCount: 12,
           itemBuilder: (BuildContext context, int index) => new Container(
-
             color: drawerBackgroundColor,
             child: Container(
               child: InkWell(

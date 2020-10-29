@@ -1,3 +1,4 @@
+import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 
 import 'BottomNav/About.dart';
@@ -6,7 +7,7 @@ import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
 import 'BottomNav/Events.dart';
 import 'commons/slide_drawer.dart';
-import 'theme.dart';
+import 'constants/theme.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -114,6 +115,7 @@ class _HomeState extends State<Home> {
               color: Colors.white,
             ),
             onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
               // do something
             },
           )

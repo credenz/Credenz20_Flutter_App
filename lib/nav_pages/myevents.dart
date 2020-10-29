@@ -1,4 +1,4 @@
-import 'package:credenz20/theme.dart';
+import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 class MyEvents extends StatelessWidget {
   @override
