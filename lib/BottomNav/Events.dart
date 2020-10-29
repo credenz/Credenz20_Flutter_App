@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:credenz20/extra_lib/circle_wheel_renderx.dart';
-import 'package:credenz20/extra_lib/circle_wheel_scroll_viewx.dart';
+import 'package:circle_wheel_scroll/circle_wheel_scroll_view.dart';
 import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
