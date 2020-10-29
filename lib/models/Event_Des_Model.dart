@@ -9,28 +9,67 @@ class EventDes extends StatefulWidget {
   _EventDesState createState() => _EventDesState();
 }
 
+Widget _mainbody() {
+  return Stack(
+    children: <Widget>[
+      TabBarView(
+        children: [
+          Icon(Icons.home),
+          Icon(Icons.directions_bike),
+          Icon(Icons.directions_car),
+          Icon(Icons.directions_transit),
+          Icon(Icons.perm_contact_calendar),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget tabcontroller() {
+  return Scaffold(
+    appBar: ShiftingTabBar(
+      labelStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 12,
+      ),
+      // Specify a color to background or it will pick it from primaryColor of your app ThemeData
+      color: drawerBackgroundColor,
+      // You can change brightness manually to change text color style to dark and light or
+      // it will decide based on your background color
+      brightness: Brightness.dark,
+      tabs: [
+        // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
+        ShiftingTab(
+          icon: Icon(Icons.home),
+          text: "Intro",
+        ),
+        ShiftingTab(icon: Icon(Icons.directions_bike), text: "Rules"),
+        ShiftingTab(icon: Icon(Icons.directions_car), text: "Structure"),
+        ShiftingTab(icon: Icon(Icons.directions_transit), text: "Judging"),
+        ShiftingTab(icon: Icon(Icons.perm_contact_calendar), text: "Contact"),
+      ],
+    ),
+    // Other parts of the app are exacly same as default TabBar widget
+    body: _mainbody(),
+  );
+}
+
 class _EventDesState extends State<EventDes> {
   bool favorite = false;
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-
       home: Material(
-
         child: CardSliverAppBar(
-          height: 300,
-
-          background: Image.asset("gifs/space2.gif",
-              fit: BoxFit.fitHeight),
+          height: 250,
+          background: Image.asset("gifs/space2.gif", fit: BoxFit.fitHeight),
           title: Text("Enigma",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold)),
-          card: AssetImage('images/enigma4.png'
-          ),
+          card: AssetImage('images/enigma4.png'),
           backButton: true,
           backButtonColors: [Colors.white, Colors.black],
           action: IconButton(
@@ -39,58 +78,40 @@ class _EventDesState extends State<EventDes> {
                 favorite = !favorite;
               });
             },
-            icon: favorite
-                ? Icon(Icons.favorite)
-                : Icon(Icons.favorite_border),
+            icon: favorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
             color: Colors.red,
             iconSize: 30.0,
           ),
-          body: Container(
-
-            alignment: Alignment.topLeft,
-            color: Colors.white,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: DefaultTabController(
-              length: 5,
-
-              child: Scaffold(
-                // Use ShiftingTabBar instead of appBar
-                appBar: ShiftingTabBar(
-                  // Specify a color to background or it will pick it from primaryColor of your app ThemeData
-                  color: drawerBackgroundColor,
-                  // You can change brightness manually to change text color style to dark and light or
-                  // it will decide based on your background color
-                  brightness: Brightness.dark,
-                  tabs: [
-                    // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
-                    ShiftingTab(
-                        icon: Icon(Icons.home),text: "Intro",),
-                    ShiftingTab(
-                        icon: Icon(Icons.directions_bike), text: "Rules"),
-                    ShiftingTab(
-                        icon: Icon(Icons.directions_car), text: "Structure"),
-                    ShiftingTab(
-                        icon: Icon(Icons.directions_transit), text: "Judging"),
-                    ShiftingTab(
-                        icon: Icon(Icons.perm_contact_calendar), text: "Contact"),
-                  ],
+          body: Column(
+            children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height -
+                    2.5 * AppBar().preferredSize.height,
+                child: DefaultTabController(
+                  length: 5,
+                  child: tabcontroller(),
                 ),
-                // Other parts of the app are exacly same as default TabBar widget
-                body: TabBarView(
-                  children: [
-                    Icon(Icons.home),
-                    Icon(Icons.directions_bike),
-                    Icon(Icons.directions_car),
-                    Icon(Icons.directions_transit),
-                    Icon(Icons.perm_contact_calendar),
+              ),
+              Container(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    RaisedButton(
+                      onPressed: () {},
+                      textColor: Colors.white,
+                      color: drawerBackgroundColor,
+                      child: const Text('Register Now',
+                          style: TextStyle(fontSize: 20)),
+                    ),
                   ],
                 ),
               ),
-            ),
+            ],
           ),
         ),
-
       ),
     );
 
