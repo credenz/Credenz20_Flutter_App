@@ -1,7 +1,8 @@
 import 'package:credenz20/models/Event_Des_Model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../theme.dart';
+import 'package:credenz20/constants/theme.dart';
+
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:toast/toast.dart';
 import '../constants/theme.dart';
