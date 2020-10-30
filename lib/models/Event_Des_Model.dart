@@ -27,15 +27,15 @@ Widget _mainbody() {
 
 Widget tabcontroller() {
   return Scaffold(
+    backgroundColor: Colors.transparent,
     appBar: ShiftingTabBar(
       labelStyle: TextStyle(
         color: Colors.white,
         fontSize: 12,
       ),
       // Specify a color to background or it will pick it from primaryColor of your app ThemeData
-      color: drawerBackgroundColor,
-      // You can change brightness manually to change text color style to dark and light or
-      // it will decide based on your background color
+      color: Color(0x88000000),
+      // You can change brightness manually to change text color style to dark and light or it will decide based on your background color
       brightness: Brightness.dark,
       tabs: [
         // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
@@ -49,8 +49,8 @@ Widget tabcontroller() {
         ShiftingTab(icon: Icon(Icons.perm_contact_calendar), text: "Contact"),
       ],
     ),
-    // Other parts of the app are exacly same as default TabBar widget
     body: Container(
+        // color: Color(0xaa272034),
         child: _mainbody()),
   );
 }
@@ -63,11 +63,37 @@ class _EventDesState extends State<EventDes> {
     return MaterialApp(
       home: Material(
         child: Stack(
-
           children: <Widget>[
+            Stack(
+              children: [
+                Image.asset(
+                  // "images/icon.png",
+                  "gifs/space3.gif",
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fill,
+                ),
+                Center(
+
+                  child: Image.asset(
+                    "images/icon.png",
+                    // "gifs/space3.gif",
+                    height: MediaQuery.of(context).size.height/2,
+                    width: MediaQuery.of(context).size.width/2,
+                    // fit: BoxFit.fitWidth,
+                  ),
+                ),
+                // Container(
+                //   color: Color(0xaa4E164B),
+                // ),
+
+              ],
+            ),
             CardSliverAppBar(
               height: 250,
-              background: Image.asset("gifs/space2.gif", fit: BoxFit.fitHeight),
+              //gifs/space2.gif
+              background:
+                  Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
               title: Text("Enigma",
                   style: TextStyle(
                       color: Colors.black,
@@ -83,28 +109,26 @@ class _EventDesState extends State<EventDes> {
                   });
                 },
                 icon: favorite
-                    ? Icon(Icons.favorite)
-                    : Icon(Icons.favorite_border),
+                    ? Icon(Icons.shopping_cart)
+                    : Icon(Icons.add_shopping_cart),
                 color: Colors.red,
                 iconSize: 30.0,
               ),
               body: Padding(
                 padding: const EdgeInsets.only(top: 30),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height -
-                          1.8* AppBar().preferredSize.height,
-                      child: DefaultTabController(
-                        length: 5,
-                        child: tabcontroller(),
-                      ),
-                    ),
-                  ],
+                child: Container(
+                  // color: Color(0x66272034),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height -
+                      1.8 * AppBar().preferredSize.height,
+                  child: DefaultTabController(
+                    length: 5,
+                    child: tabcontroller(),
+                  ),
                 ),
               ),
             ),
+//                padding: const EdgeInsets.only(top: 30),
             Container(
               alignment: Alignment.bottomCenter,
               child: Column(
@@ -121,6 +145,22 @@ class _EventDesState extends State<EventDes> {
                 ],
               ),
             ),
+
+/*
+            Container(
+              color: drawerBackgroundColor,
+              // color: drawerBackgroundColor,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                    border: new Border.all(color: Colors.black),
+
+                    image: DecorationImage(
+                  fit: BoxFit.fitHeight,
+                  image: AssetImage('images/enigma.png'),
+                )),
+              ),
+            ),
+*/
           ],
         ),
       ),
