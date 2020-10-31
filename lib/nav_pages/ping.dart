@@ -1,4 +1,3 @@
-
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 class Ping extends StatelessWidget {

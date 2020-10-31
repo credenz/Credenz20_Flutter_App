@@ -1,5 +1,10 @@
+import 'package:credenz20/models/Event_Des_Model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:credenz20/constants/theme.dart';
+
+// import 'package:fluttertoast/fluttertoast.dart';
+import 'package:toast/toast.dart';
 import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
@@ -34,6 +39,26 @@ class _EventsState extends State<Events> {
           itemBuilder: (BuildContext context, int index) => new Container(
             color: drawerBackgroundColor,
             child: Container(
+              child: InkWell(
+                onTap: (){
+
+                  Toast.show('$index', context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventDes()),
+                  );
+                  // Fluttertoast.showToast(
+                  //
+                  //     msg: '$index',
+                  //     toastLength: Toast.LENGTH_SHORT,
+                  //     gravity: ToastGravity.CENTER,
+                  //     timeInSecForIosWeb: 1,
+                  //     backgroundColor: Colors.red,
+                  //     textColor: Colors.white,
+                  //     fontSize: 16.0
+                  // );
+                },
+              ),
               width: 10,
               height: 10,
               decoration: BoxDecoration(
