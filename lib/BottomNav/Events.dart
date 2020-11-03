@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+// import 'package:flutter_staggered_grid_view/.dart';
 import 'package:circle_wheel_scroll/circle_wheel_scroll_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
   @override
-  _EventsState createState() => _EventsState();
+  WheelExample createState() => WheelExample();
 }
+
 List<AssetImage> eventimages = [
   AssetImage('images/clash1.png'),
   AssetImage('images/contraption.png'),
@@ -22,15 +24,14 @@ List<AssetImage> eventimages = [
   AssetImage('images/roboliga.png'),
   AssetImage('images/xodia.png'),
 ];
+
 class _EventsState extends State<Events> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: new Padding(
         padding: const EdgeInsets.all(4),
-        child: WheelExample(),
+        // child: WheelExample(),
         // new StaggeredGridView.countBuilder(
         //   crossAxisCount: 4,
         //   itemCount: 12,
@@ -61,49 +62,103 @@ class _EventsState extends State<Events> {
   }
 }
 
-class WheelExample extends StatelessWidget {
+class WheelExample extends State<Events> {
+  // var isselected = {new List(12).fill fillRange(0, 11,false)}; // = new List(12);
+  List<bool> isselected = List.filled(12, false);
+
   Widget _buildItem(int i) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            width: 325,
-            padding: EdgeInsets.all(20),
-            color: drawerBackgroundColor,
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
+    return Center(
+        child: isselected[i]
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  width: 150,
+                  height: 350,
+                  // padding: EdgeInsets.all(20),
+                  color: drawerBackgroundColor,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
                         image: eventimages[i],
                         fit: BoxFit.fitHeight,
-              ),
-            ),
-          ),
-        ),
-      )
-      ),
-    );
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  // padding: EdgeInsets.all(20),
+                  color: drawerBackgroundColor,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: eventimages[i],
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                ),
+              ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Center(
-          child: Container(
-            // height: 260,
-            // width: 160,
-            child: CircleListScrollView(
-              physics: CircleFixedExtentScrollPhysics(),
-              axis: Axis.vertical,
-              itemExtent: 250,
-              children: List.generate(12, _buildItem),
-              radius: MediaQuery.of(context).size.width * 0.8,
-              // onSelectedItemChanged: (int index) => print('Current index: $index'),
-            ),
-          ),
+    return Scaffold(
+      body: Container(
+        // height: 260,
+        // width: 160,
+        child: CircleListScrollView(
+          physics: CircleFixedExtentScrollPhysics(),
+          axis: Axis.vertical,
+          itemExtent: 150,
+          children: List.generate(12, _buildItem),
+          radius: MediaQuery.of(context).size.width * 0.5,
+          onSelectedItemChanged: (int index) => _selectedItem(index),
         ),
-      );
+      ),
+    );
+  }
+
+  _selectedItem(int index) {
+    setState(() {
+      isselected.fillRange(0, 11, false);
+      isselected[index] = true;
+    });
+
+/*    Fluttertoast.showToast(
+        msg: isselected.toString(),
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 12.0);*/
+
+    /* return Center(
+     child: ClipRRect(
+       borderRadius: BorderRadius.circular(20),
+       child: Container(
+         width: 325,
+         height: 100,
+         padding: EdgeInsets.all(20),
+         color: drawerBackgroundColor,
+         child: Container(
+           decoration: BoxDecoration(
+             shape: BoxShape.circle,
+             image: DecorationImage(
+               image: eventimages[index],
+               fit: BoxFit.fitHeight,
+             ),
+           ),
+         ),
+       ),
+     ),
+   );*/
   }
 }
