@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 // import 'package:flutter_staggered_grid_view/.dart';
 import 'package:circle_wheel_scroll/circle_wheel_scroll_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -68,17 +67,6 @@ class WheelExample extends State<Events> {
   List<bool> isselected = List.filled(12, false);
 
   Widget _buildItem(int i) {
-    /*  if(i<5) {
-      Fluttertoast.showToast(
-          msg: isselected.toString() + " " + i.toString(),
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 12.0);
-    }*/
-
     return Center(
         child: isselected[i]
             ? ClipRRect(
@@ -140,7 +128,6 @@ class WheelExample extends State<Events> {
   _selectedItem(int index) {
     setState(() {
       isselected.fillRange(0, 11, false);
-
       isselected[index] = true;
     });
 
