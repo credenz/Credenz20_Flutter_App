@@ -52,7 +52,7 @@ Widget tabcontroller() {
       ],
     ),
     body: Container(
-        // color: Color(0xaa272034),
+      // color: Color(0xaa272034),
         child: _mainbody()),
   );
 }
@@ -71,18 +71,15 @@ class _EventDesState extends State<EventDes> {
                 Image.asset(
                   // "images/enigma.png",
                   "gifs/spacered.gif",
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   fit: BoxFit.fill,
-                ),
-                Center(
-                  child: Image.asset(
-                    "images/icon.png",
-                    // "gifs/space3.gif",
-                    height: MediaQuery.of(context).size.height / 2,
-                    width: MediaQuery.of(context).size.width / 2,
-                    // fit: BoxFit.fitWidth,
-                  ),
                 ),
                 // Container(
                 //   color: Color(0xaa4E164B),
@@ -101,7 +98,7 @@ class _EventDesState extends State<EventDes> {
                       fontWeight: FontWeight.bold)),
               card: AssetImage('images/enigma4.png'),
               backButton: true,
-              backButtonColors: [Colors.white, Colors.black],
+              backButtonColors: [Colors.white, Colors.white],
               action: IconButton(
                 onPressed: () {
                   setState(() {
@@ -118,8 +115,14 @@ class _EventDesState extends State<EventDes> {
                 padding: const EdgeInsets.only(top: 30),
                 child: Container(
                   // color: Color(0x66272034),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height -
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height -
                       1.8 * AppBar().preferredSize.height,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -192,20 +195,19 @@ class CardSliverAppBar extends StatefulWidget {
   final Widget body;
   final ImageProvider card;
 
-  CardSliverAppBar(
-      {@required this.height,
-      // @required this.background,
-      @required this.title,
-      @required this.body,
-      this.background,
-      this.titleDescription,
-      this.backButton = false,
-      this.backButtonColors,
-      this.action,
-      this.card,
-      Key key})
+  CardSliverAppBar({@required this.height,
+    // @required this.background,
+    @required this.title,
+    @required this.body,
+    this.background,
+    this.titleDescription,
+    this.backButton = false,
+    this.backButtonColors,
+    this.action,
+    this.card,
+    Key key})
       : assert(height != null && height > 0),
-        // assert(background != null),
+  // assert(background != null),
         assert(title != null),
         assert(body != null),
         super(key: key);
@@ -222,8 +224,8 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
   Animatable<Color> _animatedBackButtonColors;
   Animation<double> _rotateCard;
 
-  AnimationController animation;
-  Animation<double> _fadeInFadeOut;
+  AnimationController animation, animation2;
+  Animation<double> _fadeInFadeOut, _centercardfadeInFadeOut;
 
   double _scale = 0.0;
   double _offset = 0.0;
@@ -247,13 +249,13 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       ..addListener(() {
         setState(() {});
       });
-    if (widget.card != null) {
-      _rotateCard = Tween(begin: 0.0, end: 0.4).animate(
-          CurvedAnimation(curve: Curves.linear, parent: _animationController))
-        ..addListener(() {
-          setState(() {});
-        });
-    }
+    // if (widget.card != null) {
+    //   _rotateCard = Tween(begin: 0.0, end: 0.4).animate(
+    //       CurvedAnimation(curve: Curves.linear, parent: _animationController))
+    //     ..addListener(() {
+    //       setState(() {});
+    //     });
+    // }
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {});
@@ -263,7 +265,14 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       vsync: this,
       duration: Duration(seconds: 1),
     );
+
+    animation2 = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
     _fadeInFadeOut = Tween<double>(begin: 0.0, end: 0.5).animate(animation);
+    _centercardfadeInFadeOut =
+        Tween<double>(begin: 0.0, end: 0.5).animate(animation2);
   }
 
   void _animationValue(double scale) {
@@ -317,38 +326,36 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
     List<Widget> stackOrder = List<Widget>();
     if (_scale >= 0.5) {
       animation.forward();
+      animation2.reverse();
       stackOrder.add(_bodyContainer());
       // stackOrder.add(_backgroundConstructor());
       stackOrder.add(_shadowConstructor());
       stackOrder.add(_titleConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
+      if (_card != null) stackOrder.add(_centercardConstructor());
       // if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
-      stackOrder.add(_centercardConstructor());
     } else {
       animation.reverse();
+      animation2.forward();
       // stackOrder.add(_backgroundConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
       stackOrder.add(_bodyContainer());
       stackOrder.add(_shadowConstructor());
       stackOrder.add(_titleConstructor());
+      if (_card != null) stackOrder.add(_centercardConstructor());
       // if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
     }
-
-    if (_scale == 1.0) {
-      // animation.addStatusListener((status){
-      //   if(status == AnimationStatus.completed){
-      //   }
-      //   // else {
-      //   //   animation.forward();
-      //   // }
-      // });
-      // animation.forward();
-
-    }
+    //
+    // if(_scale<0.5){
+    //   animation2.forward();
+    // }
+    // else{
+    //   animation2.reverse();
+    // }
 
     return SafeArea(
       child: Container(
@@ -378,7 +385,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             icon: const Icon(Icons.arrow_back),
             color: _animatedBackButtonColors != null
                 ? _animatedBackButtonColors.evaluate(
-                    AlwaysStoppedAnimation(_animationController.value))
+                AlwaysStoppedAnimation(_animationController.value))
                 : Colors.white,
             iconSize: 25,
             onPressed: () {
@@ -440,16 +447,16 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       child: Align(
         alignment: Alignment.center,
         child: FadeTransition(
-          opacity: _fadeInFadeOut,
+          opacity: _centercardfadeInFadeOut,
           // angle: _getRotationAnimationValue(_rotateCard.value),
           // origin: Offset(50, -70),
           child: SizedBox(
-            width: _appBarHeight * 1.67,
-            height: _appBarHeight * 2.3,
+            width: _appBarHeight * 2,
+            height: _appBarHeight * 3,
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  image: DecorationImage(image: AssetImage("images/enigma.png"), fit: BoxFit.cover)),
+                  image: DecorationImage(image: AssetImage("images/enigma.png"),fit: BoxFit.cover)),
             ),
           ),
         ),
@@ -461,7 +468,10 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
     return Container(
       key: Key("widget_background"),
       height: _height,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       color: Colors.black,
       child: FadeTransition(
         opacity: _fadeTransition,
@@ -475,10 +485,13 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
         key: Key("widget_appbar_shadow"),
         top: _scale == 0.0 ? _offset + _appBarHeight : _height,
         child: Container(
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
             height: 1,
             decoration:
-                const BoxDecoration(color: Colors.transparent, boxShadow: [
+            const BoxDecoration(color: Colors.transparent, boxShadow: [
               BoxShadow(
                 color: Colors.black54,
                 blurRadius: 1.0,
@@ -496,9 +509,15 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.only(
               left: _scale >= 0.12
-                  ? 40 + ((MediaQuery.of(context).size.width / 4) * _scale)
+                  ? 40 + ((MediaQuery
+                  .of(context)
+                  .size
+                  .width / 4) * _scale)
                   : 50),
-          width: MediaQuery.of(context).size.width,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
           color: Colors.transparent,
           height: _appBarHeight,
           child: _titleDescriptionHandler(),
