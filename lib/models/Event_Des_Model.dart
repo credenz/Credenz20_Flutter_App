@@ -356,9 +356,11 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
           controller: _scrollController,
           primary: false,
           children: <Widget>[
-            Stack(
-              key: Key("widget_stack"),
-              children: stackOrder,
+            Center(
+              child: Stack(
+                key: Key("widget_stack"),
+                children: stackOrder,
+              ),
             )
           ],
         ),
@@ -434,18 +436,21 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
   }
 
   Widget _centercardConstructor() {
-    return Center(
-      child: FadeTransition(
-        opacity: _fadeInFadeOut,
-        // angle: _getRotationAnimationValue(_rotateCard.value),
-        // origin: Offset(50, -70),
-        child: SizedBox(
-          width: _appBarHeight * 1.67,
-          height: _appBarHeight * 2.3,
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                image: DecorationImage(image: AssetImage("images/enigma.png"), fit: BoxFit.cover)),
+    return Positioned.fill(
+      child: Align(
+        alignment: Alignment.center,
+        child: FadeTransition(
+          opacity: _fadeInFadeOut,
+          // angle: _getRotationAnimationValue(_rotateCard.value),
+          // origin: Offset(50, -70),
+          child: SizedBox(
+            width: _appBarHeight * 1.67,
+            height: _appBarHeight * 2.3,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  image: DecorationImage(image: AssetImage("images/enigma.png"), fit: BoxFit.cover)),
+            ),
           ),
         ),
       ),
