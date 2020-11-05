@@ -77,6 +77,9 @@ class WheelExample extends State<Events> {
                   // padding: EdgeInsets.all(20),
                   color: drawerBackgroundColor,
                   child: Container(
+                    child: InkWell(
+                      onTap: ,
+                    ),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -129,7 +132,9 @@ class WheelExample extends State<Events> {
     setState(() {
       isselected.fillRange(0, 11, false);
       isselected[index] = true;
-    });
+    }
+
+    );
 
 /*    Fluttertoast.showToast(
         msg: isselected.toString(),
