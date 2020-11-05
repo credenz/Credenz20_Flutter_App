@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:credenz20/models/Event_Des_Model.dart';
+import 'package:toast/toast.dart';
+
 // import 'package:flutter_staggered_grid_view/.dart';
 import 'package:circle_wheel_scroll/circle_wheel_scroll_view.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
+// import 'package:fluttertoast/fluttertoast.dart';
 import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
@@ -65,6 +69,7 @@ class _EventsState extends State<Events> {
 class WheelExample extends State<Events> {
   // var isselected = {new List(12).fill fillRange(0, 11,false)}; // = new List(12);
   List<bool> isselected = List.filled(12, false);
+  int selectedcard;
 
   Widget _buildItem(int i) {
     return Center(
@@ -74,12 +79,8 @@ class WheelExample extends State<Events> {
                 child: Container(
                   width: 150,
                   height: 350,
-                  // padding: EdgeInsets.all(20),
                   color: drawerBackgroundColor,
                   child: Container(
-                    child: InkWell(
-                      onTap: ,
-                    ),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -116,25 +117,46 @@ class WheelExample extends State<Events> {
       body: Container(
         // height: 260,
         // width: 160,
-        child: CircleListScrollView(
-          physics: CircleFixedExtentScrollPhysics(),
-          axis: Axis.vertical,
-          itemExtent: 150,
-          children: List.generate(12, _buildItem),
-          radius: MediaQuery.of(context).size.width * 0.5,
-          onSelectedItemChanged: (int index) => _selectedItem(index),
+        child: InkWell(
+          onTap: () {
+            Toast.show('$selectedcard', context,
+                duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EventDes()),
+            );
+          },
+          child: CircleListScrollView(
+            physics: CircleFixedExtentScrollPhysics(),
+            axis: Axis.vertical,
+            itemExtent: 150,
+            children: List.generate(12, _buildItem),
+            radius: MediaQuery.of(context).size.width * 0.5,
+            onSelectedItemChanged: (int index) => _selectedItem(index, context),
+          ),
         ),
       ),
     );
   }
 
-  _selectedItem(int index) {
+  _selectedItem(int index, BuildContext context) {
     setState(() {
+      selectedcard=index;
       isselected.fillRange(0, 11, false);
       isselected[index] = true;
-    }
+    });
 
-    );
+    /*
+     child: InkWell(
+              onTap: (){
+                Toast.show('5', cardcontext, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                Navigator.push(
+                  cardcontext,
+                  MaterialPageRoute(builder: (cardcontext) => EventDes()),
+                );
+             }
+             );
+     */
 
 /*    Fluttertoast.showToast(
         msg: isselected.toString(),
