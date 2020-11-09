@@ -33,6 +33,7 @@ class _EventsState extends State<Events> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: new Padding(
         padding: const EdgeInsets.all(4),
         // child: WheelExample(),
@@ -76,15 +77,17 @@ class WheelExample extends State<Events> {
     return Center(
         child: isselected[i]
             ? ClipRRect(
+
                 borderRadius: BorderRadius.circular(150),
                 child: Container(
-                  width: 150,
-                  height: 150,
+                  width: 120,
+                  height: 120,
                   color: drawerBackgroundColor,
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
+
                         image: eventimages[i],
                         fit: BoxFit.fitHeight,
                       ),
@@ -95,8 +98,8 @@ class WheelExample extends State<Events> {
             : ClipRRect(
                 borderRadius: BorderRadius.circular(60),
                 child: Container(
-                  width: 90,
-                  height: 90,
+                  width: 80,
+                  height: 80,
                   // padding: EdgeInsets.all(20),
                   color: drawerBackgroundColor,
                   child: Container(
@@ -115,27 +118,64 @@ class WheelExample extends State<Events> {
   @override
   Widget build(BuildContext context) {
     (flag==0)? _selectedItem(0, context): null;
-    return Scaffold(
-      body: Container(
-        // height: 260,
-        // width: 160,
-        child: InkWell(
-          onTap: () {
-            Toast.show('$selectedcard', context,
-                duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => EventDes()),
-            );
-          },
-          child: CircleListScrollView(
-            physics: CircleFixedExtentScrollPhysics(),
-            axis: Axis.vertical,
-            itemExtent: 150,
-            children: List.generate(12, _buildItem),
-            radius: MediaQuery.of(context).size.width * 0.7,
-            onSelectedItemChanged: (int index) => _selectedItem(index, context),
-          ),
+    return MaterialApp(
+      home: Material(
+        child: Stack(
+          children: <Widget>[
+            Stack(
+              children: [
+                Image.asset(
+                  // "images/enigma.png",
+                  "gifs/space.gif",
+                  height: MediaQuery
+                      .of(this.context)
+                      .size
+                      .height,
+                  width: MediaQuery
+                      .of(this.context)
+                      .size
+                      .width,
+                  fit: BoxFit.fill,
+                ),
+
+                // Container(
+                //   color: Color(0xaa4E164B),
+                // ),
+              ],
+            ),
+            Container(
+                padding: EdgeInsets.fromLTRB(10,MediaQuery.of(context).size.height/4+60,MediaQuery.of(context).size.width/2,MediaQuery.of(context).size.height/4),
+                child:Image.asset(
+                    "images/icon.png",
+                    width: 180,
+                    height: 180,
+                    fit: BoxFit.fill
+                )
+            ),
+            Container(
+
+              // height: 260,
+              // width: 160,
+              child: InkWell(
+                onTap: () {
+                  Toast.show('$selectedcard', context,
+                      duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventDes()),
+                  );
+                },
+                child: CircleListScrollView(
+                  physics: CircleFixedExtentScrollPhysics(),
+                  axis: Axis.vertical,
+                  itemExtent: 150,
+                  children: List.generate(12, _buildItem),
+                  radius: MediaQuery.of(context).size.width * 0.7,
+                  onSelectedItemChanged: (int index) => _selectedItem(index, context),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
