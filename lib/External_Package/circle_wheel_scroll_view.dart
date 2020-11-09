@@ -10,9 +10,7 @@ import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
-
-import 'file:///G:/flutter_projects/Credenz20_Flutter_App/lib/External_Package/circle_wheel_render2.dart';
-
+import 'package:credenz20/External_Package/circle_wheel_render2.dart';
 /// A delegate that supplies children for [CircleListScrollView].
 ///
 /// [CircleListScrollView] lazily constructs its children during layout to avoid

@@ -71,7 +71,7 @@ class _AboutState extends State<About> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(image: AssetImage('lib/images/credenz16.jpeg',),fit: BoxFit.fill),
+            image: DecorationImage(image: AssetImage('images/credenz16.jpeg',),fit: BoxFit.fill),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
