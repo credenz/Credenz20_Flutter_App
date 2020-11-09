@@ -69,16 +69,17 @@ class _EventsState extends State<Events> {
 class WheelExample extends State<Events> {
   // var isselected = {new List(12).fill fillRange(0, 11,false)}; // = new List(12);
   List<bool> isselected = List.filled(12, false);
-  int selectedcard;
+  int selectedcard, flag=0;
+
 
   Widget _buildItem(int i) {
     return Center(
         child: isselected[i]
             ? ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(150),
                 child: Container(
                   width: 150,
-                  height: 350,
+                  height: 150,
                   color: drawerBackgroundColor,
                   child: Container(
                     decoration: BoxDecoration(
@@ -113,6 +114,7 @@ class WheelExample extends State<Events> {
 
   @override
   Widget build(BuildContext context) {
+    (flag==0)? _selectedItem(0, context): null;
     return Scaffold(
       body: Container(
         // height: 260,
@@ -142,8 +144,9 @@ class WheelExample extends State<Events> {
   _selectedItem(int index, BuildContext context) {
     setState(() {
       selectedcard=index;
-      isselected.fillRange(0, 11, false);
+      isselected.fillRange(0, 12, false);
       isselected[index] = true;
+      flag=1;
     });
 
     /*
