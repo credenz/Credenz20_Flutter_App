@@ -4,7 +4,7 @@ import 'package:credenz20/models/Event_Des_Model.dart';
 import 'package:toast/toast.dart';
 
 // import 'package:flutter_staggered_grid_view/.dart';
-import 'package:circle_wheel_scroll/circle_wheel_scroll_view.dart';
+import 'package:credenz20/External_Package/circle_wheel_scroll_view.dart';
 
 // import 'package:fluttertoast/fluttertoast.dart';
 import '../constants/theme.dart';
@@ -95,8 +95,8 @@ class WheelExample extends State<Events> {
             : ClipRRect(
                 borderRadius: BorderRadius.circular(60),
                 child: Container(
-                  width: 80,
-                  height: 80,
+                  width: 90,
+                  height: 90,
                   // padding: EdgeInsets.all(20),
                   color: drawerBackgroundColor,
                   child: Container(
@@ -133,7 +133,7 @@ class WheelExample extends State<Events> {
             axis: Axis.vertical,
             itemExtent: 150,
             children: List.generate(12, _buildItem),
-            radius: MediaQuery.of(context).size.width * 0.5,
+            radius: MediaQuery.of(context).size.width * 0.7,
             onSelectedItemChanged: (int index) => _selectedItem(index, context),
           ),
         ),
