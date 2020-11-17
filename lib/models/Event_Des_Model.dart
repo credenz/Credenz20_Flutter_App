@@ -1,60 +1,17 @@
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:sliverbar_with_card/sliverbar_with_card.dart';
+import 'package:credenz20/constants/EventData.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
 import 'dart:math';
 
 class EventDes extends StatefulWidget {
+  int eventIndex;
+
+  EventDes({Key key, @required this.eventIndex}) : super(key: key);
+
   @override
   _EventDesState createState() => _EventDesState();
-}
-
-Widget _mainbody() {
-  return Stack(
-    children: <Widget>[
-      TabBarView(
-        children: [
-          Icon(Icons.home),
-          Icon(Icons.directions_bike),
-          Icon(Icons.directions_car),
-          Icon(Icons.directions_transit),
-          Icon(Icons.perm_contact_calendar),
-        ],
-      ),
-    ],
-  );
-}
-
-Widget tabcontroller() {
-  return Scaffold(
-    backgroundColor: Colors.transparent,
-    appBar: ShiftingTabBar(
-      labelStyle: TextStyle(
-        color: Colors.white,
-        fontSize: 12,
-      ),
-      // Specify a color to background or it will pick it from primaryColor of your app ThemeData
-      color: Colors.transparent,
-      // You can change brightness manually to change text color style to dark and light or it will decide based on your background color
-      brightness: Brightness.dark,
-      tabs: [
-        // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
-        ShiftingTab(
-          icon: Icon(Icons.home),
-          text: "Intro",
-        ),
-        ShiftingTab(icon: Icon(Icons.directions_bike), text: "Rules"),
-        ShiftingTab(icon: Icon(Icons.directions_car), text: "Structure"),
-        ShiftingTab(icon: Icon(Icons.directions_transit), text: "Judging"),
-        ShiftingTab(icon: Icon(Icons.perm_contact_calendar), text: "Contact"),
-      ],
-    ),
-    body: Container(
-      // color: Color(0xaa272034),
-        child: _mainbody()),
-  );
 }
 
 class _EventDesState extends State<EventDes> {
@@ -62,6 +19,7 @@ class _EventDesState extends State<EventDes> {
 
   @override
   Widget build(BuildContext context) {
+    int index = widget.eventIndex;
     return MaterialApp(
       home: Material(
         child: Stack(
@@ -71,14 +29,8 @@ class _EventDesState extends State<EventDes> {
                 Image.asset(
                   // "images/enigma.png",
                   "gifs/spacered.gif",
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
                   fit: BoxFit.fill,
                 ),
                 // Container(
@@ -91,12 +43,12 @@ class _EventDesState extends State<EventDes> {
               //gifs/space2.gif
               // background:
               //     Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
-              title: Text("Enigma",
+              title: Text(eventName[index],
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
-              card: AssetImage('images/enigma4.png'),
+              card: eventimages[index],
               backButton: true,
               backButtonColors: [Colors.white, Colors.white],
               action: IconButton(
@@ -115,14 +67,8 @@ class _EventDesState extends State<EventDes> {
                 padding: const EdgeInsets.only(top: 30),
                 child: Container(
                   // color: Color(0x66272034),
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height -
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height -
                       1.8 * AppBar().preferredSize.height,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -134,14 +80,17 @@ class _EventDesState extends State<EventDes> {
                           topRight: Radius.circular(45.0),
                         ),
                         child: Card(
-                            color: Color(0xdd272034), child: tabcontroller()),
+                            color: Color(0xdd41004D),
+                            child: Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: tabcontroller())),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-//                padding: const EdgeInsets.only(top: 30),
+            //A1045A,
             Container(
               alignment: Alignment.bottomCenter,
               child: Column(
@@ -179,6 +128,99 @@ class _EventDesState extends State<EventDes> {
       ),
     );
   }
+
+  Widget _mainbody() {
+    return Stack(
+      children: <Widget>[
+        TabBarView(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  intro[widget.eventIndex],
+                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  rules[widget.eventIndex],
+                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  structure[widget.eventIndex],
+                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  judging[widget.eventIndex],
+                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  contact[widget.eventIndex],
+                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                ),
+              ),
+            ),
+            // Icon(Icons.home),
+            // Icon(Icons.directions_bike),
+            // Icon(Icons.directions_car),
+            // Icon(Icons.directions_transit),
+            // Icon(Icons.perm_contact_calendar),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget tabcontroller() {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: ShiftingTabBar(
+        labelStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+        ),
+        // Specify a color to background or it will pick it from primaryColor of your app ThemeData
+        color: Colors.transparent,
+        // You can change brightness manually to change text color style to dark and light or it will decide based on your background color
+        brightness: Brightness.dark,
+        tabs: [
+          // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
+          ShiftingTab(icon: Icon(Icons.info_outline), text: "Intro"),
+          ShiftingTab(icon: Icon(Icons.assignment), text: "Rules"),
+          ShiftingTab(icon: Icon(Icons.device_hub), text: "Structure"),
+          ShiftingTab(icon: Icon(Icons.assessment), text: "Judging"),
+          ShiftingTab(icon: Icon(Icons.perm_contact_calendar), text: "Contact"),
+        ],
+      ),
+      body: Container(
+          // color: Color(0xaa272034),
+          child: _mainbody()),
+    );
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,19 +237,20 @@ class CardSliverAppBar extends StatefulWidget {
   final Widget body;
   final ImageProvider card;
 
-  CardSliverAppBar({@required this.height,
-    // @required this.background,
-    @required this.title,
-    @required this.body,
-    this.background,
-    this.titleDescription,
-    this.backButton = false,
-    this.backButtonColors,
-    this.action,
-    this.card,
-    Key key})
+  CardSliverAppBar(
+      {@required this.height,
+      // @required this.background,
+      @required this.title,
+      @required this.body,
+      this.background,
+      this.titleDescription,
+      this.backButton = false,
+      this.backButtonColors,
+      this.action,
+      this.card,
+      Key key})
       : assert(height != null && height > 0),
-  // assert(background != null),
+        // assert(background != null),
         assert(title != null),
         assert(body != null),
         super(key: key);
@@ -385,7 +428,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             icon: const Icon(Icons.arrow_back),
             color: _animatedBackButtonColors != null
                 ? _animatedBackButtonColors.evaluate(
-                AlwaysStoppedAnimation(_animationController.value))
+                    AlwaysStoppedAnimation(_animationController.value))
                 : Colors.white,
             iconSize: 25,
             onPressed: () {
@@ -456,7 +499,8 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  image: DecorationImage(image: AssetImage("images/enigma.png"),fit: BoxFit.cover)),
+                  image:
+                      DecorationImage(image: widget.card, fit: BoxFit.cover)),
             ),
           ),
         ),
@@ -468,10 +512,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
     return Container(
       key: Key("widget_background"),
       height: _height,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      width: MediaQuery.of(context).size.width,
       color: Colors.black,
       child: FadeTransition(
         opacity: _fadeTransition,
@@ -485,13 +526,10 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
         key: Key("widget_appbar_shadow"),
         top: _scale == 0.0 ? _offset + _appBarHeight : _height,
         child: Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
+            width: MediaQuery.of(context).size.width,
             height: 1,
             decoration:
-            const BoxDecoration(color: Colors.transparent, boxShadow: [
+                const BoxDecoration(color: Colors.transparent, boxShadow: [
               BoxShadow(
                 color: Colors.black54,
                 blurRadius: 1.0,
@@ -509,15 +547,9 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
           alignment: Alignment.centerLeft,
           padding: EdgeInsets.only(
               left: _scale >= 0.12
-                  ? 40 + ((MediaQuery
-                  .of(context)
-                  .size
-                  .width / 4) * _scale)
+                  ? 40 + ((MediaQuery.of(context).size.width / 4) * _scale)
                   : 50),
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          width: MediaQuery.of(context).size.width,
           color: Colors.transparent,
           height: _appBarHeight,
           child: _titleDescriptionHandler(),
