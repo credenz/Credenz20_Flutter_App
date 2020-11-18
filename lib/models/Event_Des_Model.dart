@@ -2,8 +2,11 @@ import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:credenz20/constants/EventData.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
 import 'dart:math';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 
 class EventDes extends StatefulWidget {
   int eventIndex;
@@ -16,6 +19,17 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes> {
   bool favorite = false;
+  final storage=FlutterSecureStorage();
+
+  addToCart()async{
+    bool pre=await storage.containsKey(key: '${widget.eventIndex}');
+    if(pre){
+      Fluttertoast.showToast(msg: 'Event already added');
+    }else{
+      await storage.write(key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+      Fluttertoast.showToast(msg: 'Event added');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,17 +105,19 @@ class _EventDesState extends State<EventDes> {
               ),
             ),
             //A1045A,
-            Container(
-              alignment: Alignment.bottomCenter,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: ()async{
+                      addToCart();
+                    },
                     textColor: Colors.white,
                     color: drawerBackgroundColor,
-                    child: const Text('Register Now',
+                    child: const Text('Add to Cart',
                         style: TextStyle(fontSize: 20)),
                   ),
                 ],

@@ -75,6 +75,7 @@ class WheelExample extends State<Events> {
     (flag == 0) ? _selectedItem(0, context) : null;
     double x = 10;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Material(
         child: Stack(
           children: <Widget>[
