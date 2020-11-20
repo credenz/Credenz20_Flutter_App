@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
 
@@ -18,19 +18,18 @@ class _CartState extends State<Cart> {
   final storage=FlutterSecureStorage();
   List list;
   bool load=true;
+  Razorpay _razorpay;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _razorpay = Razorpay();
     loadCart();
   }
 
   loadCart()async{
     list=List();
-    Timer(Duration(seconds: 3), (){
-
-    });
     for(int i=0;i<12;i++){
       bool pre=await storage.containsKey(key: '$i');
       if(pre){
@@ -47,11 +46,15 @@ class _CartState extends State<Cart> {
   deleteFromCart(String title)async{
     int pos=eventName.indexOf(title);
     await storage.delete(key: '$pos');
-    await loadCart();
+    await loadCart(); 
     setState(() {
       load=false;
     });
     // await storage.delete(key: null);
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
   }
 
   @override
@@ -70,18 +73,39 @@ class _CartState extends State<Cart> {
         title: Text('Cart'),
         backgroundColor: drawerBackgroundColor,
       ),
-      body: ListView.builder(itemBuilder: (BuildContext context,int pos){
-        return ListTile(
-          title: Text(list[pos]),
-          trailing: IconButton(icon: Icon(Icons.delete),onPressed: ()async{
-            setState(() {
-              load=true;
-            });
-            await deleteFromCart(list[pos]);
-          },),
-        );
-      },
-      itemCount: list.length,),
+      body: ListView(
+        children: [
+          ListView.builder(itemBuilder: (BuildContext context,int pos){
+            return ListTile(
+              title: Text(list[pos%2]),
+              trailing: IconButton(icon: Icon(Icons.delete),onPressed: ()async{
+                setState(() {
+                  load=true;
+                });
+                await deleteFromCart(list[pos]);
+              },),
+            );
+          },
+            physics: NeverScrollableScrollPhysics(),
+          itemCount: 20,
+          shrinkWrap: true,),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RaisedButton(
+                onPressed: (){
+                  _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                  child: Text('Register',style: TextStyle(color: Colors.white),),
+                ),
+                color: drawerBackgroundColor,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
