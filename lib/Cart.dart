@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
@@ -25,6 +26,9 @@ class _CartState extends State<Cart> {
     // TODO: implement initState
     super.initState();
     _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     loadCart();
   }
 
@@ -54,7 +58,19 @@ class _CartState extends State<Cart> {
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // Do something when payment succeeds
+    Fluttertoast.showToast(
+        msg: "SUCCESS: " + response.paymentId, timeInSecForIosWeb: 4);
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+        msg: "ERROR: " + response.code.toString() + " - " + response.message,
+        timeInSecForIosWeb: 4);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
 
   @override
@@ -77,7 +93,7 @@ class _CartState extends State<Cart> {
         children: [
           ListView.builder(itemBuilder: (BuildContext context,int pos){
             return ListTile(
-              title: Text(list[pos%2]),
+              title: Text(list[pos]),
               trailing: IconButton(icon: Icon(Icons.delete),onPressed: ()async{
                 setState(() {
                   load=true;
@@ -87,14 +103,24 @@ class _CartState extends State<Cart> {
             );
           },
             physics: NeverScrollableScrollPhysics(),
-          itemCount: 20,
+          itemCount: list.length,
           shrinkWrap: true,),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
                 onPressed: (){
-                  _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+                  var options = {
+                    'key': 'rzp_test_8OXCvHsV5OiOpe',
+                    'amount': 100,
+                    'name': 'Acme Corp.',
+                    'description': 'Fine T-Shirt',
+                    'prefill': {
+                      'contact': '7397865565',
+                      'email': 'sarafatharva123@gmail.com'
+                    }
+                  };
+                  _razorpay.open(options);
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
