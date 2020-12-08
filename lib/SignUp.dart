@@ -4,8 +4,10 @@ import 'package:credenz20/constants/API.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'Home.dart';
 import 'constants/styles.dart';
 import 'constants/theme.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -20,6 +22,7 @@ class _SignUpState extends State<SignUp> {
   String password;
   String phoneNumber;
   String userName;
+  final storage=FlutterSecureStorage();
 
 
   makeRequest()async{
@@ -32,10 +35,12 @@ class _SignUpState extends State<SignUp> {
     print(response.body);
     print(response.statusCode);
     if(response.statusCode==200){
-
+      await storage.write(key: "accToken", value:jsonDecode(response.body)['accessToken']);
+      await storage.write(key: 'username', value: userName);
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")));
     }else{
       String msg=jsonDecode(response.body)['message'];
-      Fluttertoast.showToast(msg: msg.toUpperCase());
+      Fluttertoast.showToast(msg: msg.substring(0,1).toUpperCase()+msg.substring(1));
     }
 
   }
@@ -44,6 +49,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: drawerBackgroundColor,
       body: Center(
         child: SingleChildScrollView(

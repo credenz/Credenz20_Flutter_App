@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'constants/styles.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   String userName;
   String password;
-
+  final storage=FlutterSecureStorage();
 
   makeRequest()async{
     String url=loginUrl;
@@ -35,12 +36,14 @@ class _LoginState extends State<Login> {
         Fluttertoast.showToast(msg: msg);
       }else{
         String accessToken=jsonDecode(response.body)['accessToken'];
+        await storage.write(key: "accToken", value: accessToken);
+        await storage.write(key: 'username', value: userName);
         Fluttertoast.showToast(msg: 'LoggedIn');
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")), (route) => false);
       }
     }else{
       String msg=jsonDecode(response.body)['message'];
-      Fluttertoast.showToast(msg: msg.toUpperCase());
+      Fluttertoast.showToast(msg: msg.substring(0,1).toUpperCase()+msg.substring(1));
     }
 
   }

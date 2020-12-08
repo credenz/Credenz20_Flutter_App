@@ -1,6 +1,8 @@
 import 'dart:async';
-
+import 'package:http/http.dart' as http;
+import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
+import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -73,6 +75,40 @@ class _CartState extends State<Cart> {
         msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
 
+
+  pay()async{
+    String username=await storage.read(key: 'username');
+    if(username!=null) {
+      for(int i=0;i<list.length;i++){
+        String url=baseUrl+username+'/${list[i]}';
+        String accToken=await storage.read(key: "accToken");
+        print(accToken);
+        Map<String,String>header={
+          "Authorization":'"$accToken"'
+        };
+        http.Response response=await http.post(url,headers: header);
+        print(header);
+        print(response.body);
+        print(url);
+        print(response.statusCode);
+      }
+      var options = {
+        'key': 'rzp_test_8OXCvHsV5OiOpe',
+        'amount': 100,
+        'name': 'Acme Corp.',
+        'description': 'Fine T-Shirt',
+        'prefill': {
+          'contact': '7397865565',
+          'email': 'sarafatharva123@gmail.com'
+        }
+      };
+      // _razorpay.open(options);
+    }else{
+      Fluttertoast.showToast(msg: "Please login before you register");
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return load==true?Container(child: loader,color: Colors.white,):Scaffold(
@@ -109,18 +145,8 @@ class _CartState extends State<Cart> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
-                onPressed: (){
-                  var options = {
-                    'key': 'rzp_test_8OXCvHsV5OiOpe',
-                    'amount': 100,
-                    'name': 'Acme Corp.',
-                    'description': 'Fine T-Shirt',
-                    'prefill': {
-                      'contact': '7397865565',
-                      'email': 'sarafatharva123@gmail.com'
-                    }
-                  };
-                  _razorpay.open(options);
+                onPressed: ()async{
+                  await pay();
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
