@@ -1,4 +1,4 @@
-import 'file:///C:/Users/asus/Documents/GitHub/Credenz20_Flutter_App/lib/constants/theme.dart';
+import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:credenz20/extra_lib/modified_slimy_card.dart';
 
@@ -71,7 +71,7 @@ class _AboutState extends State<About> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(image: AssetImage('lib/images/credenz16.jpeg',),fit: BoxFit.fill),
+            image: DecorationImage(image: AssetImage('images/credenz16.jpeg',),fit: BoxFit.fill),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),

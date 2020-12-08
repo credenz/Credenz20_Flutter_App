@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'Home.dart';
 import 'constants/styles.dart';
 import 'constants/theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -22,30 +22,25 @@ class _SignUpState extends State<SignUp> {
   String password;
   String phoneNumber;
   String userName;
-
-
+  final storage=FlutterSecureStorage();
 
 
   makeRequest()async{
     String url=signUpUrl;
     Map<String,String>headers={"Content-Type":"application/json"};
-    String body='{"username":"${userName.trim()}","name":"${name.trim()}","password":"${password.trim()}","email":"${email.trim()}","phoneno":"${phoneNumber.trim()}","clgname":"${collegeName.trim()}"}';
+    String body='{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
     http.Response response=await http.post(url,body: body,headers: headers);
     print(url);
     print(body);
     print(response.body);
     print(response.statusCode);
     if(response.statusCode==200){
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String accessToken=jsonDecode(response.body)['accessToken'];
-      await prefs.setString('accessToken', accessToken);
-      Fluttertoast.showToast(msg: 'SignedUp');
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")), (route) => false);
-
-
+      await storage.write(key: "accToken", value:jsonDecode(response.body)['accessToken']);
+      await storage.write(key: 'username', value: userName);
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")));
     }else{
       String msg=jsonDecode(response.body)['message'];
-      Fluttertoast.showToast(msg: msg.toUpperCase());
+      Fluttertoast.showToast(msg: msg.substring(0,1).toUpperCase()+msg.substring(1));
     }
 
   }
@@ -54,6 +49,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: drawerBackgroundColor,
       body: Center(
         child: SingleChildScrollView(

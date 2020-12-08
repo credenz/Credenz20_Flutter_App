@@ -6,6 +6,7 @@ import 'BottomNav/Contact.dart';
 import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
 import 'BottomNav/Events.dart';
+import 'Cart.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
 
@@ -115,7 +116,8 @@ class _HomeState extends State<Home> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+              // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Cart()));
               // do something
             },
           )
