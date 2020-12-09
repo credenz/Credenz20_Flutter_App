@@ -78,13 +78,13 @@ class _CartState extends State<Cart> {
 
   pay()async{
     String username=await storage.read(key: 'username');
-    if(username!=null) {
+    String accToken=await storage.read(key: "accToken");
+    if(username!=null && accToken!=null) {
       for(int i=0;i<list.length;i++){
-        String url=baseUrl+username+'/${list[i]}';
-        String accToken=await storage.read(key: "accToken");
+        String url=baseUrl+username+'/${list[i].toString().toLowerCase()}';
         print(accToken);
         Map<String,String>header={
-          "Authorization":'"$accToken"'
+          "accessToken":'"$accToken"'
         };
         http.Response response=await http.post(url,headers: header);
         print(header);

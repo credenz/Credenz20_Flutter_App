@@ -36,6 +36,7 @@ class _LoginState extends State<Login> {
         Fluttertoast.showToast(msg: msg);
       }else{
         String accessToken=jsonDecode(response.body)['accessToken'];
+        print(accessToken);
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
         Fluttertoast.showToast(msg: 'LoggedIn');
