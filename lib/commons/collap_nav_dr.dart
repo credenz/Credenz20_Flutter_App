@@ -1,5 +1,6 @@
 import 'package:credenz20/BottomNav/Contact.dart';
 import 'package:credenz20/nav_pages/about_us.dart';
+import 'package:credenz20/nav_pages/developers.dart';
 import 'package:credenz20/nav_pages/editprofile.dart';
 import 'package:credenz20/nav_pages/myevents.dart';
 import 'package:credenz20/nav_pages/ping.dart';
@@ -116,6 +117,9 @@ class MenuDrawer extends StatelessWidget {
                         leading: Icon(Icons.favorite_border),
                         title: Text('Visit Website'),
                         onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext cotext) => Developer()
+                          ));
 
                         },
                       ),
