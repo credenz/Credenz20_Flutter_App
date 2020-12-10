@@ -79,11 +79,11 @@ class WheelExample extends State<Events> {
       home: Material(
         child: Stack(
           children: <Widget>[
-/*            Stack(
+            Stack(
               children: [
                 Image.asset(
                   // "images/enigma.png",
-                  "gifs/space.gif",
+                  "gifs/space2.gif",
                   height: MediaQuery
                       .of(this.context)
                       .size
@@ -94,12 +94,8 @@ class WheelExample extends State<Events> {
                       .width,
                   fit: BoxFit.fill,
                 ),
-
-                // Container(
-                //   color: Color(0xaa4E164B),
-                // ),
               ],
-            ),*/
+            ),
             Center(
               child: Container(
                   alignment: Alignment.centerLeft,

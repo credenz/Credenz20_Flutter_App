@@ -45,7 +45,7 @@ class MenuDrawer extends StatelessWidget {
                         decoration: BoxDecoration(
                           //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
                             image: DecorationImage(
-                                image: AssetImage("images/icon.png"),
+                                image: AssetImage("images/finalLogo.png"),
                                 fit: BoxFit.contain
                             )
                         ),
