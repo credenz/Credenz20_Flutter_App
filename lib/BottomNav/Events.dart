@@ -83,7 +83,7 @@ class WheelExample extends State<Events> {
               children: [
                 Image.asset(
                   // "images/enigma.png",
-                  "gifs/homebackgif.gif",
+                  "gifs/space2.gif",
                   height: MediaQuery
                       .of(this.context)
                       .size
