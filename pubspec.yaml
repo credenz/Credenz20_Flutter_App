@@ -29,7 +29,6 @@ dependencies:
   http: ^0.12.2
   fluttertoast: ^7.1.1
   toast: ^0.1.5
-  sliverbar_with_card: ^0.1.5
   shifting_tabbar: ^0.3.1
   flutter_secure_storage: ^3.3.5
   flutter_spinkit: ^4.1.2+1

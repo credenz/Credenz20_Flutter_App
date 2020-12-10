@@ -1,11 +1,10 @@
-import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 
 import 'BottomNav/About.dart';
 import 'BottomNav/Contact.dart';
+import 'BottomNav/Events.dart';
 import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
-import 'BottomNav/Events.dart';
 import 'Cart.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
@@ -29,7 +28,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   int _counter = 0;
   int currentTab = 0;
 
@@ -54,7 +52,7 @@ class _HomeState extends State<Home> {
   ];
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     pageController = PageController(initialPage: currentIndex);
   }
@@ -64,8 +62,6 @@ class _HomeState extends State<Home> {
     pageController.dispose();
     super.dispose();
   }
-
-
 
   void _incrementCounter() {
     setState(() {
@@ -77,6 +73,7 @@ class _HomeState extends State<Home> {
       _counter++;
     });
   }
+
   void onPageChanged(int page) {
     setState(() {
       this.currentIndex = page;
@@ -84,14 +81,13 @@ class _HomeState extends State<Home> {
   }
 
   void onTabTapped(int index) {
-    this.pageController.animateToPage(index,duration: const Duration(milliseconds: 500),curve: Curves.easeInOut);
+    this.pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       //Tanuj's Code
       /*appBar: AppBar(
         centerTitle: true,
@@ -117,7 +113,8 @@ class _HomeState extends State<Home> {
             ),
             onPressed: () {
               // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Cart()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) => Cart()));
               // do something
             },
           )
@@ -129,31 +126,29 @@ class _HomeState extends State<Home> {
 
       //Vaibhav's Code
 
-
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.all_inclusive),
         tooltip: 'Increment',
         elevation: 2.0,
-
         backgroundColor: drawerBackgroundColor,
         onPressed: () {
-          setState(() {
-            onTabTapped(2);
-            currentScreen = Events();
-            currentTab = 2;
-          },
+          setState(
+            () {
+              onTabTapped(2);
+              currentScreen = Events();
+              currentTab = 2;
+            },
           );
         },
-
       ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       body: PageView(
-      children: tabPages,
-      onPageChanged: onPageChanged,
-      controller: pageController,
-    ),
+        children: tabPages,
+        onPageChanged: onPageChanged,
+        controller: pageController,
+      ),
 
       // new IndexedStack(
       //   index: currentIndex,
@@ -167,15 +162,11 @@ class _HomeState extends State<Home> {
       // ),
 
       bottomNavigationBar: BottomAppBar(
-
         notchMargin: 7,
         shape: CircularNotchedRectangle(),
-
         child: Container(
-
             height: 60,
             child: Row(
-
               mainAxisSize: MainAxisSize.max,
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               // crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,26 +174,30 @@ class _HomeState extends State<Home> {
                 // Row(
                 //   children: <Widget>[
                 MaterialButton(
-
                   // minWidth: 40,
                   onPressed: () {
-                    setState(() {
-                      onTabTapped(0);
-                      currentScreen = Profile();
-                      currentTab = 0;
-                    },
+                    setState(
+                      () {
+                        onTabTapped(0);
+                        currentScreen = Profile();
+                        currentTab = 0;
+                      },
                     );
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.group, color: currentTab == 0
-                          ? drawerBackgroundColor
-                          : Colors.grey[500]),
-                      Text('Profile', style: TextStyle(
-                        color: currentTab == 0 ? drawerBackgroundColor : Colors
-                            .grey[500],
-                      ),
+                      Icon(Icons.group,
+                          color: currentTab == 0
+                              ? drawerBackgroundColor
+                              : Colors.grey[500]),
+                      Text(
+                        'Profile',
+                        style: TextStyle(
+                          color: currentTab == 0
+                              ? drawerBackgroundColor
+                              : Colors.grey[500],
+                        ),
                       )
                     ],
                   ),
@@ -210,28 +205,34 @@ class _HomeState extends State<Home> {
                 MaterialButton(
                   // minWidth: 40,
                   onPressed: () {
-                    setState(() {
-                      onTabTapped(1);
-                      currentScreen = Contact();
-                      currentTab = 1;
-                    },);
+                    setState(
+                      () {
+                        onTabTapped(1);
+                        currentScreen = Contact();
+                        currentTab = 1;
+                      },
+                    );
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.perm_contact_calendar, color: currentTab == 1
-                          ? drawerBackgroundColor
-                          : Colors.grey[500]),
-                      Text('Contact', style: TextStyle(color: currentTab == 1
-                          ? drawerBackgroundColor
-                          : Colors.grey[500]),
+                      Icon(Icons.perm_contact_calendar,
+                          color: currentTab == 1
+                              ? drawerBackgroundColor
+                              : Colors.grey[500]),
+                      Text(
+                        'Contact',
+                        style: TextStyle(
+                            color: currentTab == 1
+                                ? drawerBackgroundColor
+                                : Colors.grey[500]),
                       ),
                     ],
                   ),
                 ),
-                Expanded(flex: 1,
+                Expanded(
+                  flex: 1,
                   child: SizedBox(),
-
                 ),
                 //   ],
                 // ),
@@ -244,22 +245,28 @@ class _HomeState extends State<Home> {
                 MaterialButton(
                   // minWidth: 40,
                   onPressed: () {
-                    setState(() {
-                      onTabTapped(3);
-                      currentScreen = About();
-                      currentTab = 3;
-                    },);
+                    setState(
+                      () {
+                        onTabTapped(3);
+                        currentScreen = About();
+                        currentTab = 3;
+                      },
+                    );
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.info_outline, color: currentTab == 3
-                          ? drawerBackgroundColor
-                          : Colors.grey[500]),
-                      Text('About', style: TextStyle(
-                        color: currentTab == 3 ? drawerBackgroundColor : Colors
-                            .grey[500],
-                      ),
+                      Icon(Icons.info_outline,
+                          color: currentTab == 3
+                              ? drawerBackgroundColor
+                              : Colors.grey[500]),
+                      Text(
+                        'About',
+                        style: TextStyle(
+                          color: currentTab == 3
+                              ? drawerBackgroundColor
+                              : Colors.grey[500],
+                        ),
                       )
                     ],
                   ),
@@ -267,38 +274,40 @@ class _HomeState extends State<Home> {
                 MaterialButton(
                   // minWidth: 40,
                   onPressed: () {
-                    setState(() {
-                      onTabTapped(4);
-                      currentScreen = Noti();
-                      currentTab = 4;
-                    },);
+                    setState(
+                      () {
+                        onTabTapped(4);
+                        currentScreen = Noti();
+                        currentTab = 4;
+                      },
+                    );
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.notifications, color: currentTab == 4
-                          ? drawerBackgroundColor
-                          : Colors.grey[500]),
-                      Text('Notification', style: TextStyle(
-                        color: currentTab == 4 ? drawerBackgroundColor : Colors
-                            .grey[500],
-                      ),
+                      Icon(Icons.notifications,
+                          color: currentTab == 4
+                              ? drawerBackgroundColor
+                              : Colors.grey[500]),
+                      Text(
+                        'Notification',
+                        style: TextStyle(
+                          color: currentTab == 4
+                              ? drawerBackgroundColor
+                              : Colors.grey[500],
+                        ),
                       )
                     ],
                   ),
                 ),
                 //   ],
                 // )
-
               ],
-            )
-        ),
-
+            )),
       ),
     );
   }
 }
-
 
 /*
 import 'package:flutter/material.dart';
@@ -572,4 +581,3 @@ class NavBarClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 */
-

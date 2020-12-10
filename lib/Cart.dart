@@ -81,7 +81,7 @@ class _CartState extends State<Cart> {
     if (username != null && accToken != null) {
       int amt=0;
       for (int i = 0; i < list.length; i++) {
-        String url = baseUrl + username + '/${list[i].toString().toLowerCase()}';
+        String url = baseUrl + username + '/${list[i].toString().toLowerCase()}';///rc
         print(accToken);
         Map<String, String> header = {"Authorization": "Bearer $accToken"};
         http.Response response = await http.post(url, headers: header);
