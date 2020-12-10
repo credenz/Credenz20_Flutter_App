@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,8 @@ class MyEvents extends StatefulWidget {
 class _MyEventsState extends State<MyEvents> {
 
   final storage=FlutterSecureStorage();
+  List eventList;
+  bool load=true;
 
   getEvents()async{
     String username=await storage.read(key: 'username');
@@ -19,9 +23,15 @@ class _MyEventsState extends State<MyEvents> {
     if(username!=null && accToken!=null){
       String url=baseUrl+username+'/present';
       Map<String,String>headers={
-        "accessToken":accToken
+        "Authorization":"Bearer $accToken"
       };
       http.Response response=await http.get(url,headers: headers);
+      if(response.statusCode==200){
+        setState(() {
+          eventList=jsonDecode(response.body) as List;
+          load=false;
+        });
+      }
     }
   }
 
@@ -40,6 +50,16 @@ class _MyEventsState extends State<MyEvents> {
         backgroundColor: drawerBackgroundColor,
         title: Text("My Events"),
       ),
+      body: load==true?Container(
+        child: loader,
+        color: Colors.white,
+      ):ListView.builder(itemBuilder: (BuildContext context,int pos){
+        return ListTile(
+          title: Text("Event Name:- ${eventList[pos]['event_username'].toString().toUpperCase()}"),
+          subtitle: Text("Password:- ${eventList[pos]['random_pw']}"),
+        );
+      },
+      itemCount: eventList.length,),
     );
   }
 }
