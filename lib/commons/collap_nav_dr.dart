@@ -93,29 +93,18 @@ class MenuDrawer extends StatelessWidget {
                               builder: (BuildContext context) => MyEvents()));
                         },
                       ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('Edit Profile'),
-                        onTap: () {
-                          //Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => EditProfile()));
-                        },
-                      ),
                       Divider(
                       ),
                       ListTile(
                         leading: Icon(Icons.favorite_border),
-                        title: Text('Contact Us'),
+                        title: Text('Visit Website'),
                         onTap: () {
                           //Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => Contact()));
                         },
                       ),
                       ListTile(
                         leading: Icon(Icons.favorite_border),
-                        title: Text('Visit Website'),
+                        title: Text('Developers'),
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (BuildContext cotext) => Developer()
