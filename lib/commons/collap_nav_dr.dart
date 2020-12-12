@@ -15,8 +15,8 @@ class MenuDrawer extends StatelessWidget {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         stops: [0.0, 1.0],
-
-        colors: [Color(0xFF3d3251), Color(0xFF272034)]
+          colors: [Color(0xFF000000),Color(0xFF000000)]
+        // colors: [Color(0xFF3d3251), Color(0xFF272034)]
     ),
   );
 
