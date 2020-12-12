@@ -29,7 +29,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _counter = 0;
-  int currentTab = 0;
+  int currentTab = 2;
 
   final List<Widget> screens = [
     Profile(),
@@ -127,10 +127,10 @@ class _HomeState extends State<Home> {
       //Vaibhav's Code
 
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.all_inclusive),
+        child: Icon(Icons.all_inclusive,color: Colors.black,),
         tooltip: 'Increment',
         elevation: 2.0,
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: Colors.white,
         onPressed: () {
           setState(
             () {
@@ -169,7 +169,7 @@ class _HomeState extends State<Home> {
       // ),
 
       bottomNavigationBar: BottomAppBar(
-        // color: Colors.transparent,
+        color: Colors.black,
         notchMargin: 7,
         shape: CircularNotchedRectangle(),
         child: Container(

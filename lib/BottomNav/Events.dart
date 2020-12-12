@@ -79,34 +79,34 @@ class WheelExample extends State<Events> {
       home: Material(
         child: Stack(
           children: <Widget>[
-            // Stack(
-            //   children: [
-            //     Image.asset(
-            //       // "images/enigma.png",
-            //       "images/homeback2.jpg",
-            //       height: MediaQuery
-            //           .of(this.context)
-            //           .size
-            //           .height,
-            //       width: MediaQuery
-            //           .of(this.context)
-            //           .size
-            //           .width,
-            //       fit: BoxFit.fill,
-            //     ),
-            //   ],
-            // ),
-            // Center(
-            //   child: Container(
-            //       alignment: Alignment.centerLeft,
-            //       // padding: EdgeInsets.fromLTRB(
-            //       //     10,
-            //       //     MediaQuery.of(context).size.height / 4 + 60,
-            //       //     MediaQuery.of(context).size.width / 2,
-            //       //     MediaQuery.of(context).size.height / 4),
-            //       child: Image.asset("images/finalLogo.png",
-            //           width: 180, height: 180, fit: BoxFit.contain)),
-            // ),
+            Stack(
+              children: [
+                Image.asset(
+                  // "images/enigma.png",
+                  "images/homeback2.jpg",
+                  height: MediaQuery
+                      .of(this.context)
+                      .size
+                      .height,
+                  width: MediaQuery
+                      .of(this.context)
+                      .size
+                      .width,
+                  fit: BoxFit.fill,
+                ),
+              ],
+            ),
+            Center(
+              child: Container(
+                  alignment: Alignment.centerLeft,
+                  // padding: EdgeInsets.fromLTRB(
+                  //     10,
+                  //     MediaQuery.of(context).size.height / 4 + 60,
+                  //     MediaQuery.of(context).size.width / 2,
+                  //     MediaQuery.of(context).size.height / 4),
+                  child: Image.asset("images/crewhite.png",
+                      width: 180, height: 180, fit: BoxFit.contain)),
+            ),
             Container(
               // height: 260,
               // width: 160,
