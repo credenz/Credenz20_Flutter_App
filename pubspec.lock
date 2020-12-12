@@ -196,13 +196,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  sliverbar_with_card:
-    dependency: "direct main"
-    description:
-      name: sliverbar_with_card
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.5"
   source_span:
     dependency: transitive
     description:
