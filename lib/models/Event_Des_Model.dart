@@ -43,7 +43,7 @@ class _EventDesState extends State<EventDes> {
               children: [
                 Image.asset(
                   // "images/enigma.png",
-                  "gifs/spacered.gif",
+                  "gifs/desback.gif",
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.fill,
