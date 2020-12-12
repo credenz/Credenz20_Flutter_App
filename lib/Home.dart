@@ -120,7 +120,7 @@ class _HomeState extends State<Home> {
           )
         ],
         title: Text(widget.title),
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: Colors.black,
       ),
       //drawer: FlipDrawer(),
 
@@ -144,10 +144,17 @@ class _HomeState extends State<Home> {
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      body: PageView(
-        children: tabPages,
-        onPageChanged: onPageChanged,
-        controller: pageController,
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/homeback2.jpg"),
+                fit: BoxFit.contain)),
+        child: PageView(
+          physics: new NeverScrollableScrollPhysics(),
+          children: tabPages,
+          onPageChanged: onPageChanged,
+          controller: pageController,
+        ),
       ),
 
       // new IndexedStack(
@@ -162,6 +169,7 @@ class _HomeState extends State<Home> {
       // ),
 
       bottomNavigationBar: BottomAppBar(
+        // color: Colors.transparent,
         notchMargin: 7,
         shape: CircularNotchedRectangle(),
         child: Container(
