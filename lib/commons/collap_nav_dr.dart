@@ -8,6 +8,7 @@ import 'package:credenz20/nav_pages/pisb.dart';
 import 'package:credenz20/nav_pages/sponsors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 class MenuDrawer extends StatelessWidget {
 
   BoxDecoration get _gradient => BoxDecoration(
@@ -93,29 +94,19 @@ class MenuDrawer extends StatelessWidget {
                               builder: (BuildContext context) => MyEvents()));
                         },
                       ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('Edit Profile'),
-                        onTap: () {
-                          //Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => EditProfile()));
-                        },
-                      ),
                       Divider(
                       ),
                       ListTile(
                         leading: Icon(Icons.favorite_border),
-                        title: Text('Contact Us'),
+                        title: Text('Visit Website'),
                         onTap: () {
+                          _launchURL();
                           //Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => Contact()));
                         },
                       ),
                       ListTile(
                         leading: Icon(Icons.favorite_border),
-                        title: Text('Visit Website'),
+                        title: Text('Developers'),
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (BuildContext cotext) => Developer()
@@ -187,6 +178,14 @@ class MenuDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+_launchURL() async {
+  var url=Uri.encodeComponent('https://credenz-2c8cb.web.app/home');
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
 

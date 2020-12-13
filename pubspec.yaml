@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  url_launcher: ^3.0.0
   flutter:
     sdk: flutter
   flutter_signin_button: ^1.1.0
@@ -81,10 +82,10 @@ flutter:
   fonts:
     - family: Roboto bold
       fonts:
-       - asset: fonts/Roboto-Bold.ttf
+        - asset: fonts/Roboto-Bold.ttf
     - family: Roboto Medium
       fonts:
-          - asset: fonts/Roboto-Medium.ttf
+        - asset: fonts/Roboto-Medium.ttf
   #      - family: Raleway
   #        fonts:
   #          - asset: fonts/Raleway-Regular.ttf
