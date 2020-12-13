@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:credenz20/Home.dart';
+import 'package:credenz20/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +72,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       ..addListener(() {
         setState(() {});
       });
+
     // if (widget.card != null) {
     //   _rotateCard = Tween(begin: 0.0, end: 0.4).animate(
     //       CurvedAnimation(curve: Curves.linear, parent: _animationController))
@@ -77,6 +80,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
     //       setState(() {});
     //     });
     // }
+
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {});
@@ -250,6 +254,9 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             iconSize: 25,
             onPressed: () {
               Navigator.pop(context);
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                  MyApp()), (Route<dynamic> route) => false);
+              // Navigator.pop(context);
             },
           )
         ],
