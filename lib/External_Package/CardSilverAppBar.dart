@@ -16,6 +16,7 @@ class CardSliverAppBar extends StatefulWidget {
   final Widget action;
   final Widget body;
   final ImageProvider card;
+  final ValueChanged<int> onTap;
 
   CardSliverAppBar(
       {@required this.height,
@@ -24,7 +25,8 @@ class CardSliverAppBar extends StatefulWidget {
       @required this.body,
       this.background,
       this.titleDescription,
-      this.backButton = false,
+        this.onTap,
+        this.backButton = false,
       this.backButtonColors,
       this.action,
       this.card,
@@ -206,7 +208,10 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       child: new FloatingActionButton(
         child: new Icon(Icons.add_shopping_cart,
         color: Colors.black,),
-        onPressed: () {},
+        onPressed: () {
+          widget.onTap(0);
+
+        },
         backgroundColor: Colors.white,
       elevation: 20.0,
       ),

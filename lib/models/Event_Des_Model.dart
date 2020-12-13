@@ -19,8 +19,9 @@ class EventDes extends StatefulWidget {
 }
 
 class _EventDesState extends State<EventDes> {
-  bool favorite = false;
+  bool favorite = false,isavail = false;
   final storage=FlutterSecureStorage();
+
 
   addToCart()async{
     bool pre=await storage.containsKey(key: '${widget.eventIndex}');
@@ -32,9 +33,30 @@ class _EventDesState extends State<EventDes> {
     }
   }
 
+checkInCart()async{
+    bool pre=await storage.containsKey(key: '${widget.eventIndex}');
+    if(pre) {
+      setState(() {
+        isavail=true;
+        favorite=true;
+      });
+
+    }
+
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkInCart();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     int index = widget.eventIndex;
+
     return MaterialApp(
       home: Material(
         child: Stack(
@@ -54,6 +76,7 @@ class _EventDesState extends State<EventDes> {
               ],
             ),
             CardSliverAppBar(
+              // index: widget.eventIndex,
               height: 250,
               //gifs/space2.gif
               background:
@@ -67,9 +90,12 @@ class _EventDesState extends State<EventDes> {
               backButton: true,
               backButtonColors: [Colors.white, Colors.white],
               action: IconButton(
+
                 onPressed: () {
                   setState(() {
                     favorite = !favorite;
+                    addToCart();
+
                   });
                 },
                 icon: favorite
@@ -78,6 +104,10 @@ class _EventDesState extends State<EventDes> {
                 color: Colors.black,
                 iconSize: 30.0,
               ),
+
+              onTap: (int tap_index) => _get_tap(tap_index),
+
+
               body: Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: Container(
@@ -145,6 +175,11 @@ class _EventDesState extends State<EventDes> {
       ),
     );
   }
+
+  _get_tap(int index) {
+    addToCart();
+  }
+
 
   Widget _mainbody() {
     return Stack(
