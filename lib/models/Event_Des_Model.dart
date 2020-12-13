@@ -56,8 +56,8 @@ class _EventDesState extends State<EventDes> {
             CardSliverAppBar(
               height: 250,
               //gifs/space2.gif
-              // background:
-              //     Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
+              background:
+                  Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
               title: Text(eventName[index],
                   style: TextStyle(
                       color: Colors.white,
@@ -75,7 +75,7 @@ class _EventDesState extends State<EventDes> {
                 icon: favorite
                     ? Icon(Icons.shopping_cart)
                     : Icon(Icons.add_shopping_cart),
-                color: Colors.red,
+                color: Colors.black,
                 iconSize: 30.0,
               ),
               body: Padding(
@@ -106,24 +106,24 @@ class _EventDesState extends State<EventDes> {
               ),
             ),
             //A1045A,
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  RaisedButton(
-                    onPressed: ()async{
-                      addToCart();
-                    },
-                    textColor: Colors.white,
-                    color: drawerBackgroundColor,
-                    child: const Text('Add to Cart',
-                        style: TextStyle(fontSize: 20)),
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.end,
+            //     crossAxisAlignment: CrossAxisAlignment.stretch,
+            //     children: <Widget>[
+            //       RaisedButton(
+            //         onPressed: ()async{
+            //           addToCart();
+            //         },
+            //         textColor: Colors.white,
+            //         color: drawerBackgroundColor,
+            //         child: const Text('Add to Cart',
+            //             style: TextStyle(fontSize: 20)),
+            //       ),
+            //     ],
+            //   ),
+            // ),
 
 /*
             Container(

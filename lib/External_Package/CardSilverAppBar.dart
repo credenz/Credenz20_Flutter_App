@@ -1,9 +1,7 @@
-
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class CardSliverAppBar extends StatefulWidget {
   final double height;
@@ -19,18 +17,18 @@ class CardSliverAppBar extends StatefulWidget {
 
   CardSliverAppBar(
       {@required this.height,
-        // @required this.background,
-        @required this.title,
-        @required this.body,
-        this.background,
-        this.titleDescription,
-        this.backButton = false,
-        this.backButtonColors,
-        this.action,
-        this.card,
-        Key key})
+      // @required this.background,
+      @required this.title,
+      @required this.body,
+      this.background,
+      this.titleDescription,
+      this.backButton = false,
+      this.backButtonColors,
+      this.action,
+      this.card,
+      Key key})
       : assert(height != null && height > 0),
-  // assert(background != null),
+        // assert(background != null),
         assert(title != null),
         assert(body != null),
         super(key: key);
@@ -93,9 +91,9 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       vsync: this,
       duration: Duration(seconds: 1),
     );
-    _fadeInFadeOut = Tween<double>(begin: 0.0, end: 0.5).animate(animation);
+    _fadeInFadeOut = Tween<double>(begin: 0.0, end: 1).animate(animation);
     _centercardfadeInFadeOut =
-        Tween<double>(begin: 0.0, end: 0.5).animate(animation2);
+        Tween<double>(begin: 0.0, end: 1).animate(animation2);
   }
 
   void _animationValue(double scale) {
@@ -149,26 +147,27 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
     List<Widget> stackOrder = List<Widget>();
     if (_scale >= 0.5) {
       animation.forward();
-      animation2.reverse();
+      // animation2.reverse();
       stackOrder.add(_bodyContainer());
       // stackOrder.add(_backgroundConstructor());
-      stackOrder.add(_shadowConstructor());
+      // stackOrder.add(_shadowConstructor());
       stackOrder.add(_titleConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
       if (_card != null) stackOrder.add(_centercardConstructor());
-      // if (_action != null) stackOrder.add(_actionConstructor());
+      if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
     } else {
       animation.reverse();
-      animation2.forward();
+      // animation2.forward();
       // stackOrder.add(_backgroundConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
       stackOrder.add(_bodyContainer());
       stackOrder.add(_shadowConstructor());
       stackOrder.add(_titleConstructor());
+      stackOrder.add(_fabConstructor());
       if (_card != null) stackOrder.add(_centercardConstructor());
-      // if (_action != null) stackOrder.add(_actionConstructor());
+      if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
     }
@@ -198,6 +197,44 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
     );
   }
 
+  Widget _fabConstructor() {
+    return  new Positioned(
+      child: new FloatingActionButton(
+        child: new Icon(Icons.add_shopping_cart,
+        color: Colors.black,),
+        onPressed: () {},
+        backgroundColor: Colors.white,
+      elevation: 20.0,
+      ),
+
+      right: 15.0,
+      bottom:  25.0,
+    );
+    // return Align(
+    //   alignment: Alignment.bottomRight,
+    //   child: FloatingActionButton(
+    //     onPressed: (){},
+    //     heroTag: null,
+    //   ),
+    // );
+
+    // return Positioned(
+    //     key: Key("widget_action"),
+    //     top: _height - _appBarHeight - 25,
+    //     right: 10,
+    //     child: Transform.scale(
+    //         scale: _scale >= 0.5 ? 1.0 : (_scale / 0.5),
+    //         child: Container(
+    //           decoration: BoxDecoration(
+    //               color: Colors.black,
+    //               borderRadius: const BorderRadius.all(Radius.circular(50)),
+    //               boxShadow: const [
+    //                 BoxShadow(color: Colors.black54, blurRadius: 3.0)
+    //               ]),
+    //           child: _action,
+    //         )));
+  }
+
   Widget _backButtonConstructor() {
     return Positioned(
       top: _offset + 7,
@@ -208,7 +245,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             icon: const Icon(Icons.arrow_back),
             color: _animatedBackButtonColors != null
                 ? _animatedBackButtonColors.evaluate(
-                AlwaysStoppedAnimation(_animationController.value))
+                    AlwaysStoppedAnimation(_animationController.value))
                 : Colors.white,
             iconSize: 25,
             onPressed: () {
@@ -280,7 +317,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   image:
-                  DecorationImage(image: widget.card, fit: BoxFit.cover)),
+                      DecorationImage(image: widget.card, fit: BoxFit.cover)),
             ),
           ),
         ),
@@ -309,7 +346,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             width: MediaQuery.of(context).size.width,
             height: 1,
             decoration:
-            const BoxDecoration(color: Colors.transparent, boxShadow: [
+                const BoxDecoration(color: Colors.transparent, boxShadow: [
               BoxShadow(
                 color: Colors.black54,
                 blurRadius: 1.0,
@@ -379,7 +416,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
                   color: Colors.white,
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                   boxShadow: const [
-                    BoxShadow(color: Colors.black54, blurRadius: 3.0)
+                    BoxShadow(color: Colors.black, blurRadius: 3.0)
                   ]),
               child: _action,
             )));

@@ -156,7 +156,7 @@ class MenuDrawer extends StatelessWidget {
                                 width: 30,
                               ),
                               SignInButton(
-                                  Buttons.Email,
+                                  Buttons.Pinterest,
                                   mini: true,
                                   elevation: 10,
                                   shape: RoundedRectangleBorder(

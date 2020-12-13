@@ -88,6 +88,12 @@ List<String> name = [
   "Tanuj Agarwal",
   "Durvesh Malpure",
 ];
+List<String> position = [
+  "App head",
+  "App head",
+  "App head",
+  "joint secretary",
+];
 
 class _PageViewWidgetState extends State<PageViewWidget> {
   PageController pageController;
@@ -169,25 +175,38 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20.0),
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text(
+                            position[x],
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Roboto Medium',
+                              color: Colors.white,
+                              fontWeight: FontWeight.w200,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 40.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              // IconButton(
+                              //     iconSize: 42.0,
+                              //     icon: Image.asset('images/mail.png'),
+                              //     onPressed: null),
+                              // IconButton(
+                              //     iconSize: 55.0,
+                              //     icon: Image.asset('images/fb.png'),
+                              //     onPressed: null),
+
                               IconButton(
                                   iconSize: 42.0,
-                                  icon: Image.asset('images/mail.png'),
-                                  onPressed: null),
-                              IconButton(
-                                  iconSize: 55.0,
-                                  icon: Image.asset('images/fb.png'),
+                                  icon: Image.asset('images/call.png'),
                                   onPressed: null),
                               IconButton(
                                   iconSize: 55.0,
                                   icon: Image.asset('images/linkdin.png'),
-                                  onPressed: null),
-                              IconButton(
-                                  iconSize: 42.0,
-                                  icon: Image.asset('images/call.png'),
                                   onPressed: null),
                             ],
                           ),
