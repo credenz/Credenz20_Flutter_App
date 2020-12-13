@@ -61,7 +61,7 @@ class _EventDesState extends State<EventDes> {
               title: Text(eventName[index],
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold)),
               card: eventimages[index],
               backButton: true,

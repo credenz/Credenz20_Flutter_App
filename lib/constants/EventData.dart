@@ -243,7 +243,46 @@ const List<String> judging = ["1. Identifies a business opportunity. " +
       "8. Team management skills will also be tested.",
 
   "1. The competition will test participants programming skills and knowledge of C/C++. " +
+      "2. Time and cost efficiency of the code.",
+  "1. Identifies a business opportunity. " +
+      "2. Innovation, and Creativity involved. " +
+      "3. Technical and Economical Feasibility. " +
+      "4. Originality of the idea. " +
+      "5. Business Acumen of the Participants. " +
+      "" +
+      "Decisions of the judges will be final and shall be respected. ",
+
+  "1. Design of your machine." +
+      "2. Number of steps involved in it." +
+      "3. Number of different types of energy conversions involved." +
+      "4. Aesthetic of machine." +
+      "5. Presentation." +
+      "6. Innovation." +
+      "7. Will test elementary knowledge of applied physics of team." +
+      "8. Team management skills will also be tested.",
+
+  "1. The competition will test participants programming skills and knowledge of C/C++. " +
+      "2. Time and cost efficiency of the code.",
+  "1. Identifies a business opportunity. " +
+      "2. Innovation, and Creativity involved. " +
+      "3. Technical and Economical Feasibility. " +
+      "4. Originality of the idea. " +
+      "5. Business Acumen of the Participants. " +
+      "" +
+      "Decisions of the judges will be final and shall be respected. ",
+
+  "1. Design of your machine." +
+      "2. Number of steps involved in it." +
+      "3. Number of different types of energy conversions involved." +
+      "4. Aesthetic of machine." +
+      "5. Presentation." +
+      "6. Innovation." +
+      "7. Will test elementary knowledge of applied physics of team." +
+      "8. Team management skills will also be tested.",
+
+  "1. The competition will test participants programming skills and knowledge of C/C++. " +
       "2. Time and cost efficiency of the code."
+
 
 
 ];

@@ -14,12 +14,7 @@ class _ContactUsState extends State<ContactUs> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Text("Contact Us"),
-      ),
+
       body: Stack(
         children: [
           Container(
