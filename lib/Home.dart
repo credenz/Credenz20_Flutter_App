@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
   final List<Widget> screens = [
     Profile(),
     About(),
-    Contact(),
+    ContactUs(),
     Noti(),
   ];
 
@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
 
   List<Widget> tabPages = [
     new Profile(),
-    new Contact(),
+    new ContactUs(),
     new Events(),
     new About(),
     new Noti(),
@@ -216,7 +216,7 @@ class _HomeState extends State<Home> {
                     setState(
                       () {
                         onTabTapped(1);
-                        currentScreen = Contact();
+                        currentScreen = ContactUs();
                         currentTab = 1;
                       },
                     );
