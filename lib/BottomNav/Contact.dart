@@ -73,16 +73,21 @@ class PageViewWidget extends StatefulWidget {
 List<String> profilepic = [
   "images/litke.jpg",
   "images/durvesh.jpg",
+  "images/rohan.jpg",
+
 ];
 
 List<String> name = [
   "Onkar Litke",
   "Durvesh Malpure",
+  "Rohan Pawar",
+
 ];
 
 List<String> position = [
-  "Vice chairperson",
-  "joint secretary",
+  "Vice Chairperson",
+  "Joint Secretary",
+  "Vice Treasurer"
 ];
 
 class _PageViewWidgetState extends State<PageViewWidget> {
