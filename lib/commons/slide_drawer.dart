@@ -57,7 +57,7 @@ class _SlideDrawerState extends State<SlideDrawer>
   open() => _animation.start();
   close() => _animation.reverse();
   toggle() => _animation.isCompleted ? close() : open();
-
+  iscompleted() =>_animation.isCompleted ? false : true;
   _onDragStart(DragStartDetails details) {
     bool isDragOpenFromLeft =
         _animation.isDismissed &&
