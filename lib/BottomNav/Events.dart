@@ -83,7 +83,7 @@ class WheelExample extends State<Events> {
               children: [
                 Image.asset(
                   // "images/enigma.png",
-                  "gifs/space2.gif",
+                  "images/homeback2.jpg",
                   height: MediaQuery
                       .of(this.context)
                       .size
@@ -104,7 +104,7 @@ class WheelExample extends State<Events> {
                   //     MediaQuery.of(context).size.height / 4 + 60,
                   //     MediaQuery.of(context).size.width / 2,
                   //     MediaQuery.of(context).size.height / 4),
-                  child: Image.asset("images/finalLogo.png",
+                  child: Image.asset("images/crewhite.png",
                       width: 180, height: 180, fit: BoxFit.contain)),
             ),
             Container(

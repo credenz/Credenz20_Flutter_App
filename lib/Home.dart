@@ -29,7 +29,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _counter = 0;
-  int currentTab = 0;
+  int currentTab = 2;
 
   final List<Widget> screens = [
     Profile(),
@@ -120,17 +120,17 @@ class _HomeState extends State<Home> {
           )
         ],
         title: Text(widget.title),
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: Colors.black,
       ),
       //drawer: FlipDrawer(),
 
       //Vaibhav's Code
 
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.all_inclusive),
+        child: Icon(Icons.all_inclusive,color: Colors.black,),
         tooltip: 'Increment',
         elevation: 2.0,
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: Colors.white,
         onPressed: () {
           setState(
             () {
@@ -144,10 +144,17 @@ class _HomeState extends State<Home> {
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      body: PageView(
-        children: tabPages,
-        onPageChanged: onPageChanged,
-        controller: pageController,
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/homeback2.jpg"),
+                fit: BoxFit.contain)),
+        child: PageView(
+          physics: new NeverScrollableScrollPhysics(),
+          children: tabPages,
+          onPageChanged: onPageChanged,
+          controller: pageController,
+        ),
       ),
 
       // new IndexedStack(
@@ -162,6 +169,7 @@ class _HomeState extends State<Home> {
       // ),
 
       bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
         notchMargin: 7,
         shape: CircularNotchedRectangle(),
         child: Container(

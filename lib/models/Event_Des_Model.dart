@@ -42,11 +42,11 @@ class _EventDesState extends State<EventDes> {
             Stack(
               children: [
                 Image.asset(
-                  // "images/enigma.png",
-                  "gifs/spacered.gif",
+                  // "images/sback0.jpg",
+                  "gifs/desback.gif",
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
                 // Container(
                 //   color: Color(0xaa4E164B),
@@ -95,7 +95,7 @@ class _EventDesState extends State<EventDes> {
                           topRight: Radius.circular(45.0),
                         ),
                         child: Card(
-                            color: Color(0x7741004D),
+                            color: Color(0x11000000),
                             child: Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: tabcontroller())),
