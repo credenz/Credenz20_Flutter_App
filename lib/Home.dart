@@ -170,7 +170,6 @@ class _HomeState extends State<Home> {
 
       bottomNavigationBar: BottomAppBar(
         color: Colors.black,
-        notchMargin: 7,
         shape: CircularNotchedRectangle(),
         child: Container(
             height: 60,
@@ -197,13 +196,13 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Icon(Icons.group,
                           color: currentTab == 0
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500]),
                       Text(
                         'Profile',
                         style: TextStyle(
                           color: currentTab == 0
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500],
                         ),
                       )
@@ -226,13 +225,13 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Icon(Icons.perm_contact_calendar,
                           color: currentTab == 1
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500]),
                       Text(
                         'Contact',
                         style: TextStyle(
                             color: currentTab == 1
-                                ? drawerBackgroundColor
+                                ? Colors.white
                                 : Colors.grey[500]),
                       ),
                     ],
@@ -266,13 +265,13 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Icon(Icons.info_outline,
                           color: currentTab == 3
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500]),
                       Text(
                         'About',
                         style: TextStyle(
                           color: currentTab == 3
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500],
                         ),
                       )
@@ -295,13 +294,13 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Icon(Icons.notifications,
                           color: currentTab == 4
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500]),
                       Text(
-                        'Notification',
+                        'News',
                         style: TextStyle(
                           color: currentTab == 4
-                              ? drawerBackgroundColor
+                              ? Colors.white
                               : Colors.grey[500],
                         ),
                       )

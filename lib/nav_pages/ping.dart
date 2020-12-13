@@ -37,20 +37,21 @@ class _AboutPingState extends State<AboutPing> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 SizedBox(height: 15),
-
+                topCardWidget(),
+                bottomCardWidget(),
                 // SlimyCard is being called here.
 
-                SlimyCard(
-                  // In topCardWidget below, imagePath changes according to the
-                  // status of the SlimyCard(snapshot.data).
-                  width: 450,
-                  color: drawerBackgroundColor,
-                  topCardHeight: 300,
-                  bottomCardHeight: 350,
-                  topCardWidget: topCardWidget(),
-                  bottomCardWidget: bottomCardWidget(),
-                  slimeEnabled: false,
-                ),
+                // SlimyCard(
+                //   // In topCardWidget below, imagePath changes according to the
+                //   // status of the SlimyCard(snapshot.data).
+                //   width: 450,
+                //   color: drawerBackgroundColor,
+                //   topCardHeight: 300,
+                //   bottomCardHeight: 350,
+                //   topCardWidget: topCardWidget(),
+                //   bottomCardWidget: bottomCardWidget(),
+                //   slimeEnabled: false,
+                // ),
               ],
             );
           }),
@@ -64,25 +65,28 @@ class _AboutPingState extends State<AboutPing> {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(  // Image goes here
-          height: 200,
-          // width: 500,
-          decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitWidth),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 20,
-                spreadRadius: 1,
-              ),
-            ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(  // Image goes here
+            height: 200,
+            // width: 500,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(15),
+              image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitWidth),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 20,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(height: 25),
         Text(
-          "Credenz '20",
+          "Credenz '21",
           style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -95,14 +99,19 @@ class _AboutPingState extends State<AboutPing> {
 
   // This widget will be passed as Bottom Card's Widget.
   Widget bottomCardWidget() {
-    return Text(
-      "P.I.N.G. (PICT IEEE Newsletter Group) is the official technical magazine of PISB published twice a year. P.I.N.G. serves as a platform for individuals to portray their technical ingenuity. It highlights articles oncutting-edge technologies from technocrats all around the globe including students, industrialists and faculty members. It also features interviews of distinguished personalities in various technical domains. P.I.N.G. aims at keeping its readers up to date on recent developments in technology and helps them extrapolate their perceptions to contemporary ideas of modernisation. With the imminent Issue 16.1, be ready to get P.I.N.G.'d!",
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
-        fontWeight: FontWeight.w600,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: RichText(
+        text: TextSpan(
+          text: "P.I.N.G. (PICT IEEE Newsletter Group) is the official technical magazine of PISB published twice a year. P.I.N.G. serves as a platform for individuals to portray their technical ingenuity. It highlights articles oncutting-edge technologies from technocrats all around the globe including students, industrialists and faculty members. It also features interviews of distinguished personalities in various technical domains. P.I.N.G. aims at keeping its readers up to date on recent developments in technology and helps them extrapolate their perceptions to contemporary ideas of modernisation. With the imminent Issue 16.1, be ready to get P.I.N.G.'d!",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        textAlign: TextAlign.center,
       ),
-      textAlign: TextAlign.center,
     );
   }
 }

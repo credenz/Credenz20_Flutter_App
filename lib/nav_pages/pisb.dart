@@ -37,20 +37,21 @@ class _AboutPISBState extends State<AboutPISB> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 SizedBox(height: 15),
-
+                topCardWidget(),
+                bottomCardWidget(),
                 // SlimyCard is being called here.
 
-                SlimyCard(
-                  // In topCardWidget below, imagePath changes according to the
-                  // status of the SlimyCard(snapshot.data).
-                  width: 450,
-                  color: drawerBackgroundColor,
-                  topCardHeight: 300,
-                  bottomCardHeight: 350,
-                  topCardWidget: topCardWidget(),
-                  bottomCardWidget: bottomCardWidget(),
-                  slimeEnabled: false,
-                ),
+                // SlimyCard(
+                //   // In topCardWidget below, imagePath changes according to the
+                //   // status of the SlimyCard(snapshot.data).
+                //   width: 450,
+                //   color: drawerBackgroundColor,
+                //   topCardHeight: 300,
+                //   bottomCardHeight: 350,
+                //   topCardWidget: topCardWidget(),
+                //   bottomCardWidget: bottomCardWidget(),
+                //   slimeEnabled: false,
+                // ),
               ],
             );
           }),
@@ -64,43 +65,47 @@ class _AboutPISBState extends State<AboutPISB> {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(  // Image goes here
-          height: 200,
-          // width: 500,
-          decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitWidth),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 20,
-                spreadRadius: 1,
-              ),
-            ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(  // Image goes here
+            height: 200,
+            // width: 500,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(15),
+              image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitWidth),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 20,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
           ),
         ),
-        SizedBox(height: 25),
+        SizedBox(height: 15),
         Text(
-          "Credenz '20",
+          "Credenz '21\n\n",
           style: TextStyle(
               color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-        SizedBox(height: 5),
       ],
     );
   }
 
   // This widget will be passed as Bottom Card's Widget.
   Widget bottomCardWidget() {
-    return Text(
-      "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
-        fontWeight: FontWeight.w600,
+    return RichText(
+      text: TextSpan(
+        text: "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       textAlign: TextAlign.center,
     );

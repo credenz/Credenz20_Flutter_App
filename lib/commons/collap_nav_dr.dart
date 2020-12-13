@@ -81,7 +81,7 @@ class MenuDrawer extends StatelessWidget {
                         ),
 
                         ListTile(
-                          leading: Icon(Icons.monetization_on_rounded),
+                          // leading: Icon(Icons.monetization_on_rounded),
                           title: Text('Sponsors'),
                           onTap: () {
                             //Navigator.of(context).pop();
@@ -92,7 +92,7 @@ class MenuDrawer extends StatelessWidget {
                         Divider(
                         ),
                         ListTile(
-                          leading: Icon(Icons.wysiwyg),
+                          // leading: Icon(Icons.wysiwyg),
                           title: Text('My Events'),
                           onTap: () {
                             // Navigator.of(context).pop();
@@ -111,7 +111,7 @@ class MenuDrawer extends StatelessWidget {
                           },
                         ),
                         ListTile(
-                          leading: Icon(Icons.developer_mode_sharp),
+                          // leading: Icon(Icons.developer_mode_sharp),
                           title: Text('Developers'),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
@@ -123,7 +123,7 @@ class MenuDrawer extends StatelessWidget {
                         Divider(
                         ),
                         ListTile(
-                          leading: Icon(Icons.policy),
+                          // leading: Icon(Icons.policy),
                           title: Text('Privacy Policy'),
                           onTap: () {
 
