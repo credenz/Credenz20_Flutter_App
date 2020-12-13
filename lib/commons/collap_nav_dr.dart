@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:credenz20/BottomNav/Contact.dart';
 import 'package:credenz20/nav_pages/about_us.dart';
 import 'package:credenz20/nav_pages/developers.dart';
@@ -16,8 +18,8 @@ class MenuDrawer extends StatelessWidget {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         stops: [0.0, 1.0],
-          colors: [Color(0xFF000000),Color(0xFF000000)]
-        // colors: [Color(0xFF3d3251), Color(0xFF272034)]
+          // colors: [Color(0xFF000000),Color(0xFF000000)]
+        colors: [Color(0xFF3d3251), Color(0xFF272034)]
     ),
   );
 
@@ -33,145 +35,165 @@ class MenuDrawer extends StatelessWidget {
         child: SafeArea(
           child: Theme(
             data: ThemeData(brightness: Brightness.dark),
-            child: Container(
-              padding: EdgeInsets.fromLTRB(0,10,0,0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0,0,0,10),
-                    child: DrawerHeader(
-                        decoration: BoxDecoration(
-                          //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
-                            image: DecorationImage(
-                                image: AssetImage("images/finalLogo.png"),
-                                fit: BoxFit.contain
-                            )
-                        ),
-                        child: SizedBox(width: MediaQuery.of(context).size.width-130,)
+            child: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0,10,0,0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0,0,0,10),
+                      child: DrawerHeader(
+                          decoration: BoxDecoration(
+                            //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
+                              image: DecorationImage(
+                                  image: AssetImage("images/finalLogo.png"),
+                                  fit: BoxFit.contain
+                              )
+                          ),
+                          child: SizedBox(width: MediaQuery.of(context).size.width-130,)
+                      ),
                     ),
-                  ),
-                  ListView(
-                    shrinkWrap: true,
-                    children: [
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('PISB'),
-                        onTap: () {
-                          // Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => PISB()));
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('PING'),
-                        onTap: () {
-                          //Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => Ping()));
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('Sponsors'),
-                        onTap: () {
-                          //Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => Sponsors()));
-                        },
-                      ),
-                      Divider(
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('My Events'),
-                        onTap: () {
-                          // Navigator.of(context).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => MyEvents()));
-                        },
-                      ),
-                      Divider(
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('Visit Website'),
-                        onTap: () {
-                          _launchURL();
-                          //Navigator.of(context).pop();
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('Developers'),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext cotext) => Developer()
-                          ));
 
-                        },
-                      ),
-                      Divider(
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.favorite_border),
-                        title: Text('Privacy Policy'),
-                        onTap: () {
-
-                        },
-                      ),
-                      Divider(
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    ListView(
+                      physics: ScrollPhysics(),
+                      shrinkWrap: true,
                       children: [
-                        SizedBox(
-                          width: 30,
+                        ListTile(
+                          leading: Icon(Icons.collections_bookmark),
+                          title: Text('PISB'),
+                          onTap: () {
+                            // Navigator.of(context).pop();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) => PISB()));
+                          },
                         ),
-                        SignInButton(
-                            Buttons.Facebook,
-                            mini: true,
-                            onPressed: () {}
+                        ListTile(
+                          leading: Icon(Icons.collections_bookmark),
+                          title: Text('PING'),
+                          onTap: () {
+                            //Navigator.of(context).pop();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) => Ping()));
+                          },
                         ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        SignInButton(
-                            Buttons.Pinterest,
-                            mini: true,
-                            onPressed: () {}
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        SignInButton(
-                          Buttons.LinkedIn,
-                          mini: true,
-                          onPressed: () {},
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        SignInButton(
-                            Buttons.Twitter,
-                            mini: true,
-                            onPressed: () {}
-                        ),
-                      ]
 
-                  )
-                ],
+                        ListTile(
+                          leading: Icon(Icons.monetization_on_rounded),
+                          title: Text('Sponsors'),
+                          onTap: () {
+                            //Navigator.of(context).pop();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) => Sponsors()));
+                          },
+                        ),
+                        Divider(
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.wysiwyg),
+                          title: Text('My Events'),
+                          onTap: () {
+                            // Navigator.of(context).pop();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) => MyEvents()));
+                          },
+                        ),
+                        Divider(
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.web_asset),
+                          title: Text('Visit Website'),
+                          onTap: () {
+                            _launchURL();
+                            //Navigator.of(context).pop();
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.developer_mode_sharp),
+                          title: Text('Developers'),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext cotext) => Developer()
+                            ));
+
+                          },
+                        ),
+                        Divider(
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.policy),
+                          title: Text('Privacy Policy'),
+                          onTap: () {
+
+                          },
+                        ),
+                        Divider(
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+
+                        Row(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 30,
+                              ),
+                              SignInButton(
+                                  Buttons.Facebook,
+                                  mini: true,
+                                  elevation: 10,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32.0),
+                                  ),
+                                  onPressed: () {}
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              SignInButton(
+                                  Buttons.Email,
+                                  mini: true,
+                                  elevation: 10,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32.0),
+                                  ),    onPressed: () {}
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              SignInButton(
+                                Buttons.LinkedIn,
+                                mini: true,
+                                elevation: 10,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32.0),
+                                ),    onPressed: () {},
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              SignInButton(
+                                  Buttons.Twitter,
+                                  mini: true,
+                                  elevation: 10,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32.0),
+                                  ),      onPressed: () {}
+                              ),
+                            ]
+
+                        ),
+                      ],
+                    ),
+
+
+                  ],
+                ),
               ),
             ),
           ),
@@ -181,7 +203,7 @@ class MenuDrawer extends StatelessWidget {
   }
 }
 _launchURL() async {
-  var url=Uri.encodeComponent('https://credenz-2c8cb.web.app/home');
+  const url=('https://credenz-2c8cb.web.app/home');
   if (await canLaunch(url)) {
     await launch(url);
   } else {

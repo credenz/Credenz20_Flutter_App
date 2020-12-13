@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  url_launcher: ^3.0.0
+  url_launcher: ^3.0.3
   flutter:
     sdk: flutter
   flutter_signin_button: ^1.1.0

@@ -5,14 +5,14 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:math' as math;
 
+import 'package:credenz20/External_Package/circle_wheel_render2.dart';
+import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
-import 'package:credenz20/External_Package/circle_wheel_render2.dart';
-import 'package:toast/toast.dart';
 
 /// A delegate that supplies children for [CircleListScrollView].
 ///
@@ -706,10 +706,7 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   }
 
   bool _onTapUp(TapUpDetails details) {
-    print(MediaQuery.of(context).size.height);
-
     var x = details.globalPosition;
-    print(x.toString());
 
     if (x.dx / MediaQuery.of(context).size.width >= 0.70 &&
         x.dy / MediaQuery.of(context).size.height >= 0.45 &&
@@ -731,7 +728,11 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapUp: (TapUpDetails details) =>
-          {if (_onTapUp(details)) widget.onTap(index) else widget.onTap(-1)},
+          {
+            if (_onTapUp(details) && SlideDrawer.of(context)?.iscompleted())
+              widget.onTap(index)
+            else widget.onTap(-1)
+          },
       child: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
           notification1 = notification;
