@@ -173,7 +173,15 @@ checkInCart()async{
 */
             ],
           ),
-           
+          floatingActionButton: FloatingActionButton(
+            child: new Icon(Icons.add_shopping_cart,
+              color: Colors.black,),
+            onPressed: () {
+
+            },
+            backgroundColor: Colors.white,
+            elevation: 20.0,
+          ),
         ),
       ),
     );
