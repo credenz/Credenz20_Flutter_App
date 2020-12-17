@@ -160,22 +160,24 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       stackOrder.add(_titleConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
       if (_card != null) stackOrder.add(_centercardConstructor());
-      if (_action != null) stackOrder.add(_actionConstructor());
+      // if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
+      stackOrder.add(_fabConstructor());
     } else {
       animation.reverse();
       // animation2.forward();
       // stackOrder.add(_backgroundConstructor());
+      stackOrder.add(_fabConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
       stackOrder.add(_bodyContainer());
       stackOrder.add(_shadowConstructor());
       stackOrder.add(_titleConstructor());
-      stackOrder.add(_fabConstructor());
       if (_card != null) stackOrder.add(_centercardConstructor());
-      if (_action != null) stackOrder.add(_actionConstructor());
+      // if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
+      stackOrder.add(_fabConstructor());
     }
     //
     // if(_scale<0.5){
@@ -219,29 +221,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       right: 15.0,
       bottom:  25.0,
     );
-    // return Align(
-    //   alignment: Alignment.bottomRight,
-    //   child: FloatingActionButton(
-    //     onPressed: (){},
-    //     heroTag: null,
-    //   ),
-    // );
 
-    // return Positioned(
-    //     key: Key("widget_action"),
-    //     top: _height - _appBarHeight - 25,
-    //     right: 10,
-    //     child: Transform.scale(
-    //         scale: _scale >= 0.5 ? 1.0 : (_scale / 0.5),
-    //         child: Container(
-    //           decoration: BoxDecoration(
-    //               color: Colors.black,
-    //               borderRadius: const BorderRadius.all(Radius.circular(50)),
-    //               boxShadow: const [
-    //                 BoxShadow(color: Colors.black54, blurRadius: 3.0)
-    //               ]),
-    //           child: _action,
-    //         )));
   }
 
   Widget _backButtonConstructor() {
