@@ -177,7 +177,8 @@ checkInCart()async{
             child: new Icon(Icons.add_shopping_cart,
               color: Colors.black,),
             onPressed: () {
-
+                favorite = !favorite;
+                addToCart();
             },
             backgroundColor: Colors.white,
             elevation: 20.0,
