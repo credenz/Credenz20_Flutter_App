@@ -163,12 +163,10 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       // if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
-      stackOrder.add(_fabConstructor());
     } else {
       animation.reverse();
       // animation2.forward();
       // stackOrder.add(_backgroundConstructor());
-      stackOrder.add(_fabConstructor());
       if (_card != null) stackOrder.add(_cardConstructor());
       stackOrder.add(_bodyContainer());
       stackOrder.add(_shadowConstructor());
@@ -177,7 +175,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
       // if (_action != null) stackOrder.add(_actionConstructor());
       if (_backButton != null && _backButton)
         stackOrder.add(_backButtonConstructor());
-      stackOrder.add(_fabConstructor());
+
     }
     //
     // if(_scale<0.5){

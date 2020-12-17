@@ -59,118 +59,121 @@ checkInCart()async{
 
     return MaterialApp(
       home: Material(
-        child: Stack(
-          children: <Widget>[
-            Stack(
-              children: [
-                Image.asset(
-                  // "images/sback0.jpg",
-                  "gifs/desback.gif",
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-                // Container(
-                //   color: Color(0xaa4E164B),
-                // ),
-              ],
-            ),
-            CardSliverAppBar(
-              // index: widget.eventIndex,
-              height: 250,
-              //gifs/space2.gif
-              background:
-                  Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
-              title: Text(eventName[index],
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold)),
-              card: eventimages[index],
-              backButton: true,
-              backButtonColors: [Colors.white, Colors.white],
-              action: IconButton(
-
-                onPressed: () {
-                  setState(() {
-                    favorite = !favorite;
-                    addToCart();
-
-                  });
-                },
-                icon: favorite
-                    ? Icon(Icons.shopping_cart)
-                    : Icon(Icons.add_shopping_cart),
-                color: Colors.black,
-                iconSize: 30.0,
+        child: Scaffold(
+          body: Stack(
+            children: <Widget>[
+              Stack(
+                children: [
+                  Image.asset(
+                    // "images/sback0.jpg",
+                    "gifs/desback.gif",
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
+                  // Container(
+                  //   color: Color(0xaa4E164B),
+                  // ),
+                ],
               ),
+              CardSliverAppBar(
+                // index: widget.eventIndex,
+                height: 250,
+                //gifs/space2.gif
+                background:
+                    Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
+                title: Text(eventName[index],
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+                card: eventimages[index],
+                backButton: true,
+                backButtonColors: [Colors.white, Colors.white],
+                action: IconButton(
 
-              onTap: (int tap_index) => _get_tap(tap_index),
+                  onPressed: () {
+                    setState(() {
+                      favorite = !favorite;
+                      addToCart();
+
+                    });
+                  },
+                  icon: favorite
+                      ? Icon(Icons.shopping_cart)
+                      : Icon(Icons.add_shopping_cart),
+                  color: Colors.black,
+                  iconSize: 30.0,
+                ),
+
+                onTap: (int tap_index) => _get_tap(tap_index),
 
 
-              body: Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: Container(
-                  // color: Color(0x66272034),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height -
-                      1.8 * AppBar().preferredSize.height,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    child: DefaultTabController(
-                      length: 5,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(45.0),
-                          topRight: Radius.circular(45.0),
+                body: Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Container(
+                    // color: Color(0x66272034),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height -
+                        1.8 * AppBar().preferredSize.height,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: DefaultTabController(
+                        length: 5,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(45.0),
+                            topRight: Radius.circular(45.0),
+                          ),
+                          child: Card(
+                              color: Color(0x11000000),
+                              child: Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: tabcontroller())),
                         ),
-                        child: Card(
-                            color: Color(0x11000000),
-                            child: Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: tabcontroller())),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            //A1045A,
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.end,
-            //     crossAxisAlignment: CrossAxisAlignment.stretch,
-            //     children: <Widget>[
-            //       RaisedButton(
-            //         onPressed: ()async{
-            //           addToCart();
-            //         },
-            //         textColor: Colors.white,
-            //         color: drawerBackgroundColor,
-            //         child: const Text('Add to Cart',
-            //             style: TextStyle(fontSize: 20)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+              //A1045A,
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Column(
+              //     mainAxisAlignment: MainAxisAlignment.end,
+              //     crossAxisAlignment: CrossAxisAlignment.stretch,
+              //     children: <Widget>[
+              //       RaisedButton(
+              //         onPressed: ()async{
+              //           addToCart();
+              //         },
+              //         textColor: Colors.white,
+              //         color: drawerBackgroundColor,
+              //         child: const Text('Add to Cart',
+              //             style: TextStyle(fontSize: 20)),
+              //       ),
+              //     ],
+              //   ),
+              // ),
 
 /*
-            Container(
-              color: drawerBackgroundColor,
-              // color: drawerBackgroundColor,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    border: new Border.all(color: Colors.black),
+              Container(
+                color: drawerBackgroundColor,
+                // color: drawerBackgroundColor,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                      border: new Border.all(color: Colors.black),
 
-                    image: DecorationImage(
-                  fit: BoxFit.fitHeight,
-                  image: AssetImage('images/enigma.png'),
-                )),
+                      image: DecorationImage(
+                    fit: BoxFit.fitHeight,
+                    image: AssetImage('images/enigma.png'),
+                  )),
+                ),
               ),
-            ),
 */
-          ],
+            ],
+          ),
+           
         ),
       ),
     );
