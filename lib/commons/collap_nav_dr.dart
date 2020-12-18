@@ -36,31 +36,31 @@ class MenuDrawer extends StatelessWidget {
         child: SafeArea(
           child: Theme(
             data: ThemeData(brightness: Brightness.dark),
-            child: SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(0,10,0,0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(0,0,0,10),
-                        child: DrawerHeader(
-                            decoration: BoxDecoration(
-                              //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
-                                image: DecorationImage(
-                                    image: AssetImage("images/finalLogo.png"),
-                                    fit: BoxFit.contain
-                                )
-                            ),
-                            child: SizedBox(width: MediaQuery.of(context).size.width-130,)
-                        ),
-                      ),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
 
-                      ListView(
+                  padding: EdgeInsets.fromLTRB(0,0,0,10),
+                  child: DrawerHeader(
+                        decoration: BoxDecoration(
+                          //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
+                            image: DecorationImage(
+                                image: AssetImage("images/finalLogo.png"),
+                                fit: BoxFit.contain
+                            )
+                        ),
+                        child: SizedBox(width: MediaQuery.of(context).size.width-130,)
+                    ),
+                  ),
+                  new Expanded(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(0,10,0,0),
+                      child: ListView(
                         physics: ScrollPhysics(),
                         shrinkWrap: true,
                         children: [
@@ -134,85 +134,80 @@ class MenuDrawer extends StatelessWidget {
                           ),
                           Divider(
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
-
 
                         ],
                       ),
-                      Row(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: 30,
-                            ),
-                            SignInButton(
-                                Buttons.Facebook,
-                                mini: true,
-                                elevation: 10,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32.0),
-                                ),
-                                onPressed: () {}
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Container(
-
-                              child: Image(image: AssetImage("images/instagram.png"),
-                              height: 35,
-                                width: 35,
-                              ),
-                              decoration: BoxDecoration(
-                                // color: Colors.red,
-                                // image:DecorationImage(
-                                //   image:,
-                                //
-                                // ),
-                                shape: BoxShape.circle
-                              ),
-                            ),
-                            // SignInButton(
-                            //     Buttons.Pinterest,
-                            //     mini: true,
-                            //     elevation: 10,
-                            //     shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(32.0),
-                            //     ),    onPressed: () {}
-                            // ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            SignInButton(
-                              Buttons.LinkedIn,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                    child: Row(
+                        children: [
+                          SizedBox(
+                            width: 30,
+                          ),
+                          SignInButton(
+                              Buttons.Facebook,
                               mini: true,
                               elevation: 10,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(32.0),
-                              ),    onPressed: () {},
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            SignInButton(
-                                Buttons.Twitter,
-                                mini: true,
-                                elevation: 10,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32.0),
-                                ),      onPressed: () {}
-                            ),
-                          ]
+                              ),
+                              onPressed: () {}
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Container(
 
-                      ),
+                            child: Image(image: AssetImage("images/instagram.png"),
+                              height: 35,
+                              width: 35,
+                            ),
+                            decoration: BoxDecoration(
+                              // color: Colors.red,
+                              // image:DecorationImage(
+                              //   image:,
+                              //
+                              // ),
+                                shape: BoxShape.circle
+                            ),
+                          ),
+                          // SignInButton(
+                          //     Buttons.Pinterest,
+                          //     mini: true,
+                          //     elevation: 10,
+                          //     shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(32.0),
+                          //     ),    onPressed: () {}
+                          // ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          SignInButton(
+                            Buttons.LinkedIn,
+                            mini: true,
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32.0),
+                            ),    onPressed: () {},
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          SignInButton(
+                              Buttons.Twitter,
+                              mini: true,
+                              elevation: 10,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(32.0),
+                              ),      onPressed: () {}
+                          ),
+                        ]
 
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
