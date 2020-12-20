@@ -1,7 +1,11 @@
+import 'package:credenz20/constants/API.dart';
+import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:credenz20/loginPage.dart';
+import 'package:http/http.dart' as http;
+
+import '../loginPage.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -20,20 +24,46 @@ class _ProfileState extends State<Profile> {
     _passwordVisible = false;
 
     _checkLogin();
+    getUserInfo();
   }
 
-  void _checkLogin() async{
+  getUserInfo() async {
+    String url = userProfileUrl;
+    String accToken = await storage.read(key: "accToken");
+    String username = await storage.read(key: 'username');
+    if (username == null || accToken == null) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (BuildContext context) => Login()));
+    } else {
+      Map<String, String> headers = {"Authorization": "Bearer $accToken"};
+      http.Response response = await http.get(url, headers: headers);
+      if (response.statusCode == 200) {
+        print(url);
+        print(headers);
+        print(response.body);
+        print(response.statusCode);
+      } else {
+        print(url);
+        print(headers);
+        print(response.body);
+        print(response.statusCode);
+      }
+    }
+  }
+
+  _checkLogin() async {
     String username = await storage.read(key: 'username');
     String accToken = await storage.read(key: "accToken");
     if (username == null && accToken == null) {
       Fluttertoast.showToast(msg: "Please login before you register");
-      Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => Login()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (BuildContext context) => Login()));
       // .push(context,
       //     MaterialPageRoute(builder: (BuildContext context) => Login()));
 
     }
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +77,7 @@ class _ProfileState extends State<Profile> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(top: 20.0,bottom: 50.0),
+            padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
             child: _buildForm(),
           ),
         ));
@@ -87,7 +117,6 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(color: Colors.white),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
-
                   return null;
                 },
                 decoration: InputDecoration(
@@ -215,5 +244,4 @@ class _ProfileState extends State<Profile> {
           ],
         ));
   }
-}
-
+};

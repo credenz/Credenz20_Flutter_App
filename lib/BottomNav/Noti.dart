@@ -34,6 +34,8 @@ class _NotiState extends State<Noti> {
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return load==true?Container(
@@ -41,9 +43,15 @@ class _NotiState extends State<Noti> {
       color: Colors.white,
     ):Scaffold(
       body: ListView.builder(itemBuilder: (BuildContext context,int pos){
-        return ListTile(
-          title: Text(list[pos]['headline']),
-          subtitle: Text(list[pos]['info']),
+        return Column(
+          children: [
+            ListTile(
+              leading: Icon(Icons.notifications,size: 30,),
+              title: Text(list[pos]['headline']),
+              subtitle: Text(list[pos]['info']),
+            ),
+            Divider(color: Colors.grey,),
+           ],
         );
       },
       itemCount: list.length,),
