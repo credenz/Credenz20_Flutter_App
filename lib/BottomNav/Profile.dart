@@ -24,7 +24,6 @@ class _ProfileState extends State<Profile> {
     _passwordVisible = false;
 
     _checkLogin();
-    getUserInfo();
   }
 
   getUserInfo() async {
@@ -61,6 +60,8 @@ class _ProfileState extends State<Profile> {
       // .push(context,
       //     MaterialPageRoute(builder: (BuildContext context) => Login()));
 
+    } else {
+      getUserInfo();
     }
   }
 
@@ -244,4 +245,4 @@ class _ProfileState extends State<Profile> {
           ],
         ));
   }
-};
+}
