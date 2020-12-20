@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:credenz20/loginPage.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -8,14 +11,29 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _passwordVisible;
+  final storage = FlutterSecureStorage();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _passwordVisible = false;
+
+    _checkLogin();
   }
 
+  void _checkLogin() async{
+    String username = await storage.read(key: 'username');
+    String accToken = await storage.read(key: "accToken");
+    if (username == null && accToken == null) {
+      Fluttertoast.showToast(msg: "Please login before you register");
+      Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => Login()));
+      // .push(context,
+      //     MaterialPageRoute(builder: (BuildContext context) => Login()));
+
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -197,3 +215,4 @@ class _ProfileState extends State<Profile> {
         ));
   }
 }
+
