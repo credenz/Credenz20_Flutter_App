@@ -80,10 +80,10 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void onTabTapped(int index) {
-    this.pageController.animateToPage(index,
-        duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-  }
+  // void onTabTapped(int index) {
+  //   this.pageController.animateToPage(index,
+  //       duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
         onPressed: () {
           setState(
             () {
-              onTabTapped(2);
+              // onTabTapped(2);
               currentScreen = Events();
               currentTab = 2;
             },
@@ -144,18 +144,7 @@ class _HomeState extends State<Home> {
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("images/homeback2.jpg"),
-                fit: BoxFit.contain)),
-        child: PageView(
-          physics: new NeverScrollableScrollPhysics(),
-          children: tabPages,
-          onPageChanged: onPageChanged,
-          controller: pageController,
-        ),
-      ),
+      body: currentScreen,
 
       // new IndexedStack(
       //   index: currentIndex,
@@ -185,7 +174,7 @@ class _HomeState extends State<Home> {
                   onPressed: () {
                     setState(
                       () {
-                        onTabTapped(0);
+                        // onTabTapped(0);
                         currentScreen = Profile();
                         currentTab = 0;
                       },
@@ -214,7 +203,7 @@ class _HomeState extends State<Home> {
                   onPressed: () {
                     setState(
                       () {
-                        onTabTapped(1);
+                        // onTabTapped(1);
                         currentScreen = ContactUs();
                         currentTab = 1;
                       },
@@ -254,7 +243,7 @@ class _HomeState extends State<Home> {
                   onPressed: () {
                     setState(
                       () {
-                        onTabTapped(3);
+                        // onTabTapped(3);
                         currentScreen = About();
                         currentTab = 3;
                       },
@@ -283,7 +272,7 @@ class _HomeState extends State<Home> {
                   onPressed: () {
                     setState(
                       () {
-                        onTabTapped(4);
+                        // onTabTapped(4);
                         currentScreen = Noti();
                         currentTab = 4;
                       },
