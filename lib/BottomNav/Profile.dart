@@ -27,7 +27,7 @@ class _ProfileState extends State<Profile> {
     String accToken = await storage.read(key: "accToken");
     if (username == null && accToken == null) {
       Fluttertoast.showToast(msg: "Please login before you register");
-      Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => Login()));
+      Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => Login()));
       // .push(context,
       //     MaterialPageRoute(builder: (BuildContext context) => Login()));
 
@@ -40,7 +40,7 @@ class _ProfileState extends State<Profile> {
         backgroundColor: Colors.black,
         floatingActionButton: FloatingActionButton(
           heroTag: 'abc',
-          child: Icon(Icons.done),
+          child: Icon(Icons.edit),
           onPressed: () {
             _formKey.currentState.validate();
           },
