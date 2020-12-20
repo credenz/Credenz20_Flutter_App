@@ -7,6 +7,7 @@ import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
 import 'Cart.dart';
 import 'commons/slide_drawer.dart';
+import 'package:credenz20/size_config.dart';
 import 'constants/theme.dart';
 
 class Home extends StatefulWidget {
@@ -87,6 +88,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       //Tanuj's Code
       /*appBar: AppBar(

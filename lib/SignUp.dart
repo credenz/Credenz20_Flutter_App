@@ -8,6 +8,7 @@ import 'Home.dart';
 import 'constants/styles.dart';
 import 'constants/theme.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:credenz20/size_config.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -15,6 +16,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
+  double _height;
+  double _width;
+  double _pixelRatio;
+  bool _large;
+  bool _medium;
 
   String name;
   String email;
@@ -48,15 +55,39 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    _height = MediaQuery.of(context).size.height;
+    _width = MediaQuery.of(context).size.width;
+    _pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    _large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    _medium =  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       backgroundColor: drawerBackgroundColor,
-      body: Center(
-        child: SingleChildScrollView(
+      body: SafeArea(
+        child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
+            child: ListView(
               children: [
+                SizedBox(
+                  height: getProportionateScreenHeight(70),
+                ),
+                Text(
+                  "Greetings from PISB",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: getProportionateScreenWidth(28),
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Enter your details",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+                SizedBox(
+                  height:getProportionateScreenHeight(10),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Container(
@@ -207,6 +238,67 @@ class _SignUpState extends State<SignUp> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class ResponsiveWidget{
+
+  static bool isScreenLarge(double width, double pixel) {
+    return width * pixel >= 1440;
+  }
+
+  static bool isScreenMedium(double width, double pixel) {
+    return width * pixel < 1440 && width * pixel >=1080;
+  }
+
+  static bool isScreenSmall(double width, double pixel) {
+    return width * pixel <= 720;
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  final String hint;
+  final TextEditingController textEditingController;
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final IconData icon;
+  double _width;
+  double _pixelRatio;
+  bool large;
+  bool medium;
+
+
+  CustomTextField(
+      {this.hint,
+        this.textEditingController,
+        this.keyboardType,
+        this.icon,
+        this.obscureText= false,
+      });
+
+  @override
+  Widget build(BuildContext context) {
+    _width = MediaQuery.of(context).size.width;
+    _pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    medium=  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
+    return Material(
+      borderRadius: BorderRadius.circular(30.0),
+      elevation: large? 12 : (medium? 10 : 8),
+      child: TextFormField(
+        controller: textEditingController,
+        keyboardType: keyboardType,
+        cursorColor: Colors.orange[200],
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon, color: Colors.orange[200], size: 20),
+          hintText: hint,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide.none),
         ),
       ),
     );
