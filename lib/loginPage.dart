@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: drawerBackgroundColor,
-
+      resizeToAvoidBottomPadding: true,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -195,7 +195,7 @@ class _LoginState extends State<Login> {
                   height: getProportionateScreenHeight(50),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(40),0,getProportionateScreenWidth(40),0),
+                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(60),0,getProportionateScreenWidth(60),0),
                   child: Material(
                     child: InkWell(
                       child: FlatButton(
