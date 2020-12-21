@@ -8,6 +8,7 @@ import 'Home.dart';
 import 'constants/styles.dart';
 import 'constants/theme.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:credenz20/size_config.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -16,6 +17,12 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
 
+  double _height;
+  double _width;
+  double _pixelRatio;
+  bool _large;
+  bool _medium;
+  bool _obscureText = true;
   String name;
   String email;
   String collegeName;
@@ -48,165 +55,276 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    _height = MediaQuery.of(context).size.height;
+    _width = MediaQuery.of(context).size.width;
+    _pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    _large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    _medium =  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
+    void toggle() {
+      setState(() {
+        _obscureText = !_obscureText;
+      });
+    }
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomPadding: true,
       backgroundColor: drawerBackgroundColor,
-      body: Center(
-        child: SingleChildScrollView(
+      body: SafeArea(
+        child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
+            child: ListView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5),
+                SizedBox(
+                  height: getProportionateScreenHeight(40),
+                ),
+                Text(
+                  "Sign Up",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: getProportionateScreenWidth(28),
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
+                Text(
+                  "Enter your details",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+                SizedBox(
+                  height:getProportionateScreenHeight(20),
+                ),
+                Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: _large? 12 : (_medium? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.orange[200],
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person, color: Colors.orange[200], size: 20),
+                      hintText: "Name",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none),
                     ),
-                    child: TextFormField(
-                      style: textFieldStyle,
-                      onChanged: (val){
-                        setState(() {
-                          name=val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 10),
-                        hintText: 'Name',
-                        hintStyle: hintTextStyle,
-                        border: InputBorder.none,
-                      ),
-                    ),
+                    onChanged: (val){
+                      setState(() {
+                        name=val;
+                      });
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-
-                      borderRadius: BorderRadius.circular(5),
+                SizedBox(height: _height / 60.0),
+                Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: _large? 12 : (_medium? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.orange[200],
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person, color: Colors.orange[200], size: 20),
+                      hintText: "Username",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none),
                     ),
-                    child: TextFormField(
-                      style: textFieldStyle,
-                      onChanged: (val){
-                        setState(() {
-                          userName=val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10),
-                          hintText: 'Username',
-                        hintStyle: hintTextStyle,
-                      ),
-                    ),
+                    onChanged: (val){
+                      setState(() {
+                        userName=val;
+                      });
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5),
+                SizedBox(height: _height / 60.0),
+                Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: _large? 12 : (_medium? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Colors.orange[200],
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.email, color: Colors.orange[200], size: 20),
+                      hintText: "Email",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none),
                     ),
-                    child: TextFormField(
-                      style: textFieldStyle,
-                      onChanged: (val){
-                        setState(() {
-                          email=val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: 'Email',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10),
-                        hintStyle: hintTextStyle,
-                      ),
-                    ),
+                    onChanged: (val){
+                      setState(() {
+                        email=val;
+                      });
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5),
+                SizedBox(height: _height / 60.0),
+                Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: _large? 12 : (_medium? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.phone,
+                    cursorColor: Colors.orange[200],
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone, color: Colors.orange[200], size: 20),
+                      hintText: "Phone Number",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none),
                     ),
-                    child: TextFormField(
-                      style: textFieldStyle,
-                      onChanged: (val){
-                        setState(() {
-                          phoneNumber=val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: 'Phone Number',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10),
-                        hintStyle: hintTextStyle,
-                      ),
-                      keyboardType: TextInputType.number,
-                    ),
+                    onChanged: (val){
+                      setState(() {
+                        phoneNumber=val;
+                      });
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5),
+                SizedBox(height: _height / 60.0),
+                Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: _large? 12 : (_medium? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.orange[200],
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.school, color: Colors.orange[200], size: 20),
+                      hintText: "College Name",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none),
                     ),
-                    child: TextFormField(
-                      style: textFieldStyle,
-                      onChanged: (val){
-                        setState(() {
-                          collegeName=val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: 'College Name',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10),
-                        hintStyle: hintTextStyle,
-                      ),
-                    ),
+                    onChanged: (val){
+                      setState(() {
+                        collegeName=val;
+                      });
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5),
+                SizedBox(height: _height / 60.0),
+                Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  elevation: _large? 12 : (_medium? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.orange[200],
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock, color: Colors.orange[200], size: 20),
+                      hintText: "Password",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide.none),
+                      suffixIcon: IconButton(icon: Icon(Icons.remove_red_eye),
+                          color: Colors.orange[200],onPressed: toggle )
                     ),
-                    child: TextFormField(
-                      style: textFieldStyle,
-                      onChanged: (val){
-                        setState(() {
-                          password=val;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: 'Password',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 10),
-                        hintStyle: hintTextStyle,
-                      ),
-                      obscureText: true,
-                    ),
+                    onChanged: (val){
+                      setState(() {
+                        password=val;
+                      });
+                    },
+                    obscureText: _obscureText,
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
+                //     decoration: BoxDecoration(
+                //       border: Border.all(color: Colors.white),
+                //       borderRadius: BorderRadius.circular(5),
+                //     ),
+                //     child: TextFormField(
+                //       style: textFieldStyle,
+                //       onChanged: (val){
+                //         setState(() {
+                //           password=val;
+                //         });
+                //       },
+                //       decoration: InputDecoration(
+                //           hintText: 'Password',
+                //         border: InputBorder.none,
+                //         contentPadding: EdgeInsets.only(left: 10),
+                //         hintStyle: hintTextStyle,
+                //       ),
+                //       obscureText: true,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 20,),
-               RaisedButton(
-                 color: Colors.white,
-                 child: Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Text('Sign Up',style: TextStyle(fontSize: 18),),
+               Container(
+                 margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(60),0,getProportionateScreenWidth(60),0),
+                 child: RaisedButton(
+                   color: Colors.white,
+                   child: Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Text('Sign Up',style: TextStyle(fontSize: 18),),
+                   ),
+                   onPressed: ()async{
+                     await makeRequest();
+                   },
                  ),
-                 onPressed: ()async{
-                   await makeRequest();
-                 },
                )
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class ResponsiveWidget{
+
+  static bool isScreenLarge(double width, double pixel) {
+    return width * pixel >= 1440;
+  }
+
+  static bool isScreenMedium(double width, double pixel) {
+    return width * pixel < 1440 && width * pixel >=1080;
+  }
+
+  static bool isScreenSmall(double width, double pixel) {
+    return width * pixel <= 720;
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  final String hint;
+  final TextEditingController textEditingController;
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final IconData icon;
+  double _width;
+  double _pixelRatio;
+  bool large;
+  bool medium;
+
+
+  CustomTextField(
+      {this.hint,
+        this.textEditingController,
+        this.keyboardType,
+        this.icon,
+        this.obscureText= false,
+      });
+
+  @override
+  Widget build(BuildContext context) {
+    _width = MediaQuery.of(context).size.width;
+    _pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    medium=  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
+    return Material(
+      borderRadius: BorderRadius.circular(30.0),
+      elevation: large? 12 : (medium? 10 : 8),
+      child: TextFormField(
+        controller: textEditingController,
+        keyboardType: keyboardType,
+        cursorColor: Colors.orange[200],
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon, color: Colors.orange[200], size: 20),
+          hintText: hint,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              borderSide: BorderSide.none),
         ),
       ),
     );
