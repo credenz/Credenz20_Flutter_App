@@ -109,7 +109,7 @@ class MenuDrawer extends StatelessWidget {
                             leading: Icon(Icons.web_asset),
                             title: Text('Visit Website'),
                             onTap: () {
-                              _launchURL();
+                              _launchURL('https://credenz-2c8cb.web.app/home');
                               //Navigator.of(context).pop();
                             },
                           ),
@@ -153,24 +153,32 @@ class MenuDrawer extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(32.0),
                               ),
-                              onPressed: () {}
+                              onPressed: () {
+                                _launchURL('https://www.facebook.com/pisbcredenz');
+                              }
                           ),
                           SizedBox(
                             width: 30,
                           ),
-                          Container(
+                          new GestureDetector(
+                            onTap: (){
+                              _launchURL('https://www.instagram.com/pisbcredenz/');
+                            },
+                            child: Container(
 
-                            child: Image(image: AssetImage("images/instagram.png"),
-                              height: 35,
-                              width: 35,
-                            ),
-                            decoration: BoxDecoration(
-                              // color: Colors.red,
-                              // image:DecorationImage(
-                              //   image:,
-                              //
-                              // ),
-                                shape: BoxShape.circle
+                              child: Image(image: AssetImage("images/instagram.png"),
+                                height: 35,
+                                width: 35,
+                              ),
+
+                              decoration: BoxDecoration(
+                                // color: Colors.red,
+                                // image:DecorationImage(
+                                //   image:,
+                                //
+                                // ),
+                                  shape: BoxShape.circle
+                              ),
                             ),
                           ),
                           // SignInButton(
@@ -190,7 +198,9 @@ class MenuDrawer extends StatelessWidget {
                             elevation: 10,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
-                            ),    onPressed: () {},
+                            ),    onPressed: () {
+                            _launchURL('https://www.linkedin.com/company/pisbieee/');
+                          },
                           ),
                           SizedBox(
                             width: 30,
@@ -201,7 +211,9 @@ class MenuDrawer extends StatelessWidget {
                               elevation: 10,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(32.0),
-                              ),      onPressed: () {}
+                              ),      onPressed: () {
+                            _launchURL('https://twitter.com/pisbcredenz');
+                          }
                           ),
                         ]
 
@@ -216,8 +228,8 @@ class MenuDrawer extends StatelessWidget {
     );
   }
 }
-_launchURL() async {
-  const url=('https://credenz-2c8cb.web.app/home');
+_launchURL(var url) async {
+
   if (await canLaunch(url)) {
     await launch(url);
   } else {
