@@ -120,6 +120,29 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    final children1 = <Widget>[];
+    for (var i = 0; i < list.length; i++) {
+      children1.add(new SizedBox(
+        width: 50,
+        child: AspectRatio(
+          aspectRatio: 0.5,
+          child: Container(
+            padding: EdgeInsets.all(5),
+            height: 10,
+            width: 10,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: drawerBackgroundColor,
+            ),
+            child: Image.asset(eventimages[eventName.indexOf(list[i],0)].assetName),
+          ),
+        ),
+      ));
+      children1.add(new SizedBox(width: 10,));
+    }
+
     return load == true
         ? Container(
             child: loader,
@@ -148,58 +171,60 @@ class _CartState extends State<Cart> {
               children: [
                 ListView.builder(
                   itemBuilder: (BuildContext context, int pos) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 88,
-                              child: AspectRatio(
-                                aspectRatio: 0.88,
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF5F6F9),
-                                    borderRadius: BorderRadius.circular(15),
+                    AssetImage ig=eventimages[eventName.indexOf(list[pos],0)];
+                    return Card(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 88,
+                                child: AspectRatio(
+                                  aspectRatio: 0.88,
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: drawerBackgroundColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Image.asset(ig.assetName),
                                   ),
-                                  child: Image.asset("images/finalLogo.png"),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  list[pos],
-                                  style: TextStyle(color: Colors.black, fontSize: 16),
-                                  maxLines: 2,
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                    "\u20B9 100",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600, color: Colors.black),
+                              SizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    list[pos],
+                                    style: TextStyle(color: Colors.black, fontSize: 16),
+                                    maxLines: 2,
                                   ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                      "\u20B9 100",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600, color: Colors.black),
+                                    ),
 
-                              ],
-                            ),
+                                ],
+                              ),
 
-                          ],
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () async {
-                            setState(() {
-                              load = true;
-                            });
-                            await deleteFromCart(list[pos]);
-                          },
-                        ),
-                      ],
+                            ],
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () async {
+                              setState(() {
+                                load = true;
+                              });
+                              await deleteFromCart(list[pos]);
+                            },
+                          ),
+                        ],
+                      ),
                     );
                   },
                   physics: NeverScrollableScrollPhysics(),
@@ -229,25 +254,23 @@ class _CartState extends State<Cart> {
                 ],
               ),
               child: SafeArea(
+
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
-                       Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF5F6F9),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Image.asset("images/finalLogo.png"),
-                          ),
-                          Spacer(),
-                        ],
+                    SizedBox(
+                      height: 50,
+
+                      child: Expanded(
+                        child: ListView(
+                            scrollDirection: Axis.horizontal,
+
+                            children: children1,
+                        ),
                       ),
+                    ),
                       SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
