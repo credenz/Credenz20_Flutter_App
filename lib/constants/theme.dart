@@ -11,3 +11,8 @@ final loader=SpinKitThreeBounce(
   color: drawerBackgroundColor,
   size: 30,
 );
+
+final loader1=SpinKitThreeBounce(
+  color: Colors.white,
+  size: 30,
+);
