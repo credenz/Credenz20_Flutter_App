@@ -107,7 +107,7 @@ class _AboutPISBState extends State<AboutPISB> {
           fontWeight: FontWeight.w600,
         ),
       ),
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.justify,
     );
   }
 }

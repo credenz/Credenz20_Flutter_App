@@ -110,7 +110,7 @@ class _AboutPingState extends State<AboutPing> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.justify,
       ),
     );
   }

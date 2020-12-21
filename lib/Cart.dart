@@ -120,6 +120,29 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    final children1 = <Widget>[];
+    for (var i = 0; i < list.length; i++) {
+      children1.add(new SizedBox(
+        width: 50,
+        child: AspectRatio(
+          aspectRatio: 0.5,
+          child: Container(
+            padding: EdgeInsets.all(5),
+            height: 10,
+            width: 10,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: drawerBackgroundColor,
+            ),
+            child: Image.asset(eventimages[eventName.indexOf(list[i],0)].assetName),
+          ),
+        ),
+      ));
+      children1.add(new SizedBox(width: 10,));
+    }
+
     return load == true
         ? Container(
             child: loader,
@@ -136,23 +159,71 @@ class _CartState extends State<Cart> {
                   );
                 },
               ),
-              title: Text('Cart'),
+              title: Column(
+                children: [
+                  Text(' Your Cart'),
+                  Text(' 2 items ', style: TextStyle(fontSize: 12, color: Colors.white70),)
+                ],
+              ),
               backgroundColor: drawerBackgroundColor,
             ),
             body: ListView(
               children: [
                 ListView.builder(
                   itemBuilder: (BuildContext context, int pos) {
-                    return ListTile(
-                      title: Text(list[pos]),
-                      trailing: IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () async {
-                          setState(() {
-                            load = true;
-                          });
-                          await deleteFromCart(list[pos]);
-                        },
+                    AssetImage ig=eventimages[eventName.indexOf(list[pos],0)];
+                    return Card(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 88,
+                                child: AspectRatio(
+                                  aspectRatio: 0.88,
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: drawerBackgroundColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Image.asset(ig.assetName),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    list[pos],
+                                    style: TextStyle(color: Colors.black, fontSize: 16),
+                                    maxLines: 2,
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                      "\u20B9 100",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600, color: Colors.black),
+                                    ),
+
+                                ],
+                              ),
+
+                            ],
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () async {
+                              setState(() {
+                                load = true;
+                              });
+                              await deleteFromCart(list[pos]);
+                            },
+                          ),
+                        ],
                       ),
                     );
                   },
@@ -160,27 +231,84 @@ class _CartState extends State<Cart> {
                   itemCount: list.length,
                   shrinkWrap: true,
                 ),
-                list.length==0?Container():Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: () async {
-                        await pay();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        child: Text(
-                          'Register',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      color: drawerBackgroundColor,
-                    ),
-                  ),
-                )
               ],
             ),
-          );
+            bottomNavigationBar: list.length==0?Container():Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: 30,
+              ),
+              // height: 174,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, -15),
+                    blurRadius: 20,
+                    color: Color(0xFFDADADA).withOpacity(0.15),
+                  )
+                ],
+              ),
+              child: SafeArea(
+
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    SizedBox(
+                      height: 50,
+
+                      child: Expanded(
+                        child: ListView(
+                            scrollDirection: Axis.horizontal,
+
+                            children: children1,
+                        ),
+                      ),
+                    ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              text: "Total:\n",
+                              children: [
+                                TextSpan(
+                                  text: "\u20B9 100",
+                                  style: TextStyle(fontSize: 16, color: Colors.black),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 190,
+                            child: RaisedButton(
+                              onPressed: () async {
+                                await pay();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                child: Text(
+                                  'Register',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              color: drawerBackgroundColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            );
   }
 }
