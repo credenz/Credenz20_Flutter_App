@@ -136,51 +136,156 @@ class _CartState extends State<Cart> {
                   );
                 },
               ),
-              title: Text('Cart'),
+              title: Column(
+                children: [
+                  Text(' Your Cart'),
+                  Text(' 2 items ', style: TextStyle(fontSize: 12, color: Colors.white70),)
+                ],
+              ),
               backgroundColor: drawerBackgroundColor,
             ),
             body: ListView(
               children: [
                 ListView.builder(
                   itemBuilder: (BuildContext context, int pos) {
-                    return ListTile(
-                      title: Text(list[pos]),
-                      trailing: IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () async {
-                          setState(() {
-                            load = true;
-                          });
-                          await deleteFromCart(list[pos]);
-                        },
-                      ),
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 88,
+                              child: AspectRatio(
+                                aspectRatio: 0.88,
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF5F6F9),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Image.asset("images/finalLogo.png"),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  list[pos],
+                                  style: TextStyle(color: Colors.black, fontSize: 16),
+                                  maxLines: 2,
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                    "\u20B9 100",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600, color: Colors.black),
+                                  ),
+
+                              ],
+                            ),
+
+                          ],
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () async {
+                            setState(() {
+                              load = true;
+                            });
+                            await deleteFromCart(list[pos]);
+                          },
+                        ),
+                      ],
                     );
                   },
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: list.length,
                   shrinkWrap: true,
                 ),
-                list.length==0?Container():Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: () async {
-                        await pay();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        child: Text(
-                          'Register',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      color: drawerBackgroundColor,
-                    ),
-                  ),
-                )
               ],
             ),
-          );
+            bottomNavigationBar: list.length==0?Container():Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: 30,
+              ),
+              // height: 174,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, -15),
+                    blurRadius: 20,
+                    color: Color(0xFFDADADA).withOpacity(0.15),
+                  )
+                ],
+              ),
+              child: SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                       Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFF5F6F9),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Image.asset("images/finalLogo.png"),
+                          ),
+                          Spacer(),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              text: "Total:\n",
+                              children: [
+                                TextSpan(
+                                  text: "\u20B9 100",
+                                  style: TextStyle(fontSize: 16, color: Colors.black),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 190,
+                            child: RaisedButton(
+                              onPressed: () async {
+                                await pay();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                child: Text(
+                                  'Register',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              color: drawerBackgroundColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            );
   }
 }
