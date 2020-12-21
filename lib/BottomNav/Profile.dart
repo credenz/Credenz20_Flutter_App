@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:credenz20/constants/API.dart';
+import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -15,15 +18,21 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _passwordVisible;
+  bool load=true;
   final storage = FlutterSecureStorage();
+  TextEditingController nameController;
+  TextEditingController usernameController;
+  TextEditingController emailController;
+  TextEditingController passwordController;
+  TextEditingController phoneController;
+  TextEditingController collegeController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _passwordVisible = false;
-
-    _checkLogin();
+    getUserInfo();
   }
 
   getUserInfo() async {
@@ -31,12 +40,30 @@ class _ProfileState extends State<Profile> {
     String accToken = await storage.read(key: "accToken");
     String username = await storage.read(key: 'username');
     if (username == null || accToken == null) {
-      Navigator.push(context,
+      Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) => Login()));
     } else {
+      url+=username;
       Map<String, String> headers = {"Authorization": "Bearer $accToken"};
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
+        var res=jsonDecode(response.body);
+        print(res);
+        nameController=new TextEditingController();
+        usernameController=new TextEditingController();
+        emailController=new TextEditingController();
+        passwordController=new TextEditingController();
+        phoneController=new TextEditingController();
+        collegeController=new TextEditingController();
+        setState(() {
+          nameController.text=res['name'];
+          usernameController.text=res['username'];
+          emailController.text=res['email'];
+          passwordController.text=res['password'];
+          phoneController.text=res['phoneno'].toString();
+          collegeController.text=res['clgname'];
+          load=false;
+        });
         print(url);
         print(headers);
         print(response.body);
@@ -46,6 +73,9 @@ class _ProfileState extends State<Profile> {
         print(headers);
         print(response.body);
         print(response.statusCode);
+        setState(() {
+          load=false;
+        });
       }
     }
   }
@@ -76,7 +106,10 @@ class _ProfileState extends State<Profile> {
             _formKey.currentState.validate();
           },
         ),
-        body: SingleChildScrollView(
+        body: load==true?Container(
+          child: loader1,
+          color: Colors.black,
+        ):SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
             child: _buildForm(),
@@ -92,6 +125,7 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
+                controller: nameController,
                 style: TextStyle(color: Colors.white),
                 validator: (String value) {
                   if (value.isEmpty) return 'Name cannot be empty';
@@ -114,7 +148,7 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
-                controller: TextEditingController(text: 'credenz'),
+                controller: usernameController,
                 style: TextStyle(color: Colors.white),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
@@ -137,7 +171,7 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
-                controller: TextEditingController(text: 'credenz@gmail.com'),
+                controller: emailController,
                 style: TextStyle(color: Colors.white),
                 validator: (String value) {
                   if (value.isEmpty) return 'Email cannot be empty';
@@ -162,6 +196,7 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
+                controller: passwordController,
                 obscureText: !_passwordVisible,
                 style: TextStyle(color: Colors.white),
                 validator: (String value) {
@@ -200,6 +235,7 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
+                controller: phoneController,
                 validator: (String value) {
                   if (value.isEmpty) return 'Mobno cannot be empty';
 
@@ -223,6 +259,7 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
+                controller: collegeController,
                 validator: (String value) {
                   if (value.isEmpty) return 'College Name cannot be empty';
 
