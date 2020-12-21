@@ -139,10 +139,10 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                 Padding(
                   padding: const EdgeInsets.only(top: 40.0),
                   child: Container(
-                    height: 250,
+                    height: MediaQuery.of(context).size.height/3.5,
                     child: Image(
-                      height: 250,
-                      width: 200,
+                      height: MediaQuery.of(context).size.height/3.5,
+                      width: MediaQuery.of(context).size.width/2.1,
                       image: AssetImage(
                         profilepic[x],
                       ),
