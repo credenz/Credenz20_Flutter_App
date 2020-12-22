@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
+import 'package:http/http.dart' as http;
 
 class Cart extends StatefulWidget {
   @override
@@ -22,6 +23,7 @@ class _CartState extends State<Cart> {
   List list;
   bool load = true;
   Razorpay _razorpay;
+  final children1 = <Widget>[];
 
   @override
   void initState() {
@@ -31,7 +33,21 @@ class _CartState extends State<Cart> {
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    loadCart();
+    getEventPrices();
+  }
+
+
+  getEventPrices()async{
+    prices1=new Map();
+    String url=allEventUrl;
+    http.Response response=await http.get(url);
+    if(response.statusCode==200){
+      List list=jsonDecode(response.body) as List;
+      for(int i=0;i<list.length;i++){
+        prices1[list[i]['event_name']]=list[i]['event_price'];
+      }
+      await loadCart();
+    }
   }
 
   loadCart() async {
@@ -42,6 +58,25 @@ class _CartState extends State<Cart> {
         String eventName = await storage.read(key: '$i');
         list.add(eventName);
       }
+    }
+    for (var i = 0; i < list.length; i++) {
+      children1.add(new SizedBox(
+        width: 50,
+        child: AspectRatio(
+          aspectRatio: 0.5,
+          child: Container(
+            padding: EdgeInsets.all(5),
+            height: 10,
+            width: 10,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: drawerBackgroundColor,
+            ),
+            child: Image.asset(eventimages[eventName.indexOf(list[i],0)].assetName),
+          ),
+        ),
+      ));
+      children1.add(new SizedBox(width: 10,));
     }
     setState(() {
       load = false;
@@ -122,26 +157,6 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
 
 
-    final children1 = <Widget>[];
-    for (var i = 0; i < list.length; i++) {
-      children1.add(new SizedBox(
-        width: 50,
-        child: AspectRatio(
-          aspectRatio: 0.5,
-          child: Container(
-            padding: EdgeInsets.all(5),
-            height: 10,
-            width: 10,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: drawerBackgroundColor,
-            ),
-            child: Image.asset(eventimages[eventName.indexOf(list[i],0)].assetName),
-          ),
-        ),
-      ));
-      children1.add(new SizedBox(width: 10,));
-    }
 
     return load == true
         ? Container(
@@ -162,7 +177,7 @@ class _CartState extends State<Cart> {
               title: Column(
                 children: [
                   Text(' Your Cart'),
-                  Text(' 2 items ', style: TextStyle(fontSize: 12, color: Colors.white70),)
+                  Text(' ${list.length} items ', style: TextStyle(fontSize: 12, color: Colors.white70),)
                 ],
               ),
               backgroundColor: drawerBackgroundColor,
@@ -204,7 +219,7 @@ class _CartState extends State<Cart> {
                                   ),
                                   SizedBox(height: 10),
                                   Text(
-                                      "\u20B9 100",
+                                      prices1.containsKey(list[pos])?prices1[list[pos]].toString():"120",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600, color: Colors.black),
                                     ),

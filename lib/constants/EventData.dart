@@ -20,6 +20,8 @@ const List<String> eventName=[
   "Clash","Contraption","Cretronix","Enigma","DataWiz","NTH","Paper Presentation","Pixelate","Quiz","Reverse Coding","Roboliga","Xodia"
 ];
 
+Map<String,int>prices1;
+
 const List<String> intro = [
   "Have you always dreamt of having your own business or product ?\n" +
       "B-Plan is the perfect platform for you to showcase your ideas before " +

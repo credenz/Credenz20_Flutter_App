@@ -193,45 +193,45 @@ class _ProfileState extends State<Profile> {
                 enabled: false,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: passwordController,
-                obscureText: !_passwordVisible,
-                style: TextStyle(color: Colors.white),
-                validator: (String value) {
-                  if (value.isEmpty) return 'Password cannot be empty';
-
-                  return null;
-                },
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  isDense: true,
-                  labelText: 'Password',
-                  labelStyle: TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.all(15.0),
+            //   child: TextFormField(
+            //     controller: passwordController,
+            //     obscureText: !_passwordVisible,
+            //     style: TextStyle(color: Colors.white),
+            //     validator: (String value) {
+            //       if (value.isEmpty) return 'Password cannot be empty';
+            //
+            //       return null;
+            //     },
+            //     keyboardType: TextInputType.visiblePassword,
+            //     decoration: InputDecoration(
+            //       enabledBorder: OutlineInputBorder(
+            //         borderSide: BorderSide(color: Colors.white),
+            //       ),
+            //       isDense: true,
+            //       labelText: 'Password',
+            //       labelStyle: TextStyle(color: Colors.white),
+            //       border: OutlineInputBorder(
+            //         borderRadius: BorderRadius.circular(5.0),
+            //       ),
+            //       suffixIcon: IconButton(
+            //         icon: Icon(
+            //           _passwordVisible
+            //               ? Icons.visibility
+            //               : Icons.visibility_off,
+            //           color: Colors.white,
+            //         ),
+            //         onPressed: () {
+            //           // Update the state i.e. toogle the state of passwordVisible variable
+            //           setState(() {
+            //             _passwordVisible = !_passwordVisible;
+            //           });
+            //         },
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
