@@ -13,6 +13,7 @@ import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// A delegate that supplies children for [CircleListScrollView].
 ///
@@ -684,7 +685,11 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   int _lastReportedItemIndex = 0;
   ScrollController scrollController;
   ScrollNotification notification1;
-  FixedExtentScrollController fixedExtentScrollController = new FixedExtentScrollController();
+  String animator;
+  final securestorage = FlutterSecureStorage();
+  FixedExtentScrollController fixedExtentScrollController =
+      new FixedExtentScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -693,8 +698,11 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
       final FixedExtentScrollController controller = widget.controller;
       _lastReportedItemIndex = controller.initialItem;
     }
+    _checkAnimator();
+  }
 
-
+  _checkAnimator() async {
+    animator = await securestorage.read(key: 'animation');
   }
 
   @override
@@ -706,8 +714,6 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
         oldScrollController.dispose();
       });
       scrollController = widget.controller;
-
-
     }
   }
 
@@ -733,12 +739,12 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapUp: (TapUpDetails details) =>
-          {
-            if (_onTapUp(details) && SlideDrawer.of(context)?.iscompleted())
-              widget.onTap(index)
-            else widget.onTap(-1)
-          },
+      onTapUp: (TapUpDetails details) => {
+        if (_onTapUp(details) && SlideDrawer.of(context)?.iscompleted())
+          widget.onTap(index)
+        else
+          widget.onTap(-1)
+      },
       child: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
           notification1 = notification;
@@ -767,11 +773,12 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
           physics: widget.physics,
           itemExtent: widget.itemExtent,
           viewportBuilder: (BuildContext context, ViewportOffset offset) {
-            if(_lastReportedItemIndex==0) {
-              print(" hiiiiiii" + scrollController.toString());
+            if (_lastReportedItemIndex == 0 && animator == null) {
+              securestorage.write(key: 'animation', value: 'Animationdone');
+              _checkAnimator();
               fixedExtentScrollController.animateToItem(2,
                   duration: new Duration(milliseconds: 2500),
-                  curve: Interval(0.1, 1.0,curve: Curves.linear));
+                  curve: Interval(0.1, 1.0, curve: Curves.linear));
             }
             return CircleListViewport(
               axis: widget.axis,
@@ -785,11 +792,8 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
             );
           },
         ),
-
       ),
     );
-
-
   }
 }
 
