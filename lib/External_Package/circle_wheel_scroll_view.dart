@@ -207,6 +207,7 @@ class FixedExtentScrollController extends ScrollController {
   /// Creates a scroll controller for scrollables whose items have the same size.
   ///
   /// [initialItem] defaults to 0 and must not be null.
+
   FixedExtentScrollController({
     this.initialItem = 0,
   }) : assert(initialItem != null);
@@ -254,6 +255,7 @@ class FixedExtentScrollController extends ScrollController {
     @required Curve curve,
   }) async {
     if (!hasClients) {
+      print("no client");
       return;
     }
 
@@ -682,15 +684,17 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   int _lastReportedItemIndex = 0;
   ScrollController scrollController;
   ScrollNotification notification1;
-
+  FixedExtentScrollController fixedExtentScrollController = new FixedExtentScrollController();
   @override
   void initState() {
     super.initState();
-    scrollController = widget.controller ?? FixedExtentScrollController();
+    scrollController = widget.controller ?? fixedExtentScrollController;
     if (widget.controller is FixedExtentScrollController) {
       final FixedExtentScrollController controller = widget.controller;
       _lastReportedItemIndex = controller.initialItem;
     }
+
+
   }
 
   @override
@@ -702,6 +706,8 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
         oldScrollController.dispose();
       });
       scrollController = widget.controller;
+
+
     }
   }
 
@@ -761,7 +767,12 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
           physics: widget.physics,
           itemExtent: widget.itemExtent,
           viewportBuilder: (BuildContext context, ViewportOffset offset) {
-            // print(offset.toString());
+            if(_lastReportedItemIndex==0) {
+              print(" hiiiiiii" + scrollController.toString());
+              fixedExtentScrollController.animateToItem(2,
+                  duration: new Duration(milliseconds: 2500),
+                  curve: Interval(0.1, 1.0,curve: Curves.linear));
+            }
             return CircleListViewport(
               axis: widget.axis,
               radius: widget.radius,
@@ -774,8 +785,11 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
             );
           },
         ),
+
       ),
     );
+
+
   }
 }
 

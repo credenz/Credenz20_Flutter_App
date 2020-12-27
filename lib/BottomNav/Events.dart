@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:credenz20/models/Event_Des_Model.dart';
-import 'package:toast/toast.dart';
-import 'package:credenz20/constants/EventData.dart';
-
 // import 'package:flutter_staggered_grid_view/.dart';
 import 'package:credenz20/External_Package/circle_wheel_scroll_view.dart';
+import 'package:credenz20/constants/EventData.dart';
+import 'package:credenz20/models/Event_Des_Model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 
 // import 'package:fluttertoast/fluttertoast.dart';
 import '../constants/theme.dart';
@@ -84,14 +83,8 @@ class WheelExample extends State<Events> {
                 Image.asset(
                   // "images/enigma.png",
                   "images/homeback2.jpg",
-                  height: MediaQuery
-                      .of(this.context)
-                      .size
-                      .height,
-                  width: MediaQuery
-                      .of(this.context)
-                      .size
-                      .width,
+                  height: MediaQuery.of(this.context).size.height,
+                  width: MediaQuery.of(this.context).size.width,
                   fit: BoxFit.fill,
                 ),
               ],
