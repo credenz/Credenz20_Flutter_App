@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'BottomNav/About.dart';
 import 'BottomNav/Contact.dart';
@@ -43,6 +44,7 @@ class _HomeState extends State<Home> {
   final PageStorageBucket bucket = PageStorageBucket();
   int currentIndex = 2;
   PageController pageController;
+  final securestorage=FlutterSecureStorage();
 
   List<Widget> tabPages = [
     new Profile(),
@@ -55,7 +57,15 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    _initAnimation();
+
     pageController = PageController(initialPage: currentIndex);
+  }
+
+
+
+  _initAnimation()async{
+    securestorage.write(key: 'animation', value: null);
   }
 
   @override
@@ -238,7 +248,7 @@ class _HomeState extends State<Home> {
                   flex: 1,
                   child: SizedBox(),
                 ),
-            
+
                 Expanded(
                   child: MaterialButton(
                     // minWidth: 40,

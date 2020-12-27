@@ -13,6 +13,7 @@ import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// A delegate that supplies children for [CircleListScrollView].
 ///
@@ -207,6 +208,7 @@ class FixedExtentScrollController extends ScrollController {
   /// Creates a scroll controller for scrollables whose items have the same size.
   ///
   /// [initialItem] defaults to 0 and must not be null.
+
   FixedExtentScrollController({
     this.initialItem = 0,
   }) : assert(initialItem != null);
@@ -254,6 +256,7 @@ class FixedExtentScrollController extends ScrollController {
     @required Curve curve,
   }) async {
     if (!hasClients) {
+      print("no client");
       return;
     }
 
@@ -682,15 +685,24 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   int _lastReportedItemIndex = 0;
   ScrollController scrollController;
   ScrollNotification notification1;
+  String animator;
+  final securestorage = FlutterSecureStorage();
+  FixedExtentScrollController fixedExtentScrollController =
+      new FixedExtentScrollController();
 
   @override
   void initState() {
     super.initState();
-    scrollController = widget.controller ?? FixedExtentScrollController();
+    scrollController = widget.controller ?? fixedExtentScrollController;
     if (widget.controller is FixedExtentScrollController) {
       final FixedExtentScrollController controller = widget.controller;
       _lastReportedItemIndex = controller.initialItem;
     }
+    _checkAnimator();
+  }
+
+  _checkAnimator() async {
+    animator = await securestorage.read(key: 'animation');
   }
 
   @override
@@ -727,12 +739,12 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapUp: (TapUpDetails details) =>
-          {
-            if (_onTapUp(details) && SlideDrawer.of(context)?.iscompleted())
-              widget.onTap(index)
-            else widget.onTap(-1)
-          },
+      onTapUp: (TapUpDetails details) => {
+        if (_onTapUp(details) && SlideDrawer.of(context)?.iscompleted())
+          widget.onTap(index)
+        else
+          widget.onTap(-1)
+      },
       child: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
           notification1 = notification;
@@ -761,7 +773,13 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
           physics: widget.physics,
           itemExtent: widget.itemExtent,
           viewportBuilder: (BuildContext context, ViewportOffset offset) {
-            // print(offset.toString());
+            if (_lastReportedItemIndex == 0 && animator == null) {
+              securestorage.write(key: 'animation', value: 'Animationdone');
+              _checkAnimator();
+              fixedExtentScrollController.animateToItem(2,
+                  duration: new Duration(milliseconds: 2500),
+                  curve: Interval(0.1, 1.0, curve: Curves.linear));
+            }
             return CircleListViewport(
               axis: widget.axis,
               radius: widget.radius,
