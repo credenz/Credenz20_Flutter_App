@@ -39,7 +39,8 @@ class _HomeState extends State<Home> {
     ContactUs(),
     Noti(),
   ];
-
+  final list = List();
+  int cnt=0;
   Widget currentScreen = Events(); //
   final PageStorageBucket bucket = PageStorageBucket();
   int currentIndex = 2;
@@ -58,7 +59,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     _initAnimation();
-
+    cartNo();
     pageController = PageController(initialPage: currentIndex);
   }
 
@@ -96,9 +97,26 @@ class _HomeState extends State<Home> {
   //       duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
   // }
 
+  cartNo() async {
+    list.clear();
+
+
+    for (int i = 0; i < 12; i++) {
+      bool pre = await securestorage.containsKey(key: '$i');
+      if (pre) {
+        String eventName = await securestorage.read(key: '$i');
+        list.add(eventName);
+      }
+    }
+    print(list.length);
+    cnt=list.length;
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+
     SizeConfig().init(context);
+
     return Scaffold(
       //Tanuj's Code
       /*appBar: AppBar(
@@ -111,6 +129,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         leading: Builder(
           builder: (context) {
+
             return IconButton(
               icon: Icon(Icons.menu),
               onPressed: () => SlideDrawer.of(context)?.toggle(),
@@ -118,6 +137,64 @@ class _HomeState extends State<Home> {
           },
         ),
         actions: <Widget>[
+
+          new Padding(padding: const EdgeInsets.all(10.0),
+
+            child: new Container(
+                height: 150.0,
+                width: 30.0,
+                child: new GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        new MaterialPageRoute(
+                            builder:(BuildContext context) =>
+                            new Cart()
+                        )
+                    );
+                  },
+
+                  child: new Stack(
+
+                    children: <Widget>[
+                      new IconButton(icon: new Icon(Icons.shopping_cart_outlined,
+                        color: Colors.white,),
+                        onPressed: null,
+                      ),
+                      cnt ==0 ? new Container() :
+                      new Positioned(
+                          top: 0.0,
+                          right: 0.0,
+                          child: new Stack(
+                            children: <Widget>[
+                              new Icon(
+                                  Icons.brightness_1,
+                                  size: 18.0, color: Colors.black),
+                              new Positioned(
+                                  top: 3.0,
+                                  right: 7.0,
+                                  child: new Center(
+                                    child: new Text(
+                                      cnt.toString(),
+                                      style: new TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11.0,
+                                          //fontWeight: FontWeight.w500
+                                      ),
+                                    ),
+                                  )
+                              ),
+
+
+                            ],
+                          )),
+
+                    ],
+                  ),
+                )
+            )
+
+            ,)],
+          /*<Widget>[
           IconButton(
             icon: Icon(
               Icons.shopping_cart,
@@ -130,7 +207,7 @@ class _HomeState extends State<Home> {
               // do something
             },
           )
-        ],
+        ],*/
         title: Text(widget.title),
         backgroundColor: Colors.black,
       ),
