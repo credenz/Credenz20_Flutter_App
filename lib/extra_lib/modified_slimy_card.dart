@@ -1,5 +1,6 @@
 library slimy_card;
 
+import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'dart:async';
@@ -127,11 +128,11 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
     gapInitial = ((widget.topCardHeight - x - widget.width / 4) > 0)
         ? (widget.topCardHeight - x - widget.width / 4)
         : 0;
-    gapFinal = ((widget.topCardHeight + x - widget.width / 4 + 50) > 0)
-        ? (widget.topCardHeight + x - widget.width / 4 + 50)
+    gapFinal = ((widget.topCardHeight + x - widget.width / 4 ) > 0)
+        ? (widget.topCardHeight + x - widget.width / 4)
         : 2 * x + 50;
     gap = gapInitial;
-  }
+}
 
   /// It supports multiple states and updates app according to them.
 
@@ -254,14 +255,14 @@ class _SlimyCardState extends State<SlimyCard> with TickerProviderStateMixin {
                       : 0,
                 ),
                 Container(
-                  height: 50,
-                  width: 50,
+                  height: 10,
+                  width: 10,
                   child: RotationTransition(
                     turns: arrowAnimation,
-                    child: Icon(Icons.keyboard_arrow_down, color: Colors.black),
+                    child: Icon(Icons.keyboard_arrow_down, color: drawerBackgroundColor),
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: drawerBackgroundColor,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(

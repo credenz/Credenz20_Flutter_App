@@ -249,7 +249,7 @@ class _SignUpState extends State<SignUp> {
                 // ),
                 SizedBox(height: 20,),
                Container(
-                 margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(60),0,getProportionateScreenWidth(60),0),
+                 margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(45),0,getProportionateScreenWidth(45),0),
                  child: RaisedButton(
                    color: Colors.white,
                    child: Padding(

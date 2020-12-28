@@ -36,22 +36,21 @@ class _AboutPingState extends State<AboutPing> {
             return ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                SizedBox(height: 15),
-                topCardWidget(),
-                bottomCardWidget(),
+                // topCardWidget(),
+                // bottomCardWidget(),
                 // SlimyCard is being called here.
 
-                // SlimyCard(
-                //   // In topCardWidget below, imagePath changes according to the
-                //   // status of the SlimyCard(snapshot.data).
-                //   width: 450,
-                //   color: drawerBackgroundColor,
-                //   topCardHeight: 300,
-                //   bottomCardHeight: 350,
-                //   topCardWidget: topCardWidget(),
-                //   bottomCardWidget: bottomCardWidget(),
-                //   slimeEnabled: false,
-                // ),
+                SlimyCard(
+                  // In topCardWidget below, imagePath changes according to the
+                  // status of the SlimyCard(snapshot.data).
+                  width: 450,
+                  color: drawerBackgroundColor,
+                  topCardHeight: 300,
+                  bottomCardHeight: 350,
+                  topCardWidget: topCardWidget(),
+                  bottomCardWidget: bottomCardWidget(),
+                  slimeEnabled: false,
+                ),
               ],
             );
           }),
@@ -86,7 +85,7 @@ class _AboutPingState extends State<AboutPing> {
         ),
         SizedBox(height: 25),
         Text(
-          "Credenz '21",
+          "PICT IEEE Newsletter Group",
           style: TextStyle(
               color: Colors.white,
               fontSize: 20,
