@@ -1,14 +1,17 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:credenz20/Home.dart';
 import 'package:credenz20/SignUp.dart';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
+import 'package:credenz20/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/gestures.dart';
+import 'package:path_provider/path_provider.dart';
 import 'constants/styles.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:credenz20/size_config.dart';
@@ -53,7 +56,7 @@ class _LoginState extends State<Login> {
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
         Fluttertoast.showToast(msg: 'LoggedIn');
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")), (route) => false);
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>MyApp()), (route) => false);
       }
     }else{
       String msg=jsonDecode(response.body)['message'];
