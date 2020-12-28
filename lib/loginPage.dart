@@ -198,9 +198,10 @@ class _LoginState extends State<Login> {
                   margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(60),0,getProportionateScreenWidth(60),0),
                   child: Material(
                     child: InkWell(
-                      child: FlatButton(
+                      child: FlatButton.icon(
                         color: Colors.white,
-                        child: Text(
+                        icon: Icon(Icons.lock),
+                        label: Text(
                           "Sign In",
                           style: TextStyle(
                               fontSize: getProportionateScreenWidth(26),

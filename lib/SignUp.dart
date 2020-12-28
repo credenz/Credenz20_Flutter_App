@@ -97,7 +97,7 @@ class _SignUpState extends State<SignUp> {
                   height:getProportionateScreenHeight(20),
                 ),
                 Material(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
@@ -116,9 +116,9 @@ class _SignUpState extends State<SignUp> {
                     },
                   ),
                 ),
-                SizedBox(height: _height / 60.0),
+                SizedBox(height: _height / 30.0),
                 Material(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
@@ -137,9 +137,9 @@ class _SignUpState extends State<SignUp> {
                     },
                   ),
                 ),
-                SizedBox(height: _height / 60.0),
+                SizedBox(height: _height / 30.0),
                 Material(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
@@ -158,9 +158,9 @@ class _SignUpState extends State<SignUp> {
                     },
                   ),
                 ),
-                SizedBox(height: _height / 60.0),
+                SizedBox(height: _height / 30.0),
                 Material(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.phone,
@@ -179,9 +179,9 @@ class _SignUpState extends State<SignUp> {
                     },
                   ),
                 ),
-                SizedBox(height: _height / 60.0),
+                SizedBox(height: _height / 30.0),
                 Material(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
@@ -200,9 +200,9 @@ class _SignUpState extends State<SignUp> {
                     },
                   ),
                 ),
-                SizedBox(height: _height / 60.0),
+                SizedBox(height: _height / 30.0),
                 Material(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(10.0),
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
@@ -250,9 +250,10 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: 20,),
                Container(
                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(45),0,getProportionateScreenWidth(45),0),
-                 child: RaisedButton(
+                 child: FlatButton.icon(
                    color: Colors.white,
-                   child: Padding(
+                   icon: Icon(Icons.double_arrow_sharp),
+                   label: Padding(
                      padding: const EdgeInsets.all(8.0),
                      child: Text('Sign Up',style: TextStyle(fontSize: 18),),
                    ),
