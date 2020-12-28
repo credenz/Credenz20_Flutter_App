@@ -51,6 +51,7 @@ class _CartState extends State<Cart> {
   }
 
   loadCart() async {
+    children1.clear();
     list = List();
     for (int i = 0; i < 12; i++) {
       bool pre = await storage.containsKey(key: '$i');
@@ -182,71 +183,81 @@ class _CartState extends State<Cart> {
               ),
               backgroundColor: drawerBackgroundColor,
             ),
-            body: ListView(
-              children: [
-                ListView.builder(
-                  itemBuilder: (BuildContext context, int pos) {
-                    AssetImage ig=eventimages[eventName.indexOf(list[pos],0)];
-                    return Card(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: 88,
-                                child: AspectRatio(
-                                  aspectRatio: 0.88,
-                                  child: Container(
-                                    padding: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      color: drawerBackgroundColor,
-                                      borderRadius: BorderRadius.circular(10),
+            body: Container(
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/balloonback0.jpg"),
+                  // <-- BACKGROUND IMAGE
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: ListView(
+                children: [
+                  ListView.builder(
+                    itemBuilder: (BuildContext context, int pos) {
+                      AssetImage ig=eventimages[eventName.indexOf(list[pos],0)];
+                      return Card(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 88,
+                                  child: AspectRatio(
+                                    aspectRatio: 0.88,
+                                    child: Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        color: drawerBackgroundColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Image.asset(ig.assetName),
                                     ),
-                                    child: Image.asset(ig.assetName),
                                   ),
                                 ),
-                              ),
-                              SizedBox(width: 20),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    list[pos],
-                                    style: TextStyle(color: Colors.black, fontSize: 16),
-                                    maxLines: 2,
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text(
-                                      prices1.containsKey(list[pos])?prices1[list[pos]].toString():"120",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600, color: Colors.black),
+                                SizedBox(width: 20),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      list[pos],
+                                      style: TextStyle(color: Colors.black, fontSize: 16),
+                                      maxLines: 2,
                                     ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                    prices1.containsKey(list[pos])?"\u20B9"+prices1[list[pos]].toString():"\u20B9"+"120",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600, color: Colors.black),
+                                      ),
 
-                                ],
-                              ),
+                                  ],
+                                ),
 
-                            ],
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () async {
-                              setState(() {
-                                load = true;
-                              });
-                              await deleteFromCart(list[pos]);
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: list.length,
-                  shrinkWrap: true,
-                ),
-              ],
+                              ],
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () async {
+                                setState(() {
+                                  load = true;
+                                });
+                                await deleteFromCart(list[pos]);
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: list.length,
+                    shrinkWrap: true,
+                  ),
+                ],
+              ),
             ),
             bottomNavigationBar: list.length==0?Container():Container(
               padding: EdgeInsets.symmetric(
@@ -264,7 +275,7 @@ class _CartState extends State<Cart> {
                   BoxShadow(
                     offset: Offset(0, -15),
                     blurRadius: 20,
-                    color: Color(0xFFDADADA).withOpacity(0.15),
+                    color: Colors.black.withOpacity(1),
                   )
                 ],
               ),
