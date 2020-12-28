@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:credenz20/nav_pages/editprofile.dart';
 
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
@@ -18,7 +19,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _passwordVisible;
-  bool load=true;
+  bool load = true;
   final storage = FlutterSecureStorage();
   TextEditingController nameController;
   TextEditingController usernameController;
@@ -43,26 +44,26 @@ class _ProfileState extends State<Profile> {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) => Login()));
     } else {
-      url+=username;
+      url += username;
       Map<String, String> headers = {"Authorization": "Bearer $accToken"};
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        var res=jsonDecode(response.body);
+        var res = jsonDecode(response.body);
         print(res);
-        nameController=new TextEditingController();
-        usernameController=new TextEditingController();
-        emailController=new TextEditingController();
-        passwordController=new TextEditingController();
-        phoneController=new TextEditingController();
-        collegeController=new TextEditingController();
+        nameController = new TextEditingController();
+        usernameController = new TextEditingController();
+        emailController = new TextEditingController();
+        passwordController = new TextEditingController();
+        phoneController = new TextEditingController();
+        collegeController = new TextEditingController();
         setState(() {
-          nameController.text=res['name'];
-          usernameController.text=res['username'];
-          emailController.text=res['email'];
-          passwordController.text=res['password'];
-          phoneController.text=res['phoneno'].toString();
-          collegeController.text=res['clgname'];
-          load=false;
+          nameController.text = res['name'];
+          usernameController.text = res['username'];
+          emailController.text = res['email'];
+          passwordController.text = res['password'];
+          phoneController.text = res['phoneno'].toString();
+          collegeController.text = res['clgname'];
+          load = false;
         });
         print(url);
         print(headers);
@@ -74,7 +75,7 @@ class _ProfileState extends State<Profile> {
         print(response.body);
         print(response.statusCode);
         setState(() {
-          load=false;
+          load = false;
         });
       }
     }
@@ -98,23 +99,34 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         floatingActionButton: FloatingActionButton(
           heroTag: 'abc',
           child: Icon(Icons.edit),
           onPressed: () {
-            _formKey.currentState.validate();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => EditProfile(),
+                ));
+            // _formKey.currentState.validate();
           },
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16.0),
+                  bottomRight: Radius.circular(16.0))),
         ),
-        body: load==true?Container(
-          child: loader1,
-          color: Colors.black,
-        ):SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
-            child: _buildForm(),
-          ),
-        ));
+        body: load == true
+            ? Container(
+                child: loader1,
+                color: Colors.black,
+              )
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
+                  child: _buildForm(),
+                ),
+              ));
   }
 
   _buildForm() {
@@ -122,25 +134,29 @@ class _ProfileState extends State<Profile> {
         key: _formKey,
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: nameController,
-                style: TextStyle(color: Colors.white),
-                validator: (String value) {
-                  if (value.isEmpty) return 'Name cannot be empty';
+            Container(
+              color: Colors.purple.shade500,
 
-                  return null;
-                },
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  isDense: true,
-                  labelText: 'Name',
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: TextFormField(
+                  controller: nameController,
+                  style: TextStyle(color: Colors.black),
+                  validator: (String value) {
+                    if (value.isEmpty) return 'Name cannot be empty';
+
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(color: Colors.black),
+                    isDense: true,
+                    labelText: 'Name',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                 ),
               ),
@@ -149,7 +165,7 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: usernameController,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
                   return null;
@@ -157,7 +173,7 @@ class _ProfileState extends State<Profile> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelText: 'Username',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: Colors.black),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
@@ -172,7 +188,7 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: emailController,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 validator: (String value) {
                   if (value.isEmpty) return 'Email cannot be empty';
 
@@ -185,7 +201,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   isDense: true,
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: Colors.black),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -241,7 +257,7 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -249,7 +265,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   isDense: true,
                   labelText: 'Phone number',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: Colors.black),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -265,14 +281,14 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
                   isDense: true,
                   labelText: 'College Name',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: Colors.black),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
