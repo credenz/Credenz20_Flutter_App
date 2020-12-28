@@ -51,6 +51,7 @@ class _CartState extends State<Cart> {
   }
 
   loadCart() async {
+    children1.clear();
     list = List();
     for (int i = 0; i < 12; i++) {
       bool pre = await storage.containsKey(key: '$i');
