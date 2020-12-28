@@ -12,6 +12,8 @@ final loader=SpinKitThreeBounce(
   size: 30,
 );
 
+final animatedloader = Image.asset("gifs/credenzapploader.gif");
+
 final loader1=SpinKitThreeBounce(
   color: Colors.white,
   size: 30,

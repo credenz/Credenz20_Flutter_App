@@ -51,8 +51,12 @@ class _MyEventsState extends State<MyEvents> {
         title: Text("My Events"),
       ),
       body: load==true?Container(
-        child: loader,
-        color: Colors.white,
+          color: Colors.black,
+          child: Center(
+        child: Container(
+          child: animatedloader,
+          color: drawerBackgroundColor,
+        ),)
       ):ListView.builder(itemBuilder: (BuildContext context,int pos){
         return ListTile(
           title: Text("Event Name:- ${eventList[pos]['event_username'].toString().toUpperCase()}"),
