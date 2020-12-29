@@ -92,7 +92,7 @@ List<String> position = [
   "App head",
   "App head",
   "App head",
-  "joint secretary",
+  "Joint Secretary",
 ];
 
 class _PageViewWidgetState extends State<PageViewWidget> {

@@ -101,9 +101,9 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.orange[200],
+                    cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person, color: Colors.orange[200], size: 20),
+                      prefixIcon: Icon(Icons.person, color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -122,9 +122,9 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.orange[200],
+                    cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person, color: Colors.orange[200], size: 20),
+                      prefixIcon: Icon(Icons.person, color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Username",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -143,9 +143,9 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    cursorColor: Colors.orange[200],
+                    cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email, color: Colors.orange[200], size: 20),
+                      prefixIcon: Icon(Icons.email, color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Email",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -164,9 +164,9 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.phone,
-                    cursorColor: Colors.orange[200],
+                    cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.phone, color: Colors.orange[200], size: 20),
+                      prefixIcon: Icon(Icons.phone, color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Phone Number",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -185,9 +185,9 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.orange[200],
+                    cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.school, color: Colors.orange[200], size: 20),
+                      prefixIcon: Icon(Icons.school, color: Colors.deepPurpleAccent, size: 20),
                       hintText: "College Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -206,15 +206,15 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large? 12 : (_medium? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.orange[200],
+                    cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock, color: Colors.orange[200], size: 20),
+                      prefixIcon: Icon(Icons.lock, color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Password",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none),
                       suffixIcon: IconButton(icon: Icon(Icons.remove_red_eye),
-                          color: Colors.orange[200],onPressed: toggle )
+                          color: Colors.deepPurpleAccent,onPressed: toggle )
                     ),
                     onChanged: (val){
                       setState(() {
@@ -247,11 +247,18 @@ class _SignUpState extends State<SignUp> {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 20,),
+                SizedBox(height: 50,),
                Container(
                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(45),0,getProportionateScreenWidth(45),0),
                  child: FlatButton.icon(
-                   color: Colors.white,
+                   shape: RoundedRectangleBorder(
+                       borderRadius: BorderRadius.only(
+                         topLeft: Radius.circular(8.0),
+                         bottomLeft: Radius.circular(8.0),
+                         bottomRight: Radius.circular(8.0),
+                       )
+                   ),
+                   color: Colors.deepPurpleAccent,
                    icon: Icon(Icons.double_arrow_sharp),
                    label: Padding(
                      padding: const EdgeInsets.all(8.0),

@@ -200,21 +200,30 @@ class _LoginState extends State<Login> {
                 Container(
                   margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(60),0,getProportionateScreenWidth(60),0),
                   child: Material(
+                    color: drawerBackgroundColor,
                     child: InkWell(
-                      child: FlatButton.icon(
-                        color: Colors.white,
+
+                      child: RaisedButton.icon(
+                        color: Colors.deepPurpleAccent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                            )
+                        ),
                         icon: Icon(Icons.lock),
                         label: Text(
                           "Sign In",
                           style: TextStyle(
-                              fontSize: getProportionateScreenWidth(26),
+                              fontSize: getProportionateScreenWidth(23),
                               color: Colors.black),
                         ),
                         onPressed: () {
                           check();
                         },
-                        minWidth: getProportionateScreenWidth(150),
-                        height: getProportionateScreenHeight(60),
+                        // minWidth: getProportionateScreenWidth(150),
+                        // height: getProportionateScreenHeight(60),
                       ),
                     ),
                   ),
