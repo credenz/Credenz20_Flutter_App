@@ -1,9 +1,10 @@
 import 'dart:convert';
-import 'package:credenz20/nav_pages/editprofile.dart';
 
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/loginPage.dart';
+import 'package:credenz20/nav_pages/editprofile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -123,7 +124,7 @@ class _ProfileState extends State<Profile> {
               )
             : SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
+                  padding: EdgeInsets.only(bottom: 50.0),
                   child: _buildForm(),
                 ),
               ));
@@ -135,10 +136,16 @@ class _ProfileState extends State<Profile> {
         child: Column(
           children: [
             Container(
-              color: Colors.purple.shade500,
-
+              margin: EdgeInsets.only(top: 20.0, right: 25.0),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.purple.shade700, Colors.purple.shade100]),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25.0),
+                      bottomRight: Radius.circular(25.0))),
               child: Padding(
-                padding: EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(10.0),
                 child: TextFormField(
                   controller: nameController,
                   style: TextStyle(color: Colors.black),
@@ -161,52 +168,72 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: usernameController,
-                style: TextStyle(color: Colors.black),
-                validator: (String value) {
-                  if (value.isEmpty) return 'username cannot be empty';
-                  return null;
-                },
-                decoration: InputDecoration(
-                  isDense: true,
-                  labelText: 'Username',
-                  labelStyle: TextStyle(color: Colors.black),
-                  disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+            Container(
+              margin: EdgeInsets.only(top: 20.0, left: 25.0),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.purple.shade700, Colors.purple.shade100]),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25.0),
+                      bottomLeft: Radius.circular(25.0))),
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: TextFormField(
+                  controller: usernameController,
+                  style: TextStyle(color: Colors.black),
+                  validator: (String value) {
+                    if (value.isEmpty) return 'username cannot be empty';
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    isDense: true,
+                    labelText: 'Username',
+                    labelStyle: TextStyle(color: Colors.black),
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+                  enabled: false,
                 ),
-                enabled: false,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: emailController,
-                style: TextStyle(color: Colors.black),
-                validator: (String value) {
-                  if (value.isEmpty) return 'Email cannot be empty';
+            Container(
+              margin: EdgeInsets.only(top: 15.0, right: 25.0),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.purple.shade700, Colors.purple.shade100]),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25.0),
+                      bottomRight: Radius.circular(25.0))),
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: TextFormField(
+                  controller: emailController,
+                  style: TextStyle(color: Colors.black),
+                  validator: (String value) {
+                    if (value.isEmpty) return 'Email cannot be empty';
 
-                  return null;
-                },
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    return null;
+                  },
+                  cursorColor: Colors.white,
+                  decoration: InputDecoration(
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    isDense: true,
+                    labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.black),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
-                  isDense: true,
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+                  enabled: false,
                 ),
-                enabled: false,
               ),
             ),
             // Padding(
@@ -248,49 +275,69 @@ class _ProfileState extends State<Profile> {
             //     ),
             //   ),
             // ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: phoneController,
-                validator: (String value) {
-                  if (value.isEmpty) return 'Mobno cannot be empty';
+            Container(
+              margin: EdgeInsets.only(top: 15.0, left: 25.0),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.purple.shade700, Colors.purple.shade100]),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25.0),
+                      bottomLeft: Radius.circular(25.0))),
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: TextFormField(
+                  controller: phoneController,
+                  validator: (String value) {
+                    if (value.isEmpty) return 'Mobno cannot be empty';
 
-                  return null;
-                },
-                style: TextStyle(color: Colors.black),
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  isDense: true,
-                  labelText: 'Phone number',
-                  labelStyle: TextStyle(color: Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                    return null;
+                  },
+                  style: TextStyle(color: Colors.black),
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    isDense: true,
+                    labelText: 'Phone number',
+                    labelStyle: TextStyle(color: Colors.black),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextFormField(
-                controller: collegeController,
-                validator: (String value) {
-                  if (value.isEmpty) return 'College Name cannot be empty';
+            Container(
+              margin: EdgeInsets.only(top: 15.0, right: 25.0),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.purple.shade700, Colors.purple.shade100]),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25.0),
+                      bottomRight: Radius.circular(25.0))),
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: TextFormField(
+                  controller: collegeController,
+                  validator: (String value) {
+                    if (value.isEmpty) return 'College Name cannot be empty';
 
-                  return null;
-                },
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  isDense: true,
-                  labelText: 'College Name',
-                  labelStyle: TextStyle(color: Colors.black),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                    return null;
+                  },
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    isDense: true,
+                    labelText: 'College Name',
+                    labelStyle: TextStyle(color: Colors.black),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                 ),
               ),
