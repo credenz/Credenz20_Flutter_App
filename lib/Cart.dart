@@ -184,7 +184,6 @@ class _CartState extends State<Cart> {
               backgroundColor: drawerBackgroundColor,
             ),
             body: Container(
-              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("images/balloonback0.jpg"),
@@ -289,12 +288,10 @@ class _CartState extends State<Cart> {
                     SizedBox(
                       height: 50,
 
-                      child: Expanded(
-                        child: ListView(
-                            scrollDirection: Axis.horizontal,
+                      child: ListView(
+                          scrollDirection: Axis.horizontal,
 
-                            children: children1,
-                        ),
+                          children: children1,
                       ),
                     ),
                       SizedBox(height: 20),
