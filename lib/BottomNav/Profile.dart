@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/loginPage.dart';
+import 'package:credenz20/nav_pages/editprofile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -127,7 +128,7 @@ class _ProfileState extends State<Profile> {
                     ClipPath(
                       clipper: new CustomHalfCircleClipper(),
                       child: Container(
-                        height: 180,
+                        height: 150,
                         color: Color(0xff00022e),
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
@@ -179,7 +180,13 @@ class _ProfileState extends State<Profile> {
                                   fillColor: Colors.blue,
                                   padding: EdgeInsets.all(6),
                                   // color: Colors.blue,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (BuildContext context) => EditProfile(),
+                                                ));
+                                  },
                                   child: Icon(
                                     Icons.edit,
                                     color: Colors.white,
@@ -211,7 +218,7 @@ class _ProfileState extends State<Profile> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: nameController,
                 style: TextStyle(color: Colors.black),
@@ -225,7 +232,7 @@ class _ProfileState extends State<Profile> {
                   isDense: true,
                   labelText: 'Name',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Color(0xff00022e)),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -247,7 +254,7 @@ class _ProfileState extends State<Profile> {
                   labelText: 'Username',
                   labelStyle: TextStyle(color: Colors.black),
                   disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Color(0xff00022e)),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -269,7 +276,7 @@ class _ProfileState extends State<Profile> {
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
                   disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Color(0xff00022e)),
                   ),
                   isDense: true,
                   labelText: 'Email',
@@ -333,7 +340,7 @@ class _ProfileState extends State<Profile> {
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Color(0xff00022e)),
                   ),
                   isDense: true,
                   labelText: 'Phone number',
@@ -356,7 +363,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Color(0xff00022e)),
                   ),
                   isDense: true,
                   labelText: 'College Name',
@@ -379,68 +386,34 @@ class CustomHalfCircleClipper extends CustomClipper<Path> {
     Path path = Path();
     path.lineTo(0, size.height-30.0);
     path.lineTo(20.0, size.height-30.0);
-    var curXPos = 0.0;
+    var curXPos = 20.0;
     var curYPos = size.height-30.0;
-    var increment = (size.width / 2) - 10.0;
-    while (curXPos < size.width-20.0) {
-      curXPos += increment;
-      path.arcToPoint(Offset(curXPos, curYPos), radius: Radius.circular(175));
+    var increment = (size.width / 2) - 20.0;
+    curXPos += increment-10.0;
+    while (curXPos < size.width-10.0) {
+      // path.arcToPoint(Offset(curXPos, curYPos), radius: Radius.circular(175));
       // path.arcToPoint(Offset(curXPos, curYPos), radius: Radius.circular(175),clockwise: false,rotation: 180.0);
+      path.arcToPoint(Offset(curXPos, curYPos),clockwise: false, radius: Radius.circular(175));
+      path.lineTo(curXPos+20.0,size.height-30.0);
+      curXPos += increment+10.0;
     }
     path.lineTo(size.width,size.height-30.0);
     path.lineTo(size.width,0);
     // path.lineTo(0,0);
-    // path.lineTo(0,size.height-30.0);
-    // path.lineTo(20.0,size.height-30.0);
-    // path.moveTo(20.0,size.height-30.0);
-
-    // path.moveTo(size.width-20.0,size.height-30.0);
-
-    // var curXPos2 = 0.0;
-    // var curYPos2 = size.height-20.0;
-    // var increment2 = (size.width / 2) - 10.0;
-    // while (curXPos2 < size.width-20.0) {
-    //   curXPos2 += increment2;
-    //   path.arcToPoint(Offset(curXPos2, curYPos2), radius: Radius.circular(175));
-    // }
-    //
-    // path.lineTo(size.width,size.height-30.0);
-    // path.lineTo(size.width,0);
-
-
-    // var curXPos2 = size.width-20.0;
-    // var curYPos2 = size.height-30.0;
-    // var decrement = (size.width / 2) - 10.0;
-    // while (curXPos2 > 20.0) {
-    //   curXPos2 -= decrement;
-    //   path.arcToPoint(Offset(curXPos2, curYPos2), radius: Radius.circular(175));
-    // }
-
-
-
-
-
-
-    // path.lineTo(size.width,size.height);
     // path.lineTo(0,size.height);
-    // path.lineTo(0,size.height-30.0);
+    path.moveTo(0,size.height-30.0);
+    path.lineTo(20.0, size.height-30.0);
+    path.arcToPoint(Offset(size.width/2-10.0, size.height-30.0), radius: Radius.circular(175));
+    path.lineTo(size.width/2+10.0,size.height-30.0);
+    path.arcToPoint(Offset(size.width-20.0, size.height-30.0), radius: Radius.circular(175));
+    path.lineTo(size.width,size.height-30.0);
+    path.lineTo(size.width,size.height);
+    path.lineTo(0,size.height);
 
 
 
-    // Path path2 = Path();
-    // path2.lineTo(0, size.height);
-    // path2.lineTo(20.0, size.height);
-    // var curXPos2 = 0.0;
-    // var curYPos2 = size.height-30.0;
-    // var increment2 = (size.width / 2) - 10.0;
-    // while (curXPos2 < size.width-20.0) {
-    //   curXPos2 += increment2;
-    //   path2.arcToPoint(Offset(curXPos2, curYPos2), radius: Radius.circular(175));
-    // }
-    // path2.lineTo(size.width,size.height-30.0);
-    // path2.lineTo(size.width,0);
-    // path.lineTo(size.width,size.height);
-    // path.lineTo(size.width,size.height-30.0);
+
+
 
     return path;
   }

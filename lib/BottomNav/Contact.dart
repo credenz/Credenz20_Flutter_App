@@ -21,7 +21,7 @@ class _ContactUsState extends State<ContactUs> {
 
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/balloonback0.jpg"),
+                image: AssetImage("images/ballonback01.jpg"),
                 // <-- BACKGROUND IMAGE
                 fit: BoxFit.fill,
               ),

@@ -26,6 +26,7 @@ class _EventDesState extends State<EventDes> {
   addToCart()async{
     bool pre=await storage.containsKey(key: '${widget.eventIndex}');
     if(pre){
+
       Fluttertoast.showToast(msg: 'Event already added');
     }else{
       await storage.write(key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
@@ -94,9 +95,9 @@ checkInCart()async{
 
                   onPressed: () {
                     setState(() {
-                      favorite = !favorite;
+                      // favorite = !favorite;
                       addToCart();
-
+                      checkInCart();
                     });
                   },
                   icon: favorite
