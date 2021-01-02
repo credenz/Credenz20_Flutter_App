@@ -28,7 +28,7 @@ class _DeveloperState extends State<Developer> {
 
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/balloonback0.jpg"),
+                image: AssetImage("images/ballonback01.jpg"),
                 // <-- BACKGROUND IMAGE
                 fit: BoxFit.fill,
               ),
@@ -126,13 +126,13 @@ class _PageViewWidgetState extends State<PageViewWidget> {
         child: Center(
           child: Container(
             // height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                color: Color(0x22000000),
-                spreadRadius: 5,
-                blurRadius: 20,
-              )
-            ]),
+            // decoration: BoxDecoration(boxShadow: [
+            //   BoxShadow(
+            //     color: Color(0x22000000),
+            //     spreadRadius: 5,
+            //     blurRadius: 20,
+            //   )
+            // ]),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -154,7 +154,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                   child: Container(
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
-                        color: Color(0x66000000),
+                        color: Color(0x55000000),
                         spreadRadius: 5,
                         blurRadius: 20,
                       )
