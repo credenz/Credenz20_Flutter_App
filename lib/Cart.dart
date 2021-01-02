@@ -171,13 +171,22 @@ class _CartState extends State<Cart> {
         :
           Container(
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
+      decoration: list.length==0?BoxDecoration(
+
+        color: Colors.grey[900],
+          image: DecorationImage(
+      image: AssetImage("images/emptycart.png"),
+            fit: BoxFit.scaleDown,
+
+          )
+       // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
+      ) :BoxDecoration(
           image: DecorationImage(
               image: AssetImage("images/ballonback01.jpg"),
             fit: BoxFit.cover,
           )
       ),
-            child: Scaffold(
+            child:Scaffold(
               backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   centerTitle: true,
@@ -198,13 +207,6 @@ class _CartState extends State<Cart> {
                   backgroundColor: drawerBackgroundColor,
                 ),
                 body: Container(
-                  /*decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("images/balloonback0.jpg"),
-                      // <-- BACKGROUND IMAGE
-                      fit: BoxFit.fill,
-                    ),
-                  ),*/
                   child: ListView(
                     children: [
                       ListView.builder(
