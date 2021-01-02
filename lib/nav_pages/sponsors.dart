@@ -22,21 +22,23 @@ class _SponsorsState extends State<Sponsors> {
     return  Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
-        height: 300,
+        //height: 400,
         width: MediaQuery.of(context).size.width,
         child: DecoratedBox(
+
             decoration: BoxDecoration(
-                borderRadius: new BorderRadius.only(
+              shape: BoxShape.circle,
+                /*borderRadius: new BorderRadius.only(
                   topLeft:  const  Radius.circular(40.0),
                   topRight: const  Radius.circular(40.0),
                   bottomRight: const  Radius.circular(40.0),
-                  bottomLeft: const  Radius.circular(40.0),),
+                  bottomLeft: const  Radius.circular(40.0),),*/
                 image: DecorationImage(
                     image:images[index],
-                    fit: BoxFit.fill
+                    fit: BoxFit.contain
                 )
             ),
-            child: SizedBox(width: MediaQuery.of(context).size.width-130,)
+
         ),
       ),
     );
