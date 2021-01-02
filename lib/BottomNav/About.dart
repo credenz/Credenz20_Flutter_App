@@ -23,7 +23,7 @@ class _AboutUsState extends State<AboutUs> {
     return Scaffold(
       backgroundColor: drawerBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(6.0),
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,

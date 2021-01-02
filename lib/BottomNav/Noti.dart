@@ -39,9 +39,12 @@ class _NotiState extends State<Noti> {
   @override
   Widget build(BuildContext context) {
     return load==true?Container(
-      child: loader,
-      color: Colors.white,
-    ):Scaffold(
+        color: Colors.black,
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            color: drawerBackgroundColor,
+          ),)):Scaffold(
       body: ListView.builder(itemBuilder: (BuildContext context,int pos){
         return Column(
           children: [
