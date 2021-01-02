@@ -165,9 +165,13 @@ class _CartState extends State<Cart> {
 
     return load == true
         ? Container(
-            child: loader,
-            color: Colors.white,
-          )
+        color: Colors.black,
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            color: drawerBackgroundColor,
+          ),)
+    )
         :
           Container(
       height: MediaQuery.of(context).size.height,
