@@ -179,7 +179,9 @@ checkInCart()async{
                 ? Icons.shopping_cart
                 : Icons.add_shopping_cart,
               color: Colors.black,),
-            onPressed: favorite?null:() {
+            onPressed: favorite?(){
+              Fluttertoast.showToast(msg: 'Event already added');
+            }:() {
                 setState(() {
                   favorite = !favorite;
                   addToCart();
