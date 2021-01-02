@@ -93,7 +93,7 @@ checkInCart()async{
                 backButtonColors: [Colors.white, Colors.white],
                 action: IconButton(
 
-                  onPressed: favorite?null:() {
+                  onPressed: () {
                     setState(() {
                       // favorite = !favorite;
                       addToCart();
@@ -179,7 +179,7 @@ checkInCart()async{
                 ? Icons.shopping_cart
                 : Icons.add_shopping_cart,
               color: Colors.black,),
-            onPressed: () {
+            onPressed: favorite?null:() {
                 setState(() {
                   favorite = !favorite;
                   addToCart();
