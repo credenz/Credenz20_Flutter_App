@@ -27,7 +27,7 @@ class _AboutPingState extends State<AboutPing> {
     return Scaffold(
       backgroundColor: drawerBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(6.0),
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,
@@ -36,11 +36,11 @@ class _AboutPingState extends State<AboutPing> {
             return ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                // topCardWidget(),
-                // bottomCardWidget(),
+                 topCardWidget(),
+                 bottomCardWidget(),
                 // SlimyCard is being called here.
 
-                SlimyCard(
+                /*SlimyCard(
                   // In topCardWidget below, imagePath changes according to the
                   // status of the SlimyCard(snapshot.data).
                   width: 450,
@@ -50,7 +50,7 @@ class _AboutPingState extends State<AboutPing> {
                   topCardWidget: topCardWidget(),
                   bottomCardWidget: bottomCardWidget(),
                   slimeEnabled: false,
-                ),
+                ),*/
               ],
             );
           }),

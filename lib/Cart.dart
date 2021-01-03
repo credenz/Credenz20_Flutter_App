@@ -20,6 +20,7 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
+  int sum=0;
   List list;
   bool load = true;
   Razorpay _razorpay;
@@ -34,6 +35,7 @@ class _CartState extends State<Cart> {
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     getEventPrices();
+    sum=0;
   }
 
 
@@ -51,6 +53,7 @@ class _CartState extends State<Cart> {
   }
 
   loadCart() async {
+    sum=0;
     children1.clear();
     list = List();
     for (int i = 0; i < 12; i++) {
@@ -58,6 +61,7 @@ class _CartState extends State<Cart> {
       if (pre) {
         String eventName = await storage.read(key: '$i');
         list.add(eventName);
+        prices1.containsKey(eventName)?sum+=prices1[eventName].toInt():sum+=120;
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -161,19 +165,32 @@ class _CartState extends State<Cart> {
 
     return load == true
         ? Container(
-            child: loader,
-            color: Colors.white,
-          )
+        color: Colors.black,
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            color: drawerBackgroundColor,
+          ),)
+    )
         :
           Container(
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
+      decoration: list.length==0?BoxDecoration(
+
+        color: Colors.grey[900],
           image: DecorationImage(
-              image: AssetImage("images/balloonback0.jpg"),
+      image: AssetImage("images/emptycart.png"),
+            fit: BoxFit.scaleDown,
+
+          )
+       // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
+      ) :BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("images/ballonback01.jpg"),
             fit: BoxFit.cover,
           )
       ),
-            child: Scaffold(
+            child:Scaffold(
               backgroundColor: Colors.transparent,
                 appBar: AppBar(
                   centerTitle: true,
@@ -194,19 +211,16 @@ class _CartState extends State<Cart> {
                   backgroundColor: drawerBackgroundColor,
                 ),
                 body: Container(
-                  /*decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("images/balloonback0.jpg"),
-                      // <-- BACKGROUND IMAGE
-                      fit: BoxFit.fill,
-                    ),
-                  ),*/
                   child: ListView(
                     children: [
                       ListView.builder(
                         itemBuilder: (BuildContext context, int pos) {
                           AssetImage ig=eventimages[eventName.indexOf(list[pos],0)];
                           return Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            margin: EdgeInsets.fromLTRB(10,7,10,7),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -221,7 +235,7 @@ class _CartState extends State<Cart> {
                                           padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
                                             color: drawerBackgroundColor,
-                                            borderRadius: BorderRadius.circular(10),
+                                            borderRadius: BorderRadius.circular(8),
                                           ),
                                           child: Image.asset(ig.assetName),
                                         ),
@@ -238,7 +252,7 @@ class _CartState extends State<Cart> {
                                         ),
                                         SizedBox(height: 10),
                                         Text(
-                                        prices1.containsKey(list[pos])?"\u20B9"+prices1[list[pos]].toString():"\u20B9"+"120",
+                                        prices1.containsKey(list[pos])?"\u20B9 "+prices1[list[pos]].toString():"\u20B9 "+"120",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600, color: Colors.black),
                                           ),
@@ -313,7 +327,7 @@ class _CartState extends State<Cart> {
                                   text: "Total:\n",
                                   children: [
                                     TextSpan(
-                                      text: "\u20B9 100",
+                                      text: "\u20B9 "+ sum.toString(),
                                       style: TextStyle(fontSize: 16, color: Colors.black),
                                     ),
                                   ],
