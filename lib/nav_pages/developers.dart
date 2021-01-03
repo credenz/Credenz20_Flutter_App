@@ -159,35 +159,43 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                         blurRadius: 20,
                       )
                     ]),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                    child:ListView(
+                      // shrinkWrap: true,
+                      padding: EdgeInsets.all(0.0),
+                      // mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20.0),
-                          child: Text(
-                            name[x],
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: 'Roboto Medium',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Text(
+                              name[x],
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Roboto Medium',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: Text(
+                              position[x],
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontFamily: 'Roboto Medium',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w200,
+                              ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text(
-                            position[x],
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontFamily: 'Roboto Medium',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 40.0),
+                          padding: const EdgeInsets.only(top: 30.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

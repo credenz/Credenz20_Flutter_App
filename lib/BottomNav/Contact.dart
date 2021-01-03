@@ -121,13 +121,13 @@ class _PageViewWidgetState extends State<PageViewWidget> {
         child: Center(
           child: Container(
             // height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                color: Color(0x22000000),
-                spreadRadius: 5,
-                blurRadius: 20,
-              )
-            ]),
+            // decoration: BoxDecoration(boxShadow: [
+            //   BoxShadow(
+            //     color: Color(0x22000000),
+            //     spreadRadius: 5,
+            //     blurRadius: 20,
+            //   )
+            // ]),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -149,35 +149,43 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                   child: Container(
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
-                        color: Color(0x66000000),
+                        color: Color(0x55000000),
                         spreadRadius: 5,
                         blurRadius: 20,
                       )
                     ]),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                    child:ListView(
+                      // shrinkWrap: true,
+                      padding: EdgeInsets.all(0.0),
+                      // mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 40.0),
-                          child: Text(
-                            name[x],
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontFamily: 'Roboto Medium',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Text(
+                              name[x],
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily: 'Roboto Medium',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text(
-                            position[x],
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontFamily: 'Roboto Medium',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w200,
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10.0),
+                            child: Text(
+                              position[x],
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontFamily: 'Roboto Medium',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w200,
+                              ),
                             ),
                           ),
                         ),
@@ -190,7 +198,6 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                                   iconSize: 42.0,
                                   icon: Image.asset('images/mail.png'),
                                   onPressed: null),
-
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),
