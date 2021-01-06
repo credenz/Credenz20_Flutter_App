@@ -23,7 +23,7 @@ class _AboutUsState extends State<AboutUs> {
     return Scaffold(
       backgroundColor: drawerBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,
@@ -49,31 +49,36 @@ class _AboutUsState extends State<AboutUs> {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(  // Image goes here
-          height: 200,
-          // width: 500,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(image: AssetImage('images/credenz16.jpeg',),fit: BoxFit.fill),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 20,
-                spreadRadius: 1,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 25),
+        SizedBox(height: 5),
         Text(
-          "Credenz '21",
+          "CREDENZ",
           style: TextStyle(
               color: Colors.white,
-              fontSize: 22,
+              fontSize: 30,
               fontWeight: FontWeight.w500),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: 15),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(  // Image goes here
+            height: 200,
+            // width: 500,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              image: DecorationImage(image: AssetImage('images/credenz16.jpeg',),fit: BoxFit.fill),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 20,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: 15),
+
       ],
     );
   }

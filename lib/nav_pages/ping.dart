@@ -9,7 +9,8 @@ class Ping extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("P.I.N.G."),
-        centerTitle: true,
+
+       // centerTitle: true,
         backgroundColor: drawerBackgroundColor,
       ),
       body: AboutPing(),
@@ -28,7 +29,7 @@ class _AboutPingState extends State<AboutPing> {
     return Scaffold(
       backgroundColor: drawerBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,
@@ -65,6 +66,16 @@ class _AboutPingState extends State<AboutPing> {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        SizedBox(height: 15),
+        Text(
+          "PICT IEEE Newsletter Group\n",
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.w500),
+          textAlign: TextAlign.center,
+          maxLines: 2,
+        ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(  // Image goes here
@@ -85,14 +96,7 @@ class _AboutPingState extends State<AboutPing> {
           ),
         ),
         SizedBox(height: 25),
-        Text(
-          "",
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.w500),
-        ),
-        SizedBox(height: 5),
+
       ],
     );
   }

@@ -20,9 +20,11 @@ class _SponsorsState extends State<Sponsors> {
 
   Widget card(int index){
     return  Padding(
+
       padding: const EdgeInsets.all(20.0),
       child: Container(
         //height: 400,
+        color: Colors.transparent,
         width: MediaQuery.of(context).size.width,
         child: DecoratedBox(
 
@@ -34,6 +36,7 @@ class _SponsorsState extends State<Sponsors> {
                   bottomRight: const  Radius.circular(40.0),
                   bottomLeft: const  Radius.circular(40.0),),*/
                 image: DecorationImage(
+
                     image:images[index],
                     fit: BoxFit.contain
                 ),
@@ -41,7 +44,7 @@ class _SponsorsState extends State<Sponsors> {
                   BoxShadow(
                     offset: Offset(0, 0),
                     blurRadius: 20,
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.grey.withOpacity(0.7),
                   )
                 ],
             ),
