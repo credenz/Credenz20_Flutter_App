@@ -36,7 +36,14 @@ class _SponsorsState extends State<Sponsors> {
                 image: DecorationImage(
                     image:images[index],
                     fit: BoxFit.contain
-                )
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 0),
+                    blurRadius: 20,
+                    color: Colors.white.withOpacity(0.7),
+                  )
+                ],
             ),
 
         ),
@@ -69,7 +76,7 @@ class _SponsorsState extends State<Sponsors> {
 
           ],
           itemExtent: 300,
-          diameterRatio: 4,
+          diameterRatio: 3,
           physics: FixedExtentScrollPhysics(),
 
 
