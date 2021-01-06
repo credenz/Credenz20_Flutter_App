@@ -9,7 +9,7 @@ class PISB extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("PISB"),
-        centerTitle: true,
+        //centerTitle: true,
         backgroundColor: drawerBackgroundColor,
       ),
       body: AboutPISB(),
@@ -28,7 +28,7 @@ class _AboutPISBState extends State<AboutPISB> {
     return Scaffold(
       backgroundColor: drawerBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,
@@ -66,6 +66,16 @@ class _AboutPISBState extends State<AboutPISB> {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        SizedBox(height: 15),
+        Text(
+          "PICT IEEE Student Branch\n",
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              fontWeight: FontWeight.w500),
+          textAlign: TextAlign.center,
+          maxLines: 2,
+        ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(  // Image goes here
@@ -85,14 +95,8 @@ class _AboutPISBState extends State<AboutPISB> {
             ),
           ),
         ),
-        SizedBox(height: 15),
-        Text(
-          "\n",
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.w500),
-        ),
+        SizedBox(height: 25),
+
       ],
     );
   }
