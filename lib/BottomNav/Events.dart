@@ -80,25 +80,31 @@ class WheelExample extends State<Events> {
           children: <Widget>[
             Stack(
               children: [
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.black,
+                ),
+
                 Image.asset(
                   // "images/enigma.png",
-                  "images/homeback2.jpg",
+                  // "images/homeback2.jpg",
+                  "gifs/homeback.gif",
                   height: MediaQuery.of(this.context).size.height,
                   width: MediaQuery.of(this.context).size.width,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.contain,
                 ),
               ],
             ),
             Center(
               child: Container(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   // padding: EdgeInsets.fromLTRB(
                   //     10,
                   //     MediaQuery.of(context).size.height / 4 + 60,
                   //     MediaQuery.of(context).size.width / 2,
                   //     MediaQuery.of(context).size.height / 4),
                   child: Image.asset("images/crewhite.png",
-                      width: 180, height: 180, fit: BoxFit.contain)),
+                      width: 150, height: 150, fit: BoxFit.fitWidth)),
             ),
             Container(
               // height: 260,
