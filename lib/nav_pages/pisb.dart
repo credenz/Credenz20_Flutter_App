@@ -9,6 +9,7 @@ class PISB extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("PISB"),
+        centerTitle: true,
         backgroundColor: drawerBackgroundColor,
       ),
       body: AboutPISB(),
@@ -66,14 +67,14 @@ class _AboutPISBState extends State<AboutPISB> {
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: Container(  // Image goes here
-            height: 200,
+            height: 70,
             // width: 500,
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitWidth),
+              image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitHeight),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
@@ -86,10 +87,10 @@ class _AboutPISBState extends State<AboutPISB> {
         ),
         SizedBox(height: 15),
         Text(
-          "Credenz '21\n\n",
+          "\n",
           style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 22,
               fontWeight: FontWeight.w500),
         ),
       ],
@@ -103,7 +104,7 @@ class _AboutPISBState extends State<AboutPISB> {
         text: "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
         style: TextStyle(
           color: Colors.white,
-          fontSize: 15,
+          fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
       ),
