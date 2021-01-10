@@ -1,6 +1,7 @@
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:credenz20/extra_lib/modified_slimy_card.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class PISB extends StatelessWidget {
@@ -40,6 +41,21 @@ class _AboutPISBState extends State<AboutPISB> {
 
                  topCardWidget(),
                  bottomCardWidget(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                      child: Text("Know more here",
+
+                          textAlign: TextAlign.end,
+                          style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue,fontSize: 15.0)),
+                      onTap: () {
+
+                        launch('http://pictieee.in/');
+
+                      }
+                  ),
+                ),
+
                 // SlimyCard is being called here.
 
                 /*SlimyCard(
