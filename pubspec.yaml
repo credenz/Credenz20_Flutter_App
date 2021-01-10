@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  splashscreen:
   path_provider: 1.6.24
   url_launcher: ^5.4.1
   flutter:
@@ -53,6 +54,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
 
   # To add assets to your application, add an assets section, like this:
   assets:

@@ -20,6 +20,7 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes> {
   bool favorite = false,isavail = false;
+  GlobalKey<FormState> _key;
   final storage=FlutterSecureStorage();
 
 
@@ -181,7 +182,9 @@ checkInCart()async{
               color: Colors.black,),
             onPressed: favorite?(){
               Fluttertoast.showToast(msg: 'Event already added');
-            }:() {
+            }:() async{
+              
+await dialogue(context);
                 setState(() {
                   favorite = !favorite;
                   addToCart();
@@ -265,6 +268,120 @@ checkInCart()async{
         ),
       ],
     );
+  }
+
+  Future<void> dialogue(BuildContext context) async
+  {
+    return await showDialog(context: context, builder: (context){
+      final TextEditingController _textEditingController= TextEditingController();
+      return AlertDialog(
+        content: Stack(
+          overflow: Overflow.visible,
+          children: <Widget>[
+            Positioned(
+              right: -40.0,
+              top: -40.0,
+              child: InkResponse(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: CircleAvatar(
+                  child: Icon(Icons.close),
+                  backgroundColor: Colors.red,
+                ),
+              ),
+            ),
+            Form(
+              key: _key,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text("Enter Usernames: ", textAlign: TextAlign.left,),
+                  TextFormField(
+                    controller: _textEditingController,
+                    decoration: InputDecoration(hintText: "Participant 1"),
+                  ),
+                  //Text("Participant 2: "),
+                  TextFormField(
+                    controller: _textEditingController,
+                    decoration: InputDecoration(hintText: "Participant 2"),
+                  ),
+                  //Text("Participant 3: "),
+                  TextFormField(
+                    controller: _textEditingController,
+                    decoration: InputDecoration(hintText: "Participant 3"),
+                  ),
+                  //Text("Participant 3: "),
+                  TextFormField(
+                    controller: _textEditingController,
+                    decoration: InputDecoration(hintText: "Participant 4"),
+                  ),
+                  RaisedButton(
+                    child: Text("Submitß"),
+                    onPressed: () {
+
+                      if (_key.currentState.validate()) {
+                       _key.currentState.save();
+                       Navigator.of(context).pop();
+                      }
+                    },
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+    
+    
+         /* return AlertDialog(
+            content: Stack(
+              overflow: Overflow.visible,
+              children: <Widget>[
+                Positioned(
+                  right: -40.0,
+                  top: -40.0,
+                  child: InkResponse(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: CircleAvatar(
+                      child: Icon(Icons.close),
+                      backgroundColor: Colors.red,
+                    ),
+                  ),
+                ),
+                Form(
+                  //key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextFormField(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: TextFormField(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: RaisedButton(
+                          child: Text("Submitß"),
+                          onPressed: () {
+                            //if (_formKey.currentState.validate()) {
+                             // _formKey.currentState.save();
+                            //}
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );*/
   }
 
   Widget tabcontroller() {
