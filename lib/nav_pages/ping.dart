@@ -1,6 +1,7 @@
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:credenz20/extra_lib/modified_slimy_card.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class Ping extends StatelessWidget {
@@ -40,6 +41,20 @@ class _AboutPingState extends State<AboutPing> {
               children: <Widget>[
                  topCardWidget(),
                  bottomCardWidget(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                      child: Text("Know more here",
+
+                          textAlign: TextAlign.end,
+                          style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue,fontSize: 15.0)),
+                      onTap: () {
+
+                        launch('http://www.pictieee.in/ping.html');
+
+                      }
+                  ),
+                ),
                 // SlimyCard is being called here.
 
                 /*SlimyCard(

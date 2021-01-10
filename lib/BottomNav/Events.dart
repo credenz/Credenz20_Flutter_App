@@ -74,6 +74,7 @@ class WheelExample extends State<Events> {
     (flag == 0) ? _selectedItem(0, context) : null;
     double x = 10;
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
       home: Material(
         child: Stack(
@@ -97,7 +98,7 @@ class WheelExample extends State<Events> {
             ),
             Center(
               child: Container(
-                  alignment: Alignment.center,
+                  alignment: Alignment.centerLeft,
                   // padding: EdgeInsets.fromLTRB(
                   //     10,
                   //     MediaQuery.of(context).size.height / 4 + 60,
