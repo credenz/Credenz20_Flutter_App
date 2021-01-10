@@ -168,7 +168,7 @@ class _CartState extends State<Cart> {
         color: Colors.black,
         child: Center(
           child: Container(
-            child: animatedloader,
+            child: loader1,
             color: drawerBackgroundColor,
           ),)
     )
