@@ -1,5 +1,6 @@
 import 'package:credenz20/External_Package/CardSilverAppBar.dart';
 import 'package:credenz20/constants/theme.dart';
+import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:credenz20/constants/EventData.dart';
@@ -18,9 +19,12 @@ class EventDes extends StatefulWidget {
   _EventDesState createState() => _EventDesState();
 }
 
-class _EventDesState extends State<EventDes> {
+class _EventDesState extends State<EventDes>  with SingleTickerProviderStateMixin{
   bool favorite = false,isavail = false;
   final storage=FlutterSecureStorage();
+
+  Animation<double> _animation;
+  AnimationController _animationController;
 
 
   addToCart()async{
@@ -51,7 +55,13 @@ checkInCart()async{
     // TODO: implement initState
     super.initState();
     checkInCart();
+    _animationController = AnimationController(
+      // vsync: this,
+      duration: Duration(milliseconds: 260), vsync: this,
+    );
 
+    final curvedAnimation = CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
+    _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
   }
 
   @override
@@ -92,7 +102,6 @@ checkInCart()async{
                 backButton: true,
                 backButtonColors: [Colors.white, Colors.white],
                 action: IconButton(
-
                   onPressed: () {
                     setState(() {
                       // favorite = !favorite;
@@ -174,7 +183,54 @@ checkInCart()async{
 */
             ],
           ),
-          floatingActionButton: FloatingActionButton(
+          floatingActionButton:FloatingActionBubble(
+            // Menu items
+            items: <Bubble>[
+
+              // Floating action menu item
+              Bubble(
+                title:"Solo",
+                iconColor :Colors.white,
+                bubbleColor : Colors.blue,
+                icon:Icons.person,
+                titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+                onPress: () {
+                  _animationController.reverse();
+                },
+              ),
+              // Floating action menu item
+              Bubble(
+                title:"Group",
+                iconColor :Colors.white,
+                bubbleColor : Colors.blue,
+                icon:Icons.people,
+                titleStyle:TextStyle(fontSize: 16 , color: Colors.white),
+                onPress: () {
+                  _animationController.reverse();
+                },
+              ),
+              //Floating action menu item
+
+            ],
+
+            // animation controller
+            animation: _animation,
+
+            // On pressed change animation state
+            onPress: () => _animationController.isCompleted
+                ? _animationController.reverse()
+                : _animationController.forward(),
+
+            // Floating Action button Icon color
+            iconColor: Colors.blue,
+
+            // Flaoting Action button Icon
+            iconData: Icons.ac_unit,
+            backGroundColor: Colors.white,
+          )
+
+
+          /*FloatingActionButton(
             child: new Icon( favorite
                 ? Icons.shopping_cart
                 : Icons.add_shopping_cart,
@@ -190,7 +246,7 @@ checkInCart()async{
             },
             backgroundColor: Colors.white,
             elevation: 20.0,
-          ),
+          ),*/
         ),
       ),
     );
