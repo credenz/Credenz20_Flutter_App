@@ -12,9 +12,17 @@ final loader=SpinKitThreeBounce(
   size: 30,
 );
 
-final animatedloader = Image.asset("gifs/credenzapploader.gif");
+final animatedloader = SpinKitDoubleBounce(
+  color: Colors.blue,
+  size: 50,
+);
 
-final loader1=SpinKitThreeBounce(
-  color: Colors.white,
-  size: 30,
+final loader1=SpinKitDoubleBounce(
+  color: Colors.blue,
+  size: 50,
+);
+
+final loader2= SpinKitDoubleBounce(
+  color: Colors.blue,
+  size: 50,
 );
