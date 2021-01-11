@@ -14,13 +14,13 @@ class Splash2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 5,
-      imageBackground: AssetImage("gifs/preloader2.gif", ),
+      //imageBackground: AssetImage("gifs/preloader2.gif", ),
       navigateAfterSeconds: new SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21")),
       //title: new Text('Credenz Live',textScaleFactor: 2,style: Te,),
-      /*image: new Image.asset("gifs/preloader.gif",
+      image: new Image.asset("gifs/preloader2.gif",
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        fit: BoxFit.cover,),*/
+        fit: BoxFit.fitHeight,),
       useLoader: false,
       //loadingText: Text("Loading"),
       photoSize: MediaQuery.of(context).size.width*3/5,

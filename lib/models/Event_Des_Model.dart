@@ -3,9 +3,12 @@ import 'package:credenz20/constants/EventData.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
+
+import '../temp.dart';
 
 class EventDes extends StatefulWidget {
   int eventIndex;
@@ -18,6 +21,10 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes>
     with SingleTickerProviderStateMixin {
+  final gender = SelectFieldBloc(
+    name: 'gender',
+    items: ['male', 'female'],
+  );
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
   final storage = FlutterSecureStorage();
@@ -325,6 +332,7 @@ await dialogue(context);
   }
 
   Future<void> dialogue(BuildContext context) async {
+
     return await showDialog(
         context: context,
         builder: (context) {
@@ -334,7 +342,9 @@ await dialogue(context);
               p4 = TextEditingController(),
               e1 = TextEditingController(),
               e2 = TextEditingController();
+          //final formBloc = context.bloc<SerializedFormBloc>();
           return StatefulBuilder(builder: (context, setState) {
+
             return AlertDialog(
               backgroundColor: Colors.grey.shade800,
               scrollable: true,
@@ -357,233 +367,130 @@ await dialogue(context);
                         ),
                       ),
                     ),
-                    Form(
-                      key: _key,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Card(
-                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(children: [
-                                    Text(
-                                      "Enter Usernames: ",
-                                      textAlign: TextAlign.left,
+                BlocProvider(
+                  create: (context) => SerializedFormBloc(),
+                  child: Builder(
+                    builder: (context) {
+                      final formBloc = context.bloc<SerializedFormBloc>();
+
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          inputDecorationTheme: InputDecorationTheme(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        child: FormBlocListener<SerializedFormBloc, String, String>(
+                          onSuccess: (context, state) {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(state.successResponse),
+                              duration: Duration(seconds: 2),
+                            ));
+                          },
+                          child: SingleChildScrollView(
+                            physics: ClampingScrollPhysics(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  TextFieldBlocBuilder(
+                                    textFieldBloc: formBloc.name,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      labelText: 'Name',
+                                      prefixIcon: Icon(Icons.people),
                                     ),
-                                    TextFormField(
-                                      controller: p1,
-                                      validator: (value) {
-                                        return value.isNotEmpty
-                                            ? null
-                                            : "Invalid Field";
-                                      },
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 1*",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  RadioButtonGroupFieldBlocBuilder<String>(
+                                    selectFieldBloc: formBloc.gender,
+                                    itemBuilder: (context, value) =>
+                                    value[0].toUpperCase() + value.substring(1),
+                                    decoration: InputDecoration(
+                                      labelText: 'Gender',
+                                      prefixIcon: SizedBox(),
                                     ),
-                                    //Text("Participant 2: "),
-                                    TextFormField(
-                                      controller: p2,
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 2",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  DateTimeFieldBlocBuilder(
+                                    dateTimeFieldBloc: formBloc.birthDate,
+                                    format: DateFormat('dd-mm-yyyy'),
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(1900),
+                                    lastDate: DateTime(2100),
+                                    decoration: InputDecoration(
+                                      labelText: 'Date of Birth',
+                                      prefixIcon: Icon(Icons.calendar_today),
                                     ),
-                                    //Text("Participant 3: "),
-                                    TextFormField(
-                                      controller: p3,
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 3",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
-                                    ),
-                                    //Text("Participant 3: "),
-                                    TextFormField(
-                                      controller: p4,
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 4",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
-                                    ),
-                                  ]),
-                                )),
-                            Card(
-                              margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),/*Scaffold(
+                          resizeToAvoidBottomInset: false,
+                          //appBar: AppBar(title: Text('Serialized Form')),
+                          floatingActionButton: FloatingActionButton(
+                            onPressed: formBloc.submit,
+                            child: Icon(Icons.send),
+                          ),
+                          body: FormBlocListener<SerializedFormBloc, String, String>(
+                            onSuccess: (context, state) {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text(state.successResponse),
+                                duration: Duration(seconds: 2),
+                              ));
+                            },
+                            child: SingleChildScrollView(
+                              physics: ClampingScrollPhysics(),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
-                                  children: [
-                                    Text(
-                                      "Enter Emails: ",
-                                      textAlign: TextAlign.left,
-                                    ),
-                                    TextFormField(
-                                      controller: e1,
-                                      validator: (value) {
-                                        return value.isNotEmpty
-                                            ? null
-                                            : "Invalid Field";
-                                      },
+                                  children: <Widget>[
+                                    TextFieldBlocBuilder(
+                                      textFieldBloc: formBloc.name,
+                                      keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
-                                          hintText: "Email 1*",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                        labelText: 'Name',
+                                        prefixIcon: Icon(Icons.people),
+                                      ),
                                     ),
-                                    //Text("Participant 2: "),
-                                    TextFormField(
-                                      controller: e2,
+                                    RadioButtonGroupFieldBlocBuilder<String>(
+                                      selectFieldBloc: formBloc.gender,
+                                      itemBuilder: (context, value) =>
+                                      value[0].toUpperCase() + value.substring(1),
                                       decoration: InputDecoration(
-                                          hintText: "Email 2",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                        labelText: 'Gender',
+                                        prefixIcon: SizedBox(),
+                                      ),
+                                    ),
+                                    DateTimeFieldBlocBuilder(
+                                      dateTimeFieldBloc: formBloc.birthDate,
+                                      format: DateFormat('dd-mm-yyyy'),
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2100),
+                                      decoration: InputDecoration(
+                                        labelText: 'Date of Birth',
+                                        prefixIcon: Icon(Icons.calendar_today),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            Card(
-                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                                child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(children: [
-                                      Text(
-                                        "Select Category: ",
-                                        textAlign: TextAlign.left,
-                                      ),
-                                      Container(
-                                        //height: 300,
-                                        //width: 300,
-                                        child: ListView.builder(
-                                          itemBuilder: (context, index) {
-                                            return Container(
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Radio(
-                                                      value: options[index],
-                                                      groupValue: selectedValue,
-                                                      onChanged: (s) {
-                                                        setState(() {
-                                                          selectedValue = s;
-                                                        });
-                                                      }),
-                                                  Text(options[index]),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                          itemCount: options.length,
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                        ),
-                                      ),
-                                    ]))),
-                            Card(
-                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                                child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(children: [
-                                      Text(
-                                        "Select Category: ",
-                                        textAlign: TextAlign.left,
-                                      ),
-                                      Container(
-                                        child: ListView.builder(
-                                          itemBuilder: (context, index) {
-                                            return Container(
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Radio(
-                                                      value: options1[index],
-                                                      groupValue:
-                                                          selectedValue1,
-                                                      onChanged: (s) {
-                                                        selectedValue1 = s;
-                                                        setState(() {});
-                                                      }),
-                                                  Text(options1[index]),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                          itemCount: options1.length,
-                                          shrinkWrap: true,
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                        ),
-                                      ),
-                                    ]))),
-                            RaisedButton(
-                              child: Text("Submit"),
-                              onPressed: () {
-                                if (_key.currentState.validate()) {
-                                  _key.currentState.save();
-                                  Navigator.of(context).pop();
-                                }
-                              },
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                          ),
+                        ),*/
+                      );
+                    },
+                  ),
+                ),
+
                   ],
                 ),
               ),
             );
           });
         });
-
-    /* return AlertDialog(
-            content: Stack(
-              overflow: Overflow.visible,
-              children: <Widget>[
-                Positioned(
-                  right: -40.0,
-                  top: -40.0,
-                  child: InkResponse(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: CircleAvatar(
-                      child: Icon(Icons.close),
-                      backgroundColor: Colors.red,
-                    ),
-                  ),
-                ),
-                Form(
-                  //key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(
-                          child: Text("Submitß"),
-                          onPressed: () {
-                            //if (_formKey.currentState.validate()) {
-                             // _formKey.currentState.save();
-                            //}
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );*/
   }
 
   Widget tabcontroller() {
@@ -613,5 +520,34 @@ await dialogue(context);
     );
   }
 }
+class SerializedFormBloc extends FormBloc<String, String> {
+  final name = TextFieldBloc(
+    name: 'name',
+  );
 
+  final gender = SelectFieldBloc(
+    name: 'gender',
+    items: ['male', 'female'],
+  );
+
+  final birthDate = InputFieldBloc<DateTime, Object>(
+    name: 'birthDate',
+    toJson: (value) => value.toUtc().toIso8601String(),
+  );
+
+  SerializedFormBloc() {
+    addFieldBlocs(
+      fieldBlocs: [
+        name,
+        gender,
+        birthDate,
+      ],
+    );
+  }
+
+  @override
+  void onSubmitting() {
+    // TODO: implement onSubmitting
+  }
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

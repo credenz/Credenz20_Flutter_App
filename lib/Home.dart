@@ -197,29 +197,17 @@ class _HomeState extends State<Home> {
             )
 
             ,)],
-          /*<Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) => Cart()));
-              // do something
-            },
-          )
-        ],*/
         title: Text(widget.title),
-        backgroundColor: Colors.black,
+        backgroundColor: primary,
+
+        //elevation: 0,
       ),
       //drawer: FlipDrawer(),
 
       //Vaibhav's Code
 
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.all_inclusive,color: Colors.black,),
+        child: Image.asset("images/eyesample.png", scale: 2),
         tooltip: 'Increment',
         elevation: 2.0,
         backgroundColor: Colors.white,
@@ -250,7 +238,7 @@ class _HomeState extends State<Home> {
       // ),
 
       bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
+        color: primary,
         shape: CircularNotchedRectangle(),
         child: Container(
             height: 60,

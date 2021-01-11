@@ -165,11 +165,11 @@ class _CartState extends State<Cart> {
 
     return load == true
         ? Container(
-        color: Colors.black,
+        color: Colors.transparent,
         child: Center(
           child: Container(
             child: loader1,
-            color: drawerBackgroundColor,
+            color: Colors.transparent,
           ),)
     )
         :
