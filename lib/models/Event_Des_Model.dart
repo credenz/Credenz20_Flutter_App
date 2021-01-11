@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
-import 'dart:math';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:sticky_headers/sticky_headers.dart';
 
 class EventDes extends StatefulWidget {
   int eventIndex;
@@ -24,20 +21,13 @@ class _EventDesState extends State<EventDes>
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
   final storage = FlutterSecureStorage();
-class _EventDesState extends State<EventDes> {
-  bool favorite = false,isavail = false;
-  GlobalKey<FormState> _key= GlobalKey<FormState>();
-  List<String> options = [
-    "FE", "SE", "TE", "BE"
-  ];
-  List<String> options1 = [
-    "IEEE Member", "Non IEEE Member"
-  ];
   String selectedValue, selectedValue1;
-  final storage=FlutterSecureStorage();
 
   Animation<double> _animation;
   AnimationController _animationController;
+
+  List<String> options = ["FE", "SE", "TE", "BE"];
+  List<String> options1 = ["IEEE Member", "Non IEEE Member"];
 
   addToCart() async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
@@ -64,8 +54,8 @@ class _EventDesState extends State<EventDes> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    selectedValue=options.first;
-    selectedValue1=options1.first;
+    selectedValue = options.first;
+    selectedValue1 = options1.first;
     checkInCart();
     _animationController = AnimationController(
       // vsync: this,
@@ -203,7 +193,6 @@ class _EventDesState extends State<EventDes> {
               iconColor: Colors.blue,
               iconData: Icons.shopping_cart_outlined,
               backGroundColor: Colors.white,
-
               items: <Bubble>[
                 // Floating action menu item
                 Bubble(
@@ -229,12 +218,16 @@ class _EventDesState extends State<EventDes> {
                   bubbleColor: Colors.blue,
                   icon: Icons.people,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-                  onPress: () {
+                  onPress: () async {
                     _animationController.reverse();
+                    await dialogue(context);
+                    setState(() {
+                      favorite = !favorite;
+                      addToCart();
+                    });
                   },
                 ),
               ],
-
             )
 
             /*FloatingActionButton(
@@ -331,192 +324,220 @@ await dialogue(context);
     );
   }
 
-  Future<void> dialogue(BuildContext context) async
-  {
-
-
-    return await showDialog(context: context, builder: (context){
-      final TextEditingController p1= TextEditingController(), p2= TextEditingController(), p3= TextEditingController(), p4= TextEditingController(), e1= TextEditingController(), e2= TextEditingController();
-      return StatefulBuilder(builder: (context, setState) {
-        return AlertDialog(
-          backgroundColor: Colors.grey.shade800,
-          scrollable: true,
-          content: Container(
-            width: 300,
-            height: 520,
-            child: Stack(
-              overflow: Overflow.visible,
-              children: <Widget>[
-                Positioned(
-                  right: -40.0,
-                  top: -40.0,
-                  child: InkResponse(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: CircleAvatar(
-                      child: Icon(Icons.close),
-                      backgroundColor: Colors.red,
-                    ),
-                  ),
-                ),
-                Form(
-                  key: _key,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Card(
-                            margin: EdgeInsets.fromLTRB(2,10,2,10),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                            children: [
-                              Text("Enter Usernames: ", textAlign: TextAlign.left, ),
-                              TextFormField(
-                                controller: p1,
-                                validator: (value){
-                                  return value.isNotEmpty?null: "Invalid Field";
-                                },
-                                decoration: InputDecoration(hintText: "Participant 1*", hintStyle: TextStyle(color: Colors.grey)),
-                              ),
-                        //Text("Participant 2: "),
-                              TextFormField(
-                                controller: p2,
-                                decoration: InputDecoration(hintText: "Participant 2", hintStyle: TextStyle(color: Colors.grey)),
-                              ),
-                              //Text("Participant 3: "),
-                              TextFormField(
-                                controller: p3,
-                                decoration: InputDecoration(hintText: "Participant 3", hintStyle: TextStyle(color: Colors.grey)),
-                              ),
-                              //Text("Participant 3: "),
-                              TextFormField(
-                                controller: p4,
-                                decoration: InputDecoration(hintText: "Participant 4", hintStyle: TextStyle(color: Colors.grey)),
-                              ),
-                            ]
-                      ),
-                          )
-                    ),
-                        Card(
-                          margin: EdgeInsets.fromLTRB(2,10,2,10),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text("Enter Emails: ", textAlign: TextAlign.left,),
-                                TextFormField(
-                                  controller: e1,
-                                  validator: (value){
-                                    return value.isNotEmpty?null: "Invalid Field";
-                                  },
-                                  decoration: InputDecoration(hintText: "Email 1*", hintStyle: TextStyle(color: Colors.grey)),
-                                ),
-                                //Text("Participant 2: "),
-                                TextFormField(
-                                  controller: e2,
-                                  decoration: InputDecoration(hintText: "Email 2", hintStyle: TextStyle(color: Colors.grey)),
-                                ),
-                              ],
-                            ),
-                          ),
+  Future<void> dialogue(BuildContext context) async {
+    return await showDialog(
+        context: context,
+        builder: (context) {
+          final TextEditingController p1 = TextEditingController(),
+              p2 = TextEditingController(),
+              p3 = TextEditingController(),
+              p4 = TextEditingController(),
+              e1 = TextEditingController(),
+              e2 = TextEditingController();
+          return StatefulBuilder(builder: (context, setState) {
+            return AlertDialog(
+              backgroundColor: Colors.grey.shade800,
+              scrollable: true,
+              content: Container(
+                width: 300,
+                height: 520,
+                child: Stack(
+                  overflow: Overflow.visible,
+                  children: <Widget>[
+                    Positioned(
+                      right: -40.0,
+                      top: -40.0,
+                      child: InkResponse(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: CircleAvatar(
+                          child: Icon(Icons.close),
+                          backgroundColor: Colors.red,
                         ),
-
-                      Card(
-                          margin: EdgeInsets.fromLTRB(2,10,2,10),
-                        child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      ),
+                    ),
+                    Form(
+                      key: _key,
+                      child: SingleChildScrollView(
                         child: Column(
-                        children: [
-                          Text("Select Category: ", textAlign: TextAlign.left,),
-                          Container(
-
-                            //height: 300,
-                            //width: 300,
-                            child: ListView.builder(itemBuilder: (context, index){
-                              return Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Radio(value: options[index], groupValue: selectedValue, onChanged: (s){
-
-                                      setState(() {
-                                        selectedValue=s;
-                                      });
-                                    }),
-                                    Text(options[index]),
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Card(
+                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(children: [
+                                    Text(
+                                      "Enter Usernames: ",
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    TextFormField(
+                                      controller: p1,
+                                      validator: (value) {
+                                        return value.isNotEmpty
+                                            ? null
+                                            : "Invalid Field";
+                                      },
+                                      decoration: InputDecoration(
+                                          hintText: "Participant 1*",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
+                                    ),
+                                    //Text("Participant 2: "),
+                                    TextFormField(
+                                      controller: p2,
+                                      decoration: InputDecoration(
+                                          hintText: "Participant 2",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
+                                    ),
+                                    //Text("Participant 3: "),
+                                    TextFormField(
+                                      controller: p3,
+                                      decoration: InputDecoration(
+                                          hintText: "Participant 3",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
+                                    ),
+                                    //Text("Participant 3: "),
+                                    TextFormField(
+                                      controller: p4,
+                                      decoration: InputDecoration(
+                                          hintText: "Participant 4",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
+                                    ),
+                                  ]),
+                                )),
+                            Card(
+                              margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "Enter Emails: ",
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    TextFormField(
+                                      controller: e1,
+                                      validator: (value) {
+                                        return value.isNotEmpty
+                                            ? null
+                                            : "Invalid Field";
+                                      },
+                                      decoration: InputDecoration(
+                                          hintText: "Email 1*",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
+                                    ),
+                                    //Text("Participant 2: "),
+                                    TextFormField(
+                                      controller: e2,
+                                      decoration: InputDecoration(
+                                          hintText: "Email 2",
+                                          hintStyle:
+                                              TextStyle(color: Colors.grey)),
+                                    ),
                                   ],
                                 ),
-                              );
-                            },
-                              itemCount: options.length,
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,),
-                          ),
-                          ]
-                        )
-                        )
-                      ),
-
-                      Card(
-                          margin: EdgeInsets.fromLTRB(2,10,2,10),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Text("Select Category: ", textAlign: TextAlign.left,),
-                              Container(
-
-                                child: ListView.builder(itemBuilder: (context, index){
-                                  return Container(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Radio(value: options1[index], groupValue: selectedValue1, onChanged: (s){
-                                          selectedValue1=s;
-                                          setState(() {
-
-                                          });
-                                        }),
-                                        Text(options1[index]),
-                                      ],
-                                    ),
-                                  );
-                                },
-                                  itemCount: options1.length,
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),),
                               ),
-                              ]
-                          )
-                        )
+                            ),
+                            Card(
+                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
+                                child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(children: [
+                                      Text(
+                                        "Select Category: ",
+                                        textAlign: TextAlign.left,
+                                      ),
+                                      Container(
+                                        //height: 300,
+                                        //width: 300,
+                                        child: ListView.builder(
+                                          itemBuilder: (context, index) {
+                                            return Container(
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Radio(
+                                                      value: options[index],
+                                                      groupValue: selectedValue,
+                                                      onChanged: (s) {
+                                                        setState(() {
+                                                          selectedValue = s;
+                                                        });
+                                                      }),
+                                                  Text(options[index]),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                          itemCount: options.length,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                        ),
+                                      ),
+                                    ]))),
+                            Card(
+                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
+                                child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(children: [
+                                      Text(
+                                        "Select Category: ",
+                                        textAlign: TextAlign.left,
+                                      ),
+                                      Container(
+                                        child: ListView.builder(
+                                          itemBuilder: (context, index) {
+                                            return Container(
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Radio(
+                                                      value: options1[index],
+                                                      groupValue:
+                                                          selectedValue1,
+                                                      onChanged: (s) {
+                                                        selectedValue1 = s;
+                                                        setState(() {});
+                                                      }),
+                                                  Text(options1[index]),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                          itemCount: options1.length,
+                                          shrinkWrap: true,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                        ),
+                                      ),
+                                    ]))),
+                            RaisedButton(
+                              child: Text("Submit"),
+                              onPressed: () {
+                                if (_key.currentState.validate()) {
+                                  _key.currentState.save();
+                                  Navigator.of(context).pop();
+                                }
+                              },
+                            )
+                          ],
+                        ),
                       ),
-
-
-                        RaisedButton(
-                          child: Text("Submit"),
-                          onPressed: () {
-                            if (_key.currentState.validate()) {
-                              _key.currentState.save();
-                              Navigator.of(context).pop();
-                            }
-                          },
-                        )
-                      ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        );
+              ),
+            );
+          });
+        });
 
-      }
-      );
-    });
-    
-    
-         /* return AlertDialog(
+    /* return AlertDialog(
             content: Stack(
               overflow: Overflow.visible,
               children: <Widget>[
@@ -563,7 +584,6 @@ await dialogue(context);
               ],
             ),
           );*/
-
   }
 
   Widget tabcontroller() {
