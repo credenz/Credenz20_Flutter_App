@@ -7,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
 import 'dart:math';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
+import 'package:sticky_headers/sticky_headers.dart';
 
 class EventDes extends StatefulWidget {
   int eventIndex;
@@ -20,7 +20,14 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes> {
   bool favorite = false,isavail = false;
-  GlobalKey<FormState> _key;
+  GlobalKey<FormState> _key= GlobalKey<FormState>();
+  List<String> options = [
+    "FE", "SE", "TE", "BE"
+  ];
+  List<String> options1 = [
+    "IEEE Member", "Non IEEE Member"
+  ];
+  String selectedValue, selectedValue1;
   final storage=FlutterSecureStorage();
 
 
@@ -51,6 +58,8 @@ checkInCart()async{
   void initState() {
     // TODO: implement initState
     super.initState();
+    selectedValue=options.first;
+    selectedValue1=options1.first;
     checkInCart();
 
   }
@@ -272,65 +281,185 @@ await dialogue(context);
 
   Future<void> dialogue(BuildContext context) async
   {
-    return await showDialog(context: context, builder: (context){
-      final TextEditingController _textEditingController= TextEditingController();
-      return AlertDialog(
-        content: Stack(
-          overflow: Overflow.visible,
-          children: <Widget>[
-            Positioned(
-              right: -40.0,
-              top: -40.0,
-              child: InkResponse(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                child: CircleAvatar(
-                  child: Icon(Icons.close),
-                  backgroundColor: Colors.red,
-                ),
-              ),
-            ),
-            Form(
-              key: _key,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text("Enter Usernames: ", textAlign: TextAlign.left,),
-                  TextFormField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(hintText: "Participant 1"),
-                  ),
-                  //Text("Participant 2: "),
-                  TextFormField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(hintText: "Participant 2"),
-                  ),
-                  //Text("Participant 3: "),
-                  TextFormField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(hintText: "Participant 3"),
-                  ),
-                  //Text("Participant 3: "),
-                  TextFormField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(hintText: "Participant 4"),
-                  ),
-                  RaisedButton(
-                    child: Text("Submitß"),
-                    onPressed: () {
 
-                      if (_key.currentState.validate()) {
-                       _key.currentState.save();
-                       Navigator.of(context).pop();
-                      }
+
+    return await showDialog(context: context, builder: (context){
+      final TextEditingController p1= TextEditingController(), p2= TextEditingController(), p3= TextEditingController(), p4= TextEditingController(), e1= TextEditingController(), e2= TextEditingController();
+      return StatefulBuilder(builder: (context, setState) {
+        return AlertDialog(
+          backgroundColor: Colors.grey.shade800,
+          scrollable: true,
+          content: Container(
+            width: 300,
+            height: 520,
+            child: Stack(
+              overflow: Overflow.visible,
+              children: <Widget>[
+                Positioned(
+                  right: -40.0,
+                  top: -40.0,
+                  child: InkResponse(
+                    onTap: () {
+                      Navigator.of(context).pop();
                     },
-                  )
-                ],
-              ),
+                    child: CircleAvatar(
+                      child: Icon(Icons.close),
+                      backgroundColor: Colors.red,
+                    ),
+                  ),
+                ),
+                Form(
+                  key: _key,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Card(
+                            margin: EdgeInsets.fromLTRB(2,10,2,10),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                            children: [
+                              Text("Enter Usernames: ", textAlign: TextAlign.left, ),
+                              TextFormField(
+                                controller: p1,
+                                validator: (value){
+                                  return value.isNotEmpty?null: "Invalid Field";
+                                },
+                                decoration: InputDecoration(hintText: "Participant 1*", hintStyle: TextStyle(color: Colors.grey)),
+                              ),
+                        //Text("Participant 2: "),
+                              TextFormField(
+                                controller: p2,
+                                decoration: InputDecoration(hintText: "Participant 2", hintStyle: TextStyle(color: Colors.grey)),
+                              ),
+                              //Text("Participant 3: "),
+                              TextFormField(
+                                controller: p3,
+                                decoration: InputDecoration(hintText: "Participant 3", hintStyle: TextStyle(color: Colors.grey)),
+                              ),
+                              //Text("Participant 3: "),
+                              TextFormField(
+                                controller: p4,
+                                decoration: InputDecoration(hintText: "Participant 4", hintStyle: TextStyle(color: Colors.grey)),
+                              ),
+                            ]
+                      ),
+                          )
+                    ),
+                        Card(
+                          margin: EdgeInsets.fromLTRB(2,10,2,10),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text("Enter Emails: ", textAlign: TextAlign.left,),
+                                TextFormField(
+                                  controller: e1,
+                                  validator: (value){
+                                    return value.isNotEmpty?null: "Invalid Field";
+                                  },
+                                  decoration: InputDecoration(hintText: "Email 1*", hintStyle: TextStyle(color: Colors.grey)),
+                                ),
+                                //Text("Participant 2: "),
+                                TextFormField(
+                                  controller: e2,
+                                  decoration: InputDecoration(hintText: "Email 2", hintStyle: TextStyle(color: Colors.grey)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                      Card(
+                          margin: EdgeInsets.fromLTRB(2,10,2,10),
+                        child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                        children: [
+                          Text("Select Category: ", textAlign: TextAlign.left,),
+                          Container(
+
+                            //height: 300,
+                            //width: 300,
+                            child: ListView.builder(itemBuilder: (context, index){
+                              return Container(
+                                child: Row(
+                                  children: <Widget>[
+                                    Radio(value: options[index], groupValue: selectedValue, onChanged: (s){
+
+                                      setState(() {
+                                        selectedValue=s;
+                                      });
+                                    }),
+                                    Text(options[index]),
+                                  ],
+                                ),
+                              );
+                            },
+                              itemCount: options.length,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,),
+                          ),
+                          ]
+                        )
+                        )
+                      ),
+
+                      Card(
+                          margin: EdgeInsets.fromLTRB(2,10,2,10),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text("Select Category: ", textAlign: TextAlign.left,),
+                              Container(
+
+                                child: ListView.builder(itemBuilder: (context, index){
+                                  return Container(
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(value: options1[index], groupValue: selectedValue1, onChanged: (s){
+                                          selectedValue1=s;
+                                          setState(() {
+
+                                          });
+                                        }),
+                                        Text(options1[index]),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                  itemCount: options1.length,
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),),
+                              ),
+                              ]
+                          )
+                        )
+                      ),
+
+
+                        RaisedButton(
+                          child: Text("Submit"),
+                          onPressed: () {
+                            if (_key.currentState.validate()) {
+                              _key.currentState.save();
+                              Navigator.of(context).pop();
+                            }
+                          },
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        );
+
+      }
       );
     });
     
@@ -382,6 +511,7 @@ await dialogue(context);
               ],
             ),
           );*/
+
   }
 
   Widget tabcontroller() {
