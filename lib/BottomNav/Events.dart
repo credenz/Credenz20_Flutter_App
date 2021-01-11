@@ -36,7 +36,27 @@ class WheelExample extends State<Events> {
                   child: Container(
                     width: 120,
                     height: 120,
-                    color: drawerBackgroundColor,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                      BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 2.0,
+                      spreadRadius: 0.0,
+                      offset: Offset(2.0, 2.0), // shadow direction: bottom right
+                    )
+                      ],
+
+                      // color: Color(0xff101010)
+                      gradient: LinearGradient(
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.topRight,
+                          stops: [0.25, 2.5],
+                          // colors: [Color(0xFF000000),Color(0xFF000000)]
+                          //colors: [Color(0xFF3d3251), Color(0xFF272034)]
+                          colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
+                      ),
+                    ),
+                    //color: drawerBackgroundColor,
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -54,7 +74,19 @@ class WheelExample extends State<Events> {
                     width: 80,
                     height: 80,
                     // padding: EdgeInsets.all(20),
-                    color: drawerBackgroundColor,
+                    decoration: BoxDecoration(
+                      // color: Color(0xff101010)
+                      gradient: LinearGradient(
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.topRight,
+                          stops: [0.25, 2.5],
+                          // colors: [Color(0xFF000000),Color(0xFF000000)]
+                          //colors: [Color(0xFF3d3251), Color(0xFF272034)]
+                          colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
+
+                      ),
+                    ),
+                    //color: drawerBackgroundColor,
                     child: Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
