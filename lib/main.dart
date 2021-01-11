@@ -13,8 +13,8 @@ class Splash2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 4,
-      imageBackground: AssetImage("gifs/preloader.gif", ),
+      seconds: 5,
+      imageBackground: AssetImage("gifs/preloader2.gif", ),
       navigateAfterSeconds: new SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21")),
       //title: new Text('Credenz Live',textScaleFactor: 2,style: Te,),
       /*image: new Image.asset("gifs/preloader.gif",
@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 
 

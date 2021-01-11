@@ -96,17 +96,17 @@ class WheelExample extends State<Events> {
                 ),
               ],
             ),
-            // Center(
-            //   child: Container(
-            //       alignment: Alignment.centerLeft,
-            //       // padding: EdgeInsets.fromLTRB(
-            //       //     10,
-            //       //     MediaQuery.of(context).size.height / 4 + 60,
-            //       //     MediaQuery.of(context).size.width / 2,
-            //       //     MediaQuery.of(context).size.height / 4),
-            //       child: Image.asset("images/crewhite.png",
-            //           width: 170, height: 170, fit: BoxFit.fitWidth)),
-            // ),
+            /*Center(
+              child: Container(
+                  alignment: Alignment.centerLeft,
+                  // padding: EdgeInsets.fromLTRB(
+                  //     10,
+                  //     MediaQuery.of(context).size.height / 4 + 60,
+                  //     MediaQuery.of(context).size.width / 2,
+                  //     MediaQuery.of(context).size.height / 4),
+                  child: Image.asset("images/crewhite.png",
+                      width: 170, height: 170, fit: BoxFit.fitWidth)),
+            ),*/
             Container(
               // height: 260,
               // width: 160,
