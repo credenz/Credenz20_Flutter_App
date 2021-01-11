@@ -126,9 +126,9 @@ class _ProfileState extends State<Profile> {
                 child: Column(
                   children: [
                     ClipPath(
-                      clipper: new CustomHalfCircleClipper(),
+                      // clipper: new CustomHalfCircleClipper(),
                       child: Container(
-                        height: 150,
+                        height: 90,
                         color: Color(0xff00022e),
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
@@ -378,7 +378,7 @@ class _ProfileState extends State<Profile> {
         ));
   }
 }
-
+/*
 class CustomHalfCircleClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
@@ -422,4 +422,4 @@ class CustomHalfCircleClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return true;
   }
-}
+}*/

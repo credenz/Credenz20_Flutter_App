@@ -8,7 +8,7 @@ import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
+// import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
 import 'package:http/http.dart' as http;
@@ -23,17 +23,17 @@ class _CartState extends State<Cart> {
   int sum=0;
   List list;
   bool load = true;
-  Razorpay _razorpay;
+  // Razorpay _razorpay;
   final children1 = <Widget>[];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _razorpay = Razorpay();
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    // _razorpay = Razorpay();
+    // _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    // _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    // _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     getEventPrices();
     sum=0;
   }
@@ -99,7 +99,7 @@ class _CartState extends State<Cart> {
     // await storage.delete(key: null);
   }
 
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+ /* void _handlePaymentSuccess(PaymentSuccessResponse response) {
     Fluttertoast.showToast(
         msg: "SUCCESS: " + response.paymentId, timeInSecForIosWeb: 4);
   }
@@ -114,7 +114,7 @@ class _CartState extends State<Cart> {
     Fluttertoast.showToast(
         msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
-
+*/
   pay() async {
     String username = await storage.read(key: 'username');
     String accToken = await storage.read(key: "accToken");
@@ -147,7 +147,7 @@ class _CartState extends State<Cart> {
             'email': 'sarafatharva123@gmail.com'
           }
         };
-        _razorpay.open(options);
+        // _razorpay.open(options);
       }else{
         Fluttertoast.showToast(msg: "Events already registered");
       }
@@ -334,7 +334,7 @@ class _CartState extends State<Cart> {
                                 ),
                               ),
                               SizedBox(
-                                width: 190,
+                                width: 170,
                                 child: RaisedButton(
                                   onPressed: () async {
                                     await pay();
@@ -348,6 +348,10 @@ class _CartState extends State<Cart> {
                                     ),
                                   ),
                                   color: drawerBackgroundColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10.0),
+                                          bottomRight: Radius.circular(10.0))),
                                 ),
                               ),
                             ],

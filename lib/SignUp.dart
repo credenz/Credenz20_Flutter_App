@@ -1,14 +1,15 @@
 import 'dart:convert';
 
 import 'package:credenz20/constants/API.dart';
+import 'package:credenz20/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+
 import 'Home.dart';
-import 'constants/styles.dart';
 import 'constants/theme.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:credenz20/size_config.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -16,7 +17,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
   double _height;
   double _width;
   double _pixelRatio;
@@ -29,42 +29,46 @@ class _SignUpState extends State<SignUp> {
   String password;
   String phoneNumber;
   String userName;
-  final storage=FlutterSecureStorage();
+  final storage = FlutterSecureStorage();
 
-
-  makeRequest()async{
-    String url=signUpUrl;
-    Map<String,String>headers={"Content-Type":"application/json"};
-    String body='{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
-    http.Response response=await http.post(url,body: body,headers: headers);
+  makeRequest() async {
+    String url = signUpUrl;
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    String body =
+        '{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
+    http.Response response = await http.post(url, body: body, headers: headers);
     print(url);
     print(body);
     print(response.body);
     print(response.statusCode);
-    if(response.statusCode==200){
-      await storage.write(key: "accToken", value:jsonDecode(response.body)['accessToken']);
+    if (response.statusCode == 200) {
+      await storage.write(
+          key: "accToken", value: jsonDecode(response.body)['accessToken']);
       await storage.write(key: 'username', value: userName);
-      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Home(title: "Credenz \'20")));
-    }else{
-      String msg=jsonDecode(response.body)['message'];
-      Fluttertoast.showToast(msg: msg.substring(0,1).toUpperCase()+msg.substring(1));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => Home(title: "Credenz \'20")));
+    } else {
+      String msg = jsonDecode(response.body)['message'];
+      Fluttertoast.showToast(
+          msg: msg.substring(0, 1).toUpperCase() + msg.substring(1));
     }
-
   }
-
 
   @override
   Widget build(BuildContext context) {
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;
-    _large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
-    _medium =  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
+    _large = ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     void toggle() {
       setState(() {
         _obscureText = !_obscureText;
       });
     }
+
     return Scaffold(
       resizeToAvoidBottomPadding: true,
       backgroundColor: drawerBackgroundColor,
@@ -94,24 +98,25 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
-                  height:getProportionateScreenHeight(20),
+                  height: getProportionateScreenHeight(20),
                 ),
                 Material(
                   borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large? 12 : (_medium? 10 : 8),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person, color: Colors.deepPurpleAccent, size: 20),
+                      prefixIcon: Icon(Icons.person,
+                          color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none),
                     ),
-                    onChanged: (val){
+                    onChanged: (val) {
                       setState(() {
-                        name=val;
+                        name = val;
                       });
                     },
                   ),
@@ -119,20 +124,21 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: _height / 30.0),
                 Material(
                   borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large? 12 : (_medium? 10 : 8),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person, color: Colors.deepPurpleAccent, size: 20),
+                      prefixIcon: Icon(Icons.person,
+                          color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Username",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none),
                     ),
-                    onChanged: (val){
+                    onChanged: (val) {
                       setState(() {
-                        userName=val;
+                        userName = val;
                       });
                     },
                   ),
@@ -140,20 +146,21 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: _height / 30.0),
                 Material(
                   borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large? 12 : (_medium? 10 : 8),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email, color: Colors.deepPurpleAccent, size: 20),
+                      prefixIcon: Icon(Icons.email,
+                          color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Email",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none),
                     ),
-                    onChanged: (val){
+                    onChanged: (val) {
                       setState(() {
-                        email=val;
+                        email = val;
                       });
                     },
                   ),
@@ -161,20 +168,21 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: _height / 30.0),
                 Material(
                   borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large? 12 : (_medium? 10 : 8),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.phone,
                     cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.phone, color: Colors.deepPurpleAccent, size: 20),
+                      prefixIcon: Icon(Icons.phone,
+                          color: Colors.deepPurpleAccent, size: 20),
                       hintText: "Phone Number",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none),
                     ),
-                    onChanged: (val){
+                    onChanged: (val) {
                       setState(() {
-                        phoneNumber=val;
+                        phoneNumber = val;
                       });
                     },
                   ),
@@ -182,20 +190,21 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: _height / 30.0),
                 Material(
                   borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large? 12 : (_medium? 10 : 8),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.school, color: Colors.deepPurpleAccent, size: 20),
+                      prefixIcon: Icon(Icons.school,
+                          color: Colors.deepPurpleAccent, size: 20),
                       hintText: "College Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           borderSide: BorderSide.none),
                     ),
-                    onChanged: (val){
+                    onChanged: (val) {
                       setState(() {
-                        collegeName=val;
+                        collegeName = val;
                       });
                     },
                   ),
@@ -203,22 +212,24 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(height: _height / 30.0),
                 Material(
                   borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large? 12 : (_medium? 10 : 8),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.deepPurpleAccent,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock, color: Colors.deepPurpleAccent, size: 20),
-                      hintText: "Password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none),
-                      suffixIcon: IconButton(icon: Icon(Icons.remove_red_eye),
-                          color: Colors.deepPurpleAccent,onPressed: toggle )
-                    ),
-                    onChanged: (val){
+                        prefixIcon: Icon(Icons.lock,
+                            color: Colors.deepPurpleAccent, size: 20),
+                        hintText: "Password",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.remove_red_eye),
+                            color: Colors.deepPurpleAccent,
+                            onPressed: toggle)),
+                    onChanged: (val) {
                       setState(() {
-                        password=val;
+                        password = val;
                       });
                     },
                     obscureText: _obscureText,
@@ -247,28 +258,54 @@ class _SignUpState extends State<SignUp> {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 50,),
-               Container(
-                 margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(45),0,getProportionateScreenWidth(45),0),
-                 child: FlatButton.icon(
-                   shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadius.only(
-                         topLeft: Radius.circular(8.0),
-                         bottomLeft: Radius.circular(8.0),
-                         bottomRight: Radius.circular(8.0),
-                       )
-                   ),
-                   color: Colors.deepPurpleAccent,
-                   icon: Icon(Icons.double_arrow_sharp),
-                   label: Padding(
-                     padding: const EdgeInsets.all(8.0),
-                     child: Text('Sign Up',style: TextStyle(fontSize: 18),),
-                   ),
-                   onPressed: ()async{
-                     await makeRequest();
-                   },
-                 ),
-               )
+                SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  width: 170,
+
+                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(55),0,getProportionateScreenWidth(55),0),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0))),
+                    color: Colors.deepPurpleAccent,
+                    // icon: Icon(Icons.double_arrow_sharp),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(4, 0, 10, 0),
+                            child: Icon(
+                              Icons.double_arrow_sharp,
+                              color: Colors.black,
+                              size: 25,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // Text(,),
+                    ),
+                    onPressed: () async {
+                      await makeRequest();
+                    },
+                  ),
+                )
               ],
             ),
           ),
@@ -278,15 +315,13 @@ class _SignUpState extends State<SignUp> {
   }
 }
 
-
-class ResponsiveWidget{
-
+class ResponsiveWidget {
   static bool isScreenLarge(double width, double pixel) {
     return width * pixel >= 1440;
   }
 
   static bool isScreenMedium(double width, double pixel) {
-    return width * pixel < 1440 && width * pixel >=1080;
+    return width * pixel < 1440 && width * pixel >= 1080;
   }
 
   static bool isScreenSmall(double width, double pixel) {
@@ -305,24 +340,23 @@ class CustomTextField extends StatelessWidget {
   bool large;
   bool medium;
 
-
-  CustomTextField(
-      {this.hint,
-        this.textEditingController,
-        this.keyboardType,
-        this.icon,
-        this.obscureText= false,
-      });
+  CustomTextField({
+    this.hint,
+    this.textEditingController,
+    this.keyboardType,
+    this.icon,
+    this.obscureText = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;
-    large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
-    medium=  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
+    large = ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     return Material(
       borderRadius: BorderRadius.circular(30.0),
-      elevation: large? 12 : (medium? 10 : 8),
+      elevation: large ? 12 : (medium ? 10 : 8),
       child: TextFormField(
         controller: textEditingController,
         keyboardType: keyboardType,
