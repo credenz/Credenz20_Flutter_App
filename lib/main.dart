@@ -16,7 +16,7 @@ class Splash2 extends StatelessWidget {
       seconds: 4,
       imageBackground: AssetImage("gifs/preloader.gif", ),
       navigateAfterSeconds: new SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21")),
-      //title: new Text('Credenz Live',textScaleFactor: 2,),
+      //title: new Text('Credenz Live',textScaleFactor: 2,style: Te,),
       /*image: new Image.asset("gifs/preloader.gif",
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
