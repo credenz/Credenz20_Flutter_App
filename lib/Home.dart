@@ -109,14 +109,17 @@ class _HomeState extends State<Home> {
       }
     }
     print(list.length);
-    cnt=list.length;
+
+    setState(() {
+      cnt=list.length;
+    });
   }
 
   @override
   Widget build(BuildContext context){
 
     SizeConfig().init(context);
-
+    cartNo();
     return Scaffold(
       //Tanuj's Code
       /*appBar: AppBar(
