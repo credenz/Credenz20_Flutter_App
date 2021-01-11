@@ -88,25 +88,25 @@ class WheelExample extends State<Events> {
 
                 Image.asset(
                   // "images/enigma.png",
-                  "images/homeback2.jpg",
+                  "images/appdesign1.png",
                   // "gifs/homeback.gif",
                   height: MediaQuery.of(this.context).size.height,
                   width: MediaQuery.of(this.context).size.width,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.fitWidth,
                 ),
               ],
             ),
-            Center(
-              child: Container(
-                  alignment: Alignment.centerLeft,
-                  // padding: EdgeInsets.fromLTRB(
-                  //     10,
-                  //     MediaQuery.of(context).size.height / 4 + 60,
-                  //     MediaQuery.of(context).size.width / 2,
-                  //     MediaQuery.of(context).size.height / 4),
-                  child: Image.asset("images/crewhite.png",
-                      width: 170, height: 170, fit: BoxFit.fitWidth)),
-            ),
+            // Center(
+            //   child: Container(
+            //       alignment: Alignment.centerLeft,
+            //       // padding: EdgeInsets.fromLTRB(
+            //       //     10,
+            //       //     MediaQuery.of(context).size.height / 4 + 60,
+            //       //     MediaQuery.of(context).size.width / 2,
+            //       //     MediaQuery.of(context).size.height / 4),
+            //       child: Image.asset("images/crewhite.png",
+            //           width: 170, height: 170, fit: BoxFit.fitWidth)),
+            // ),
             Container(
               // height: 260,
               // width: 160,
