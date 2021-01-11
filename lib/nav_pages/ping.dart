@@ -42,19 +42,29 @@ class _AboutPingState extends State<AboutPing> {
                  topCardWidget(),
                  bottomCardWidget(),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                      child: Text("Know more here",
-
+                  padding: const EdgeInsets.all(12.0),
+                  child: Align(
+                    alignment:Alignment.center,
+                    child: RaisedButton(
+                      onPressed: () {
+                        launch('http://pictieee.in/');
+                      },
+                      shape:RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              bottomRight: Radius.circular(10.0))),
+                      child: Text("Read P.I.N.G Issue Here",
                           textAlign: TextAlign.end,
-                          style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue,fontSize: 15.0)),
-                      onTap: () {
+                          style: TextStyle(
+                            // decoration: TextDecoration.underline,
+                              color: Colors.blue,
+                              fontSize: 15.0)),
+                      color: Color(0xff222222),
 
-                        launch('http://www.pictieee.in/ping.html');
-
-                      }
+                    ),
                   ),
                 ),
+
                 // SlimyCard is being called here.
 
                 /*SlimyCard(

@@ -1,8 +1,7 @@
 import 'package:credenz20/constants/theme.dart';
-import 'package:flutter/material.dart';
 import 'package:credenz20/extra_lib/modified_slimy_card.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 class PISB extends StatelessWidget {
   @override
@@ -38,21 +37,29 @@ class _AboutPISBState extends State<AboutPISB> {
             return ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-
-                 topCardWidget(),
-                 bottomCardWidget(),
+                topCardWidget(),
+                bottomCardWidget(),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                      child: Text("Know more here",
-
-                          textAlign: TextAlign.end,
-                          style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue,fontSize: 15.0)),
-                      onTap: () {
-
+                  padding: const EdgeInsets.all(12.0),
+                  child: Align(
+                    alignment:Alignment.center,
+                    child: RaisedButton(
+                      onPressed: () {
                         launch('http://pictieee.in/');
+                      },
+                      shape:RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              bottomRight: Radius.circular(10.0))),
+                      child: Text("Visit our website",
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                              // decoration: TextDecoration.underline,
+                              color: Colors.blue,
+                              fontSize: 15.0)),
+                      color: Color(0xff222222),
 
-                      }
+                    ),
                   ),
                 ),
 
@@ -86,21 +93,24 @@ class _AboutPISBState extends State<AboutPISB> {
         Text(
           "PICT IEEE Student Branch\n",
           style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.w500),
+              color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
           textAlign: TextAlign.center,
           maxLines: 2,
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Container(  // Image goes here
+          child: Container(
+            // Image goes here
             height: 70,
             // width: 500,
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(image: AssetImage('images/pisb-colour.png',),fit: BoxFit.fitHeight),
+              image: DecorationImage(
+                  image: AssetImage(
+                    'images/pisb-colour.png',
+                  ),
+                  fit: BoxFit.fitHeight),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
@@ -112,7 +122,6 @@ class _AboutPISBState extends State<AboutPISB> {
           ),
         ),
         SizedBox(height: 25),
-
       ],
     );
   }
@@ -121,7 +130,8 @@ class _AboutPISBState extends State<AboutPISB> {
   Widget bottomCardWidget() {
     return RichText(
       text: TextSpan(
-        text: "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
+        text:
+            "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
         style: TextStyle(
           color: Colors.white,
           fontSize: 18,

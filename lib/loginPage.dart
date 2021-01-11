@@ -207,11 +207,8 @@ class _LoginState extends State<Login> {
                         color: Colors.deepPurpleAccent,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8.0),
-                              bottomLeft: Radius.circular(8.0),
-                              bottomRight: Radius.circular(8.0),
-                            )
-                        ),
+                                topLeft: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0))),
                         icon: Icon(Icons.lock),
                         label: Text(
                           "Sign In",
