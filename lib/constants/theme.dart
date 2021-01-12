@@ -7,6 +7,9 @@ TextStyle listTitleSelectedTextStyle = TextStyle(color: Colors.white, fontSize: 
 Color selectedColor = Color(0xFF4ACBEA);
 Color drawerBackgroundColor = Color(0xff000000);
 Color primary= Color(0xFF0f1013);
+Color notiBackColor = Color(0xff191d36);
+Color dividerColor = Color(0xff313969);
+Color textColor = Color(0xffcecddf);
 
 final loader=SpinKitThreeBounce(
   color: drawerBackgroundColor,
