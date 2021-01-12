@@ -239,7 +239,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             iconSize: 25,
             onPressed: () {
               Navigator.pop(context);
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21"))), (route) => false);
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
               // Navigator.pop(context);
             },
           )
