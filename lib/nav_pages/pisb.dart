@@ -11,7 +11,7 @@ class PISB extends StatelessWidget {
       appBar: AppBar(
         title: Text("PISB"),
         //centerTitle: true,
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: primary,
       ),
       body: AboutPISB(),
     );

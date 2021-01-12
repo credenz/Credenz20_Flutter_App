@@ -61,7 +61,7 @@ class _SponsorsState extends State<Sponsors> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: primary,
         title: Text("Sponsors"),
       ),
       body: Container(
