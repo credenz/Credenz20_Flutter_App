@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
   @override
@@ -89,6 +90,26 @@ List<String> position = [
   "Joint Secretary",
   "Vice Treasurer"
 ];
+
+List<String> number = [
+  "+91-9881149694",
+  "+91-9405234240",
+  "+91-7066115776",
+];
+
+List<String> linkedin = [
+  "https://www.linkedin.com/in/onkar-litake-80863516b/",
+  "https://www.linkedin.com/in/durvesh-malpure-103388193/",
+  "https://www.linkedin.com/in/rohan-pawar-b52117173/",
+];
+
+List<String> email = [
+  "https://www.linkedin.com/in/onkar-litake-80863516b/",
+  "https://www.linkedin.com/in/durvesh-malpure-103388193/",
+  "https://www.linkedin.com/in/rohan-pawar-b52117173/",
+];
+
+
 
 class _PageViewWidgetState extends State<PageViewWidget> {
   PageController pageController;
@@ -197,11 +218,15 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/mail.png'),
-                                  onPressed: null),
+                                  onPressed:  () => _launchURL(email[x].toString())),
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),
-                                  onPressed: null),
+                                  onPressed:  () => _launchURL("tel://"+number[x].toString())),
+                              IconButton(
+                                  iconSize: 55.0,
+                                  icon: Image.asset('images/linkdin.png'),
+                                  onPressed:  () => _launchURL(linkedin[x].toString())),
                             ],
                           ),
                         )
@@ -265,3 +290,11 @@ class _PageViewWidgetState extends State<PageViewWidget> {
 
 }
 
+_launchURL(var url) async {
+
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}

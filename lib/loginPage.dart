@@ -12,6 +12,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/gestures.dart';
 import 'package:path_provider/path_provider.dart';
+import 'commons/collap_nav_dr.dart';
+import 'commons/slide_drawer.dart';
 import 'constants/styles.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:credenz20/size_config.dart';
@@ -56,7 +58,7 @@ class _LoginState extends State<Login> {
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
         Fluttertoast.showToast(msg: 'LoggedIn');
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>MyApp()), (route) => false);
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21"))), (route) => false);
       }
     }else{
       String msg=jsonDecode(response.body)['message'];

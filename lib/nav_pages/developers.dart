@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Developer extends StatefulWidget {
   @override
@@ -88,11 +89,33 @@ List<String> name = [
   "Tanuj Agarwal",
   "Durvesh Malpure",
 ];
+
+List<String> number = [
+  "+91-7397865565",
+  "+91-9422668223",
+  "+91-9423929049",
+  "+91-9405234240",
+];
+
+List<String> linkedin = [
+  "https://www.linkedin.com/in/atharvasaraf/",
+  "linkedin.com/in/vaibhav-pallod-556ba51a3/",
+  "https://www.linkedin.com/in/tanuj-agrawal-83320516b/",
+  "https://www.linkedin.com/in/durvesh-malpure-103388193/",
+];
+
+List<String> email = [
+  "https://www.linkedin.com/in/atharvasaraf/",
+  "linkedin.com/in/vaibhav-pallod-556ba51a3/",
+  "https://www.linkedin.com/in/tanuj-agrawal-83320516b/",
+  "https://www.linkedin.com/in/durvesh-malpure-103388193/",
+];
+
 List<String> position = [
   "App head",
   "App head",
   "App head",
-  "Joint Secretary",
+  "App Team",
 ];
 
 class _PageViewWidgetState extends State<PageViewWidget> {
@@ -179,7 +202,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                             ),
                           ),
                         ),
-                        Align(
+                        /*Align(
                           alignment: Alignment.center,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10.0),
@@ -193,7 +216,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               ),
                             ),
                           ),
-                        ),
+                        ),*/
                         Padding(
                           padding: const EdgeInsets.only(top: 30.0),
                           child: Row(
@@ -207,15 +230,19 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               //     iconSize: 55.0,
                               //     icon: Image.asset('images/fb.png'),
                               //     onPressed: null),
-
+                              IconButton(
+                                  iconSize: 42.0,
+                                  icon: Image.asset('images/mail.png'),
+                                  onPressed:  () => _launchURL(email[x].toString())),
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),
-                                  onPressed: null),
+                                  onPressed: () => _launchURL("tel://"+number[x].toString())),
                               IconButton(
                                   iconSize: 55.0,
                                   icon: Image.asset('images/linkdin.png'),
-                                  onPressed: null),
+                                  onPressed: () => _launchURL(linkedin[x].toString()),
+                              )
                             ],
                           ),
                         )
@@ -275,6 +302,15 @@ class _PageViewWidgetState extends State<PageViewWidget> {
       },
       itemCount: profilepic.length,
     );
+  }
+}
+
+_launchURL(var url) async {
+
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
 
