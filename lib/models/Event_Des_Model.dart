@@ -211,7 +211,7 @@ class _EventDesState extends State<EventDes>
                   onPress: () async {
                     _animationController.reverse();
 
-                    await dialogue(context);
+                    //await dialogue(context);
                     setState(() {
                       favorite = !favorite;
                       addToCart();
@@ -346,7 +346,7 @@ await dialogue(context);
           return StatefulBuilder(builder: (context, setState) {
 
             return AlertDialog(
-              backgroundColor: Colors.grey.shade800,
+              backgroundColor: Colors.white,
               scrollable: true,
               content: Container(
                 width: 300,
@@ -394,92 +394,114 @@ await dialogue(context);
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Names",),
+                                  ),
                                   TextFieldBlocBuilder(
-                                    textFieldBloc: formBloc.name,
-                                    keyboardType: TextInputType.emailAddress,
+
+                                    isEnabled: false,
+                                    textFieldBloc: formBloc.p1,
+                                    keyboardType: TextInputType.name,
                                     decoration: InputDecoration(
-                                      labelText: 'Name',
-                                      prefixIcon: Icon(Icons.people),
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 1',
+                                      prefixIcon: Icon(Icons.person),
                                     ),
                                   ),
+                                  TextFieldBlocBuilder(
+
+                                    textFieldBloc: formBloc.p2,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 2',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+
+                                    textFieldBloc: formBloc.p3,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 3',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+
+                                    textFieldBloc: formBloc.p4,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 4',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Emails",),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    isEnabled: false,
+                                    textFieldBloc: formBloc.e1,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Email 1',
+                                      prefixIcon: Icon(Icons.email),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    textFieldBloc: formBloc.e2,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Email 2',
+                                      prefixIcon: Icon(Icons.email),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Year of Study",),
+                                  ),
                                   RadioButtonGroupFieldBlocBuilder<String>(
-                                    selectFieldBloc: formBloc.gender,
+                                    selectFieldBloc: formBloc.year,
                                     itemBuilder: (context, value) =>
                                     value[0].toUpperCase() + value.substring(1),
                                     decoration: InputDecoration(
-                                      labelText: 'Gender',
+                                      labelText: 'Select Category',
                                       prefixIcon: SizedBox(),
                                     ),
                                   ),
-                                  DateTimeFieldBlocBuilder(
-                                    dateTimeFieldBloc: formBloc.birthDate,
-                                    format: DateFormat('dd-mm-yyyy'),
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(1900),
-                                    lastDate: DateTime(2100),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Membership",),
+                                  ),
+                                  RadioButtonGroupFieldBlocBuilder<String>(
+                                    selectFieldBloc: formBloc.ieee,
+                                    itemBuilder: (context, value) =>
+                                    value[0].toUpperCase() + value.substring(1),
                                     decoration: InputDecoration(
-                                      labelText: 'Date of Birth',
-                                      prefixIcon: Icon(Icons.calendar_today),
+                                      labelText: 'Select Category',
+                                      prefixIcon: SizedBox(),
                                     ),
                                   ),
+
+                                  RaisedButton(
+                                    child: Text("Submit"),
+                                    onPressed: () {
+
+                                        Navigator.of(context).pop();
+                                    },
+                                  )
+
                                 ],
                               ),
                             ),
                           ),
-                        ),/*Scaffold(
-                          resizeToAvoidBottomInset: false,
-                          //appBar: AppBar(title: Text('Serialized Form')),
-                          floatingActionButton: FloatingActionButton(
-                            onPressed: formBloc.submit,
-                            child: Icon(Icons.send),
-                          ),
-                          body: FormBlocListener<SerializedFormBloc, String, String>(
-                            onSuccess: (context, state) {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text(state.successResponse),
-                                duration: Duration(seconds: 2),
-                              ));
-                            },
-                            child: SingleChildScrollView(
-                              physics: ClampingScrollPhysics(),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    TextFieldBlocBuilder(
-                                      textFieldBloc: formBloc.name,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        labelText: 'Name',
-                                        prefixIcon: Icon(Icons.people),
-                                      ),
-                                    ),
-                                    RadioButtonGroupFieldBlocBuilder<String>(
-                                      selectFieldBloc: formBloc.gender,
-                                      itemBuilder: (context, value) =>
-                                      value[0].toUpperCase() + value.substring(1),
-                                      decoration: InputDecoration(
-                                        labelText: 'Gender',
-                                        prefixIcon: SizedBox(),
-                                      ),
-                                    ),
-                                    DateTimeFieldBlocBuilder(
-                                      dateTimeFieldBloc: formBloc.birthDate,
-                                      format: DateFormat('dd-mm-yyyy'),
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime(1900),
-                                      lastDate: DateTime(2100),
-                                      decoration: InputDecoration(
-                                        labelText: 'Date of Birth',
-                                        prefixIcon: Icon(Icons.calendar_today),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),*/
+                        ),
                       );
                     },
                   ),
@@ -521,26 +543,46 @@ await dialogue(context);
   }
 }
 class SerializedFormBloc extends FormBloc<String, String> {
-  final name = TextFieldBloc(
-    name: 'name',
+  final p1 = TextFieldBloc(
+    initialValue: 'username',
+    name: 'name1',
+  );
+  final p2 = TextFieldBloc(
+    name: 'name2',
+  );
+  final p3 = TextFieldBloc(
+    name: 'name3',
+  );
+  final p4 = TextFieldBloc(
+    name: 'name4',
+  );
+  final e1 = TextFieldBloc(
+    initialValue: 'email',
+    name: 'email1',
+  );
+  final e2 = TextFieldBloc(
+    name: 'email2',
   );
 
-  final gender = SelectFieldBloc(
-    name: 'gender',
-    items: ['male', 'female'],
+  final year = SelectFieldBloc(
+    name: 'year',
+    initialValue: 'FE',
+    items: ['FE', 'SE', 'TE', 'BE'],
   );
 
-  final birthDate = InputFieldBloc<DateTime, Object>(
-    name: 'birthDate',
-    toJson: (value) => value.toUtc().toIso8601String(),
+  final ieee = SelectFieldBloc(
+    name: 'ieee',
+    initialValue: 'Non-IEEE Member',
+    items: ['IEEE Member', 'Non-IEEE Member',],
   );
+
 
   SerializedFormBloc() {
     addFieldBlocs(
       fieldBlocs: [
-        name,
-        gender,
-        birthDate,
+        p1,p2,p3,p4,e1,e2,
+        year,
+        ieee,
       ],
     );
   }
