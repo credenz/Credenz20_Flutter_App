@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:credenz20/Home.dart';
+import 'package:credenz20/commons/collap_nav_dr.dart';
+import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:credenz20/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -237,8 +239,7 @@ class _CardSliverAppBarState extends State<CardSliverAppBar>
             iconSize: 25,
             onPressed: () {
               Navigator.pop(context);
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                  MyApp()), (Route<dynamic> route) => false);
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21"))), (route) => false);
               // Navigator.pop(context);
             },
           )

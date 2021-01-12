@@ -9,6 +9,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 import 'Home.dart';
+import 'commons/collap_nav_dr.dart';
+import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
 
 class SignUp extends StatefulWidget {
@@ -45,10 +47,7 @@ class _SignUpState extends State<SignUp> {
       await storage.write(
           key: "accToken", value: jsonDecode(response.body)['accessToken']);
       await storage.write(key: 'username', value: userName);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => Home(title: "Credenz \'20")));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21"))), (route) => false);
     } else {
       String msg = jsonDecode(response.body)['message'];
       Fluttertoast.showToast(
