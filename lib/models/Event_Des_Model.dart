@@ -3,9 +3,12 @@ import 'package:credenz20/constants/EventData.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
+
+import '../temp.dart';
 
 class EventDes extends StatefulWidget {
   int eventIndex;
@@ -18,6 +21,10 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes>
     with SingleTickerProviderStateMixin {
+  final gender = SelectFieldBloc(
+    name: 'gender',
+    items: ['male', 'female'],
+  );
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
   final storage = FlutterSecureStorage();
@@ -204,7 +211,7 @@ class _EventDesState extends State<EventDes>
                   onPress: () async {
                     _animationController.reverse();
 
-                    await dialogue(context);
+                    //await dialogue(context);
                     setState(() {
                       favorite = !favorite;
                       addToCart();
@@ -325,6 +332,7 @@ await dialogue(context);
   }
 
   Future<void> dialogue(BuildContext context) async {
+
     return await showDialog(
         context: context,
         builder: (context) {
@@ -334,9 +342,11 @@ await dialogue(context);
               p4 = TextEditingController(),
               e1 = TextEditingController(),
               e2 = TextEditingController();
+          //final formBloc = context.bloc<SerializedFormBloc>();
           return StatefulBuilder(builder: (context, setState) {
+
             return AlertDialog(
-              backgroundColor: Colors.grey.shade800,
+              backgroundColor: Colors.white,
               scrollable: true,
               content: Container(
                 width: 300,
@@ -357,233 +367,152 @@ await dialogue(context);
                         ),
                       ),
                     ),
-                    Form(
-                      key: _key,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Card(
-                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(children: [
-                                    Text(
-                                      "Enter Usernames: ",
-                                      textAlign: TextAlign.left,
+                BlocProvider(
+                  create: (context) => SerializedFormBloc(),
+                  child: Builder(
+                    builder: (context) {
+                      final formBloc = context.bloc<SerializedFormBloc>();
+
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          inputDecorationTheme: InputDecorationTheme(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        child: FormBlocListener<SerializedFormBloc, String, String>(
+                          onSuccess: (context, state) {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(state.successResponse),
+                              duration: Duration(seconds: 2),
+                            ));
+                          },
+                          child: SingleChildScrollView(
+                            physics: ClampingScrollPhysics(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Names",),
+                                  ),
+                                  TextFieldBlocBuilder(
+
+                                    isEnabled: false,
+                                    textFieldBloc: formBloc.p1,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 1',
+                                      prefixIcon: Icon(Icons.person),
                                     ),
-                                    TextFormField(
-                                      controller: p1,
-                                      validator: (value) {
-                                        return value.isNotEmpty
-                                            ? null
-                                            : "Invalid Field";
-                                      },
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 1*",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  TextFieldBlocBuilder(
+
+                                    textFieldBloc: formBloc.p2,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 2',
+                                      prefixIcon: Icon(Icons.person),
                                     ),
-                                    //Text("Participant 2: "),
-                                    TextFormField(
-                                      controller: p2,
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 2",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  TextFieldBlocBuilder(
+
+                                    textFieldBloc: formBloc.p3,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 3',
+                                      prefixIcon: Icon(Icons.person),
                                     ),
-                                    //Text("Participant 3: "),
-                                    TextFormField(
-                                      controller: p3,
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 3",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  TextFieldBlocBuilder(
+
+                                    textFieldBloc: formBloc.p4,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 4',
+                                      prefixIcon: Icon(Icons.person),
                                     ),
-                                    //Text("Participant 3: "),
-                                    TextFormField(
-                                      controller: p4,
-                                      decoration: InputDecoration(
-                                          hintText: "Participant 4",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Emails",),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    isEnabled: false,
+                                    textFieldBloc: formBloc.e1,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Email 1',
+                                      prefixIcon: Icon(Icons.email),
                                     ),
-                                  ]),
-                                )),
-                            Card(
-                              margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "Enter Emails: ",
-                                      textAlign: TextAlign.left,
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    textFieldBloc: formBloc.e2,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Email 2',
+                                      prefixIcon: Icon(Icons.email),
                                     ),
-                                    TextFormField(
-                                      controller: e1,
-                                      validator: (value) {
-                                        return value.isNotEmpty
-                                            ? null
-                                            : "Invalid Field";
-                                      },
-                                      decoration: InputDecoration(
-                                          hintText: "Email 1*",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Year of Study",),
+                                  ),
+                                  RadioButtonGroupFieldBlocBuilder<String>(
+                                    selectFieldBloc: formBloc.year,
+                                    itemBuilder: (context, value) =>
+                                    value[0].toUpperCase() + value.substring(1),
+                                    decoration: InputDecoration(
+                                      labelText: 'Select Category',
+                                      prefixIcon: SizedBox(),
                                     ),
-                                    //Text("Participant 2: "),
-                                    TextFormField(
-                                      controller: e2,
-                                      decoration: InputDecoration(
-                                          hintText: "Email 2",
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Membership",),
+                                  ),
+                                  RadioButtonGroupFieldBlocBuilder<String>(
+                                    selectFieldBloc: formBloc.ieee,
+                                    itemBuilder: (context, value) =>
+                                    value[0].toUpperCase() + value.substring(1),
+                                    decoration: InputDecoration(
+                                      labelText: 'Select Category',
+                                      prefixIcon: SizedBox(),
                                     ),
-                                  ],
-                                ),
+                                  ),
+
+                                  RaisedButton(
+                                    child: Text("Submit"),
+                                    onPressed: () {
+
+                                        Navigator.of(context).pop();
+                                    },
+                                  )
+
+                                ],
                               ),
                             ),
-                            Card(
-                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                                child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(children: [
-                                      Text(
-                                        "Select Category: ",
-                                        textAlign: TextAlign.left,
-                                      ),
-                                      Container(
-                                        //height: 300,
-                                        //width: 300,
-                                        child: ListView.builder(
-                                          itemBuilder: (context, index) {
-                                            return Container(
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Radio(
-                                                      value: options[index],
-                                                      groupValue: selectedValue,
-                                                      onChanged: (s) {
-                                                        setState(() {
-                                                          selectedValue = s;
-                                                        });
-                                                      }),
-                                                  Text(options[index]),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                          itemCount: options.length,
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                        ),
-                                      ),
-                                    ]))),
-                            Card(
-                                margin: EdgeInsets.fromLTRB(2, 10, 2, 10),
-                                child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(children: [
-                                      Text(
-                                        "Select Category: ",
-                                        textAlign: TextAlign.left,
-                                      ),
-                                      Container(
-                                        child: ListView.builder(
-                                          itemBuilder: (context, index) {
-                                            return Container(
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Radio(
-                                                      value: options1[index],
-                                                      groupValue:
-                                                          selectedValue1,
-                                                      onChanged: (s) {
-                                                        selectedValue1 = s;
-                                                        setState(() {});
-                                                      }),
-                                                  Text(options1[index]),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                          itemCount: options1.length,
-                                          shrinkWrap: true,
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                        ),
-                                      ),
-                                    ]))),
-                            RaisedButton(
-                              child: Text("Submit"),
-                              onPressed: () {
-                                if (_key.currentState.validate()) {
-                                  _key.currentState.save();
-                                  Navigator.of(context).pop();
-                                }
-                              },
-                            )
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
+                  ),
+                ),
+
                   ],
                 ),
               ),
             );
           });
         });
-
-    /* return AlertDialog(
-            content: Stack(
-              overflow: Overflow.visible,
-              children: <Widget>[
-                Positioned(
-                  right: -40.0,
-                  top: -40.0,
-                  child: InkResponse(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: CircleAvatar(
-                      child: Icon(Icons.close),
-                      backgroundColor: Colors.red,
-                    ),
-                  ),
-                ),
-                Form(
-                  //key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextFormField(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(
-                          child: Text("Submitß"),
-                          onPressed: () {
-                            //if (_formKey.currentState.validate()) {
-                             // _formKey.currentState.save();
-                            //}
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );*/
   }
 
   Widget tabcontroller() {
@@ -613,5 +542,54 @@ await dialogue(context);
     );
   }
 }
+class SerializedFormBloc extends FormBloc<String, String> {
+  final p1 = TextFieldBloc(
+    initialValue: 'username',
+    name: 'name1',
+  );
+  final p2 = TextFieldBloc(
+    name: 'name2',
+  );
+  final p3 = TextFieldBloc(
+    name: 'name3',
+  );
+  final p4 = TextFieldBloc(
+    name: 'name4',
+  );
+  final e1 = TextFieldBloc(
+    initialValue: 'email',
+    name: 'email1',
+  );
+  final e2 = TextFieldBloc(
+    name: 'email2',
+  );
 
+  final year = SelectFieldBloc(
+    name: 'year',
+    initialValue: 'FE',
+    items: ['FE', 'SE', 'TE', 'BE'],
+  );
+
+  final ieee = SelectFieldBloc(
+    name: 'ieee',
+    initialValue: 'Non-IEEE Member',
+    items: ['IEEE Member', 'Non-IEEE Member',],
+  );
+
+
+  SerializedFormBloc() {
+    addFieldBlocs(
+      fieldBlocs: [
+        p1,p2,p3,p4,e1,e2,
+        year,
+        ieee,
+      ],
+    );
+  }
+
+  @override
+  void onSubmitting() {
+    // TODO: implement onSubmitting
+  }
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

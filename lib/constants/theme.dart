@@ -6,6 +6,7 @@ TextStyle listTitleSelectedTextStyle = TextStyle(color: Colors.white, fontSize: 
 
 Color selectedColor = Color(0xFF4ACBEA);
 Color drawerBackgroundColor = Color(0xff000000);
+Color primary= Color(0xFF0f1013);
 
 final loader=SpinKitThreeBounce(
   color: drawerBackgroundColor,
@@ -13,16 +14,16 @@ final loader=SpinKitThreeBounce(
 );
 
 final animatedloader = SpinKitDoubleBounce(
-  color: Colors.blue,
+  color: Color(0xff51F18B),
   size: 50,
 );
 
 final loader1=SpinKitDoubleBounce(
-  color: Colors.blue,
+  color: Color(0xff51F18B),
   size: 50,
 );
 
 final loader2= SpinKitDoubleBounce(
-  color: Colors.blue,
+  color: Color(0xff51F18B),
   size: 50,
 );

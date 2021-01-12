@@ -16,12 +16,12 @@ class MenuDrawer extends StatelessWidget {
   BoxDecoration get _gradient => BoxDecoration(
     // color: Color(0xff101010)
     gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        stops: [0.0, 1.0],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        stops: [0,1],
           // colors: [Color(0xFF000000),Color(0xFF000000)]
         //colors: [Color(0xFF3d3251), Color(0xFF272034)]
-      colors: [Colors.grey.shade900,Colors.grey.shade700]
+      colors: [Color(0xff15171f),Color(0xff1d2556)]
     ),
   );
 
