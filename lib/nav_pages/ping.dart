@@ -12,7 +12,7 @@ class Ping extends StatelessWidget {
         title: Text("P.I.N.G."),
 
        // centerTitle: true,
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: primary,
       ),
       body: AboutPing(),
     );
@@ -28,7 +28,7 @@ class _AboutPingState extends State<AboutPing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: drawerBackgroundColor,
+      backgroundColor: notiBackColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: StreamBuilder(
@@ -107,7 +107,7 @@ class _AboutPingState extends State<AboutPing> {
             height: 200,
             // width: 500,
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: notiBackColor,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(image: AssetImage('images/ping.jpg',),fit: BoxFit.fitHeight),
               boxShadow: [
@@ -134,7 +134,7 @@ class _AboutPingState extends State<AboutPing> {
         text: TextSpan(
           text: "P.I.N.G. (PICT IEEE Newsletter Group) is the official technical magazine of PISB published twice a year. P.I.N.G. serves as a platform for individuals to portray their technical ingenuity. It highlights articles oncutting-edge technologies from technocrats all around the globe including students, industrialists and faculty members. It also features interviews of distinguished personalities in various technical domains. P.I.N.G. aims at keeping its readers up to date on recent developments in technology and helps them extrapolate their perceptions to contemporary ideas of modernisation. With the imminent Issue 16.1, be ready to get P.I.N.G.'d!",
           style: TextStyle(
-            color: Colors.white,
+            color: textColor,
             fontSize: 18,
             fontWeight: FontWeight.w600,
           ),
