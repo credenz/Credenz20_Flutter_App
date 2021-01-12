@@ -33,13 +33,14 @@ class RaisedGradientButton extends StatelessWidget {
       width: width,
       height: height,
       // shape: shape,
-      decoration: BoxDecoration(gradient: gradient, boxShadow: [
+      decoration: BoxDecoration(gradient: gradient,
+        /*boxShadow: [
         BoxShadow(
           color: Colors.grey[500],
           offset: Offset(0.0, 1.5),
           blurRadius: 1.5,
         ),
-      ],
+      ],*/
       borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
       ),
       child: Material(
