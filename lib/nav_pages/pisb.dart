@@ -1,3 +1,4 @@
+import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/extra_lib/modified_slimy_card.dart';
 import 'package:flutter/material.dart';
@@ -39,27 +40,28 @@ class _AboutPISBState extends State<AboutPISB> {
               children: <Widget>[
                 topCardWidget(),
                 bottomCardWidget(),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Align(
-                    alignment:Alignment.center,
-                    child: RaisedButton(
-                      onPressed: () {
-                        launch('http://pictieee.in/');
-                      },
-                      shape:RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10.0),
-                              bottomRight: Radius.circular(10.0))),
+                    alignment: Alignment.center,
+                    child: RaisedGradientButton(
+                      height: 35.0,
+                      width: 160.0,
                       child: Text("Visit our website",
                           textAlign: TextAlign.end,
                           style: TextStyle(
                               // decoration: TextDecoration.underline,
-                              color: Colors.blue,
-                              fontSize: 20.0)),
-                      color: Color(0xff222222),
-
+                              color: Colors.white,
+                              fontSize: 15.0)),
+                      gradient: LinearGradient(
+                        colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
+                      ),
+                      onPressed: () {
+                        launch('http://pictieee.in/');
+                      },
                     ),
                   ),
                 ),

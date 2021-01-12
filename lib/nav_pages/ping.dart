@@ -1,3 +1,4 @@
+import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:credenz20/extra_lib/modified_slimy_card.dart';
@@ -45,23 +46,43 @@ class _AboutPingState extends State<AboutPing> {
                   padding: const EdgeInsets.all(12.0),
                   child: Align(
                     alignment:Alignment.center,
-                    child: RaisedButton(
+                    // child: RaisedButton(
+                    //   onPressed: () {
+                    //     launch('http://pictieee.in/');
+                    //   },
+                    //   shape:RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.only(
+                    //           topLeft: Radius.circular(10.0),
+                    //           bottomRight: Radius.circular(10.0))),
+                    //   child: Text("Read P.I.N.G Issue Here",
+                    //       textAlign: TextAlign.end,
+                    //       style: TextStyle(
+                    //         // decoration: TextDecoration.underline,
+                    //           color: Colors.blue,
+                    //           fontSize: 15.0)),
+                    //   color: Color(0xff222222),
+                    //
+                    // ),
+
+                    child:RaisedGradientButton(
+                        height: 40.0,
+                        width: 180.0,
+                        child:Text("Read P.I.N.G Issue Here",
+                            textAlign: TextAlign.end,
+                            style: TextStyle(
+                              // decoration: TextDecoration.underline,
+                                color: Colors.white,
+                                fontSize: 15.0)),
+                        gradient: LinearGradient(
+                          colors: <Color>[ Color(0xff4e50bc),Color(0xff55c2fc)],
+                        ),
                       onPressed: () {
                         launch('http://pictieee.in/');
                       },
-                      shape:RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10.0),
-                              bottomRight: Radius.circular(10.0))),
-                      child: Text("Read P.I.N.G Issue Here",
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                            // decoration: TextDecoration.underline,
-                              color: Colors.blue,
-                              fontSize: 15.0)),
-                      color: Color(0xff222222),
-
                     ),
+
+
+
                   ),
                 ),
 

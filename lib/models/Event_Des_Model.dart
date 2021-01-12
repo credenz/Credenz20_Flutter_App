@@ -1,15 +1,13 @@
 import 'package:credenz20/External_Package/CardSilverAppBar.dart';
+import 'package:credenz20/External_Package/floating_action_bubble.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:credenz20/constants/theme.dart';
-import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
-
-import '../temp.dart';
 
 class EventDes extends StatefulWidget {
   int eventIndex;
@@ -205,7 +203,7 @@ class _EventDesState extends State<EventDes>
                 Bubble(
                   title: "Solo   ",
                   iconColor: Colors.white,
-                  bubbleColor: Colors.blue,
+                  bubbleColorGradient: commonGradient,
                   icon: Icons.person,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
@@ -222,7 +220,7 @@ class _EventDesState extends State<EventDes>
                 Bubble(
                   title: "Group",
                   iconColor: Colors.white,
-                  bubbleColor: Colors.blue,
+                  bubbleColorGradient: commonGradient,
                   icon: Icons.people,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
@@ -330,7 +328,6 @@ await dialogue(context);
   }
 
   Future<void> dialogue(BuildContext context) async {
-
     return await showDialog(
         context: context,
         builder: (context) {
@@ -342,7 +339,6 @@ await dialogue(context);
               e2 = TextEditingController();
           //final formBloc = context.bloc<SerializedFormBloc>();
           return StatefulBuilder(builder: (context, setState) {
-
             return AlertDialog(
               backgroundColor: Colors.white,
               scrollable: true,
@@ -573,14 +569,21 @@ class SerializedFormBloc extends FormBloc<String, String> {
   final ieee = SelectFieldBloc(
     name: 'ieee',
     initialValue: 'Non-IEEE Member',
-    items: ['IEEE Member', 'Non-IEEE Member',],
+    items: [
+      'IEEE Member',
+      'Non-IEEE Member',
+    ],
   );
-
 
   SerializedFormBloc() {
     addFieldBlocs(
       fieldBlocs: [
-        p1,p2,p3,p4,e1,e2,
+        p1,
+        p2,
+        p3,
+        p4,
+        e1,
+        e2,
         year,
         ieee,
       ],
