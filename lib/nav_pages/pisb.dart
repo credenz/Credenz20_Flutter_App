@@ -26,9 +26,9 @@ class _AboutPISBState extends State<AboutPISB> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: drawerBackgroundColor,
+      backgroundColor: notiBackColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,
@@ -39,6 +39,7 @@ class _AboutPISBState extends State<AboutPISB> {
               children: <Widget>[
                 topCardWidget(),
                 bottomCardWidget(),
+                SizedBox(height: 30,),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Align(
@@ -56,7 +57,7 @@ class _AboutPISBState extends State<AboutPISB> {
                           style: TextStyle(
                               // decoration: TextDecoration.underline,
                               color: Colors.blue,
-                              fontSize: 15.0)),
+                              fontSize: 20.0)),
                       color: Color(0xff222222),
 
                     ),
@@ -90,13 +91,13 @@ class _AboutPISBState extends State<AboutPISB> {
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         SizedBox(height: 15),
-        Text(
+        /*Text(
           "PICT IEEE Student Branch\n",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
           textAlign: TextAlign.center,
           maxLines: 2,
-        ),
+        ),*/
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
@@ -104,11 +105,11 @@ class _AboutPISBState extends State<AboutPISB> {
             height: 70,
             // width: 500,
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: notiBackColor,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                   image: AssetImage(
-                    'images/pisb-colour.png',
+                    'images/logopisb.png',
                   ),
                   fit: BoxFit.fitHeight),
               boxShadow: [
@@ -121,7 +122,7 @@ class _AboutPISBState extends State<AboutPISB> {
             ),
           ),
         ),
-        SizedBox(height: 25),
+        SizedBox(height: 55),
       ],
     );
   }
@@ -133,8 +134,8 @@ class _AboutPISBState extends State<AboutPISB> {
         text:
             "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 18,
+          color: textColor,
+          fontSize: 21,
           fontWeight: FontWeight.w600,
         ),
       ),

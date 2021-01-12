@@ -17,16 +17,16 @@ final loader=SpinKitThreeBounce(
 );
 
 final animatedloader = SpinKitDoubleBounce(
-  color: Color(0xff51F18B),
+  color: Color(0xff0c9e8f),
   size: 50,
 );
 
 final loader1=SpinKitDoubleBounce(
-  color: Color(0xff51F18B),
+  color: Color(0xff0c9e8f),
   size: 50,
 );
 
 final loader2= SpinKitDoubleBounce(
-  color: Color(0xff51F18B),
+  color: Color(0xff0c9e8f),
   size: 50,
 );

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 import 'Home.dart';
+import 'commons/collap_nav_dr.dart';
+import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
 
 void main() {
@@ -47,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigationPage() {
     Navigator.of(context).push(new MaterialPageRoute(
-        builder: (BuildContext context) => new Home(title: "Credenz \'21")));
+        builder: (BuildContext context) => SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))));
   }
 
   @override
