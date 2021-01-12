@@ -227,6 +227,7 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
+                ch
                 decoration: InputDecoration(
                   labelStyle: TextStyle(color: Colors.black),
                   isDense: true,
