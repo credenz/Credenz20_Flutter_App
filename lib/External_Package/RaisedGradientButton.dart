@@ -23,7 +23,7 @@ class RaisedGradientButton extends StatelessWidget {
     this.gradient,
     this.shape,
     this.width = double.infinity,
-    this.height = 50.0,
+    this.height = double.infinity,
     this.onPressed,
   }) : super(key: key);
 
@@ -31,17 +31,17 @@ class RaisedGradientButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: 50.0,
+      height: height,
       // shape: shape,
-      decoration: BoxDecoration(
-
-          gradient: gradient, boxShadow: [
+      decoration: BoxDecoration(gradient: gradient, boxShadow: [
         BoxShadow(
           color: Colors.grey[500],
           offset: Offset(0.0, 1.5),
           blurRadius: 1.5,
         ),
-      ]),
+      ],
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
+      ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

@@ -141,7 +141,10 @@ class _ProfileState extends State<Profile> {
       // clipper: new CustomHalfCircleClipper(),
       child: Container(
         height: 90,
-        color: Color(0xff0e0f14),
+        decoration: BoxDecoration(
+          color: Color(0xff222b64),
+          borderRadius: BorderRadius.only(bottomRight: Radius.circular(5.0),bottomLeft:Radius.circular(5.0), ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
@@ -151,7 +154,7 @@ class _ProfileState extends State<Profile> {
                 backgroundColor: Colors.white,
                 radius: 30.0,
                 backgroundImage:
-                AssetImage("images/eyesample.png"),
+                AssetImage("images/profileHeadIcon.png"),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12.0),
@@ -166,7 +169,7 @@ class _ProfileState extends State<Profile> {
                         'Hello',
                         style: TextStyle(
                             fontSize: 18.0,
-                            color: Colors.grey.shade600,
+                            color: textColor,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -176,7 +179,7 @@ class _ProfileState extends State<Profile> {
                         'vsp123456',
                         style: TextStyle(
                             fontSize: 18.0,
-                            color: Colors.grey.shade600,
+                            color: textColor,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -188,7 +191,7 @@ class _ProfileState extends State<Profile> {
                 padding: const EdgeInsets.only(right: 8.0),
                 child:RaisedGradientButton(
                     height: 40.0,
-                    width: 50.0,
+                    width: 40.0,
                     child: Icon(
                       Icons.edit,
                       color: Colors.white,
