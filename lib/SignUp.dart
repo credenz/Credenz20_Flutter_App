@@ -47,7 +47,7 @@ class _SignUpState extends State<SignUp> {
       await storage.write(
           key: "accToken", value: jsonDecode(response.body)['accessToken']);
       await storage.write(key: 'username', value: userName);
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21"))), (route) => false);
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
     } else {
       String msg = jsonDecode(response.body)['message'];
       Fluttertoast.showToast(
