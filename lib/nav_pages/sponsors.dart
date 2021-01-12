@@ -42,9 +42,9 @@ class _SponsorsState extends State<Sponsors> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 0),
+                    offset: Offset(0, 10),
                     blurRadius: 20,
-                    color: Colors.grey.withOpacity(0.7),
+                    color: Colors.grey.withOpacity(0.5),
                   )
                 ],
             ),
@@ -66,7 +66,7 @@ class _SponsorsState extends State<Sponsors> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.white,
           // gradient: LinearGradient(begin: FractionalOffset.topLeft, end: FractionalOffset.bottomRight, colors: [Color.fromRGBO(61, 17, 52, 10), Color.fromRGBO(26, 4, 43, 10)])
         ),
         child: ListWheelScrollView(

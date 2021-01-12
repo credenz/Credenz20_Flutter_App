@@ -1,5 +1,6 @@
 import 'package:credenz20/External_Package/CardSilverAppBar.dart';
 import 'package:credenz20/constants/EventData.dart';
+import 'package:credenz20/constants/theme.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -85,13 +86,13 @@ class _EventDesState extends State<EventDes>
               children: <Widget>[
                 Stack(
                   children: [
-                    // Image.asset(
-                    //   // "images/sback0.jpg",
-                    //   "gifs/desback.gif",
-                    //   height: MediaQuery.of(context).size.height,
-                    //   width: MediaQuery.of(context).size.width,
-                    //   fit: BoxFit.cover,
-                    // ),
+                     Image.asset(
+                       // "images/sback0.jpg",
+                       "gifs/desbackex.gif",
+                       height: MediaQuery.of(context).size.height,
+                       width: MediaQuery.of(context).size.width,
+                       fit: BoxFit.cover,
+                     ),
                     // Container(
                     //   color: Color(0xaa4E164B),
                     // ),
@@ -197,7 +198,7 @@ class _EventDesState extends State<EventDes>
               onPress: () => _animationController.isCompleted
                   ? _animationController.reverse()
                   : _animationController.forward(),
-              iconColor: Colors.blue,
+              iconColor: Colors.grey.shade800,
               iconData: Icons.shopping_cart_outlined,
               backGroundColor: Colors.white,
               items: <Bubble>[
@@ -376,6 +377,7 @@ await dialogue(context);
                       return Theme(
                         data: Theme.of(context).copyWith(
                           inputDecorationTheme: InputDecorationTheme(
+                            fillColor: textColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -404,6 +406,7 @@ await dialogue(context);
                                     textFieldBloc: formBloc.p1,
                                     keyboardType: TextInputType.name,
                                     decoration: InputDecoration(
+
                                       contentPadding: EdgeInsets.all(0),
                                       labelText: 'Participant 1',
                                       prefixIcon: Icon(Icons.person),
