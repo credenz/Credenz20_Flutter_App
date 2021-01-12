@@ -47,7 +47,7 @@ class _MyEventsState extends State<MyEvents> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: drawerBackgroundColor,
+        backgroundColor: primary,
         title: Text("My Events"),
       ),
       body: load==true?Container(
@@ -57,13 +57,24 @@ class _MyEventsState extends State<MyEvents> {
           child: animatedloader,
           color: drawerBackgroundColor,
         ),)
-      ):ListView.builder(itemBuilder: (BuildContext context,int pos){
-        return ListTile(
-          title: Text("Event Name:- ${eventList[pos]['event_username'].toString().toUpperCase()}"),
-          subtitle: Text("Password:- ${eventList[pos]['random_pw']}"),
-        );
-      },
-      itemCount: eventList.length,),
+      ):Container(
+        color: notiBackColor,
+        child: ListView.builder(itemBuilder: (BuildContext context,int pos){
+          return Column(
+            children: [
+              ListTile(
+                title: Text("Event Name:- ${eventList[pos]['event_username'].toString().toUpperCase()}", style: TextStyle(color: textColor),),
+                subtitle: Text("Password:- ${eventList[pos]['random_pw']}", style: TextStyle(color: textColor),),
+              ),
+              Divider(
+                color: Color(0xff313969),
+              ),
+            ],
+          );
+
+        },
+        itemCount: eventList.length,),
+      ),
     );
   }
 }
