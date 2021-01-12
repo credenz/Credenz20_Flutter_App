@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/loginPage.dart';
@@ -100,7 +101,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: notiBackColor,
         // floatingActionButton: FloatingActionButton(
         //   heroTag: 'abc',
         //   child: Icon(Icons.edit),
@@ -125,84 +126,7 @@ class _ProfileState extends State<Profile> {
             : SingleChildScrollView(
                 child: Column(
                   children: [
-                    ClipPath(
-                      // clipper: new CustomHalfCircleClipper(),
-                      child: Container(
-                        height: 90,
-                        color: Color(0xff00022e),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Row(
-
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 30.0,
-                                backgroundImage:
-                                    AssetImage("images/eyesample.png"),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Text(
-                                        'Hello',
-                                        style: TextStyle(
-                                            fontSize: 18.0,
-                                            color: Colors.grey.shade600,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Text(
-                                        'vsp123456',
-                                        style: TextStyle(
-                                            fontSize: 18.0,
-                                            color: Colors.grey.shade600,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: RawMaterialButton(
-                                  constraints: BoxConstraints(),
-                                  fillColor: Colors.blue,
-                                  padding: EdgeInsets.all(6),
-                                  // color: Colors.blue,
-                                  onPressed: () {
-                                    Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (BuildContext context) => EditProfile(),
-                                                ));
-                                  },
-                                  child: Icon(
-                                    Icons.edit,
-                                    color: Colors.white,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10.0),
-                                          bottomRight: Radius.circular(10.0))),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
+                    _headerofProfile(),
                     Padding(
                       padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
                       child: _buildForm(),
@@ -210,6 +134,105 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ));
+  }
+
+  _headerofProfile(){
+    return ClipPath(
+      // clipper: new CustomHalfCircleClipper(),
+      child: Container(
+        height: 90,
+        color: Color(0xff0e0f14),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: 30.0,
+                backgroundImage:
+                AssetImage("images/eyesample.png"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Text(
+                        'Hello',
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.grey.shade600,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Text(
+                        'vsp123456',
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.grey.shade600,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child:RaisedGradientButton(
+                    height: 40.0,
+                    width: 50.0,
+                    child: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                    ),
+                    gradient: LinearGradient(
+                      colors: <Color>[ Color(0xff4e50bc),Color(0xff55c2fc)],
+                    ),
+                    onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                EditProfile(),
+                          ));
+                    }
+                ),
+                /*RawMaterialButton(
+                  constraints: BoxConstraints(),
+                  fillColor: Colors.blue,
+                  padding: EdgeInsets.all(6),
+                  // color: Colors.blue,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              EditProfile(),
+                        ));
+                  },
+                  child: Icon(
+                    Icons.edit,
+                    color: Colors.white,
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          bottomRight: Radius.circular(10.0))),
+                ),*/
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   _buildForm() {
@@ -221,19 +244,18 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: nameController,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: textColor),
                 validator: (String value) {
                   if (value.isEmpty) return 'Name cannot be empty';
 
                   return null;
                 },
-                ch
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: TextStyle(color: textColor),
                   isDense: true,
                   labelText: 'Name',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00022e)),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -245,7 +267,7 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: usernameController,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: textColor),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
                   return null;
@@ -253,9 +275,9 @@ class _ProfileState extends State<Profile> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelText: 'Username',
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: TextStyle(color: textColor),
                   disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00022e)),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -268,7 +290,7 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: emailController,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: textColor),
                 validator: (String value) {
                   if (value.isEmpty) return 'Email cannot be empty';
 
@@ -277,11 +299,11 @@ class _ProfileState extends State<Profile> {
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
                   disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00022e)),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: TextStyle(color: textColor),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -337,15 +359,15 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: textColor),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00022e)),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'Phone number',
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: TextStyle(color: textColor),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -361,14 +383,14 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: textColor),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00022e)),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'College Name',
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: TextStyle(color: textColor),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),

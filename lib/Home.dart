@@ -1,3 +1,6 @@
+import 'package:credenz20/constants/theme.dart';
+import 'package:credenz20/constants/theme.dart';
+import 'package:credenz20/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -8,8 +11,6 @@ import 'BottomNav/Noti.dart';
 import 'BottomNav/Profile.dart';
 import 'Cart.dart';
 import 'commons/slide_drawer.dart';
-import 'package:credenz20/size_config.dart';
-import 'constants/theme.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
@@ -108,7 +109,7 @@ class _HomeState extends State<Home> {
         list.add(eventName);
       }
     }
-    print(list.length);
+    // print(list.length);
 
     setState(() {
       cnt=list.length;
@@ -207,9 +208,12 @@ class _HomeState extends State<Home> {
       //Vaibhav's Code
 
       floatingActionButton: FloatingActionButton(
-        child: Image.asset("images/eyesample.png", scale: 2),
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Image.asset("images/eyesample.png", scale: 2),
+        ),
         tooltip: 'Increment',
-        elevation: 2.0,
+        // elevation: 10.0,
         backgroundColor: Colors.white,
         onPressed: () {
           setState(
@@ -240,6 +244,7 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomAppBar(
         color: primary,
         shape: CircularNotchedRectangle(),
+        // notchMargin: 3.0,
         child: Container(
             height: 60,
             child: Row(
@@ -264,10 +269,23 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.group,
-                            color: currentTab == 0
-                                ? Colors.white
-                                : Colors.grey[500]),
+                        ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return RadialGradient(
+                              center: Alignment.topLeft,
+                              // radius: 0.5,
+                              colors:currentTab == 0? <Color>[
+                                Color(0xff4e50bc),Color(0xff55c2fc)]: <Color>[
+                                Color(0xff55c2fc),Color(0xff55c2fc)],
+                              tileMode: TileMode.repeated,
+                            ).createShader(bounds);
+                          },
+                          child:  Icon(Icons.group,
+                              color: currentTab == 0
+                                  ? Colors.white
+                                  : Colors.grey[500]),
+                        ),
+
                         Text(
                           'Profile',
                           overflow: TextOverflow.ellipsis,
@@ -296,10 +314,21 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.perm_contact_calendar,
-                            color: currentTab == 1
-                                ? Colors.white
-                                : Colors.grey[500]),
+                        ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return RadialGradient(
+                              center: Alignment.topLeft,
+                              // radius: 0.5,
+                              colors: <Color>[
+                                Color(0xff4e50bc),Color(0xff55c2fc)],
+                              tileMode: TileMode.repeated,
+                            ).createShader(bounds);
+                          },
+                          child:  Icon(Icons.perm_contact_calendar,
+                              color: currentTab == 1
+                                  ? Colors.white
+                                  : Colors.grey[500]),
+                        ),
                         Text(
                           'Contact',
                           overflow: TextOverflow.ellipsis,
@@ -332,10 +361,21 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.info_outline,
-                            color: currentTab == 3
-                                ? Colors.white
-                                : Colors.grey[500]),
+                        ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return RadialGradient(
+                              center: Alignment.topLeft,
+                              // radius: 0.5,
+                              colors: <Color>[
+                                Color(0xff4e50bc),Color(0xff55c2fc)],
+                              tileMode: TileMode.repeated,
+                            ).createShader(bounds);
+                          },
+                          child:  Icon(Icons.info_outline,
+                              color: currentTab == 1
+                                  ? Colors.white
+                                  : Colors.grey[500]),
+                        ),
                         Text(
                           'About',
                           overflow: TextOverflow.ellipsis,
@@ -364,10 +404,21 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.notifications,
-                            color: currentTab == 4
-                                ? Colors.white
-                                : Colors.grey[500]),
+                        ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return RadialGradient(
+                              center: Alignment.topLeft,
+                              // radius: 0.5,
+                              colors: <Color>[
+                                Color(0xff4e50bc),Color(0xff55c2fc)],
+                              tileMode: TileMode.repeated,
+                            ).createShader(bounds);
+                          },
+                          child:  Icon(Icons.notifications,
+                              color: currentTab == 1
+                                  ? Colors.white
+                                  : Colors.grey[500]),
+                        ),
                         Text(
                           'News',
                           overflow: TextOverflow.ellipsis,

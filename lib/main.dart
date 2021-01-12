@@ -1,26 +1,30 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:credenz20/size_config.dart';
-import 'package:credenz20/commons/collap_nav_dr.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+
 import 'Home.dart';
-import 'commons/slide_drawer.dart';
+import 'constants/theme.dart';
 
 void main() {
   runApp(MyApp());
 }
+/*
 class Splash2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 5,
-      //imageBackground: AssetImage("gifs/preloader2.gif", ),
+      seconds: 2,
+      // imageBackground: AssetImage("gifs/preloader2.gif", ),
       navigateAfterSeconds: new SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21")),
       //title: new Text('Credenz Live',textScaleFactor: 2,style: Te,),
       image: new Image.asset("gifs/preloader2.gif",
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        fit: BoxFit.fitHeight,),
+        fit: BoxFit.fitHeight,
+
+      ),
       useLoader: false,
       //loadingText: Text("Loading"),
       photoSize: MediaQuery.of(context).size.width*3/5,
@@ -28,10 +32,51 @@ class Splash2 extends StatelessWidget {
     );
   }
 }
+*/
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => new _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  startTime() async {
+    var _duration = new Duration(seconds: 2);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() {
+    Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context) => new Home(title: "Credenz \'21")));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: new Center(
+        child: new Image.asset(
+          "gifs/preloader2.gif",
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.fitHeight,
+        ),
+      ),
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    FlutterStatusbarcolor.setStatusBarColor(primary);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -49,13 +94,7 @@ class MyApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
       ),
-      home: Splash2(),
-
+      home: Align(alignment: Alignment.bottomCenter, child: SplashScreen()),
     );
   }
 }
-
-
-
-
-
