@@ -89,6 +89,9 @@ flutter:
     - family: Roboto bold
       fonts:
         - asset: fonts/Roboto-Bold.ttf
+    - family: Sol Thin
+      fonts:
+        - asset: fonts/solthinregular.ttf
     - family: Roboto Medium
       fonts:
         - asset: fonts/Roboto-Medium.ttf
