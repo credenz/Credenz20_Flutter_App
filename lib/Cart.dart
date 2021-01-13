@@ -184,7 +184,7 @@ class _CartState extends State<Cart> {
               title: Column(
                 children: [
                   Text(' Your Cart'),
-                  
+
                 ],
               ),
               backgroundColor: primary,

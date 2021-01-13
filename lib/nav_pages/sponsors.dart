@@ -9,12 +9,17 @@ class Sponsors extends StatefulWidget {
 
 
 class _SponsorsState extends State<Sponsors> {
-  List<AssetImage> images = [
-    AssetImage("images/aarnel.png"),
+  List<String> images = [
+    /*AssetImage("images/aarnel.png"),
     AssetImage("images/byju.jpg"),
     AssetImage("images/cc.jpg"),
     AssetImage("images/collegepond.jpg"),
-    AssetImage("images/finiq.png"),
+    AssetImage("images/finiq.png"),*/
+    "images/aarnel.png",
+    "images/byju.jpg",
+    "images/cc.jpg",
+    "images/collegepond.jpg",
+    "images/finiq.png",
 
   ];
 
@@ -22,7 +27,36 @@ class _SponsorsState extends State<Sponsors> {
     return  Padding(
 
       padding: const EdgeInsets.all(20.0),
-      child: Container(
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            /*borderRadius: new BorderRadius.only(
+                  topLeft:  const  Radius.circular(40.0),
+                  topRight: const  Radius.circular(40.0),
+                  bottomRight: const  Radius.circular(40.0),
+                  bottomLeft: const  Radius.circular(40.0),),*/
+
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, 10),
+                blurRadius: 20,
+                color: Colors.grey.withOpacity(0.5),
+              )
+            ],
+          ),
+          child: CircleAvatar(
+            radius: 500,
+            backgroundColor: Colors.white,
+            //backgroundImage: AssetImage("images/aarnel.png"),
+            child: ClipOval(child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Image.asset(images[index]),
+            )),
+          ),
+        ),
+      )
+      /*Container(
         //height: 400,
         color: Colors.transparent,
         width: MediaQuery.of(context).size.width,
@@ -36,7 +70,6 @@ class _SponsorsState extends State<Sponsors> {
                   bottomRight: const  Radius.circular(40.0),
                   bottomLeft: const  Radius.circular(40.0),),*/
                 image: DecorationImage(
-
                     image:images[index],
                     fit: BoxFit.contain
                 ),
@@ -50,7 +83,7 @@ class _SponsorsState extends State<Sponsors> {
             ),
 
         ),
-      ),
+      ),*/
     );
 
   }
@@ -66,7 +99,16 @@ class _SponsorsState extends State<Sponsors> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          /*gradient:  LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              stops: [0.25, 2.5],
+              // colors: [Color(0xFF000000),Color(0xFF000000)]
+              //colors: [Color(0xFF3d3251), Color(0xFF272034)]
+              colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
+
+          ),*/
+          color: Colors.white
           // gradient: LinearGradient(begin: FractionalOffset.topLeft, end: FractionalOffset.bottomRight, colors: [Color.fromRGBO(61, 17, 52, 10), Color.fromRGBO(26, 4, 43, 10)])
         ),
         child: ListWheelScrollView(
