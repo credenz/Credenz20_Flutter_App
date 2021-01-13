@@ -38,7 +38,7 @@ class _SponsorsState extends State<Sponsors> {
                 image: DecorationImage(
 
                     image:images[index],
-                    fit: BoxFit.contain
+                    fit: BoxFit.fitWidth
                 ),
                 boxShadow: [
                   BoxShadow(

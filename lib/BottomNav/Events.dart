@@ -83,7 +83,6 @@ class WheelExample extends State<Events> {
                           // colors: [Color(0xFF000000),Color(0xFF000000)]
                           //colors: [Color(0xFF3d3251), Color(0xFF272034)]
                           colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
-
                       ),
                     ),
                     //color: drawerBackgroundColor,
@@ -120,7 +119,7 @@ class WheelExample extends State<Events> {
 
                 Image.asset(
                   // "images/enigma.png",
-                  "images/appdesign1.png",
+                  "images/app_design5.png",
                   // "gifs/homeback.gif",
                   height: MediaQuery.of(this.context).size.height,
                   width: MediaQuery.of(this.context).size.width,
