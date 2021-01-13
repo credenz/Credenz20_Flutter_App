@@ -51,11 +51,11 @@ class _MyEventsState extends State<MyEvents> {
         title: Text("My Events"),
       ),
       body: load==true?Container(
-          color: Colors.black,
+          color: notiBackColor,
           child: Center(
         child: Container(
           child: animatedloader,
-          color: drawerBackgroundColor,
+          color: notiBackColor,
         ),)
       ):Container(
         color: notiBackColor,
