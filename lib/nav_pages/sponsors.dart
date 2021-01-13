@@ -28,32 +28,41 @@ class _SponsorsState extends State<Sponsors> {
 
       padding: const EdgeInsets.all(20.0),
       child: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            /*borderRadius: new BorderRadius.only(
-                  topLeft:  const  Radius.circular(40.0),
-                  topRight: const  Radius.circular(40.0),
-                  bottomRight: const  Radius.circular(40.0),
-                  bottomLeft: const  Radius.circular(40.0),),*/
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                width: MediaQuery.of(context).size.width*0.7,
+                height: MediaQuery.of(context).size.width*0.7,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  /*borderRadius: new BorderRadius.only(
+                        topLeft:  const  Radius.circular(40.0),
+                        topRight: const  Radius.circular(40.0),
+                        bottomRight: const  Radius.circular(40.0),
+                        bottomLeft: const  Radius.circular(40.0),),*/
 
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 10),
-                blurRadius: 20,
-                color: Colors.grey.withOpacity(0.5),
-              )
-            ],
-          ),
-          child: CircleAvatar(
-            radius: 500,
-            backgroundColor: Colors.white,
-            //backgroundImage: AssetImage("images/aarnel.png"),
-            child: ClipOval(child: Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: Image.asset(images[index]),
-            )),
-          ),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 10),
+                      blurRadius: 20,
+                      color: Colors.grey.withOpacity(0.5),
+                    )
+                  ],
+                ),
+                child: CircleAvatar(
+                  radius: 300,
+                  backgroundColor: Colors.white,
+                  //backgroundImage: AssetImage("images/aarnel.png"),
+                  child: ClipOval(child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Image.asset(images[index]),
+                  )),
+                ),
+              ),
+            ),
+            Text("Sponsor", style: TextStyle(fontSize: 30),)
+          ],
         ),
       )
       /*Container(
@@ -120,7 +129,7 @@ class _SponsorsState extends State<Sponsors> {
             card(4),
 
           ],
-          itemExtent: 300,
+          itemExtent: 500,
           diameterRatio: 3,
           physics: FixedExtentScrollPhysics(),
 
