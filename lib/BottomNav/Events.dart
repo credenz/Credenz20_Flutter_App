@@ -120,7 +120,7 @@ class WheelExample extends State<Events> {
 
                 Image.asset(
                   // "images/enigma.png",
-                  "images/appdesign1.png",
+                  "images/app_design5.png",
                   // "gifs/homeback.gif",
                   height: MediaQuery.of(this.context).size.height,
                   width: MediaQuery.of(this.context).size.width,
