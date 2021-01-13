@@ -85,8 +85,8 @@ class _EventDesState extends State<EventDes>
                 Stack(
                   children: [
                     Image.asset(
-                      // "images/sback0.jpg",
-                      "gifs/desbackex.gif",
+                       "images/contactb.jpg",
+                      //"gifs/desbacktest.gif",
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
