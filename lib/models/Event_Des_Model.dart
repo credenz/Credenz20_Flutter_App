@@ -340,172 +340,168 @@ await dialogue(context);
           //final formBloc = context.bloc<SerializedFormBloc>();
           return StatefulBuilder(builder: (context, setState) {
             return AlertDialog(
-              backgroundColor: Colors.white,
+              backgroundColor: primary,
               scrollable: true,
               content: Container(
+                // color: primary,
                 width: 300,
                 height: 520,
-                child: Stack(
-                  overflow: Overflow.visible,
-                  children: <Widget>[
-                    Positioned(
-                      right: -40.0,
-                      top: -40.0,
-                      child: InkResponse(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: CircleAvatar(
-                          child: Icon(Icons.close),
-                          backgroundColor: Colors.red,
+                child: BlocProvider(
+                  create: (context) => SerializedFormBloc(),
+                  child: Builder(
+                    builder: (context) {
+                      final formBloc = context.bloc<SerializedFormBloc>();
+
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          inputDecorationTheme: InputDecorationTheme(
+                            fillColor: textColor,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    BlocProvider(
-                      create: (context) => SerializedFormBloc(),
-                      child: Builder(
-                        builder: (context) {
-                          final formBloc = context.bloc<SerializedFormBloc>();
-
-                          return Theme(
-                            data: Theme.of(context).copyWith(
-                              inputDecorationTheme: InputDecorationTheme(
-                                fillColor: textColor,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                            child: FormBlocListener<SerializedFormBloc, String, String>(
-                              onSuccess: (context, state) {
-                                Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Text(state.successResponse),
-                                  duration: Duration(seconds: 2),
-                                ));
-                              },
-                              child: SingleChildScrollView(
-                                physics: ClampingScrollPhysics(),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text("Names",),
-                                      ),
-                                      TextFieldBlocBuilder(
-
-                                        isEnabled: false,
-                                        textFieldBloc: formBloc.p1,
-                                        keyboardType: TextInputType.name,
-                                        decoration: InputDecoration(
-
-                                          contentPadding: EdgeInsets.all(0),
-                                          labelText: 'Participant 1',
-                                          prefixIcon: Icon(Icons.person),
-                                        ),
-                                      ),
-                                      TextFieldBlocBuilder(
-
-                                        textFieldBloc: formBloc.p2,
-                                        keyboardType: TextInputType.name,
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(0),
-                                          labelText: 'Participant 2',
-                                          prefixIcon: Icon(Icons.person),
-                                        ),
-                                      ),
-                                      TextFieldBlocBuilder(
-
-                                        textFieldBloc: formBloc.p3,
-                                        keyboardType: TextInputType.name,
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(0),
-                                          labelText: 'Participant 3',
-                                          prefixIcon: Icon(Icons.person),
-                                        ),
-                                      ),
-                                      TextFieldBlocBuilder(
-
-                                        textFieldBloc: formBloc.p4,
-                                        keyboardType: TextInputType.name,
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(0),
-                                          labelText: 'Participant 4',
-                                          prefixIcon: Icon(Icons.person),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text("Emails",),
-                                      ),
-                                      TextFieldBlocBuilder(
-                                        isEnabled: false,
-                                        textFieldBloc: formBloc.e1,
-                                        keyboardType: TextInputType.emailAddress,
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(0),
-                                          labelText: 'Email 1',
-                                          prefixIcon: Icon(Icons.email),
-                                        ),
-                                      ),
-                                      TextFieldBlocBuilder(
-                                        textFieldBloc: formBloc.e2,
-                                        keyboardType: TextInputType.emailAddress,
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.all(0),
-                                          labelText: 'Email 2',
-                                          prefixIcon: Icon(Icons.email),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text("Year of Study",),
-                                      ),
-                                      RadioButtonGroupFieldBlocBuilder<String>(
-                                        selectFieldBloc: formBloc.year,
-                                        itemBuilder: (context, value) =>
-                                        value[0].toUpperCase() + value.substring(1),
-                                        decoration: InputDecoration(
-                                          labelText: 'Select Category',
-                                          prefixIcon: SizedBox(),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text("Membership",),
-                                      ),
-                                      RadioButtonGroupFieldBlocBuilder<String>(
-                                        selectFieldBloc: formBloc.ieee,
-                                        itemBuilder: (context, value) =>
-                                        value[0].toUpperCase() + value.substring(1),
-                                        decoration: InputDecoration(
-                                          labelText: 'Select Category',
-                                          prefixIcon: SizedBox(),
-                                        ),
-                                      ),
-
-                                      RaisedButton(
-                                        child: Text("Submit"),
-                                        onPressed: () {
-
-                                          Navigator.of(context).pop();
-                                        },
-                                      )
-
-                                    ],
+                        child: FormBlocListener<SerializedFormBloc, String, String>(
+                          onSuccess: (context, state) {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(state.successResponse),
+                              duration: Duration(seconds: 2),
+                            ));
+                          },
+                          child: SingleChildScrollView(
+                            physics: ClampingScrollPhysics(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Names",),
                                   ),
-                                ),
+                                  TextFieldBlocBuilder(
+
+                                    isEnabled: false,
+                                    textFieldBloc: formBloc.p1,
+                                    keyboardType: TextInputType.name,
+                                    style: TextStyle(color: Color(0xFFD4D7DF)),
+                                    decoration: InputDecoration(
+                                      labelStyle: TextStyle(color: Color(0xFFD4D7DF)),
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 1',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    style: TextStyle(color: Color(0xFFD4D7DF)),
+                                    textFieldBloc: formBloc.p2,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+
+                                      labelStyle: TextStyle(color: Color(0xFFD4D7DF)),
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 2',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    style: TextStyle(color: Color(0xFF242424)),
+                                    textFieldBloc: formBloc.p3,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      labelStyle: TextStyle(color: Color(0xFF242424)),
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 3',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    style: TextStyle(color: Color(0xFF242424)),
+                                    textFieldBloc: formBloc.p4,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                      labelStyle: TextStyle(color: Color(0xFF242424)),
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Participant 4',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Emails",),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    isEnabled: false,
+                                    textFieldBloc: formBloc.e1,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Email 1',
+                                      prefixIcon: Icon(Icons.email),
+                                    ),
+                                  ),
+                                  TextFieldBlocBuilder(
+                                    textFieldBloc: formBloc.e2,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(0),
+                                      labelText: 'Email 2',
+                                      prefixIcon: Icon(Icons.email),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Year of Study",),
+                                  ),
+                                  RadioButtonGroupFieldBlocBuilder<String>(
+                                    selectFieldBloc: formBloc.year,
+                                    itemBuilder: (context, value) =>
+                                    value[0].toUpperCase() + value.substring(1),
+                                    decoration: InputDecoration(
+                                      labelText: 'Select Category',
+                                      prefixIcon: SizedBox(),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text("Membership",),
+                                  ),
+                                  RadioButtonGroupFieldBlocBuilder<String>(
+                                    selectFieldBloc: formBloc.ieee,
+                                    itemBuilder: (context, value) =>
+                                    value[0].toUpperCase() + value.substring(1),
+                                    decoration: InputDecoration(
+                                      labelText: 'Select Category',
+                                      prefixIcon: SizedBox(),
+                                    ),
+                                  ),
+
+
+                                ],
                               ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-
-                  ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
+              actions: [
+                RaisedButton(
+                  child: Text("Cancel"),
+                  onPressed: () {
+
+                    Navigator.of(context).pop();
+                  },
+                ),
+                RaisedButton(
+                  child: Text("Submit"),
+                  onPressed: () {
+
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
             );
           });
         });

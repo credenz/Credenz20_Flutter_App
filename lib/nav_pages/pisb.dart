@@ -23,61 +23,72 @@ class AboutPISB extends StatefulWidget {
   _AboutPISBState createState() => _AboutPISBState();
 }
 
-class _AboutPISBState extends State<AboutPISB> {
+class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMixin{
+
+
+  AnimationController controller;
+  Animation<double> animation;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 1500), vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+
+
+
+    controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-          color: notiBackColor,
-          /*image: DecorationImage(
-            image: AssetImage("images/contactb.jpg"),
-            fit: BoxFit.fill,
-          )*/),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: StreamBuilder(
-          // This streamBuilder reads the real-time status of SlimyCard.
-          initialData: true,
-          stream: slimyCard.stream, //Stream of SlimyCard
-          builder: ((BuildContext context, AsyncSnapshot snapshot) {
-            return ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                SizedBox(height: 40,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: topCardWidget(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: bottomCardWidget(),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: RaisedGradientButton(
-                      height: 35.0,
-                      width: 160.0,
-                      child: Text("Visit our website",
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              // decoration: TextDecoration.underline,
-                              color: Colors.white,
-                              fontSize: 15.0)),
-                      gradient: LinearGradient(
-                        colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
-                      ),
-                      onPressed: () {
-                        launch('http://pictieee.in/');
-                      },
+    return Scaffold(
+      backgroundColor: backColor,
+      body: StreamBuilder(
+        // This streamBuilder reads the real-time status of SlimyCard.
+        initialData: true,
+        stream: slimyCard.stream, //Stream of SlimyCard
+        builder: ((BuildContext context, AsyncSnapshot snapshot) {
+          return ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              SizedBox(height: 40,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: topCardWidget(),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: FadeTransition(child: bottomCardWidget(),opacity: animation,),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: RaisedGradientButton(
+                    height: 35.0,
+                    width: 160.0,
+                    child: Text("Visit our website",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            // decoration: TextDecoration.underline,
+                            color: Colors.white,
+                            fontSize: 15.0)),
+                    gradient: LinearGradient(
+                      colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
                     ),
+                    onPressed: () {
+                      launch('http://pictieee.in/');
+                    },
                   ),
                 ),
+              ),
 
                 // SlimyCard is being called here.
 

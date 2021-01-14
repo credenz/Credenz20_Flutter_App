@@ -20,57 +20,73 @@ class Ping extends StatelessWidget {
   }
 }
 
-class AboutPing extends StatefulWidget {
+class AboutPing extends StatefulWidget{
   @override
   _AboutPingState createState() => _AboutPingState();
 }
 
-class _AboutPingState extends State<AboutPing> {
+class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
+
+
+  AnimationController controller;
+  Animation<double> animation;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 1500), vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+
+
+
+    controller.forward();
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-          color: backColor,
-          image: DecorationImage(
-            image: AssetImage("images/contactb.jpg"),
-            fit: BoxFit.fill,
-          )),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: StreamBuilder(
-            // This streamBuilder reads the real-time status of SlimyCard.
-            initialData: true,
-            stream: slimyCard.stream, //Stream of SlimyCard
-            builder: ((BuildContext context, AsyncSnapshot snapshot) {
-              return ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                   topCardWidget(),
-                   bottomCardWidget(),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Align(
-                      alignment:Alignment.center,
-                      // child: RaisedButton(
-                      //   onPressed: () {
-                      //     launch('http://pictieee.in/');
-                      //   },
-                      //   shape:RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.only(
-                      //           topLeft: Radius.circular(10.0),
-                      //           bottomRight: Radius.circular(10.0))),
-                      //   child: Text("Read P.I.N.G Issue Here",
-                      //       textAlign: TextAlign.end,
-                      //       style: TextStyle(
-                      //         // decoration: TextDecoration.underline,
-                      //           color: Colors.blue,
-                      //           fontSize: 15.0)),
-                      //   color: Color(0xff222222),
-                      //
-                      // ),
+
+
+
+    return Scaffold(
+      backgroundColor: backColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: StreamBuilder(
+          // This streamBuilder reads the real-time status of SlimyCard.
+          initialData: true,
+          stream: slimyCard.stream, //Stream of SlimyCard
+          builder: ((BuildContext context, AsyncSnapshot snapshot) {
+            return ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                 topCardWidget(),
+                 FadeTransition(child: bottomCardWidget(),opacity: animation,),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Align(
+                    alignment:Alignment.center,
+                    // child: RaisedButton(
+                    //   onPressed: () {
+                    //     launch('http://pictieee.in/');
+                    //   },
+                    //   shape:RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.only(
+                    //           topLeft: Radius.circular(10.0),
+                    //           bottomRight: Radius.circular(10.0))),
+                    //   child: Text("Read P.I.N.G Issue Here",
+                    //       textAlign: TextAlign.end,
+                    //       style: TextStyle(
+                    //         // decoration: TextDecoration.underline,
+                    //           color: Colors.blue,
+                    //           fontSize: 15.0)),
+                    //   color: Color(0xff222222),
+                    //
+                    // ),
 
                       child:RaisedGradientButton(
                           height: 40.0,
