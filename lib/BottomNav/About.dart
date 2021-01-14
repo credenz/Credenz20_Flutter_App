@@ -21,7 +21,7 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: notiBackColor,
+      backgroundColor: backColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: StreamBuilder(

@@ -101,7 +101,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: notiBackColor,
+        backgroundColor: backColor,
         // floatingActionButton: FloatingActionButton(
         //   heroTag: 'abc',
         //   child: Icon(Icons.edit),
@@ -142,8 +142,13 @@ class _ProfileState extends State<Profile> {
       child: Container(
         height: 90,
         decoration: BoxDecoration(
-          color: Color(0xff222b64),
-          borderRadius: BorderRadius.only(bottomRight: Radius.circular(5.0),bottomLeft:Radius.circular(5.0), ),
+          // color: Color(0xff128ba5),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end:Alignment.bottomRight,
+            colors: [Color(0xff1269a0),Color(0xff0e3876)],
+          ),
+          borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0),bottomLeft:Radius.circular(8.0), ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -197,7 +202,7 @@ class _ProfileState extends State<Profile> {
                       color: Colors.white,
                     ),
                     gradient: LinearGradient(
-                      colors: <Color>[ Color(0xff4e50bc),Color(0xff55c2fc)],
+                      colors: commonGradient,
                     ),
                     onPressed: (){
                       Navigator.push(

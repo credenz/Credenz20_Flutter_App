@@ -80,7 +80,7 @@ class _SponsorsState extends State<Sponsors> {
                   bottomLeft: const  Radius.circular(40.0),),*/
                 image: DecorationImage(
                     image:images[index],
-                    fit: BoxFit.contain
+                    fit: BoxFit.fitWidth
                 ),
                 boxShadow: [
                   BoxShadow(

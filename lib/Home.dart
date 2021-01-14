@@ -271,7 +271,7 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(Icons.group,
                             color: currentTab == 0
-                                ? Color(0xff5c6fe7)
+                                ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
                         ),
 
@@ -280,7 +280,7 @@ class _HomeState extends State<Home> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: currentTab == 0
-                                ? Color(0xff5c6fe7)
+                                ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
                           ),
                         )
@@ -305,7 +305,7 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(Icons.perm_contact_calendar,
                           color: currentTab == 1
-                              ? Color(0xff5c6fe7)
+                              ? Color(0xff0998b7)
                               : Color(0xff8b91ad),
                         ),
                         Text(
@@ -313,7 +313,7 @@ class _HomeState extends State<Home> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: currentTab == 1
-                                ? Color(0xff5c6fe7)
+                                ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
                         ),
                         )
@@ -343,7 +343,7 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(Icons.info_outline,
                           color: currentTab == 3
-                              ? Color(0xff5c6fe7)
+                              ? Color(0xff0998b7)
                               : Color(0xff8b91ad),
                         ),
                         Text(
@@ -351,7 +351,7 @@ class _HomeState extends State<Home> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: currentTab == 3
-                                ? Color(0xff5c6fe7)
+                                ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
                           ),
                         )
@@ -376,7 +376,7 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         Icon(Icons.notifications,
                           color: currentTab == 4
-                              ? Color(0xff5c6fe7)
+                              ? Color(0xff0998b7)
                               : Color(0xff8b91ad),
                         ),
                         Text(
@@ -384,7 +384,7 @@ class _HomeState extends State<Home> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: currentTab == 4
-                                ? Color(0xff5c6fe7)
+                                ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
                           ),
                         )

@@ -27,7 +27,7 @@ class _AboutPISBState extends State<AboutPISB> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: notiBackColor,
+      backgroundColor: backColor,
       body: StreamBuilder(
         // This streamBuilder reads the real-time status of SlimyCard.
         initialData: true,
@@ -111,7 +111,7 @@ class _AboutPISBState extends State<AboutPISB> {
             height: 70,
             // width: 500,
             decoration: BoxDecoration(
-              color: notiBackColor,
+              color: backColor,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                   image: AssetImage(

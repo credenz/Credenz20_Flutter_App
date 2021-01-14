@@ -29,7 +29,7 @@ class _AboutPingState extends State<AboutPing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: notiBackColor,
+      backgroundColor: backColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: StreamBuilder(
@@ -74,7 +74,7 @@ class _AboutPingState extends State<AboutPing> {
                                 color: Colors.white,
                                 fontSize: 15.0)),
                         gradient: LinearGradient(
-                          colors: <Color>[ Color(0xff4e50bc),Color(0xff55c2fc)],
+                          colors: commonGradient,
                         ),
                       onPressed: () {
                         launch('http://pictieee.in/');
@@ -128,7 +128,7 @@ class _AboutPingState extends State<AboutPing> {
             height: 200,
             // width: 500,
             decoration: BoxDecoration(
-              color: notiBackColor,
+              color: backColor,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(image: AssetImage('images/ping.jpg',),fit: BoxFit.fitHeight),
               boxShadow: [
