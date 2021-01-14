@@ -28,80 +28,89 @@ class AboutPing extends StatefulWidget {
 class _AboutPingState extends State<AboutPing> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: StreamBuilder(
-          // This streamBuilder reads the real-time status of SlimyCard.
-          initialData: true,
-          stream: slimyCard.stream, //Stream of SlimyCard
-          builder: ((BuildContext context, AsyncSnapshot snapshot) {
-            return ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                 topCardWidget(),
-                 bottomCardWidget(),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Align(
-                    alignment:Alignment.center,
-                    // child: RaisedButton(
-                    //   onPressed: () {
-                    //     launch('http://pictieee.in/');
-                    //   },
-                    //   shape:RoundedRectangleBorder(
-                    //       borderRadius: BorderRadius.only(
-                    //           topLeft: Radius.circular(10.0),
-                    //           bottomRight: Radius.circular(10.0))),
-                    //   child: Text("Read P.I.N.G Issue Here",
-                    //       textAlign: TextAlign.end,
-                    //       style: TextStyle(
-                    //         // decoration: TextDecoration.underline,
-                    //           color: Colors.blue,
-                    //           fontSize: 15.0)),
-                    //   color: Color(0xff222222),
-                    //
-                    // ),
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+          color: backColor,
+          image: DecorationImage(
+            image: AssetImage("images/contactb.jpg"),
+            fit: BoxFit.fill,
+          )),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: StreamBuilder(
+            // This streamBuilder reads the real-time status of SlimyCard.
+            initialData: true,
+            stream: slimyCard.stream, //Stream of SlimyCard
+            builder: ((BuildContext context, AsyncSnapshot snapshot) {
+              return ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                   topCardWidget(),
+                   bottomCardWidget(),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Align(
+                      alignment:Alignment.center,
+                      // child: RaisedButton(
+                      //   onPressed: () {
+                      //     launch('http://pictieee.in/');
+                      //   },
+                      //   shape:RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.only(
+                      //           topLeft: Radius.circular(10.0),
+                      //           bottomRight: Radius.circular(10.0))),
+                      //   child: Text("Read P.I.N.G Issue Here",
+                      //       textAlign: TextAlign.end,
+                      //       style: TextStyle(
+                      //         // decoration: TextDecoration.underline,
+                      //           color: Colors.blue,
+                      //           fontSize: 15.0)),
+                      //   color: Color(0xff222222),
+                      //
+                      // ),
 
-                    child:RaisedGradientButton(
-                        height: 40.0,
-                        width: 180.0,
-                        child:Text("Read P.I.N.G Issue Here",
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              // decoration: TextDecoration.underline,
-                                color: Colors.white,
-                                fontSize: 15.0)),
-                        gradient: LinearGradient(
-                          colors: commonGradient,
-                        ),
-                      onPressed: () {
-                        launch('http://pictieee.in/');
-                      },
+                      child:RaisedGradientButton(
+                          height: 40.0,
+                          width: 180.0,
+                          child:Text("Read P.I.N.G Issue Here",
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                // decoration: TextDecoration.underline,
+                                  color: Colors.white,
+                                  fontSize: 15.0)),
+                          gradient: LinearGradient(
+                            colors: commonGradient,
+                          ),
+                        onPressed: () {
+                          launch('http://pictieee.in/');
+                        },
+                      ),
+
+
+
                     ),
-
-
-
                   ),
-                ),
 
-                // SlimyCard is being called here.
+                  // SlimyCard is being called here.
 
-                /*SlimyCard(
-                  // In topCardWidget below, imagePath changes according to the
-                  // status of the SlimyCard(snapshot.data).
-                  width: 450,
-                  color: drawerBackgroundColor,
-                  topCardHeight: 300,
-                  bottomCardHeight: 350,
-                  topCardWidget: topCardWidget(),
-                  bottomCardWidget: bottomCardWidget(),
-                  slimeEnabled: false,
-                ),*/
-              ],
-            );
-          }),
+                  /*SlimyCard(
+                    // In topCardWidget below, imagePath changes according to the
+                    // status of the SlimyCard(snapshot.data).
+                    width: 450,
+                    color: drawerBackgroundColor,
+                    topCardHeight: 300,
+                    bottomCardHeight: 350,
+                    topCardWidget: topCardWidget(),
+                    bottomCardWidget: bottomCardWidget(),
+                    slimeEnabled: false,
+                  ),*/
+                ],
+              );
+            }),
+          ),
         ),
       ),
     );
@@ -128,7 +137,7 @@ class _AboutPingState extends State<AboutPing> {
             height: 200,
             // width: 500,
             decoration: BoxDecoration(
-              color: backColor,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(image: AssetImage('images/ping.jpg',),fit: BoxFit.fitHeight),
               boxShadow: [
