@@ -27,7 +27,7 @@ class _AboutPISBState extends State<AboutPISB> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: notiBackColor,
+      backgroundColor: backColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: StreamBuilder(
@@ -57,7 +57,7 @@ class _AboutPISBState extends State<AboutPISB> {
                               color: Colors.white,
                               fontSize: 15.0)),
                       gradient: LinearGradient(
-                        colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
+                        colors: commonGradient,//<Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
                       ),
                       onPressed: () {
                         launch('http://pictieee.in/');
@@ -107,7 +107,7 @@ class _AboutPISBState extends State<AboutPISB> {
             height: 70,
             // width: 500,
             decoration: BoxDecoration(
-              color: notiBackColor,
+              color: backColor,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                   image: AssetImage(

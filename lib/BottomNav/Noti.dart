@@ -46,7 +46,7 @@ class _NotiState extends State<Noti> {
               ),
             ))
         : Scaffold(
-            backgroundColor: Color(0xff191d36),
+            backgroundColor: backColor,
             body: ListView.builder(
               itemBuilder: (BuildContext context, int pos) {
                 return Column(
@@ -67,7 +67,7 @@ class _NotiState extends State<Noti> {
                       ),
                     ),
                     Divider(
-                      color: Color(0xff313969),
+                      color: dividerColor,
                     ),
                   ],
                 );

@@ -8,12 +8,15 @@ TextStyle listTitleSelectedTextStyle =
 
 Color selectedColor = Color(0xFF4ACBEA);
 Color drawerBackgroundColor = Color(0xff000000);
-Color primary = Color(0xFF0f1013);
+Color primary = Color(0xFF121212);
 Color notiBackColor = Color(0xff191d36);
-Color dividerColor = Color(0xff313969);
-Color textColor = Color(0xffcecddf);
-List<Color> commonGradient = <Color>[Color(0xff4e50bc), Color(0xff55c2fc)];
+Color dividerColor = Color(0xff152453);
+Color textColor = Color(0xffb1c2f6);
+Color backColor = Color(0xff10172d);
 
+List<Color> commonGradient = <Color>[Color(0xff21d6d4), Color(0xff0aa9d7)];
+List<Color> backGradient = <Color>[Color(0xff21d6d4), Color(0xff0aa9d7)];
+//12151e
 final loader = SpinKitThreeBounce(
   color: drawerBackgroundColor,
   size: 30,

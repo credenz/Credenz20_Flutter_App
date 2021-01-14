@@ -50,10 +50,10 @@ class WheelExample extends State<Events> {
                       gradient: LinearGradient(
                           begin: Alignment.bottomLeft,
                           end: Alignment.topRight,
-                          stops: [0.25, 2.5],
+                          stops: [0.25, 0.75],
                           // colors: [Color(0xFF000000),Color(0xFF000000)]
                           //colors: [Color(0xFF3d3251), Color(0xFF272034)]
-                          colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
+                          colors:commonGradient,
                       ),
                     ),
                     //color: drawerBackgroundColor,
@@ -79,10 +79,10 @@ class WheelExample extends State<Events> {
                       gradient: LinearGradient(
                           begin: Alignment.bottomLeft,
                           end: Alignment.topRight,
-                          stops: [0.25, 2.5],
+                          stops: [0.25,0.75],
                           // colors: [Color(0xFF000000),Color(0xFF000000)]
                           //colors: [Color(0xFF3d3251), Color(0xFF272034)]
-                          colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
+                          colors: commonGradient,
                       ),
                     ),
                     //color: drawerBackgroundColor,
@@ -119,7 +119,7 @@ class WheelExample extends State<Events> {
 
                 Image.asset(
                   // "images/enigma.png",
-                  "images/app_design5.png",
+                  "images/app_design6.png",
                   // "gifs/homeback.gif",
                   height: MediaQuery.of(this.context).size.height,
                   width: MediaQuery.of(this.context).size.width,
