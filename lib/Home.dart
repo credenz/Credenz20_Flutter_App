@@ -208,12 +208,29 @@ class _HomeState extends State<Home> {
       //Vaibhav's Code
 
       floatingActionButton: FloatingActionButton(
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Image.asset("images/eyesample.png", scale: 2),
+        child: Center(
+          child: Container(decoration: BoxDecoration(
+            //color: Colors.transparent,
+            borderRadius: BorderRadius.all(
+              Radius.circular(100),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.3),
+                spreadRadius: 15,
+                blurRadius: 15,
+                offset: Offset(0, 0),
+              ),
+            ],
+          ),child: Container(
+
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                shape: BoxShape.circle
+              ),child: Image.asset("images/homeFab.png", scale: 0.5))),
         ),
         tooltip: 'Increment',
-        // elevation: 10.0,
+         elevation: 10.0,
         backgroundColor: Colors.white,
         onPressed: () {
           setState(

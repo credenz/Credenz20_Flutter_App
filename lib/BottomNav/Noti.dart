@@ -42,40 +42,49 @@ class _NotiState extends State<Noti> {
             child: Center(
               child: Container(
                 child: animatedloader,
-                color: Color(0xFF1F212D),
+                color: notiBackColor,
               ),
             ))
-        : Scaffold(
-            backgroundColor: backColor,
-            body: Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int pos) {
-                  return Column(
-                    children: [
-                      ListTile(
-                        leading: Icon(
-                          Icons.notifications,
-                          size: 30,
-                          color: Color(0xffc4c5d6),
+        : Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+          color: backColor,
+          image: DecorationImage(
+            image: AssetImage("images/contactb.jpg"),
+            fit: BoxFit.fill,
+          )),
+          child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int pos) {
+                    return Column(
+                      children: [
+                        ListTile(
+                          leading: Icon(
+                            Icons.notifications,
+                            size: 30,
+                            color: Color(0xffc4c5d6),
+                          ),
+                          title: Text(
+                            list[pos]['headline'],
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          subtitle: Text(
+                            list[pos]['info'],
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
-                        title: Text(
-                          list[pos]['headline'],
-                          style: TextStyle(color: Colors.white),
+                        Divider(
+                          color: Color(0xff313969),
                         ),
-                        subtitle: Text(
-                          list[pos]['info'],
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      Divider(
-                        color: Color(0xff313969),
-                      ),
-                    ],
-                  );
-                },
-                itemCount: list.length,
-              ),
-            ));
+                      ],
+                    );
+                  },
+                  itemCount: list.length,
+                ),
+              )),
+        );
   }
 }

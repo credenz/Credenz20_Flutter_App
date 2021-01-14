@@ -123,7 +123,7 @@ class _ProfileState extends State<Profile> {
         body: load == true
             ? Container(
                 child: loader1,
-                color: Colors.black,
+                color: notiBackColor,
               )
             : SingleChildScrollView(
                 child: Column(
