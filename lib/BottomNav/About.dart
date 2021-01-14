@@ -17,7 +17,27 @@ class AboutUs extends StatefulWidget {
   _AboutUsState createState() => _AboutUsState();
 }
 
-class _AboutUsState extends State<AboutUs> {
+class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
+
+
+
+  AnimationController controller;
+  Animation<double> animation;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 1500), vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+
+
+
+    controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +54,7 @@ class _AboutUsState extends State<AboutUs> {
               children: <Widget>[
                 SizedBox(height: 15),
                 topCardWidget(),
-                bottomCardWidget(),
+                FadeTransition(child: bottomCardWidget(),opacity: animation,),
                 SizedBox(height: 25,)
                 // SlimyCard is being called here.
               ],
