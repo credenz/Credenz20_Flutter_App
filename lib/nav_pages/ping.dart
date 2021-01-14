@@ -20,14 +20,38 @@ class Ping extends StatelessWidget {
   }
 }
 
-class AboutPing extends StatefulWidget {
+class AboutPing extends StatefulWidget{
   @override
   _AboutPingState createState() => _AboutPingState();
 }
 
-class _AboutPingState extends State<AboutPing> {
+class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
+
+
+  AnimationController controller;
+  Animation<double> animation;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+
+
+
+    controller.forward();
+    
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       backgroundColor: backColor,
       body: Padding(
@@ -41,7 +65,7 @@ class _AboutPingState extends State<AboutPing> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                  topCardWidget(),
-                 bottomCardWidget(),
+                 FadeTransition(child: bottomCardWidget(),opacity: animation,),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Align(

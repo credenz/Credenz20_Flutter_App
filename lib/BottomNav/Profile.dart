@@ -29,6 +29,7 @@ class _ProfileState extends State<Profile> {
   TextEditingController passwordController;
   TextEditingController phoneController;
   TextEditingController collegeController;
+  String name=' ';
 
   @override
   void initState() {
@@ -42,6 +43,7 @@ class _ProfileState extends State<Profile> {
     String url = userProfileUrl;
     String accToken = await storage.read(key: "accToken");
     String username = await storage.read(key: 'username');
+    name=username;
     if (username == null || accToken == null) {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) => Login()));
@@ -181,7 +183,7 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Text(
-                        'vsp123456',
+                        name,
                         style: TextStyle(
                             fontSize: 18.0,
                             color: textColor,
