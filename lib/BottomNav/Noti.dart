@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
-import 'package:flutter/material.dart';
 import 'package:credenz20/constants/theme.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Noti extends StatefulWidget {
@@ -46,7 +46,7 @@ class _NotiState extends State<Noti> {
               ),
             ))
         : Scaffold(
-            backgroundColor: Color(0xff191d36),
+            backgroundColor: backColor,
             body: Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: ListView.builder(
@@ -76,34 +76,6 @@ class _NotiState extends State<Noti> {
                 },
                 itemCount: list.length,
               ),
-            backgroundColor: backColor,
-            body: ListView.builder(
-              itemBuilder: (BuildContext context, int pos) {
-                return Column(
-                  children: [
-                    ListTile(
-                      leading: Icon(
-                        Icons.notifications,
-                        size: 30,
-                        color: Color(0xffc4c5d6),
-                      ),
-                      title: Text(
-                        list[pos]['headline'],
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      subtitle: Text(
-                        list[pos]['info'],
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    Divider(
-                      color: dividerColor,
-                    ),
-                  ],
-                );
-              },
-              itemCount: list.length,
-            ),
-          );
+            ));
   }
 }
