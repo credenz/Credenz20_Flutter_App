@@ -172,7 +172,7 @@ class _HomeState extends State<Home> {
                             children: <Widget>[
                               new Icon(
                                   Icons.brightness_1,
-                                  size: 18.0, color: Colors.black),
+                                  size: 18.0, color: primary),
                               new Positioned(
                                   top: 3.0,
                                   right: 7.0,
