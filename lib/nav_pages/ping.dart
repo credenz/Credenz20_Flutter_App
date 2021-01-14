@@ -128,8 +128,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
             }),
           ),
         ),
-      ),
-    );
+      );
   }
 
   // This widget will be passed as Top Card's Widget.

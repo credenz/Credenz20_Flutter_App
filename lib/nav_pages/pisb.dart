@@ -107,8 +107,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
             );
           }),
         ),
-      ),
-    );
+      );
   }
 
   // This widget will be passed as Top Card's Widget.
