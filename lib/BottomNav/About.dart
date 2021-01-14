@@ -35,6 +35,7 @@ class _AboutUsState extends State<AboutUs> {
                 SizedBox(height: 15),
                 topCardWidget(),
                 bottomCardWidget(),
+                SizedBox(height: 25,)
                 // SlimyCard is being called here.
               ],
             );

@@ -1,14 +1,18 @@
+import 'dart:async';
 import 'dart:convert';
-
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart' as http;
 
+// import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
+import 'package:http/http.dart' as http;
 
 class Cart extends StatefulWidget {
   @override
@@ -74,7 +78,15 @@ class _CartState extends State<Cart> {
             width: 10,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: drawerBackgroundColor,
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  //stops: [0.25, 2.5],
+                  // colors: [Color(0xFF000000),Color(0xFF000000)]
+                  //colors: [Color(0xFF3d3251), Color(0xFF272034)]
+                  colors: [Color(0xff615de3),Color(0xff6c73ed)]
+              ),
+              //color: Colors.purple,
             ),
             child: Image.asset(
                 eventimages[eventName.indexOf(list[i], 0)].assetName),
@@ -166,13 +178,33 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return load == true
-        ? Container(
-            color: notiBackColor,
-            child: Center(
-              child: Container(
-                child: loader1,
+        ? Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              leading: Builder(
+                builder: (context) {
+                  return IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.pop(context),
+                  );
+                },
               ),
-            ))
+              title: Column(
+                children: [
+                  Text(' Your Cart'),
+
+                ],
+              ),
+              backgroundColor: primary,
+            ),
+            body: Container(
+                color: notiBackColor,
+                child: Center(
+                  child: Container(
+                    child: loader1,
+                  ),
+                )),
+          )
         : Container(
             height: MediaQuery.of(context).size.height,
             decoration: list.length == 0
@@ -184,9 +216,10 @@ class _CartState extends State<Cart> {
                     )
                     // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
                     )
-                : BoxDecoration(
-                  color: notiBackColor
-            ),
+                : BoxDecoration(color: notiBackColor, image: DecorationImage(
+              image: AssetImage("images/contactb.jpg"),
+              fit: BoxFit.fill,
+            )),
             child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
@@ -218,6 +251,8 @@ class _CartState extends State<Cart> {
                           AssetImage ig =
                               eventimages[eventName.indexOf(list[pos], 0)];
                           return Card(
+                            color: Color(0x22655dbd),
+                            elevation: 10.0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -236,7 +271,7 @@ class _CartState extends State<Cart> {
                                         child: Container(
                                           padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
-                                            color: drawerBackgroundColor,
+                                            color: primary,
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
@@ -252,7 +287,7 @@ class _CartState extends State<Cart> {
                                         Text(
                                           list[pos],
                                           style: TextStyle(
-                                              color: Colors.black,
+                                              color: Colors.white,
                                               fontSize: 16),
                                           maxLines: 2,
                                         ),
@@ -264,13 +299,14 @@ class _CartState extends State<Cart> {
                                               : "\u20B9 " + "120",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.black),
+                                              color: Colors.white),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
                                 IconButton(
+                                  color: Colors.white,
                                   icon: Icon(Icons.delete),
                                   onPressed: () async {
                                     setState(() {
@@ -299,7 +335,7 @@ class _CartState extends State<Cart> {
                         ),
                         // height: 174,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: primary,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
@@ -332,12 +368,15 @@ class _CartState extends State<Cart> {
                                   Text.rich(
                                     TextSpan(
                                       text: "Total:\n",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white),
                                       children: [
                                         TextSpan(
                                           text: "\u20B9 " + sum.toString(),
                                           style: TextStyle(
                                               fontSize: 16,
-                                              color: Colors.black),
+                                              color: Colors.white),
                                         ),
                                       ],
                                     ),
@@ -356,7 +395,7 @@ class _CartState extends State<Cart> {
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ),
-                                      color: drawerBackgroundColor,
+                                      color: Colors.purple,
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(10.0),

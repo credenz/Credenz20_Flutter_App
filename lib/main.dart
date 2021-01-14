@@ -48,8 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.of(context).push(new MaterialPageRoute(
-        builder: (BuildContext context) => SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))));
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
   }
 
   @override
@@ -61,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Color(0xff212121),
+      backgroundColor: Color(0xff1f1f1f),
       body: new Center(
         child: new Image.asset(
           "gifs/preloader5.gif",
