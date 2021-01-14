@@ -28,61 +28,65 @@ class _AboutPISBState extends State<AboutPISB> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: notiBackColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: StreamBuilder(
-          // This streamBuilder reads the real-time status of SlimyCard.
-          initialData: true,
-          stream: slimyCard.stream, //Stream of SlimyCard
-          builder: ((BuildContext context, AsyncSnapshot snapshot) {
-            return ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                topCardWidget(),
-                bottomCardWidget(),
-                SizedBox(
-                  height: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: RaisedGradientButton(
-                      height: 35.0,
-                      width: 160.0,
-                      child: Text("Visit our website",
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              // decoration: TextDecoration.underline,
-                              color: Colors.white,
-                              fontSize: 15.0)),
-                      gradient: LinearGradient(
-                        colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
-                      ),
-                      onPressed: () {
-                        launch('http://pictieee.in/');
-                      },
+      body: StreamBuilder(
+        // This streamBuilder reads the real-time status of SlimyCard.
+        initialData: true,
+        stream: slimyCard.stream, //Stream of SlimyCard
+        builder: ((BuildContext context, AsyncSnapshot snapshot) {
+          return ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              SizedBox(height: 40,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: topCardWidget(),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: bottomCardWidget(),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: RaisedGradientButton(
+                    height: 35.0,
+                    width: 160.0,
+                    child: Text("Visit our website",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            // decoration: TextDecoration.underline,
+                            color: Colors.white,
+                            fontSize: 15.0)),
+                    gradient: LinearGradient(
+                      colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
                     ),
+                    onPressed: () {
+                      launch('http://pictieee.in/');
+                    },
                   ),
                 ),
+              ),
 
-                // SlimyCard is being called here.
+              // SlimyCard is being called here.
 
-                /*SlimyCard(
-                  // In topCardWidget below, imagePath changes according to the
-                  // status of the SlimyCard(snapshot.data).
-                  width: 450,
-                  color: drawerBackgroundColor,
-                  topCardHeight: 320,
-                  bottomCardHeight: 350,
-                  topCardWidget: topCardWidget(),
-                  bottomCardWidget: bottomCardWidget(),
-                  slimeEnabled: false,
-                ),*/
-              ],
-            );
-          }),
-        ),
+              /*SlimyCard(
+                // In topCardWidget below, imagePath changes according to the
+                // status of the SlimyCard(snapshot.data).
+                width: 450,
+                color: drawerBackgroundColor,
+                topCardHeight: 320,
+                bottomCardHeight: 350,
+                topCardWidget: topCardWidget(),
+                bottomCardWidget: bottomCardWidget(),
+                slimeEnabled: false,
+              ),*/
+            ],
+          );
+        }),
       ),
     );
   }
