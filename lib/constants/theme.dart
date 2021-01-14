@@ -11,7 +11,7 @@ Color drawerBackgroundColor = Color(0xff000000);
 Color primary = Color(0xFF121212);
 Color notiBackColor = Color(0xff191d36);
 Color dividerColor = Color(0xff152453);
-Color textColor = Color(0xffb1c2f6);
+Color textColor = Color(0xffeff2fd);
 Color backColor = Color(0xff10172d);
 
 List<Color> commonGradient = <Color>[Color(0xff21d6d4), Color(0xff0aa9d7)];

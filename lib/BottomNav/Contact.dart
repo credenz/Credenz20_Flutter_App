@@ -22,7 +22,7 @@ class _ContactUsState extends State<ContactUs> {
 
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/contactb.jpg"),
+                image: AssetImage("images/conb.jpg"),
                 // <-- BACKGROUND IMAGE
                 fit: BoxFit.fill,
               ),
@@ -141,14 +141,14 @@ class _PageViewWidgetState extends State<PageViewWidget> {
         elevation: 10,
         child: Center(
           child: Container(
-            // height: MediaQuery.of(context).size.height,
-            // decoration: BoxDecoration(boxShadow: [
-            //   BoxShadow(
-            //     color: Color(0x22000000),
-            //     spreadRadius: 5,
-            //     blurRadius: 20,
-            //   )
-            // ]),
+             // height: MediaQuery.of(context).size.height,
+             // decoration: BoxDecoration(boxShadow: [
+             //   BoxShadow(
+             //     color: Color(0x22000000),
+             //     spreadRadius: 5,
+             //     blurRadius: 20,
+             //  )
+             // ]),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

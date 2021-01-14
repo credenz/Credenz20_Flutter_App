@@ -29,7 +29,7 @@ class _DeveloperState extends State<Developer> {
 
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/ballonback01.jpg"),
+                image: AssetImage("images/conb.jpg"),
                 // <-- BACKGROUND IMAGE
                 fit: BoxFit.fill,
               ),
@@ -141,7 +141,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
     Widget card(int x) {
       return Card(
         color: Colors.transparent,
-        shadowColor: Colors.black,
+        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.0),
         ),
