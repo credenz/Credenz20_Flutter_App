@@ -23,7 +23,26 @@ class AboutPISB extends StatefulWidget {
   _AboutPISBState createState() => _AboutPISBState();
 }
 
-class _AboutPISBState extends State<AboutPISB> {
+class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMixin{
+
+
+  AnimationController controller;
+  Animation<double> animation;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = AnimationController(
+        duration: const Duration(milliseconds: 1500), vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+
+
+
+    controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +62,7 @@ class _AboutPISBState extends State<AboutPISB> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: bottomCardWidget(),
+                child: FadeTransition(child: bottomCardWidget(),opacity: animation,),
               ),
               SizedBox(
                 height: 30,
