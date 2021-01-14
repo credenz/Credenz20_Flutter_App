@@ -9,10 +9,10 @@ TextStyle listTitleSelectedTextStyle =
 Color selectedColor = Color(0xFF4ACBEA);
 Color drawerBackgroundColor = Color(0xff000000);
 Color primary = Color(0xFF121212);
-Color notiBackColor = Color(0xff191d36);
+Color notiBackColor = Color(0xff12173a);
 Color dividerColor = Color(0xff152453);
 Color textColor = Color(0xffeff2fd);
-Color backColor = Color(0xff10172d);
+Color backColor = Color(0xff12173a);
 
 List<Color> commonGradient = <Color>[Color(0xff21d6d4), Color(0xff0aa9d7)];
 List<Color> backGradient = <Color>[Color(0xff21d6d4), Color(0xff0aa9d7)];

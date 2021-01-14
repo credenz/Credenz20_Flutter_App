@@ -43,7 +43,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
 
 
     controller.forward();
-    
+
   }
 
 
@@ -88,47 +88,47 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
                     //
                     // ),
 
-                    child:RaisedGradientButton(
-                        height: 40.0,
-                        width: 180.0,
-                        child:Text("Read P.I.N.G Issue Here",
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              // decoration: TextDecoration.underline,
-                                color: Colors.white,
-                                fontSize: 15.0)),
-                        gradient: LinearGradient(
-                          colors: commonGradient,
-                        ),
-                      onPressed: () {
-                        launch('http://pictieee.in/');
-                      },
+                      child:RaisedGradientButton(
+                          height: 40.0,
+                          width: 180.0,
+                          child:Text("Read P.I.N.G Issue Here",
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                // decoration: TextDecoration.underline,
+                                  color: Colors.white,
+                                  fontSize: 15.0)),
+                          gradient: LinearGradient(
+                            colors: commonGradient,
+                          ),
+                        onPressed: () {
+                          launch('http://pictieee.in/');
+                        },
+                      ),
+
+
+
                     ),
-
-
-
                   ),
-                ),
 
-                // SlimyCard is being called here.
+                  // SlimyCard is being called here.
 
-                /*SlimyCard(
-                  // In topCardWidget below, imagePath changes according to the
-                  // status of the SlimyCard(snapshot.data).
-                  width: 450,
-                  color: drawerBackgroundColor,
-                  topCardHeight: 300,
-                  bottomCardHeight: 350,
-                  topCardWidget: topCardWidget(),
-                  bottomCardWidget: bottomCardWidget(),
-                  slimeEnabled: false,
-                ),*/
-              ],
-            );
-          }),
+                  /*SlimyCard(
+                    // In topCardWidget below, imagePath changes according to the
+                    // status of the SlimyCard(snapshot.data).
+                    width: 450,
+                    color: drawerBackgroundColor,
+                    topCardHeight: 300,
+                    bottomCardHeight: 350,
+                    topCardWidget: topCardWidget(),
+                    bottomCardWidget: bottomCardWidget(),
+                    slimeEnabled: false,
+                  ),*/
+                ],
+              );
+            }),
+          ),
         ),
-      ),
-    );
+      );
   }
 
   // This widget will be passed as Top Card's Widget.
@@ -152,7 +152,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
             height: 200,
             // width: 500,
             decoration: BoxDecoration(
-              color: backColor,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(image: AssetImage('images/ping.jpg',),fit: BoxFit.fitHeight),
               boxShadow: [

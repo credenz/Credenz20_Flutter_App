@@ -90,24 +90,24 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
                 ),
               ),
 
-              // SlimyCard is being called here.
+                // SlimyCard is being called here.
 
-              /*SlimyCard(
-                // In topCardWidget below, imagePath changes according to the
-                // status of the SlimyCard(snapshot.data).
-                width: 450,
-                color: drawerBackgroundColor,
-                topCardHeight: 320,
-                bottomCardHeight: 350,
-                topCardWidget: topCardWidget(),
-                bottomCardWidget: bottomCardWidget(),
-                slimeEnabled: false,
-              ),*/
-            ],
-          );
-        }),
-      ),
-    );
+                /*SlimyCard(
+                  // In topCardWidget below, imagePath changes according to the
+                  // status of the SlimyCard(snapshot.data).
+                  width: 450,
+                  color: drawerBackgroundColor,
+                  topCardHeight: 320,
+                  bottomCardHeight: 350,
+                  topCardWidget: topCardWidget(),
+                  bottomCardWidget: bottomCardWidget(),
+                  slimeEnabled: false,
+                ),*/
+              ],
+            );
+          }),
+        ),
+      );
   }
 
   // This widget will be passed as Top Card's Widget.
@@ -130,7 +130,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
             height: 70,
             // width: 500,
             decoration: BoxDecoration(
-              color: backColor,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                   image: AssetImage(

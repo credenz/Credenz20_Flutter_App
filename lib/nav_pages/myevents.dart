@@ -52,13 +52,20 @@ class _MyEventsState extends State<MyEvents> {
       ),
       body: load==true?Container(
           color: notiBackColor,
+
           child: Center(
         child: Container(
           child: animatedloader,
           color: notiBackColor,
         ),)
       ):Container(
-        color: notiBackColor,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            color: backColor,
+            image: DecorationImage(
+              image: AssetImage("images/contactb.jpg"),
+              fit: BoxFit.fill,
+            )),
         child: ListView.builder(itemBuilder: (BuildContext context,int pos){
           return Column(
             children: [

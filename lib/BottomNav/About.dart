@@ -20,26 +20,35 @@ class AboutUs extends StatefulWidget {
 class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: StreamBuilder(
-          // This streamBuilder reads the real-time status of SlimyCard.
-          initialData: true,
-          stream: slimyCard.stream, //Stream of SlimyCard
-          builder: ((BuildContext context, AsyncSnapshot snapshot) {
-            return ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                SizedBox(height: 15),
-                topCardWidget(),
-                bottomCardWidget(),
-                SizedBox(height: 25,)
-                // SlimyCard is being called here.
-              ],
-            );
-          }),
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+          color: backColor,
+          /*image: DecorationImage(
+            image: AssetImage("images/contactb.jpg"),
+            fit: BoxFit.fill,
+          )*/),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: StreamBuilder(
+            // This streamBuilder reads the real-time status of SlimyCard.
+            initialData: true,
+            stream: slimyCard.stream, //Stream of SlimyCard
+            builder: ((BuildContext context, AsyncSnapshot snapshot) {
+              return ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  SizedBox(height: 15),
+                  topCardWidget(),
+                  bottomCardWidget(),
+                  SizedBox(height: 25,)
+                  // SlimyCard is being called here.
+                ],
+              );
+            }),
+          ),
         ),
       ),
     );
