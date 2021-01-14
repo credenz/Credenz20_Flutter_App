@@ -54,7 +54,7 @@ class _AboutUsState extends State<AboutUs> {
         Text(
           "CREDENZ",
           style: TextStyle(
-              color: textColor,
+              color: Colors.white,
               fontSize: 30,
               fontWeight: FontWeight.w500),
         ),
