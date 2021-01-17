@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:credenz20/BottomNav/Profile.dart';
+import 'package:credenz20/commons/collap_nav_dr.dart';
+import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +10,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
+import '../Home.dart';
 import '../loginPage.dart';
 
 class EditProfile extends StatefulWidget {
@@ -25,6 +29,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController passwordController;
   TextEditingController phoneController;
   TextEditingController collegeController;
+  String accToken;
 
   @override
   void initState() {
@@ -34,9 +39,27 @@ class _EditProfileState extends State<EditProfile> {
     getUserInfo();
   }
 
+  updateProfile()async{
+    String url=baseUrl+usernameController.text.toString()+'/update';
+    print(url);
+    String body='{"username":"${usernameController.text.toString()}","name":"${nameController.text.toString()}","password":"${passwordController.text.toString()}","email":"${emailController.text.toString()}","phoneno":"${phoneController.text.toString()}","clgname":"${collegeController.text.toString()}"}';
+    print(body);
+    Map<String, String> headers = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+    print(headers);
+    http.Response response=await http.put(url,body: body,headers: headers);
+    if(response.statusCode==200){
+      Fluttertoast.showToast(msg: 'Profile updated');
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
+
+    }else{
+      Fluttertoast.showToast(msg: 'Please try again in sometime');
+    }
+    print(response.body);
+  }
+
   getUserInfo() async {
     String url = userProfileUrl;
-    String accToken = await storage.read(key: "accToken");
+    accToken= await storage.read(key: "accToken");
     String username = await storage.read(key: 'username');
     if (username == null || accToken == null) {
       Navigator.pushReplacement(context,
@@ -123,7 +146,11 @@ class _EditProfileState extends State<EditProfile> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text('SAVE',style: TextStyle(fontSize: 18),),
                       ),
-                      onPressed: (){
+                      onPressed: ()async{
+                        if (_formKey.currentState.validate()){
+                          await updateProfile();
+                        }
+                        // await updateProfile();
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(16.0),bottomLeft:Radius.circular(16.0),bottomRight: Radius.circular(16.0) )
@@ -187,19 +214,43 @@ class _EditProfileState extends State<EditProfile> {
                 enabled: false,
               ),
             ),
+            // Padding(
+            //   padding: EdgeInsets.all(15.0),
+            //   child: TextFormField(
+            //     controller: emailController,
+            //     style: TextStyle(color: Colors.white),
+            //     validator: (String value) {
+            //       if (value.isEmpty) return 'Email cannot be empty';
+            //
+            //       return null;
+            //     },
+            //     cursorColor: Colors.white,
+            //     decoration: InputDecoration(
+            //       disabledBorder: OutlineInputBorder(
+            //         borderSide: BorderSide(color: Colors.white),
+            //       ),
+            //       isDense: true,
+            //       labelText: 'Email',
+            //       labelStyle: TextStyle(color: Colors.white),
+            //       border: OutlineInputBorder(
+            //         borderRadius: BorderRadius.circular(5.0),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: emailController,
-                style: TextStyle(color: Colors.white),
                 validator: (String value) {
                   if (value.isEmpty) return 'Email cannot be empty';
 
                   return null;
                 },
-                cursorColor: Colors.white,
+                style: TextStyle(color: Colors.white),
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  disabledBorder: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
                   isDense: true,
@@ -209,7 +260,6 @@ class _EditProfileState extends State<EditProfile> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
-                enabled: false,
               ),
             ),
             Padding(

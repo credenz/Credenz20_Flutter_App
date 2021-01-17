@@ -61,7 +61,7 @@ class _SponsorsState extends State<Sponsors> {
                 ),
               ),
             ),
-            Text("Sponsor", style: TextStyle(fontSize: 30),)
+            Text("Sponsor", style: TextStyle(fontSize: 30,color: Color(0xFF121212)),)
           ],
         ),
       )
@@ -104,22 +104,15 @@ class _SponsorsState extends State<Sponsors> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: primary,
-        title: Text("Sponsors"),
+        title: Text("Sponsors",style: TextStyle(color: Colors.white),),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          /*gradient:  LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-              stops: [0.25, 2.5],
-              // colors: [Color(0xFF000000),Color(0xFF000000)]
-              //colors: [Color(0xFF3d3251), Color(0xFF272034)]
-              colors: [Color(0xff4e50bc),Color(0xff55c2fc)]
-
-          ),*/
-          color: Colors.white
-          // gradient: LinearGradient(begin: FractionalOffset.topLeft, end: FractionalOffset.bottomRight, colors: [Color.fromRGBO(61, 17, 52, 10), Color.fromRGBO(26, 4, 43, 10)])
-        ),
+         decoration: BoxDecoration(
+          color: backColor,
+          image: DecorationImage(
+            image: AssetImage("images/sponsorsbackground.jpg"),
+            fit: BoxFit.fill,
+          )),
         child: ListWheelScrollView(
           children: [
             card(0),

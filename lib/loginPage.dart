@@ -12,6 +12,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/gestures.dart';
 import 'package:path_provider/path_provider.dart';
+import 'External_Package/RaisedGradientButton.dart';
 import 'commons/collap_nav_dr.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/styles.dart';
@@ -91,7 +92,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: drawerBackgroundColor,
+      backgroundColor: Color(0xFF121212),
       resizeToAvoidBottomPadding: true,
       body: SafeArea(
         child: Center(
@@ -103,7 +104,7 @@ class _LoginState extends State<Login> {
                   height: getProportionateScreenHeight(70),
                 ),
                 Text(
-                  "Welcome Back",
+                  "Welcome",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
@@ -141,91 +142,76 @@ class _LoginState extends State<Login> {
                 //   ),
                 // ),
                 // ),
-                Form(
+                Column(
+                  children: <Widget>[
+                    TextFormField(
+                      controller: usernameController,
+                      keyboardType: TextInputType.text,
+                      autofocus: true,
+                      style: TextStyle(color: Color(0xFFd9d9d9)),
+                      decoration: InputDecoration(
+                        labelText: "Username",
+                        hintText: "eg. user1234",
+                        hintStyle: TextStyle(color: Color(0xFFd9d9d9)),
+                        labelStyle: TextStyle(color: Color(0xFFd9d9d9)),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        suffixIcon: Icon(
+                          Icons.alternate_email,
+                          color: Color(0xff0aa9d7),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(40),
+                    ),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: _obscuretext,
+                      style: TextStyle(color: Color(0xFFd9d9d9)),
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        hintText: "Enter Your Password",
+                        hintStyle: TextStyle(color: Color(0xFFd9d9d9)),
+                        labelStyle: TextStyle(color: Color(0xFFd9d9d9)),
 
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        controller: usernameController,
-                        keyboardType: TextInputType.text,
-                        autofocus: true,
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: "Username",
-                          hintText: "eg. user1234",
-                          hintStyle: TextStyle(color: Colors.white),
-                          labelStyle: TextStyle(color: Colors.white),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: Icon(
-                            Icons.alternate_email,
-                            color: Colors.deepPurple,
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        suffixIcon: IconButton(
+                          onPressed: toggle,
+                          icon: Icon(
+                            Icons.remove_red_eye,
                           ),
+                          color: Color(0xff0aa9d7),
                         ),
                       ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(40),
-                      ),
-                      TextFormField(
-                        controller: passwordController,
-                        obscureText: _obscuretext,
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          hintText: "Enter Your Password",
-                          hintStyle: TextStyle(color: Colors.white),
-                          labelStyle: TextStyle(color: Colors.white),
-
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: IconButton(
-                            onPressed: toggle,
-                            icon: Icon(
-                              Icons.remove_red_eye,
-                            ),
-                            color: Colors.deepPurple,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: getProportionateScreenHeight(20)),
-                      Row(children: [
-                        Icon(Icons.error,color: Colors.white,),
-                        SizedBox(
-                          width: getProportionateScreenWidth(10),
-                        ),
-                        Text(error,style: TextStyle(color: Colors.white),)
-                      ])
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: getProportionateScreenHeight(20)),
+                  ],
                 ),
                 SizedBox(
                   height: getProportionateScreenHeight(50),
                 ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(60),0,getProportionateScreenWidth(60),0),
-                  child: Material(
-                    color: drawerBackgroundColor,
-                    child: InkWell(
-
-                      child: RaisedButton.icon(
-                        color: Colors.deepPurpleAccent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10.0),
-                                bottomRight: Radius.circular(10.0))),
-                        icon: Icon(Icons.lock),
-                        label: Text(
-                          "Sign In",
-                          style: TextStyle(
-                              fontSize: getProportionateScreenWidth(23),
-                              color: Colors.black),
-                        ),
-                        onPressed: () {
-                          check();
-                        },
-                        // minWidth: getProportionateScreenWidth(150),
-                        // height: getProportionateScreenHeight(60),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: RaisedGradientButton(
+                      height: 40.0,
+                      width: 40.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.lock,color: Colors.white,),
+                          SizedBox(width: 20,),
+                          Text(
+                            'Sign In',
+                            style: TextStyle(color: Colors.white,fontSize: 24),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
+                      gradient: LinearGradient(
+                        colors: commonGradient,
+                      ),
+                      onPressed: () async {
+                        await makeRequest();
+                      }),
                 ),
                 SizedBox(height: getProportionateScreenHeight(30),),
 
@@ -244,7 +230,7 @@ class _LoginState extends State<Login> {
                           },
                           style: TextStyle(
                               fontSize: getProportionateScreenWidth(16),
-                              color: Colors.deepPurple)),
+                              color: Color(0xff0aa9d7))),
                     ),
                   ],
                 ),

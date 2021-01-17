@@ -61,19 +61,22 @@ class _NotiState extends State<Noti> {
                   itemBuilder: (BuildContext context, int pos) {
                     return Column(
                       children: [
-                        ListTile(
-                          leading: Icon(
-                            Icons.notifications,
-                            size: 30,
-                            color: Color(0xffc4c5d6),
-                          ),
-                          title: Text(
-                            list[pos]['headline'],
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          subtitle: Text(
-                            list[pos]['info'],
-                            style: TextStyle(color: Colors.white),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.notifications,
+                              size: 30,
+                              color: Color(0xffc4c5d6),
+                            ),
+                            title: Text(
+                              list[pos]['headline'],
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            subtitle: Text(
+                              list[pos]['info'],
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                         Divider(
