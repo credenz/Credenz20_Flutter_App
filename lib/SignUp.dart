@@ -8,6 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
+import 'External_Package/RaisedGradientButton.dart';
 import 'Home.dart';
 import 'commons/collap_nav_dr.dart';
 import 'commons/slide_drawer.dart';
@@ -70,7 +71,7 @@ class _SignUpState extends State<SignUp> {
 
     return Scaffold(
       resizeToAvoidBottomPadding: true,
-      backgroundColor: drawerBackgroundColor,
+      backgroundColor: Color(0xFF121212),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -104,10 +105,10 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.deepPurpleAccent,
+                    cursorColor: Color(0xff0aa9d7),
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person,
-                          color: Colors.deepPurpleAccent, size: 20),
+                          color: Color(0xff0aa9d7), size: 20),
                       hintText: "Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -126,10 +127,10 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.deepPurpleAccent,
+                    cursorColor: Color(0xff0aa9d7),
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person,
-                          color: Colors.deepPurpleAccent, size: 20),
+                          color: Color(0xff0aa9d7), size: 20),
                       hintText: "Username",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -148,10 +149,10 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    cursorColor: Colors.deepPurpleAccent,
+                    cursorColor: Color(0xff0aa9d7),
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email,
-                          color: Colors.deepPurpleAccent, size: 20),
+                          color: Color(0xff0aa9d7), size: 20),
                       hintText: "Email",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -170,10 +171,10 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.phone,
-                    cursorColor: Colors.deepPurpleAccent,
+                    cursorColor: Color(0xff0aa9d7),
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.phone,
-                          color: Colors.deepPurpleAccent, size: 20),
+                          color: Color(0xff0aa9d7), size: 20),
                       hintText: "Phone Number",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -192,10 +193,10 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.deepPurpleAccent,
+                    cursorColor: Color(0xff0aa9d7),
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.school,
-                          color: Colors.deepPurpleAccent, size: 20),
+                          color: Color(0xff0aa9d7), size: 20),
                       hintText: "College Name",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -214,17 +215,43 @@ class _SignUpState extends State<SignUp> {
                   elevation: _large ? 12 : (_medium ? 10 : 8),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.deepPurpleAccent,
+                    cursorColor: Color(0xff0aa9d7),
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock,
-                            color: Colors.deepPurpleAccent, size: 20),
+                            color: Color(0xff0aa9d7), size: 20),
                         hintText: "Password",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),
                             borderSide: BorderSide.none),
                         suffixIcon: IconButton(
                             icon: Icon(Icons.remove_red_eye),
-                            color: Colors.deepPurpleAccent,
+                            color: Color(0xff0aa9d7),
+                            onPressed: toggle)),
+                    onChanged: (val) {
+                      setState(() {
+                        password = val;
+                      });
+                    },
+                    obscureText: _obscureText,
+                  ),
+                ),
+                SizedBox(height: _height / 30.0),
+                Material(
+                  borderRadius: BorderRadius.circular(10.0),
+                  elevation: _large ? 12 : (_medium ? 10 : 8),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Color(0xff0aa9d7),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock,
+                            color: Color(0xff0aa9d7), size: 20),
+                        hintText: "Confirm Password",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.remove_red_eye),
+                            color: Color(0xff0aa9d7),
                             onPressed: toggle)),
                     onChanged: (val) {
                       setState(() {
@@ -258,53 +285,36 @@ class _SignUpState extends State<SignUp> {
                 //   ),
                 // ),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
-                Container(
-                  width: 170,
-
-                  margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(55),0,getProportionateScreenWidth(55),0),
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10.0),
-                            bottomRight: Radius.circular(10.0))),
-                    color: Colors.deepPurpleAccent,
-                    // icon: Icon(Icons.double_arrow_sharp),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: RaisedGradientButton(
+                      height: 40.0,
+                      width: 40.0,
                       child: Row(
-                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
-                            child: Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                        children: [
+                          SizedBox(width: 20,),
+                          Text(
+                            'Sign Up',
+                            style: TextStyle(color: Colors.white,fontSize: 24),
                           ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(4, 0, 10, 0),
-                            child: Icon(
-                              Icons.double_arrow_sharp,
-                              color: Colors.black,
-                              size: 25,
-                            ),
+                          SizedBox(width: 20,),
+                          Icon(
+                            Icons.double_arrow_sharp,
+                            color: Colors.white,
+                            size: 25,
                           ),
                         ],
                       ),
-                      // Text(,),
-                    ),
-                    onPressed: () async {
-                      await makeRequest();
-                    },
-                  ),
-                )
+                      gradient: LinearGradient(
+                        colors: commonGradient,
+                      ),
+                      onPressed: () async {
+                        await makeRequest();
+                      }),
+                ),
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/size_config.dart';
@@ -157,47 +158,15 @@ class _HomeState extends State<Home> {
                     );
                   },
 
-                  child: new Stack(
-
-                    children: <Widget>[
-                      new IconButton(icon: new Icon(Icons.shopping_cart_outlined,
-                        color: Colors.white,),
-                        onPressed: null,
-                      ),
-                      cnt ==0 ? new Container() :
-                      new Positioned(
-                          top: 0.0,
-                          right: 0.0,
-                          child: new Stack(
-                            children: <Widget>[
-                              new Icon(
-                                  Icons.brightness_1,
-                                  size: 18.0, color: primary),
-                              new Positioned(
-                                  top: 3.0,
-                                  right: 7.0,
-                                  child: new Center(
-                                    child: new Text(
-                                      cnt.toString(),
-                                      style: new TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 11.0,
-                                          //fontWeight: FontWeight.w500
-                                      ),
-                                    ),
-                                  )
-                              ),
-
-
-                            ],
-                          )),
-
-                    ],
-                  ),
-                )
+                  child:  cnt==0?Icon(Icons.shopping_cart_rounded):Badge(
+                    animationType: 	BadgeAnimationType.fade,
+                    badgeContent: Center(child: Text('$cnt')),
+                    child: Icon(Icons.shopping_cart_rounded),
+                    badgeColor: Colors.white,
+                  )
             )
 
-            ,)],
+            ,))],
         title: Text(widget.title, style: TextStyle(fontFamily: 'Sol Thin'),),
         backgroundColor: primary,
 
