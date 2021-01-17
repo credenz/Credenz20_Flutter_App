@@ -43,7 +43,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   startTime() async {
-    var _duration = new Duration(seconds: 4);
+    var _duration = new Duration(seconds: 5);
     return new Timer(_duration, navigationPage);
   }
 
@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color(0xff1f1f1f),
       body: new Center(
         child: new Image.asset(
-          "gifs/preloader5.gif",
+          "gifs/eyegif.gif",
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.fitWidth,
