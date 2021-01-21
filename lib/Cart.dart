@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:paytm_allinonesdk/paytm_allinonesdk.dart';
 
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'External_Package/RaisedGradientButton.dart';
@@ -128,7 +129,28 @@ class _CartState extends State<Cart> {
   }
 */
   pay() async {
-    String username = await storage.read(key: 'username');
+  /*  var response = AllInOneSdk.startTransaction(
+        mid, orderId, "100", txnToken, null, isStaging, restrictAppInvoke);
+    response.then((value) {
+      print(value);
+      setState(() {
+        result = value.toString();
+      });
+    }).catchError((onError) {
+      if (onError is PlatformException) {
+        setState(() {
+          result = onError.message + " \n  " + onError.details.toString();
+        });
+      } else {
+        setState(() {
+          result = onError.toString();
+        });
+      }
+    });
+    
+    */
+
+  /*  String username = await storage.read(key: 'username');
     String accToken = await storage.read(key: "accToken");
     if (username != null && accToken != null) {
       int amt = 0;
@@ -170,7 +192,7 @@ class _CartState extends State<Cart> {
       Fluttertoast.showToast(msg: "Please login before you register");
       Navigator.push(context,
           MaterialPageRoute(builder: (BuildContext context) => Login()));
-    }
+    }*/
   }
 
   @override

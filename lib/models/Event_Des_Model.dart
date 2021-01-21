@@ -88,13 +88,13 @@ class _EventDesState extends State<EventDes>
               children: <Widget>[
                 Stack(
                   children: [
-                    Image.asset(
-                      // "images/contactb.jpg",
-                      "gifs/desback.gif",
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ),
+                    // Image.asset(
+                    //   // "images/contactb.jpg",
+                    //   "gifs/desback.gif",
+                    //   height: MediaQuery.of(context).size.height,
+                    //   width: MediaQuery.of(context).size.width,
+                    //   fit: BoxFit.cover,
+                    // ),
                     // Container(
                     //   color: Color(0xaa4E164B),
                     // ),
@@ -341,8 +341,8 @@ await dialogue(context);
               scrollable: true,
               content: Container(
                 // color: primary,
-                height: 520,
-                width: 300,
+                // height: 520,
+                // width: 300,
                 child: BlocProvider(
                   create: (context) => SerializedFormBloc(),
                   child: Builder(
