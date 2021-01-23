@@ -2,12 +2,9 @@ import 'dart:convert';
 
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
-import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:paytm_allinonesdk/paytm_allinonesdk.dart';
 
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'External_Package/RaisedGradientButton.dart';
@@ -78,12 +75,12 @@ class _CartState extends State<Cart> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  //stops: [0.25, 2.5],
-                  // colors: [Color(0xFF000000),Color(0xFF000000)]
-                  //colors: [Color(0xFF3d3251), Color(0xFF272034)]
-                  colors: commonGradient,
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                //stops: [0.25, 2.5],
+                // colors: [Color(0xFF000000),Color(0xFF000000)]
+                //colors: [Color(0xFF3d3251), Color(0xFF272034)]
+                colors: commonGradient,
               ), //[Color(0xff615de3), Color(0xff6c73ed)]),
               //color: Colors.purple,
             ),
@@ -129,7 +126,7 @@ class _CartState extends State<Cart> {
   }
 */
   pay() async {
-  /*  var response = AllInOneSdk.startTransaction(
+    /*  var response = AllInOneSdk.startTransaction(
         mid, orderId, "100", txnToken, null, isStaging, restrictAppInvoke);
     response.then((value) {
       print(value);
@@ -150,7 +147,7 @@ class _CartState extends State<Cart> {
     
     */
 
-  /*  String username = await storage.read(key: 'username');
+    /*  String username = await storage.read(key: 'username');
     String accToken = await storage.read(key: "accToken");
     if (username != null && accToken != null) {
       int amt = 0;
@@ -308,8 +305,7 @@ class _CartState extends State<Cart> {
                                         Text(
                                           list[pos],
                                           style: TextStyle(
-                                              color: textColor,
-                                              fontSize: 16),
+                                              color: textColor, fontSize: 16),
                                           maxLines: 2,
                                         ),
                                         SizedBox(height: 10),
