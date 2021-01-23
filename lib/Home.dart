@@ -1,6 +1,5 @@
 import 'package:badges/badges.dart';
 import 'package:credenz20/constants/theme.dart';
-import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -42,12 +41,12 @@ class _HomeState extends State<Home> {
     Noti(),
   ];
   final list = List();
-  int cnt=0;
+  int cnt = 0;
   Widget currentScreen = Events(); //
   final PageStorageBucket bucket = PageStorageBucket();
   int currentIndex = 2;
   PageController pageController;
-  final securestorage=FlutterSecureStorage();
+  final securestorage = FlutterSecureStorage();
 
   List<Widget> tabPages = [
     new Profile(),
@@ -65,9 +64,7 @@ class _HomeState extends State<Home> {
     pageController = PageController(initialPage: currentIndex);
   }
 
-
-
-  _initAnimation()async{
+  _initAnimation() async {
     securestorage.write(key: 'animation', value: null);
   }
 
@@ -102,7 +99,6 @@ class _HomeState extends State<Home> {
   cartNo() async {
     list.clear();
 
-
     for (int i = 0; i < 12; i++) {
       bool pre = await securestorage.containsKey(key: '$i');
       if (pre) {
@@ -113,13 +109,12 @@ class _HomeState extends State<Home> {
     // print(list.length);
 
     setState(() {
-      cnt=list.length;
+      cnt = list.length;
     });
   }
 
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     SizeConfig().init(context);
     cartNo();
     return Scaffold(
@@ -134,7 +129,6 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         leading: Builder(
           builder: (context) {
-
             return IconButton(
               icon: Icon(Icons.menu),
               onPressed: () => SlideDrawer.of(context)?.toggle(),
@@ -142,32 +136,30 @@ class _HomeState extends State<Home> {
           },
         ),
         actions: <Widget>[
-
-          new Padding(padding: const EdgeInsets.all(10.0),
-
-            child: new Container(
+          new Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: new Container(
                 height: 150.0,
                 width: 30.0,
                 child: new GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                        new MaterialPageRoute(
-                            builder:(BuildContext context) =>
-                            new Cart()
-                        )
-                    );
-                  },
-
-                  child:  cnt==0?Icon(Icons.shopping_cart_rounded):Badge(
-                    animationType: 	BadgeAnimationType.fade,
-                    badgeContent: Center(child: Text('$cnt')),
-                    child: Icon(Icons.shopping_cart_rounded),
-                    badgeColor: Colors.white,
-                  )
-            )
-
-            ,))],
-        title: Text(widget.title, style: TextStyle(fontFamily: 'Sol Thin'),),
+                    onTap: () {
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new Cart()));
+                    },
+                    child: cnt == 0
+                        ? Icon(Icons.shopping_cart_rounded)
+                        : Badge(
+                            animationType: BadgeAnimationType.fade,
+                            badgeContent: Center(child: Text('$cnt')),
+                            child: Icon(Icons.shopping_cart_rounded),
+                            badgeColor: Colors.white,
+                          )),
+              ))
+        ],
+        title: Text(
+          widget.title,
+          style: TextStyle(fontFamily: 'Sol Thin'),
+        ),
         backgroundColor: primary,
 
         //elevation: 0,
@@ -178,28 +170,30 @@ class _HomeState extends State<Home> {
 
       floatingActionButton: FloatingActionButton(
         child: Center(
-          child: Container(decoration: BoxDecoration(
-            //color: Colors.transparent,
-            borderRadius: BorderRadius.all(
-              Radius.circular(100),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blueGrey.withOpacity(0.3),
-                spreadRadius: 15,
-                blurRadius: 15,
-                offset: Offset(0, 0),
-              ),
-            ],
-          ),child: Container(
-
+          child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                shape: BoxShape.circle
-              ),child: Image.asset("images/homeFab.png", scale: 0.5))),
+                //color: Colors.transparent,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(100),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blueGrey.withOpacity(0.3),
+                    spreadRadius: 15,
+                    blurRadius: 15,
+                    offset: Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white, shape: BoxShape.circle),
+                  child: currentTab == 2
+                      ? Image.asset("images/homeFab.png", scale: 0.5)
+                      : Image.asset("images/homeFab2.png", scale: 0.5))),
         ),
         tooltip: 'Increment',
-         elevation: 10.0,
+        elevation: 10.0,
         backgroundColor: Colors.white,
         onPressed: () {
           setState(
@@ -255,12 +249,12 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.group,
-                            color: currentTab == 0
-                                ? Color(0xff0998b7)
-                                : Color(0xff8b91ad),
+                        Icon(
+                          Icons.group,
+                          color: currentTab == 0
+                              ? Color(0xff0998b7)
+                              : Color(0xff8b91ad),
                         ),
-
                         Text(
                           'Profile',
                           overflow: TextOverflow.ellipsis,
@@ -289,7 +283,8 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.perm_contact_calendar,
+                        Icon(
+                          Icons.perm_contact_calendar,
                           color: currentTab == 1
                               ? Color(0xff0998b7)
                               : Color(0xff8b91ad),
@@ -301,7 +296,7 @@ class _HomeState extends State<Home> {
                             color: currentTab == 1
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
-                        ),
+                          ),
                         )
                       ],
                     ),
@@ -327,7 +322,8 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.info_outline,
+                        Icon(
+                          Icons.info_outline,
                           color: currentTab == 3
                               ? Color(0xff0998b7)
                               : Color(0xff8b91ad),
@@ -360,7 +356,8 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.notifications,
+                        Icon(
+                          Icons.notifications,
                           color: currentTab == 4
                               ? Color(0xff0998b7)
                               : Color(0xff8b91ad),
