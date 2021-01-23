@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:credenz20/BottomNav/Profile.dart';
+import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/commons/collap_nav_dr.dart';
 import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:credenz20/constants/API.dart';
@@ -39,19 +39,27 @@ class _EditProfileState extends State<EditProfile> {
     getUserInfo();
   }
 
-  updateProfile()async{
-    String url=baseUrl+usernameController.text.toString()+'/update';
+  updateProfile() async {
+    String url = baseUrl + usernameController.text.toString() + '/update';
     print(url);
-    String body='{"username":"${usernameController.text.toString()}","name":"${nameController.text.toString()}","password":"${passwordController.text.toString()}","email":"${emailController.text.toString()}","phoneno":"${phoneController.text.toString()}","clgname":"${collegeController.text.toString()}"}';
+    String body =
+        '{"username":"${usernameController.text.toString()}","name":"${nameController.text.toString()}","password":"${passwordController.text.toString()}","email":"${emailController.text.toString()}","phoneno":"${phoneController.text.toString()}","clgname":"${collegeController.text.toString()}"}';
     print(body);
-    Map<String, String> headers = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+    Map<String, String> headers = {
+      "Authorization": "Bearer $accToken",
+      "Content-Type": "application/json"
+    };
     print(headers);
-    http.Response response=await http.put(url,body: body,headers: headers);
-    if(response.statusCode==200){
+    http.Response response = await http.put(url, body: body, headers: headers);
+    if (response.statusCode == 200) {
       Fluttertoast.showToast(msg: 'Profile updated');
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
-
-    }else{
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => SlideDrawer(
+                  drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))),
+          (route) => false);
+    } else {
       Fluttertoast.showToast(msg: 'Please try again in sometime');
     }
     print(response.body);
@@ -59,7 +67,7 @@ class _EditProfileState extends State<EditProfile> {
 
   getUserInfo() async {
     String url = userProfileUrl;
-    accToken= await storage.read(key: "accToken");
+    accToken = await storage.read(key: "accToken");
     String username = await storage.read(key: 'username');
     if (username == null || accToken == null) {
       Navigator.pushReplacement(context,
@@ -126,41 +134,73 @@ class _EditProfileState extends State<EditProfile> {
           title: Text("Edit Profile"),
         ),
         backgroundColor: Colors.black,
-
         body: load == true
             ? Container(
-                child: loader1,
-                color: Colors.black,
-              )
-            : SingleChildScrollView(
-                child:Column(
+            height: MediaQuery.of(context).size.height,
+            color: Color(0xFF000000),
+            child: Center(
+              child: Container(
+                child: animatedloader,
+                color: notiBackColor,
+              ),
+            ))
+            : Container(
+          height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                  color: backColor,
+                  image: DecorationImage(
+                    image: AssetImage("images/contactb.jpg"),
+                    fit: BoxFit.fill,
+                  )),
+              child: SingleChildScrollView(
+
+                child: Column(
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
                       child: _buildForm(),
                     ),
-
-                    RaisedButton(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('SAVE',style: TextStyle(fontSize: 18),),
+                    RaisedGradientButton(
+                      height: 35.0,
+                      width: 100.0,
+                      child: Text(
+                        'SAVE',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: textColor),
                       ),
-                      onPressed: ()async{
-                        if (_formKey.currentState.validate()){
+                      gradient: LinearGradient(
+                        colors: commonGradient,
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
                           await updateProfile();
                         }
                         // await updateProfile();
                       },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(16.0),bottomLeft:Radius.circular(16.0),bottomRight: Radius.circular(16.0) )
-                      ),
                     ),
 
+                    /*  RaisedButton(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('SAVE',style: TextStyle(fontSize: 18),),
+                        ),
+                        onPressed: ()async{
+                          if (_formKey.currentState.validate()){
+                            await updateProfile();
+                          }
+                          // await updateProfile();
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(16.0),bottomLeft:Radius.circular(16.0),bottomRight: Radius.circular(16.0) )
+                        ),
+                      ),*/
                   ],
-                )
-
-              ));
+                ),
+              ),
+            ));
   }
 
   _buildForm() {
@@ -172,18 +212,24 @@ class _EditProfileState extends State<EditProfile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: nameController,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: textColor),
                 validator: (String value) {
                   if (value.isEmpty) return 'Name cannot be empty';
 
                   return null;
                 },
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
                   isDense: true,
                   labelText: 'Name',
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.white),
+                  // ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
+                  labelStyle: TextStyle(color: textColor),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -195,7 +241,7 @@ class _EditProfileState extends State<EditProfile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: usernameController,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: textColor),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
                   return null;
@@ -203,9 +249,9 @@ class _EditProfileState extends State<EditProfile> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelText: 'Username',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: textColor),
                   disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -218,7 +264,7 @@ class _EditProfileState extends State<EditProfile> {
             //   padding: EdgeInsets.all(15.0),
             //   child: TextFormField(
             //     controller: emailController,
-            //     style: TextStyle(color: Colors.white),
+            //     style: TextStyle(color: textColor),
             //     validator: (String value) {
             //       if (value.isEmpty) return 'Email cannot be empty';
             //
@@ -247,15 +293,18 @@ class _EditProfileState extends State<EditProfile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: textColor),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: textColor),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -267,7 +316,7 @@ class _EditProfileState extends State<EditProfile> {
               child: TextFormField(
                 controller: passwordController,
                 obscureText: !_passwordVisible,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: textColor),
                 validator: (String value) {
                   if (value.isEmpty) return 'Password cannot be empty';
 
@@ -276,11 +325,14 @@ class _EditProfileState extends State<EditProfile> {
                 keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'Password',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: textColor),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -289,7 +341,7 @@ class _EditProfileState extends State<EditProfile> {
                       _passwordVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
-                      color: Colors.white,
+                      color: dividerColor,
                     ),
                     onPressed: () {
                       // Update the state i.e. toogle the state of passwordVisible variable
@@ -310,15 +362,18 @@ class _EditProfileState extends State<EditProfile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: textColor),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'Phone number',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: textColor),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -334,14 +389,17 @@ class _EditProfileState extends State<EditProfile> {
 
                   return null;
                 },
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: textColor),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'College Name',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyle(color: textColor),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),

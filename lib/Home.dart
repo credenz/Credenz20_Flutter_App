@@ -8,7 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'BottomNav/About.dart';
 import 'BottomNav/Contact.dart';
 import 'BottomNav/Events.dart';
-import 'BottomNav/Noti.dart';
+import 'BottomNav/News.dart';
 import 'BottomNav/Profile.dart';
 import 'Cart.dart';
 import 'commons/slide_drawer.dart';
@@ -392,7 +392,7 @@ import 'package:flutter/material.dart';
 
 import 'BottomNav/About.dart';
 import 'BottomNav/Contact.dart';
-import 'BottomNav/Noti.dart';
+import 'BottomNav/News.dart';
 import 'BottomNav/Profile.dart';
 import 'commons/slide_drawer.dart';
 import 'theme.dart';
