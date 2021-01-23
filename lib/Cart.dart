@@ -4,6 +4,7 @@ import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -46,6 +47,11 @@ class _CartState extends State<Cart> {
         prices1[list[i]['event_name']] = list[i]['event_price'];
       }
       await loadCart();
+    }else{
+      setState(() {
+        load=false;
+        Navigator.pop(context);
+      });
     }
   }
 
