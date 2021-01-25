@@ -8,26 +8,28 @@ const List<AssetImage> eventimages = [
   AssetImage('images/pixelate.png'),
   AssetImage('images/cretronix.png'),
   AssetImage('images/bplan.png'),
+  AssetImage('images/wallst.png'),
   AssetImage('images/datawizwhite.png'),
   AssetImage('images/enigma.png'),
   AssetImage('images/quiz.png'),
+  AssetImage('images/web.png'),
   AssetImage('images/paper.png'),
   AssetImage('images/nth.png'),
 ];
 
 const List<String> eventName = [
   "Clash",
-  "Contraption",
-  "Cretronix",
-  "Enigma",
-  "DataWiz",
-  "NTH",
-  "Paper Presentation",
-  "Pixelate",
-  "Quiz",
   "Reverse Coding",
-  "Roboliga",
-  "Xodia"
+  "Pixelate",
+  "Cretronix",
+  "Bplan",
+  "Wallstreet",
+  "Datawiz",
+  "Enigma",
+  "Quiz",
+  "Web Weaver",
+  "Paper Presentation",
+  "Network Treasure Hunt"
 ];
 
 Map<String, int> prices1;
@@ -104,8 +106,8 @@ const List<String> intro = [
 ];
 
 const List<String> contact = [
-  "Sudhanshu Bhoi: +91 8975167862" + "Neelanjney Pilarisetty:91 8087084718",
-  "Isha Pardikar:" + " +91-9309116833",
+  "Tanmay Nale: +91-9969108722\n" + "Pranjal Newalkar: +91 95529 50492",
+  "Sanket Landge: +91 70209 83032Kaustubh Odak :91 96502 11332",
   "Ajay Kadam:" + " 91-8669286645" + "Saumitra Kulkarni:" + "+91-8806850222",
   "Rajavi Kakade:" + " +91-7798130523" + "Rohit Nagotkar:" + " +91-8668297216",
   "Amol Gandhi:" + " +91-928413533" + "Piyusha Gumte:" + " +91-7745000663",
