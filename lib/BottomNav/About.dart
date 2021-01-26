@@ -90,7 +90,7 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(  // Image goes here
-            height: 200,
+            height: 180,
             // width: 500,
             decoration: BoxDecoration(
               //color: Colors.white,
@@ -122,7 +122,7 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
           fontFamily: 'Segoe UI',
           color: textColor,
           fontSize: 18,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w100,
         ),
         textAlign: TextAlign.justify,
 

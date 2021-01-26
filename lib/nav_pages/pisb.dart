@@ -163,7 +163,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
           fontFamily: 'Segoe UI',
           color: textColor,
           fontSize: 21,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w100,
         ),
       ),
       textAlign: TextAlign.justify,

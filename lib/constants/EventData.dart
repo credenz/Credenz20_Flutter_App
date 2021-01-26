@@ -121,21 +121,8 @@ const List<String> contact = [
 ];
 
 const List<String> judging = [
-  "1. Identifies a business opportunity. " +
-      "2. Innovation, and Creativity involved. " +
-      "3. Technical and Economical Feasibility. " +
-      "4. Originality of the idea. " +
-      "5. Business Acumen of the Participants. " +
-      "" +
-      "Decisions of the judges will be final and shall be respected. ",
-  "1. Design of your machine." +
-      "2. Number of steps involved in it." +
-      "3. Number of different types of energy conversions involved." +
-      "4. Aesthetic of machine." +
-      "5. Presentation." +
-      "6. Innovation." +
-      "7. Will test elementary knowledge of applied physics of team." +
-      "8. Team management skills will also be tested.",
+  "Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners.",
+  "1) The competition will test the participants' logical and coding skills.\n2) Time and cost efficiency of the code will be tested in round 2.",
   "1) Creativity and originality of the design.\n2) Distinct features incorporated in the design.\m3) Persuasiveness of the design, i.e. the efficiency of the design to convey the required message.\n4) Photoshop skills.\n5) Layering and masking.\n6) The decision of the judges will be final and shall be respected.",
   "Round 1:\nEach question carries a single mark. No negative marking. Teams having score above the score threshold will be selected for Round 2.\nRound 2:\nTop two teams earning maximum credits based on the understanding of the problem statement, component selection, practical performance and explanation of the implemented circuit will be declared as winners.Winner and runner-up will be awarded.",
   "1) Innovation involved in the development of the idea and its practicality.\n2) Originality and Patentability.\n3) Technical feasibility.\n4) Implementation of the product.\n5) Cost efficiency (if relevant).\n6) Superiority of the product over existing products in market.\n7) Participants will be judged on the basis of their business acumen and on how sustainable and innovative their solution is.\n8) The decision of the judges will be final and shall be respected",
