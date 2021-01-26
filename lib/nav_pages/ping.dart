@@ -184,7 +184,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
             fontFamily: 'Segoe UI',
             color: textColor,
             fontSize: 18,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w100,
           ),
         ),
         textAlign: TextAlign.justify,
