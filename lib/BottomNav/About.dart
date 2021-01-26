@@ -34,7 +34,6 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
 
-
     controller.forward();
   }
 
