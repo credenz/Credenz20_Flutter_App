@@ -394,7 +394,6 @@ class _ProfileState extends State<Profile> {
                 controller: collegeController,
                 validator: (String value) {
                   if (value.isEmpty) return 'College Name cannot be empty';
-
                   return null;
                 },
                 style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
