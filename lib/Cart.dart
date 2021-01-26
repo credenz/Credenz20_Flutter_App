@@ -214,7 +214,7 @@ class _CartState extends State<Cart> {
               ),
               title: Column(
                 children: [
-                  Text(' Your Cart'),
+                  Text(' Your Cart',style: TextStyle(fontFamily: 'Segoe UI',),),
                 ],
               ),
               backgroundColor: primary,
@@ -258,10 +258,10 @@ class _CartState extends State<Cart> {
                   ),
                   title: Column(
                     children: [
-                      Text(' Your Cart'),
+                      Text(' Your Cart',style: TextStyle(fontFamily: 'Segoe UI',),),
                       Text(
                         ' ${list.length} items ',
-                        style: TextStyle(fontSize: 12, color: Colors.white70),
+                        style: TextStyle(fontSize: 12, color: Colors.white70,fontFamily: 'Segoe UI',),
                       )
                     ],
                   ),
@@ -311,6 +311,7 @@ class _CartState extends State<Cart> {
                                         Text(
                                           list[pos],
                                           style: TextStyle(
+                                              fontFamily: 'Segoe UI',
                                               color: textColor, fontSize: 16),
                                           maxLines: 2,
                                         ),
@@ -321,6 +322,7 @@ class _CartState extends State<Cart> {
                                                   prices1[list[pos]].toString()
                                               : "\u20B9 " + "120",
                                           style: TextStyle(
+                                              fontFamily: 'Segoe UI',
                                               fontWeight: FontWeight.w600,
                                               color: textColor),
                                         ),
@@ -392,11 +394,13 @@ class _CartState extends State<Cart> {
                                     TextSpan(
                                       text: "Total:\n",
                                       style: TextStyle(
+                                          fontFamily: 'Segoe UI',
                                           fontSize: 16, color: Colors.white),
                                       children: [
                                         TextSpan(
                                           text: "\u20B9 " + sum.toString(),
                                           style: TextStyle(
+                                              fontFamily: 'Segoe UI',
                                               fontSize: 16,
                                               color: Colors.white),
                                         ),
@@ -410,7 +414,7 @@ class _CartState extends State<Cart> {
                                         width: 40.0,
                                         child: Text(
                                           'Register',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(color: Colors.white,fontFamily: 'Segoe UI',),
                                         ),
                                         gradient: LinearGradient(
                                           colors: commonGradient,
