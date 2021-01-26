@@ -70,11 +70,11 @@ class _NotiState extends State<Noti> {
                               ),
                               title: Text(
                                 list[pos]['headline'],
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white,fontFamily: 'Segoe UI',),
                               ),
                               subtitle: Text(
                                 list[pos]['info'],
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white,fontFamily: 'Segoe UI',),
                               ),
                             ),
                           ),

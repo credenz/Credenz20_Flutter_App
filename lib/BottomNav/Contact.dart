@@ -88,7 +88,7 @@ List<String> name = [
 List<String> position = [
   "Vice Chairperson",
   "Joint Secretary",
-  "Vice Treasurer"
+  "Treasurer"
 ];
 
 List<String> number = [
