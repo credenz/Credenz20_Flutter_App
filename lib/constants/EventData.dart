@@ -35,72 +35,72 @@ const List<String> eventName = [
 Map<String, int> prices1;
 
 const List<String> intro = [
-  "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++. Showcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose." +
-      "*Registration Fees:*\n" +
+  "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++.\n\nShowcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.\n\n" +
+      "Registration Fees:\n\n" +
       "IEEE Members: 60/-\n" +
       "Non IEEE Members: 80/-",
 
-  "A coding competition to test your compilation of the combinations of algorithms and conceptual understanding of the programming languages C/C++. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer." +
-      "Registration Fees:\n" +
+  "A coding competition to test your compilation of the combinations of algorithms and conceptual understanding of the programming languages C/C++. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer.\n\n" +
+      "Registration Fees:\n\n" +
       "IEEE Members: 60/-\n" +
       "Non-IEEE Members: 80/-",
 
   "Get ready to paint virtual canvas with your creative and thoughtful designs! Come, digitalise your art and let your mouse be your brush." +
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 120/- \n" +
       "Non-IEEE Members: 150/-",
 
-  "Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics,physics, logical ability and build a circuit by interpreting the hints provided. \n Prerequisites: Theoretical and practical knowledge in the field of digital electronics, electrical circuits and physics." +
-      "\nRegistration Fees: \n" +
-      "IEEE Members: 40/- per team\n" +
-      "Non-IEEE Members: 50/- per team",
+  "Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics,physics, logical ability and build a circuit by interpreting the hints provided. \n\nPrerequisites: Theoretical and practical knowledge in the field of digital electronics, electrical circuits and physics." +
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 40/-\n" +
+      "Non-IEEE Members: 50/-",
 
 
 
   "Ever dreamt of having your own business or a product? B-Plan is the perfect platform for you! A perfect presentation describing your business idea will help you grab a chance to win funding from the investors. So showcase your ideas before a panel of best marketing professionals." +
       "\n" +
-      "\nRegistration Fees: \n" +
+      "\nRegistration Fees: \n\n" +
       "IEEE Members: 100/- \n" +
       "Non-IEEE Members: 120/-",
 
 
   "Let the rise and fall of market shares bring out your inner businessman! Get an insight in the field of Investment banking, corporate financing and trading to take over the virtual stock market. After all, every investment is one step closer to your dream bank balance!" +
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 40/-\n" +
       "Non-IEEE Members: 50/-",
 
   "Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners." +
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 40/-\n" +
       "Non-IEEE Members: 50/-",
 
   "Are you diligent enough to face the mind-boggling questions which will push your logical reasoning to its limits? Then do not miss this amazing opportunity. Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work! "
       +
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 40/-\n" +
       "Non IEEE Members: 50/-",
 
 
   "Brainstorm on the questions ranging from Greek mythology to world politics, from Shakespeare to business gurus. Set out on a voyage through mind-boggling questions captained by a witty quiz master. Flex your IQ in a set of three quizzes, designed to be a battle of wits."+
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 40/-\n" +
       "Non- IEEE Members: 50/-",
 
 
   "An aesthetically pleasing and user-friendly website is necessary to keep visitors engaged online. If you think you have the flair to create such a site, WebWeaver is the competition for you! A perfect integration of technology and creativity will lead you to win this competition."+
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 60/-\n" +
       "Non IEEE Members : 80/-",
 
   "An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!  "+
-      "\nRegistration Fees: \n" +
+      "\n\nRegistration Fees: \n\n" +
       "IEEE Members: 180/-\n" +
       "Non IEEE Members : 200/-",
 
 
 
   "Network Treasure Hunt is an online treasure hunt where participants follow a trail of clues, surfing a range of websites to decipher the puzzles.Tread carefully along your way, solving a series of strategic clues, watching out for the concealed misdirection.Decrypt the clues, enjoy the hunt and race your way to the finish to win some exciting goodies!This is your chance to put your logic and reasoning to test. So, log on to our website and be a Sherlock for a day!"+
-      "\nRegistration Fees:  Free!",
+      "\n\nRegistration Fees:  Free!",
 
 
 ];
@@ -137,17 +137,17 @@ const List<String> judging = [
 
 const List<String> rules = [
   "1) MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)",
-  "1) A maximum of 2 candidates pursuing undergraduate program at their institution are allowed per team.\n2) Marking scheme will be declared on spot.",
-  "1)Candidate pursuing undergraduate course at any institute is allowed to participate.\n2)Participants can register online on the official Credenz website.\n3)Each participant should have their own laptop and internet connection facility.",
-  "1)  Each team can consist of maximum 3 members.\n2) Participants will be provided with credentials to join tinkercad for the 2nd round.\n3) Participants can use datasheets for the components they are using and are supposed to provide a link of the same.",
-  "1) A maximum of three candidates per plan pursuing undergraduate/graduate/postgraduate program at their institution will be allowed per team.\n2) Proposed business plan should not be in violation of any intellectual property rights.",
-  "1) Every Participating candidate should be pursuing Undergraduate/Graduate courses.\n2) Participants should have their own college ID cards.",
-  "1)Each team of students may consist of a maximum of 3 participants.\n2)One account per participant\n3)Signing In on Kaggle through Multiple accounts is prohibited.\n4)No private sharing outside teams.\n5)No private sharing outside teams.\n6)Privately sharing code or data outside of teams is not permitted.\n7)Results should be reproducible to be eligible for prizes.",
-  "1) Candidates pursuing an Undergraduate/graduate program at their institution will be allowed to participate. It will be an individual event.\n2)All the participants should follow all the instructions as mentioned in the mail received after registration.",
-  "1.General Quiz: It includes everything from robotics to politics. Test your GK!\n2.MELA Quiz: Movies Entertainment Literature and Arts (MELA) is all set to test your knowledge of literature, arts and entertainment. If you are an entertainment lover, this is for you!\n3.BizTech Quiz: If you are passionate about marketing, economics and Business, then BizTech is the ultimate questionnaire you need to answer.",
-  "1) A team of maximum 2 is permissible for the event.\n2) Use of any front end framework is permitted.\n3) You are allowed to use any language but readymade template must not be used.\n4) Wordpress is not allowed.",
-  "1) Oratory and Presentation skills will be of prime importance.\n2) Relevance of the content in context with the chosen topic.\n3) Judge's decision will be final and binding on all.",
-  "1)Register to get your NTH username and password.\n2)Open NTH website: http://www.nth.credenz.in/\n3)Login using the credentials sent on the mail.\n4)You will be directed to the starting page of the hunt. 5)To advance, crack the question, and put the answer in the URL:\nFROM\nhttp://www.nth.credenz.in/question.php\nTO\nhttp://www.nth.credenz.in/answer.php\n6)You need to use Google for many of them to solve. Of course, that is where you search for everything you don't know.\n7)Check the source of the pages, you'll get some important clues for hunting further. The titles may also give you clues.\nMost importantly, do not forget to have fun!"
+  "1) A maximum of 2 candidates pursuing undergraduate program at their institution are allowed per team.\n\n2) Marking scheme will be declared on spot.",
+  "1) Candidate pursuing undergraduate course at any institute is allowed to participate.\n\n2) Participants can register online on the official Credenz website.\n\n3) Each participant should have their own laptop and internet connection facility.",
+  "1) Each team can consist of maximum 3 members.\n\n2) Participants will be provided with credentials to join tinkercad for the 2nd round.\n\n3) Participants can use data-sheets for the components they are using and are supposed to provide a link of the same.",
+  "1) A maximum of three candidates per plan pursuing undergraduate/graduate/postgraduate program at their institution will be allowed per team.\n\n2) Proposed business plan should not be in violation of any intellectual property rights.",
+  "1) Every Participating candidate should be pursuing Undergraduate/Graduate courses.\n\n2) Participants should have their own college ID cards.",
+  "1) Each team of students may consist of a maximum of 3 participants.\n\n2) One account per participant.\n\n3) Signing In on Kaggle through Multiple accounts is prohibited.\n\n4) No private sharing outside teams.\n\n5) No private sharing outside teams.\n\n6) Privately sharing code or data outside of teams is not permitted.\n\n7) Results should be reproducible to be eligible for prizes.",
+  "1) Candidates pursuing an Undergraduate/graduate program at their institution will be allowed to participate. It will be an individual event.\n\n2) All the participants should follow all the instructions as mentioned in the mail received after registration.",
+  "1) General Quiz: It includes everything from robotics to politics. Test your GK!\n\n2) MELA Quiz: Movies Entertainment Literature and Arts (MELA) is all set to test your knowledge of literature, arts and entertainment. If you are an entertainment lover, this is for you!\n\n3) BizTech Quiz: If you are passionate about marketing, economics and Business, then BizTech is the ultimate questionnaire you need to answer.",
+  "1) A team of maximum 2 is permissible for the event.\n\n2) Use of any front end framework is permitted.\n\n3) You are allowed to use any language but readymade template must not be used.\n\n4) Wordpress is not allowed.",
+  "1) Oratory and Presentation skills will be of prime importance.\n\n2) Relevance of the content in context with the chosen topic.\n\n3) Judge's decision will be final and binding on all.",
+  "1) Register to get your NTH username and password.\n\n2) Open NTH website: http://www.nth.credenz.in/\n\n3)Login using the credentials sent on the mail.\n\n4) You will be directed to the starting page of the hunt.\n\n5) To advance, crack the question, and put the answer in the URL:\nFROM\nhttp://www.nth.credenz.in/question.php\nTO\nhttp://www.nth.credenz.in/answer.php\n\n6) You need to use Google for many of them to solve. Of course, that is where you search for everything you don't know.\n\n7) Check the source of the pages, you'll get some important clues for hunting further. The titles may also give you clues.\nMost importantly, do not forget to have fun!"
 ];
 
 const List<String> structure = [

@@ -107,6 +107,7 @@ class _LoginState extends State<Login> {
                   "Welcome",
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      fontFamily: 'Segoe UI',
                       color: Colors.white,
                       fontSize: getProportionateScreenWidth(28),
                       fontWeight: FontWeight.bold),
@@ -114,7 +115,7 @@ class _LoginState extends State<Login> {
                 Text(
                   "Sign In with your username and password",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(fontFamily: 'Segoe UI',color: Colors.white),
                 ),
                 SizedBox(
                   height: getProportionateScreenHeight(100),
@@ -148,12 +149,12 @@ class _LoginState extends State<Login> {
                       controller: usernameController,
                       keyboardType: TextInputType.text,
                       autofocus: true,
-                      style: TextStyle(color: Color(0xFFd9d9d9)),
+                      style: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
                       decoration: InputDecoration(
                         labelText: "Username",
                         hintText: "eg. user1234",
-                        hintStyle: TextStyle(color: Color(0xFFd9d9d9)),
-                        labelStyle: TextStyle(color: Color(0xFFd9d9d9)),
+                        hintStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                        labelStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         suffixIcon: Icon(
                           Icons.alternate_email,
@@ -167,12 +168,12 @@ class _LoginState extends State<Login> {
                     TextFormField(
                       controller: passwordController,
                       obscureText: _obscuretext,
-                      style: TextStyle(color: Color(0xFFd9d9d9)),
+                      style: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
                       decoration: InputDecoration(
                         labelText: "Password",
                         hintText: "Enter Your Password",
-                        hintStyle: TextStyle(color: Color(0xFFd9d9d9)),
-                        labelStyle: TextStyle(color: Color(0xFFd9d9d9)),
+                        hintStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                        labelStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
 
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         suffixIcon: IconButton(
@@ -202,7 +203,7 @@ class _LoginState extends State<Login> {
                           SizedBox(width: 20,),
                           Text(
                             'Sign In',
-                            style: TextStyle(color: Colors.white,fontSize: 24),
+                            style: TextStyle(fontFamily: 'Segoe UI',fontWeight: FontWeight.bold,color: Colors.white,fontSize: 24),
                           ),
                         ],
                       ),
@@ -220,7 +221,7 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     Text("Don't have an account?",
                         style:
-                        TextStyle(fontSize: getProportionateScreenWidth(16),color: Colors.white)),
+                        TextStyle(fontFamily: 'Segoe UI',fontSize: getProportionateScreenWidth(16),color: Colors.white)),
                     RichText(
                       text: TextSpan(
                           text: "Sign Up",
@@ -229,6 +230,8 @@ class _LoginState extends State<Login> {
                             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SignUp()));
                           },
                           style: TextStyle(
+                              fontFamily: 'Segoe UI',
+                              fontWeight: FontWeight.bold,
                               fontSize: getProportionateScreenWidth(16),
                               color: Color(0xff0aa9d7))),
                     ),

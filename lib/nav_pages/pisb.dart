@@ -77,6 +77,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
                     child: Text("Visit our website",
                         textAlign: TextAlign.end,
                         style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontFamily: 'Segoe UI',
                             // decoration: TextDecoration.underline,
                             color: Colors.white,
