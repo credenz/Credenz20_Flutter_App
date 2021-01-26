@@ -48,7 +48,7 @@ class _MyEventsState extends State<MyEvents> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: primary,
-        title: Text("My Events"),
+        title: Text("My Events", style: TextStyle(fontFamily: 'Segoe UI',),),
       ),
       body: load==true?Container(
           color: notiBackColor,
@@ -70,8 +70,8 @@ class _MyEventsState extends State<MyEvents> {
           return Column(
             children: [
               ListTile(
-                title: Text("Event Name:- ${eventList[pos]['event_username'].toString().toUpperCase()}", style: TextStyle(color: textColor),),
-                subtitle: Text("Password:- ${eventList[pos]['random_pw']}", style: TextStyle(color: textColor),),
+                title: Text("Event Name:- ${eventList[pos]['event_username'].toString().toUpperCase()}", style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),),
+                subtitle: Text("Password:- ${eventList[pos]['random_pw']}", style: TextStyle(color: textColor, fontFamily: 'Segoe UI',),),
               ),
               Divider(
                 color: Color(0xff313969),
