@@ -10,9 +10,9 @@ class Ping extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("P.I.N.G."),
+        title: Text("P.I.N.G.", style: TextStyle(fontFamily: 'Segoe UI',),),
 
-       // centerTitle: true,
+        centerTitle: true,
         backgroundColor: primary,
       ),
       body: AboutPing(),
@@ -94,6 +94,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
                           child:Text("Read P.I.N.G Issue Here",
                               textAlign: TextAlign.end,
                               style: TextStyle(
+                                  fontFamily: 'Segoe UI',
                                 // decoration: TextDecoration.underline,
                                   color: Colors.white,
                                   fontSize: 15.0)),
@@ -140,6 +141,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
         Text(
           "PICT IEEE Newsletter Group\n",
           style: TextStyle(
+              fontFamily: 'Segoe UI',
               color: Colors.white,
               fontSize: 28,
               fontWeight: FontWeight.w500),
@@ -179,6 +181,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
         text: TextSpan(
           text: "P.I.N.G. (PICT IEEE Newsletter Group) is the official technical magazine of PISB published twice a year. P.I.N.G. serves as a platform for individuals to portray their technical ingenuity. It highlights articles oncutting-edge technologies from technocrats all around the globe including students, industrialists and faculty members. It also features interviews of distinguished personalities in various technical domains. P.I.N.G. aims at keeping its readers up to date on recent developments in technology and helps them extrapolate their perceptions to contemporary ideas of modernisation. With the imminent Issue 16.1, be ready to get P.I.N.G.'d!",
           style: TextStyle(
+            fontFamily: 'Segoe UI',
             color: textColor,
             fontSize: 18,
             fontWeight: FontWeight.w600,

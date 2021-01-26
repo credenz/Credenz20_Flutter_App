@@ -95,6 +95,9 @@ flutter:
     - family: Roboto Medium
       fonts:
         - asset: fonts/Roboto-Medium.ttf
+    - family: Segoe UI
+      fonts:
+        - asset: fonts/SEGOEUI.TTF
   #      - family: Raleway
   #        fonts:
   #          - asset: fonts/Raleway-Regular.ttf

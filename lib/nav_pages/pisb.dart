@@ -9,8 +9,8 @@ class PISB extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PISB"),
-        //centerTitle: true,
+        title: Text("PISB", style: TextStyle(fontFamily: 'Segoe UI',)),
+        centerTitle: true,
         backgroundColor: primary,
       ),
       body: AboutPISB(),
@@ -77,6 +77,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
                     child: Text("Visit our website",
                         textAlign: TextAlign.end,
                         style: TextStyle(
+                            fontFamily: 'Segoe UI',
                             // decoration: TextDecoration.underline,
                             color: Colors.white,
                             fontSize: 15.0)),
@@ -159,6 +160,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
         text:
             "PICT IEEE Student Branch (PISB) was established in the year 1988 with an aim of inculcating a sense of technical awareness amongst its student members. PISB aims to escalate the knowledge and trends in the diverse fields of technologies amongst its members. PISB upholds two major events every year - Credenz and Credenz Tech Dayz with the first one being conducted in odd semester and the latter one in even semester. PISB is also marked by its Women in Engineering (WIE) chapter, an initiative for empowerment of women.",
         style: TextStyle(
+          fontFamily: 'Segoe UI',
           color: textColor,
           fontSize: 21,
           fontWeight: FontWeight.w600,

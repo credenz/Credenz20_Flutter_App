@@ -46,13 +46,13 @@ class MenuDrawer extends StatelessWidget {
                 children: [
                   Container(
 
-                  padding: EdgeInsets.fromLTRB(0,15,0,10),
+                  padding: EdgeInsets.fromLTRB(0,15,15,10),
                   child: DrawerHeader(
                         decoration: BoxDecoration(
                           //borderRadius: BorderRadius.only(topLeft: Radius.circular(2000),topRight: Radius.circular(2000),bottomLeft: Radius.circular(2000),bottomRight: Radius.circular(2000),),
                             image: DecorationImage(
-                                image: AssetImage("images/finalLogoname.png"),
-                                fit: BoxFit.contain
+                                image: AssetImage("images/drawerlogo.png"),
+                                fit: BoxFit.fill
                             )
                         ),
                         child: SizedBox(width: MediaQuery.of(context).size.width-130,)
@@ -67,7 +67,7 @@ class MenuDrawer extends StatelessWidget {
                         children: [
                           ListTile(
                             leading: Icon(Icons.collections_bookmark),
-                            title: Text('PISB'),
+                            title: Text('PISB',style: TextStyle(fontFamily: 'Segoe UI',),),
                             onTap: () {
                               // Navigator.of(context).pop();
                               Navigator.of(context).push(MaterialPageRoute(
@@ -76,7 +76,7 @@ class MenuDrawer extends StatelessWidget {
                           ),
                           ListTile(
                             leading: Icon(Icons.collections_bookmark),
-                            title: Text('PING'),
+                            title: Text('PING',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
                               //Navigator.of(context).pop();
                               Navigator.of(context).push(MaterialPageRoute(
@@ -86,7 +86,7 @@ class MenuDrawer extends StatelessWidget {
 
                           ListTile(
                             leading: Icon(Icons.monetization_on_rounded),
-                            title: Text('Sponsors'),
+                            title: Text('Sponsors',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
                               //Navigator.of(context).pop();
                               Navigator.of(context).push(MaterialPageRoute(
@@ -97,7 +97,7 @@ class MenuDrawer extends StatelessWidget {
                           ),
                           ListTile(
                             leading: Icon(Icons.wysiwyg),
-                            title: Text('My Events'),
+                            title: Text('My Events',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
                               // Navigator.of(context).pop();
                               Navigator.of(context).push(MaterialPageRoute(
@@ -108,7 +108,7 @@ class MenuDrawer extends StatelessWidget {
                           ),
                           ListTile(
                             leading: Icon(Icons.web_asset),
-                            title: Text('Visit Website'),
+                            title: Text('Visit Website',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
                               _launchURL('https://credenz-2c8cb.web.app/home');
                               //Navigator.of(context).pop();
@@ -116,7 +116,7 @@ class MenuDrawer extends StatelessWidget {
                           ),
                           ListTile(
                             leading: Icon(Icons.developer_mode_sharp),
-                            title: Text('Developers'),
+                            title: Text('Developers',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext cotext) => Developer()
@@ -128,7 +128,7 @@ class MenuDrawer extends StatelessWidget {
                           ),
                           ListTile(
                             leading: Icon(Icons.policy),
-                            title: Text('Privacy Policy'),
+                            title: Text('Privacy Policy',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
 
                             },
