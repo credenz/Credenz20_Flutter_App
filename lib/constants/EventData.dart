@@ -46,12 +46,12 @@ const List<String> intro = [
       "Non-IEEE Members: 80/-",
 
   "Get ready to paint virtual canvas with your creative and thoughtful designs! Come, digitalise your art and let your mouse be your brush." +
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 120/- \n" +
       "Non-IEEE Members: 150/-",
 
   "Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics,physics, logical ability and build a circuit by interpreting the hints provided. \n Prerequisites: Theoretical and practical knowledge in the field of digital electronics, electrical circuits and physics." +
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 40/- per team\n" +
       "Non-IEEE Members: 50/- per team",
 
@@ -59,59 +59,59 @@ const List<String> intro = [
 
   "Ever dreamt of having your own business or a product? B-Plan is the perfect platform for you! A perfect presentation describing your business idea will help you grab a chance to win funding from the investors. So showcase your ideas before a panel of best marketing professionals." +
       "\n" +
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 100/- \n" +
       "Non-IEEE Members: 120/-",
 
 
   "Let the rise and fall of market shares bring out your inner businessman! Get an insight in the field of Investment banking, corporate financing and trading to take over the virtual stock market. After all, every investment is one step closer to your dream bank balance!" +
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 40/-\n" +
       "Non-IEEE Members: 50/-",
 
   "Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners." +
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 40/-\n" +
       "Non-IEEE Members: 50/-",
 
   "Are you diligent enough to face the mind-boggling questions which will push your logical reasoning to its limits? Then do not miss this amazing opportunity. Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work! "
       +
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 40/-\n" +
       "Non IEEE Members: 50/-",
 
 
   "Brainstorm on the questions ranging from Greek mythology to world politics, from Shakespeare to business gurus. Set out on a voyage through mind-boggling questions captained by a witty quiz master. Flex your IQ in a set of three quizzes, designed to be a battle of wits."+
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 40/-\n" +
       "Non- IEEE Members: 50/-",
 
 
   "An aesthetically pleasing and user-friendly website is necessary to keep visitors engaged online. If you think you have the flair to create such a site, WebWeaver is the competition for you! A perfect integration of technology and creativity will lead you to win this competition."+
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 60/-\n" +
       "Non IEEE Members : 80/-",
 
   "An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!  "+
-      "<b>Registration Fees:</b>\n" +
+      "\nRegistration Fees: \n" +
       "IEEE Members: 180/-\n" +
       "Non IEEE Members : 200/-",
 
 
 
   "Network Treasure Hunt is an online treasure hunt where participants follow a trail of clues, surfing a range of websites to decipher the puzzles.Tread carefully along your way, solving a series of strategic clues, watching out for the concealed misdirection.Decrypt the clues, enjoy the hunt and race your way to the finish to win some exciting goodies!This is your chance to put your logic and reasoning to test. So, log on to our website and be a Sherlock for a day!"+
-      "<b>Registration Fees:</b> Free!",
+      "\nRegistration Fees:  Free!",
 
 
 ];
 
 const List<String> contact = [
   "Tanmay Nale: +91-9969108722\n" + "Pranjal Newalkar: +91 95529 50492",
-  "Sanket Landge: +91 70209 83032Kaustubh Odak :91 96502 11332",
-  "Ajay Kadam:" + " 91-8669286645" + "Saumitra Kulkarni:" + "+91-8806850222",
-  "Rajavi Kakade:" + " +91-7798130523" + "Rohit Nagotkar:" + " +91-8668297216",
-  "Amol Gandhi:" + " +91-928413533" + "Piyusha Gumte:" + " +91-7745000663",
-  "Vansh Kaul:" + " +91-9370663915" + "Hritik Zutshi:" + " +91-7701864159",
+  "Sanket Landge: +91 70209 83032\nKaustubh Odak: +91 96502 11332",
+  "Shreya Deshpande: +91 7588404218",
+  "Ajay Kompalwad: +91 8668460490\nAkshay Satpute: +91 7057602590",
+  "Janhavi Bagul: +91 9970004781\nManasi Thonte: +91 9561118320\nSampreeti Saha: +91 9168743366",
+  "Muffadal Diwan: +91 7073152539\nKrishiv Mewani: +91 9158087902",
   "Sudhanshu Bhoi: +91 8975167862" + "Neelanjney Pilarisetty:91 8087084718",
   "Isha Pardikar:" + " +91-9309116833",
   "Ajay Kadam:" + " 91-8669286645" + "Saumitra Kulkarni:" + "+91-8806850222",
@@ -136,175 +136,26 @@ const List<String> judging = [
       "6. Innovation." +
       "7. Will test elementary knowledge of applied physics of team." +
       "8. Team management skills will also be tested.",
-  "1. The competition will test participants programming skills and knowledge of C/C++. " +
-      "2. Time and cost efficiency of the code.",
-  "1. Identifies a business opportunity. " +
-      "2. Innovation, and Creativity involved. " +
-      "3. Technical and Economical Feasibility. " +
-      "4. Originality of the idea. " +
-      "5. Business Acumen of the Participants. " +
-      "" +
-      "Decisions of the judges will be final and shall be respected. ",
-  "1. Design of your machine." +
-      "2. Number of steps involved in it." +
-      "3. Number of different types of energy conversions involved." +
-      "4. Aesthetic of machine." +
-      "5. Presentation." +
-      "6. Innovation." +
-      "7. Will test elementary knowledge of applied physics of team." +
-      "8. Team management skills will also be tested.",
-  "1. The competition will test participants programming skills and knowledge of C/C++. " +
-      "2. Time and cost efficiency of the code.",
-  "1. Identifies a business opportunity. " +
-      "2. Innovation, and Creativity involved. " +
-      "3. Technical and Economical Feasibility. " +
-      "4. Originality of the idea. " +
-      "5. Business Acumen of the Participants. " +
-      "" +
-      "Decisions of the judges will be final and shall be respected. ",
-  "1. Design of your machine." +
-      "2. Number of steps involved in it." +
-      "3. Number of different types of energy conversions involved." +
-      "4. Aesthetic of machine." +
-      "5. Presentation." +
-      "6. Innovation." +
-      "7. Will test elementary knowledge of applied physics of team." +
-      "8. Team management skills will also be tested.",
-  "1. The competition will test participants programming skills and knowledge of C/C++. " +
-      "2. Time and cost efficiency of the code.",
-  "1. Identifies a business opportunity. " +
-      "2. Innovation, and Creativity involved. " +
-      "3. Technical and Economical Feasibility. " +
-      "4. Originality of the idea. " +
-      "5. Business Acumen of the Participants. " +
-      "" +
-      "Decisions of the judges will be final and shall be respected. ",
-  "1. Design of your machine." +
-      "2. Number of steps involved in it." +
-      "3. Number of different types of energy conversions involved." +
-      "4. Aesthetic of machine." +
-      "5. Presentation." +
-      "6. Innovation." +
-      "7. Will test elementary knowledge of applied physics of team." +
-      "8. Team management skills will also be tested.",
-  "1. The competition will test participants programming skills and knowledge of C/C++. " +
-      "2. Time and cost efficiency of the code."
+  "1) Creativity and originality of the design.\n2) Distinct features incorporated in the design.\m3) Persuasiveness of the design, i.e. the efficiency of the design to convey the required message.\n4) Photoshop skills.\n5) Layering and masking.\n6) The decision of the judges will be final and shall be respected.",
+  "Round 1:\nEach question carries a single mark. No negative marking. Teams having score above the score threshold will be selected for Round 2.\nRound 2:\nTop two teams earning maximum credits based on the understanding of the problem statement, component selection, practical performance and explanation of the implemented circuit will be declared as winners.Winner and runner-up will be awarded.",
+  "1) Innovation involved in the development of the idea and its practicality.\n2) Originality and Patentability.\n3) Technical feasibility.\n4) Implementation of the product.\n5) Cost efficiency (if relevant).\n6) Superiority of the product over existing products in market.\n7) Participants will be judged on the basis of their business acumen and on how sustainable and innovative their solution is.\n8) The decision of the judges will be final and shall be respected",
+  "Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners.",
+  "Submission Limits\nYou may submit a maximum of 10 entries per day.\nYou may select up to 2 final submissions for judging.",
+  "1)There will be two rounds.\n2)You need to qualify the threshold score to get into the next round. The threshold will be decided based upon the performance of all the teams.\n3)The decision of the organizer will be final.\n4)There is no negative marking at any stage.",
+  "The winner will be selected on the basis of the maximum points scored in final round and/or on the exclusive discretion of the quiz master.",
+  "Participants can participate either individually or in a group of 2 and develop a website which is supposed to be submitted 1-2 days before the start of Credenz. On the first day of Credenz, the best website teams are promoted to the second round where people are informed by us to add specific changes to their website. The website with the most aesthetic changes and best compatibility will be announced as the winner.",
+  "1) Oratory and Presentation skills will be of prime importance.\n2) Relevance of the content in context with the chosen topic.\n3) Judge's decision will be final and binding on all.",
+  "The person who has cracked the highest number of levels wins.\nNOTE: In case of a tie, the one who has reached first on that level is the winner."
 ];
 
 const List<String> rules = [
-  "1. A team of maximum three members (UG/PG) are allowed to participate.\n" +
-      "2. Proposed Business Plan should not violate any intellectual property rights.\n" +
-      "3. All the participants must present a receipt and valid ID during the contest.\n" +
-      "4. Violation of any rule might lead to disqualification of the team at any stage of the competition.\n",
-  "1. A team of max. four members is allowed to participate.\n\n" +
-      "2. Machine should be of dimensions 8*8*8 feet (maximum).\n\n" +
-      "3. Minimum 10 steps should be involved to complete the task otherwise " +
-      "team will be disqualified. However there is no constrain on maximum number of steps.\n\n" +
-      "4. Use memory devices in minimum 3  steps.\n\n" +
-      "5. Photo should be revealed at the end and not displayed already.\n\n" +
-      "6. Minimum 4 different energy conversions should be implemented in machine. " +
-      "Otherwise team will be disqualified.\n\n" +
-      "7. Machine should perform the task in maximum 4 minutes.\n\n" +
-      "8. Machine should not take support of any four walls and ceiling.\n\n" +
-      "9. Teams have to submit abstract and flowchart in prescribed format well before " +
-      "the deadline of first round.\n\n" +
-      "10. Maximum of three trials/chances will be given to any team. For every other " +
-      "chance/trial there will be deduction of points.\n\n" +
-      "11. For every next chance reset time of 15 minutes will be given to team.\n\n" +
-      "12. Only one team member is allowed to interact with the machine once the evaluation " +
-      "has begun. This includes resetting the machine during the run. This means only one " +
-      "person will be allowed inside the arena.\n\n" +
-      "13. However, if the team goes for another run, the restriction of one person inside " +
-      "the arena is uplifted until the machine is ready for the other run.\n\n" +
-      "14. That person will explain about the machine and each step going on to judges.\n\n" +
-      "15. Each step in the machine should be considered as the transfer of one energy into " +
-      "another. A step is considered to accomplish when there is energy transformation. Example " +
-      "ball coming down from the wedge and hitting the domino is considered a step. In this " +
-      "potential energy of ball gets converted into kinetic energy while coming down and when " +
-      "it hits the domino, it transfers its energy into domino.\n\n" +
-      "16. Identical transfers of energy in succession should be considered one step. For eg., " +
-      "a set of dominos falling into each other should be considered one step. While technically " +
-      "each single domino falling is a step, stating one hundred steps for hundred dominos is " +
-      "repetitive and against the spirit of Rube Goldberg.\n\n" +
-      "17. You can use any material for making of your machine provided in any case, they does " +
-      "not lead damage to arena and other machines. Otherwise it will lead to disqualification of team.\n\n" +
-      "18. Hazardous materials are not allowed and any gas or any explosives are also not allowed.\n\n" +
-      "19. We will not provide you any material for making of your Machine.\n\n" +
-      "20. However basic stationary materials will be provided to you.\n\n" +
-      "21. You have to bring extension boards of your own.\n\n" +
-      "22. Bring 2 copies of abstract when you perform in college.\n\n" +
-      "23. No animal should be used.\n\n" +
-      "24. Organizers have the right to change a rule or all if they feel.",
-  "1. A maximum of 2 candidates pursuing under-graduate program at " +
-      "their institution are allowed per team. \n\n" +
-      "2. All the participants should bring receipt and valid I-cards while " +
-      "coming for the contest. A participant without an I-card will NOT be allowed " +
-      "for the contest and the respective team will be disqualified.\n\n" +
-      "3. Marking Scheme will be declared on the spot.",
-  "1. Participants playing in a group, if any ,must not play from multiple accounts.\n\n" +
-      "2. Use of Google and any other website for related searches is permitted.",
-  "1. A team of maximum 3 is permissible for the event." +
-      "2. Use of any front end framework is permitted." +
-      "3. You are allowed to use any language but readymade " +
-      "template must not be used." +
-      "4. WordPress is not allowed." +
-      "5. All teams shall have to get their own laptops on the day of " +
-      "the competition. It is advisable to get a high speed data card (even " +
-      "though net connection will be provided), for your convenience." +
-      "6. All the participants should bring receipt and valid I-cards " +
-      "while coming for the contest. A single team member without an " +
-      "I-card will result in the disqualification of the entire team.",
-  "1. A team of maximum three\n\n" +
-      "candidates pursuing undergraduate/" +
-      "postgraduate program are allowed.\n\n" +
-      "2. All the participants should bring valid " +
-      "I-Cards while coming for the contest. No one without I-Card will be allowed " +
-      "for the contest and the team will be " +
-      "disqualified.\n\n" +
-      "3. The presentation should not be longer than 10 minutes.",
-  "1. A team of maximum three members (UG/PG) are allowed to participate.\n" +
-      "2. Proposed Business Plan should not violate any intellectual property rights.\n" +
-      "3. All the participants must present a receipt and valid ID during the contest.\n" +
-      "4. Violation of any rule might lead to disqualification of the team at any stage of the competition.\n",
-  "1. A team of max. four members is allowed to participate.\n\n" +
-      "2. Machine should be of dimensions 8*8*8 feet (maximum).\n\n" +
-      "3. Minimum 10 steps should be involved to complete the task otherwise " +
-      "team will be disqualified. However there is no constrain on maximum number of steps.\n\n" +
-      "4. Use memory devices in minimum 3  steps.\n\n" +
-      "5. Photo should be revealed at the end and not displayed already.\n\n" +
-      "6. Minimum 4 different energy conversions should be implemented in machine. " +
-      "Otherwise team will be disqualified.\n\n" +
-      "7. Machine should perform the task in maximum 4 minutes.\n\n" +
-      "8. Machine should not take support of any four walls and ceiling.\n\n" +
-      "9. Teams have to submit abstract and flowchart in prescribed format well before " +
-      "the deadline of first round.\n\n" +
-      "10. Maximum of three trials/chances will be given to any team. For every other " +
-      "chance/trial there will be deduction of points.\n\n" +
-      "11. For every next chance reset time of 15 minutes will be given to team.\n\n" +
-      "12. Only one team member is allowed to interact with the machine once the evaluation " +
-      "has begun. This includes resetting the machine during the run. This means only one " +
-      "person will be allowed inside the arena.\n\n" +
-      "13. However, if the team goes for another run, the restriction of one person inside " +
-      "the arena is uplifted until the machine is ready for the other run.\n\n" +
-      "14. That person will explain about the machine and each step going on to judges.\n\n" +
-      "15. Each step in the machine should be considered as the transfer of one energy into " +
-      "another. A step is considered to accomplish when there is energy transformation. Example " +
-      "ball coming down from the wedge and hitting the domino is considered a step. In this " +
-      "potential energy of ball gets converted into kinetic energy while coming down and when " +
-      "it hits the domino, it transfers its energy into domino.\n\n" +
-      "16. Identical transfers of energy in succession should be considered one step. For eg., " +
-      "a set of dominos falling into each other should be considered one step. While technically " +
-      "each single domino falling is a step, stating one hundred steps for hundred dominos is " +
-      "repetitive and against the spirit of Rube Goldberg.\n\n" +
-      "17. You can use any material for making of your machine provided in any case, they does " +
-      "not lead damage to arena and other machines. Otherwise it will lead to disqualification of team.\n\n" +
-      "18. Hazardous materials are not allowed and any gas or any explosives are also not allowed.\n\n" +
-      "19. We will not provide you any material for making of your Machine.\n\n" +
-      "20. However basic stationary materials will be provided to you.\n\n" +
-      "21. You have to bring extension boards of your own.\n\n" +
-      "22. Bring 2 copies of abstract when you perform in college.\n\n" +
-      "23. No animal should be used.\n\n" +
-      "24. Organizers have the right to change a rule or all if they feel.",
+  "1) MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)",
+  "1) A maximum of 2 candidates pursuing undergraduate program at their institution are allowed per team.\n2) Marking scheme will be declared on spot.",
+  "1)Candidate pursuing undergraduate course at any institute is allowed to participate.\n2)Participants can register online on the official Credenz website.\n3)Each participant should have their own laptop and internet connection facility.",
+  "1)  Each team can consist of maximum 3 members.\n2) Participants will be provided with credentials to join tinkercad for the 2nd round.\n3) Participants can use datasheets for the components they are using and are supposed to provide a link of the same.",
+  "1) A maximum of three candidates per plan pursuing undergraduate/graduate/postgraduate program at their institution will be allowed per team.\n2) Proposed business plan should not be in violation of any intellectual property rights.",
+  "1) Every Participating candidate should be pursuing Undergraduate/Graduate courses.\n2) Participants should have their own college ID cards.",
+  "1)Each team of students may consist of a maximum of 3 participants.\n2)One account per participant\n3)Signing In on Kaggle through Multiple accounts is prohibited.\n4)No private sharing outside teams.\n5)No private sharing outside teams.\n6)Privately sharing code or data outside of teams is not permitted.\n7)Results should be reproducible to be eligible for prizes.",
   "1. A maximum of 2 candidates pursuing under-graduate program at " +
       "their institution are allowed per team. \n\n" +
       "2. All the participants should bring receipt and valid I-cards while " +
