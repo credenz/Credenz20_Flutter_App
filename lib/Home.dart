@@ -259,6 +259,8 @@ class _HomeState extends State<Home> {
                           'Profile',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Segoe UI',
                             color: currentTab == 0
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
@@ -293,6 +295,8 @@ class _HomeState extends State<Home> {
                           'Contact',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Segoe UI',
                             color: currentTab == 1
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
@@ -332,6 +336,8 @@ class _HomeState extends State<Home> {
                           'About',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Segoe UI',
                             color: currentTab == 3
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
@@ -366,6 +372,8 @@ class _HomeState extends State<Home> {
                           'News',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontFamily: 'Segoe UI',
+                            fontWeight: FontWeight.bold,
                             color: currentTab == 4
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),

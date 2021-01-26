@@ -279,6 +279,7 @@ await dialogue(context);
                 child: Text(
                   intro[widget.eventIndex],
                   style: TextStyle(fontSize: 18.0, color: Colors.white),
+                  textAlign: TextAlign.justify,
                 ),
               ),
             ),
@@ -288,6 +289,7 @@ await dialogue(context);
                 padding: EdgeInsets.all(10.0),
                 child: Text(
                   rules[widget.eventIndex],
+                  //textAlign: TextAlign.justify,
                   style: TextStyle(fontSize: 18.0, color: Colors.white),
                 ),
               ),
