@@ -273,6 +273,7 @@ class _ProfileState extends State<Profile> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
+                enabled: false,
               ),
             ),
             Padding(
@@ -374,7 +375,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
+                  disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
@@ -384,6 +385,7 @@ class _ProfileState extends State<Profile> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
+                enabled: false,
               ),
             ),
             Padding(
@@ -397,7 +399,7 @@ class _ProfileState extends State<Profile> {
                 },
                 style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
+                  disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
@@ -407,6 +409,7 @@ class _ProfileState extends State<Profile> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
+                enabled: false,
               ),
             ),
           ],
