@@ -284,6 +284,9 @@ class _ProfileState extends State<Profile> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),

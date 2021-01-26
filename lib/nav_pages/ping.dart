@@ -99,7 +99,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
                                   color: Colors.white,
                                   fontSize: 15.0)),
                           gradient: LinearGradient(
-                            colors: commonGradient,
+                            colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
                           ),
                         onPressed: () {
                           launch('http://pictieee.in/');
