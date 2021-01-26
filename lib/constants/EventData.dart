@@ -112,12 +112,12 @@ const List<String> contact = [
   "Ajay Kompalwad: +91 8668460490\nAkshay Satpute: +91 7057602590",
   "Janhavi Bagul: +91 9970004781\nManasi Thonte: +91 9561118320\nSampreeti Saha: +91 9168743366",
   "Muffadal Diwan: +91 7073152539\nKrishiv Mewani: +91 9158087902",
-  "Sudhanshu Bhoi: +91 8975167862" + "Neelanjney Pilarisetty:91 8087084718",
-  "Isha Pardikar:" + " +91-9309116833",
-  "Ajay Kadam:" + " 91-8669286645" + "Saumitra Kulkarni:" + "+91-8806850222",
-  "Rajavi Kakade:" + " +91-7798130523" + "Rohit Nagotkar:" + " +91-8668297216",
-  "Amol Gandhi:" + " +91-928413533" + "Piyusha Gumte:" + " +91-7745000663",
-  "Vansh Kaul:" + " +91-9370663915" + "Hritik Zutshi:" + " +91-7701864159"
+  "Aboli Marathe: +91 9545413291\nAyush Das: +91 9373236438",
+  "Saket Gupta: +91 77200 79968\nAtharva Sadre: +91 75882 46742",
+  "Aparna Ranade: +91 8149841027\nAsawari Walkade: +91 8956783613",
+  "Yash Sonar: +91 97631 26056\nElika Mishra: +91 96736 42654",
+  "Anushka Mali: 91 7385747678",
+  "Garvita Jain: +91 89895 53238\nPrajwal Patankar: +91 88887 26344"
 ];
 
 const List<String> judging = [
@@ -156,131 +156,24 @@ const List<String> rules = [
   "1) A maximum of three candidates per plan pursuing undergraduate/graduate/postgraduate program at their institution will be allowed per team.\n2) Proposed business plan should not be in violation of any intellectual property rights.",
   "1) Every Participating candidate should be pursuing Undergraduate/Graduate courses.\n2) Participants should have their own college ID cards.",
   "1)Each team of students may consist of a maximum of 3 participants.\n2)One account per participant\n3)Signing In on Kaggle through Multiple accounts is prohibited.\n4)No private sharing outside teams.\n5)No private sharing outside teams.\n6)Privately sharing code or data outside of teams is not permitted.\n7)Results should be reproducible to be eligible for prizes.",
-  "1. A maximum of 2 candidates pursuing under-graduate program at " +
-      "their institution are allowed per team. \n\n" +
-      "2. All the participants should bring receipt and valid I-cards while " +
-      "coming for the contest. A participant without an I-card will NOT be allowed " +
-      "for the contest and the respective team will be disqualified.\n\n" +
-      "3. Marking Scheme will be declared on the spot.",
-  "1. Participants playing in a group, if any ,must not play from multiple accounts.\n\n" +
-      "2. Use of Google and any other website for related searches is permitted.",
-  "1. A team of maximum 3 is permissible for the event." +
-      "2. Use of any front end framework is permitted." +
-      "3. You are allowed to use any language but readymade " +
-      "template must not be used." +
-      "4. WordPress is not allowed." +
-      "5. All teams shall have to get their own laptops on the day of " +
-      "the competition. It is advisable to get a high speed data card (even " +
-      "though net connection will be provided), for your convenience." +
-      "6. All the participants should bring receipt and valid I-cards " +
-      "while coming for the contest. A single team member without an " +
-      "I-card will result in the disqualification of the entire team.",
-  "1. A team of maximum three\n\n" +
-      "candidates pursuing undergraduate/" +
-      "postgraduate program are allowed.\n\n" +
-      "2. All the participants should bring valid " +
-      "I-Cards while coming for the contest. No one without I-Card will be allowed " +
-      "for the contest and the team will be " +
-      "disqualified.\n\n" +
-      "3. The presentation should not be longer than 10 minutes."
+  "1) Candidates pursuing an Undergraduate/graduate program at their institution will be allowed to participate. It will be an individual event.\n2)All the participants should follow all the instructions as mentioned in the mail received after registration.",
+  "1.General Quiz: It includes everything from robotics to politics. Test your GK!\n2.MELA Quiz: Movies Entertainment Literature and Arts (MELA) is all set to test your knowledge of literature, arts and entertainment. If you are an entertainment lover, this is for you!\n3.BizTech Quiz: If you are passionate about marketing, economics and Business, then BizTech is the ultimate questionnaire you need to answer.",
+  "1) A team of maximum 2 is permissible for the event.\n2) Use of any front end framework is permitted.\n3) You are allowed to use any language but readymade template must not be used.\n4) Wordpress is not allowed.",
+  "1) Oratory and Presentation skills will be of prime importance.\n2) Relevance of the content in context with the chosen topic.\n3) Judge's decision will be final and binding on all.",
+  "1)Register to get your NTH username and password.\n2)Open NTH website: http://www.nth.credenz.in/\n3)Login using the credentials sent on the mail.\n4)You will be directed to the starting page of the hunt. 5)To advance, crack the question, and put the answer in the URL:\nFROM\nhttp://www.nth.credenz.in/question.php\nTO\nhttp://www.nth.credenz.in/answer.php\n6)You need to use Google for many of them to solve. Of course, that is where you search for everything you don't know.\n7)Check the source of the pages, you'll get some important clues for hunting further. The titles may also give you clues.\nMost importantly, do not forget to have fun!"
 ];
 
 const List<String> structure = [
-  "Round 1: Send your abstract to bplan.credenz19@gmail.com. " +
-      "Top 7 (+3 waiting) teams will be shortlisted for the next round. " +
-      "Round 2.1:  A 12 minute presentation of your plan to panel of judges and audience. " +
-      "Round 2.2:  React to a business situation." +
-      "Answer the questions on approaches towards hurdles, opportunities, feasibility, and exit plan. " +
-      "Top 3 teams will be awarded with cash prizes. " +
-      "The best team will further get an opportunity to pitch their idea to investors and get incubation at PICT E-Cell.",
-  "1. Round 1: " +
-      "Problem Statement will be released on website 15 days prior to the event." +
-      "Participants have to mail their abstract to email id:" +
-      "contraption.credenz19@gmail.com" +
-      "2. Round 2: " +
-      "Best abstracts will be shortlisted from the first round. These teams will be allowed to " +
-      "come to college and demonstrate their machine and present their innovation.",
-  "1. There are TWO rounds per group: " +
-      "1.1. Elimination Round (MCQ's Round)" +
-      "1.2. Coding Round (Final Round)" +
-      "2. Owing to the vast nature of the programming language, the event will be " +
-      "conducted in two categories, Junior Level and Senior Level." +
-      "3. The competition will test the participants' programming skills and knowledge of C/C++ and Python." +
-      "4. Python Language option will be available only for First Year (FE) participants." +
-      "5. Teams can register at the registration desk on the day of the event, " +
-      "1 hour prior to the event. Teams can also register at desks put up at various colleges in Pune." +
-      "6. The Second Round structure will be declared on the spot. " +
-      "7. NOTE: Only one computer will be provided to each team.",
-  "Round 1: Send your abstract to bplan.credenz19@gmail.com. " +
-      "Top 7 (+3 waiting) teams will be shortlisted for the next round. " +
-      "Round 2.1:  A 12 minute presentation of your plan to panel of judges and audience. " +
-      "Round 2.2:  React to a business situation." +
-      "Answer the questions on approaches towards hurdles, opportunities, feasibility, and exit plan. " +
-      "Top 3 teams will be awarded with cash prizes. " +
-      "The best team will further get an opportunity to pitch their idea to investors and get incubation at PICT E-Cell.",
-  "1. Round 1: " +
-      "Problem Statement will be released on website 15 days prior to the event." +
-      "Participants have to mail their abstract to email id:" +
-      "contraption.credenz19@gmail.com" +
-      "2. Round 2: " +
-      "Best abstracts will be shortlisted from the first round. These teams will be allowed to " +
-      "come to college and demonstrate their machine and present their innovation.",
-  "1. There are TWO rounds per group: " +
-      "1.1. Elimination Round (MCQ's Round)" +
-      "1.2. Coding Round (Final Round)" +
-      "2. Owing to the vast nature of the programming language, the event will be " +
-      "conducted in two categories, Junior Level and Senior Level." +
-      "3. The competition will test the participants' programming skills and knowledge of C/C++ and Python." +
-      "4. Python Language option will be available only for First Year (FE) participants." +
-      "5. Teams can register at the registration desk on the day of the event, " +
-      "1 hour prior to the event. Teams can also register at desks put up at various colleges in Pune." +
-      "6. The Second Round structure will be declared on the spot. " +
-      "7. NOTE: Only one computer will be provided to each team.",
-  "Round 1: Send your abstract to bplan.credenz19@gmail.com. " +
-      "Top 7 (+3 waiting) teams will be shortlisted for the next round. " +
-      "Round 2.1:  A 12 minute presentation of your plan to panel of judges and audience. " +
-      "Round 2.2:  React to a business situation." +
-      "Answer the questions on approaches towards hurdles, opportunities, feasibility, and exit plan. " +
-      "Top 3 teams will be awarded with cash prizes. " +
-      "The best team will further get an opportunity to pitch their idea to investors and get incubation at PICT E-Cell.",
-  "1. Round 1: " +
-      "Problem Statement will be released on website 15 days prior to the event." +
-      "Participants have to mail their abstract to email id:" +
-      "contraption.credenz19@gmail.com" +
-      "2. Round 2: " +
-      "Best abstracts will be shortlisted from the first round. These teams will be allowed to " +
-      "come to college and demonstrate their machine and present their innovation.",
-  "1. There are TWO rounds per group: " +
-      "1.1. Elimination Round (MCQ's Round)" +
-      "1.2. Coding Round (Final Round)" +
-      "2. Owing to the vast nature of the programming language, the event will be " +
-      "conducted in two categories, Junior Level and Senior Level." +
-      "3. The competition will test the participants' programming skills and knowledge of C/C++ and Python." +
-      "4. Python Language option will be available only for First Year (FE) participants." +
-      "5. Teams can register at the registration desk on the day of the event, " +
-      "1 hour prior to the event. Teams can also register at desks put up at various colleges in Pune." +
-      "6. The Second Round structure will be declared on the spot. " +
-      "7. NOTE: Only one computer will be provided to each team.",
-  "Round 1: Send your abstract to bplan.credenz19@gmail.com. " +
-      "Top 7 (+3 waiting) teams will be shortlisted for the next round. " +
-      "Round 2.1:  A 12 minute presentation of your plan to panel of judges and audience. " +
-      "Round 2.2:  React to a business situation." +
-      "Answer the questions on approaches towards hurdles, opportunities, feasibility, and exit plan. " +
-      "Top 3 teams will be awarded with cash prizes. " +
-      "The best team will further get an opportunity to pitch their idea to investors and get incubation at PICT E-Cell.",
-  "1. Round 1: " +
-      "Problem Statement will be released on website 15 days prior to the event." +
-      "Participants have to mail their abstract to email id:" +
-      "contraption.credenz19@gmail.com",
-  "1. There are TWO rounds per group: " +
-      "1.1. Elimination Round (MCQ's Round)" +
-      "1.2. Coding Round (Final Round)" +
-      "2. Owing to the vast nature of the programming language, the event will be " +
-      "conducted in two categories, Junior Level and Senior Level." +
-      "3. The competition will test the participants' programming skills and knowledge of C/C++ and Python." +
-      "4. Python Language option will be available only for First Year (FE) participants." +
-      "5. Teams can register at the registration desk on the day of the event, " +
-      "1 hour prior to the event. Teams can also register at desks put up at various colleges in Pune." +
-      "6. The Second Round structure will be declared on the spot. " +
-      "7. NOTE: Only one computer will be provided to each team."
+  "1) A 28-minute game for a person or a team of two people.\n2) Teams or players are not allowed to use any IDE or software after the game has started.\n3)You will have 3 lifelines (description will be provided in the game itself) to help yourself.\n4) You are not allowed to switch tabs or close the browser during the game. If you do so, you will be automatically logged out.\n5) The primary marks allotted are +4 if answered correctly and -2 if the answer for a particular question is incorrect. If a question attempted is incorrect, then from the next question +2 marks are allotted for each correctly answered question, else -1 until you get a correct answer for upcoming questions.",
+  "1) Integer type questions which involve complex mathematical problems which are not easy to solve without coding.\n2)A 28-minute game for a person or a team of two people.\n3)Teams or players are allowed to use any IDE or software after the game has started.\n4)You will have 3 lifelines (description will be provided in the game itself) to help yourself.\n5)You will have two attempts to answer a particular question. In the first attempt, the marking scheme will be +4 0. In the second attempt, the marking scheme will be changed to +2 -1.",
+  "1)The topic will be given on the date of the event with detailed instructions in a google form.\n2) The link will be sent to each participant through their registered email Id.\n3) The time allotted to complete the task will be 2 hours.\n4) The design should be submitted in *psd, *cdr, *ai etc format.\n5)The design submitted should not be flattened.\n6)The brushes and fonts used should be mentioned in the documentation.\n7)Any external source or images used should also be included in the documentation.",
+  "(Junior and Senior):\n1) 1st round:It will consist of Multiple Choice Questions (MCQs) from different categories. There will be 30 questions for a time limit of 30 minutes.\n2) 2nd round:The participants will be given a problem statement and they are supposed to implement the solution with the help of tinkercad simulation environment.\nLINK: https://www.tinkercad.com/dashboard",
+  "1) At stage 1, the soft copy of the abstract (summary) should be submitted to pisb.bplan21@gmail.com\n2) The Soft copy should be a .pdf file.\n3)The Judges will do Evaluation, and 7 teams will compete in the next stage.\n4) Each team will be given 12 minutes in the final round to present their B-PLAN in front of a panel of judges and audience. A warning bell will be given at 10 minutes and a final 2 minutes thereafter.\n5) The presentation would be followed by a question-answer session where they would be questioned on different hurdles, opportunities and obstacles at various points.\n6) The main stress during question-answer session would be given on feasibility and Exit Plan.",
+  "1) Every participant will be given virtual money to trade on our virtual stock market.\n2) The event will be conducted on our Android App/Website.\n3) Mock NEWS will be flashed regarding listed companies and their sectors based on which participants will buy/sell stocks to ultimately become the biggest gainer.\n4) Concepts such as IPO, short selling and high frequency trading will be inculcated within the event.",
+  "Team Mergers:\nTeam mergers are allowed in this competition.\nTeam Limits:\nA team may consist of a maximum of 3 participants.",
+  "1) There will be two rounds.\n2)You need to qualify the threshold score to get into the next round. The threshold will be decided based upon the performance of all the teams.\n3)The decision of the organizer will be final.\n4)There is no negative marking at any stage.\n5)ROUND 1:\na.There will be 35 questions in this round.\nb.Time limit is 40 minutes.\nc.For every right answer, you will be awarded points and no negative points for a wrong answer.\nd.The marking scheme will be told on the day of the event.\n6)ROUND 2:\na.There will be 5 Puzzles and 5 MCQs in this round.\nb.Time Limit is 2 hours\nc.You must claim whenever you are done. Earliest claim with max. score wins.",
+  "1)Candidate pursuing an undergraduate program at any institute is allowed to participate. Participants are encouraged to maintain a copy of their ID card.\n2)Participants can register online on the official Credenz website.\n3)Each team will have a maximum of one participant.\n4)Marking scheme and other rules will be announced on the day of the event itself.",
+  "1st ROUND:\nA problem statement shall be given to the participants online.\nThe problem statement shall be released approximately 20 days prior on the official website of Credenz '21.\nThe team should mail the files to webweaver.credenzlive@gmail.com in zip archive. (All files with understandable documentation.)\n2nd ROUND:\nThe second round shall be conducted during Credenz Live.\nApproximately 10 teams shall be shortlisted.\nThe teams shall be given certain add-ons over the pages designed earlier.\nFive add-ons shall be given, specific to the pages designed by the participants.",
+  "1) Only soft copy i.e. a .pdf file, of the paper and abstract should be submitted. The paper should not exceed more than 6 pages.\n2) Soft copy of the technical paper and the abstract should be mailed to paper.pisbcredenz@gmail.com.\n3) The paper must strictly adhere to the IEEE format.\n4) Authors will get 15 minutes to deliver a presentation on their topic followed by a question - answer session.\n5) The presentation should be in power point format (.ppt or .pptx).",
+  "1) NTH will be conducted twice during Credenz. Both the Treasure Hunt are conducted independently and will have a separate list of winners.\n2)The first hunt is to get the participants acquainted with the format of the online hunt and also with the wide variety of riddles and puzzles that they could come across in the main hunt.\n3) The second hunt, also the main Network Treasure Hunt has much higher stakes with some amazing prizes. This hunt will be longer than the previous hunt and will test the limits of the participants.\n4) The hunt is designed to be very intriguing and super fun to play."
 ];
