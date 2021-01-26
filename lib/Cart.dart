@@ -90,7 +90,7 @@ class _CartState extends State<Cart> {
               ), //[Color(0xff615de3), Color(0xff6c73ed)]),
               //color: Colors.purple,
             ),
-            child: Image.asset(
+            child: eventName.indexOf(list[i], 0)==-1?Container():Image.asset(
                 eventimages[eventName.indexOf(list[i], 0)].assetName),
           ),
         ),
@@ -233,10 +233,9 @@ class _CartState extends State<Cart> {
                 ? BoxDecoration(
                     color: backColor,
                     image: DecorationImage(
-                      image: AssetImage("images/emptycart.png"),
+                      image: AssetImage("images/cartimage.png"),
                       fit: BoxFit.scaleDown,
-                    )
-                    // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
+                    )                 // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
                     )
                 : BoxDecoration(
                     color: backColor,
@@ -273,7 +272,7 @@ class _CartState extends State<Cart> {
                       ListView.builder(
                         itemBuilder: (BuildContext context, int pos) {
                           AssetImage ig =
-                              eventimages[eventName.indexOf(list[pos], 0)];
+                          eventName.indexOf(list[pos], 0)==-1?null:eventimages[eventName.indexOf(list[pos], 0)];
                           return Card(
                             color: Color(0x221f67de),
                             elevation: 10.0,
@@ -299,7 +298,7 @@ class _CartState extends State<Cart> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child: Image.asset(ig.assetName),
+                                          child: eventName.indexOf(list[pos], 0)==-1?Container():Image.asset(ig.assetName),
                                         ),
                                       ),
                                     ),
