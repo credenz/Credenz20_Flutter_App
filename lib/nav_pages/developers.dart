@@ -21,7 +21,7 @@ class _DeveloperState extends State<Developer> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("DEVELOPERS"),
+        title: Text("DEVELOPERS", style: TextStyle(fontFamily: 'Segoe UI',),),
       ),
       body: Stack(
         children: [
@@ -105,10 +105,10 @@ List<String> linkedin = [
 ];
 
 List<String> email = [
-  "https://www.linkedin.com/in/atharvasaraf/",
-  "linkedin.com/in/vaibhav-pallod-556ba51a3/",
-  "https://www.linkedin.com/in/tanuj-agrawal-83320516b/",
-  "https://www.linkedin.com/in/durvesh-malpure-103388193/",
+  "sarafatharva123@gmail.com",
+  "vaibhavpallod@gmail.com",
+  "tanujagrawal223@gmail.com",
+  "durveshmalpurecoc@gmail.com",
 ];
 
 List<String> position = [
@@ -195,7 +195,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               name[x],
                               style: TextStyle(
                                 fontSize: 20.0,
-                                fontFamily: 'Roboto Medium',
+                                fontFamily: 'Segoe UI',
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -233,7 +233,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/mail.png'),
-                                  onPressed:  () => _launchURL(email[x].toString())),
+                                  onPressed:  () => _launchURL("mailto:"+email[x].toString())),
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),

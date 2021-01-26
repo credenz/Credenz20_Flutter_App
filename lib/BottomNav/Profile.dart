@@ -175,6 +175,7 @@ class _ProfileState extends State<Profile> {
                       child: Text(
                         'Hello',
                         style: TextStyle(
+                            fontFamily: 'Segoe UI',
                             fontSize: 18.0,
                             color: textColor,
                             fontWeight: FontWeight.bold),
@@ -185,6 +186,7 @@ class _ProfileState extends State<Profile> {
                       child: Text(
                         name,
                         style: TextStyle(
+                            fontFamily: 'Segoe UI',
                             fontSize: 18.0,
                             color: textColor,
                             fontWeight: FontWeight.bold),
@@ -254,14 +256,14 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: nameController,
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 validator: (String value) {
                   if (value.isEmpty) return 'Name cannot be empty';
 
                   return null;
                 },
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   isDense: true,
                   labelText: 'Name',
                   enabledBorder: OutlineInputBorder(
@@ -271,13 +273,14 @@ class _ProfileState extends State<Profile> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
+                enabled: false,
               ),
             ),
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: usernameController,
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
                   return null;
@@ -285,7 +288,7 @@ class _ProfileState extends State<Profile> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelText: 'Username',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -300,7 +303,7 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: emailController,
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 validator: (String value) {
                   if (value.isEmpty) return 'Email cannot be empty';
 
@@ -313,7 +316,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   isDense: true,
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -369,19 +372,20 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
+                  disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'Phone number',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
+                enabled: false,
               ),
             ),
             Padding(
@@ -393,18 +397,19 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
+                  disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'College Name',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
+                enabled: false,
               ),
             ),
           ],

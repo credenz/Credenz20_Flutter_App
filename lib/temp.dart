@@ -444,3 +444,47 @@ class SuccessScreen extends StatelessWidget {
                         ),
                       ),
                     ),*/
+
+/*
+
+actions: [
+RaisedGradientButton(
+height: 35,
+width: 60,
+gradient: LinearGradient(colors: commonGradient),
+child: activeStep == 0 ? Text("Cancel") : Text("Back"),
+onPressed: () {
+if (activeStep == 1) {
+setState(() {
+activeStep = 0;
+});
+} else
+Navigator.of(context).pop();
+},
+),
+RaisedGradientButton(
+height: 35,
+width: 60,
+gradient: LinearGradient(colors: commonGradient),
+child: activeStep == 0 ? Text('Next') : Text("Submit"),
+onPressed: () {
+if (activeStep == 0) {
+setState(() {
+activeStep = 1;
+});
+} else
+Navigator.of(context).pop();
+},
+),
+],
+*/
+
+
+
+
+
+
+
+
+
+

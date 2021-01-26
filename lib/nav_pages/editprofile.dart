@@ -131,7 +131,7 @@ class _EditProfileState extends State<EditProfile> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: drawerBackgroundColor,
-          title: Text("Edit Profile"),
+          title: Text("Edit Profile",style: TextStyle(fontFamily: 'Segoe UI',),),
         ),
         backgroundColor: Colors.black,
         body: load == true
@@ -166,6 +166,7 @@ class _EditProfileState extends State<EditProfile> {
                       child: Text(
                         'SAVE',
                         style: TextStyle(
+                            fontFamily: 'Segoe UI',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: textColor),
@@ -212,7 +213,7 @@ class _EditProfileState extends State<EditProfile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: nameController,
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 validator: (String value) {
                   if (value.isEmpty) return 'Name cannot be empty';
 
@@ -227,7 +228,7 @@ class _EditProfileState extends State<EditProfile> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -241,7 +242,7 @@ class _EditProfileState extends State<EditProfile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: usernameController,
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
                   return null;
@@ -249,7 +250,7 @@ class _EditProfileState extends State<EditProfile> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelText: 'Username',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -293,7 +294,7 @@ class _EditProfileState extends State<EditProfile> {
 
                   return null;
                 },
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -301,7 +302,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   isDense: true,
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -316,7 +317,7 @@ class _EditProfileState extends State<EditProfile> {
               child: TextFormField(
                 controller: passwordController,
                 obscureText: !_passwordVisible,
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 validator: (String value) {
                   if (value.isEmpty) return 'Password cannot be empty';
 
@@ -329,7 +330,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   isDense: true,
                   labelText: 'Password',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -362,7 +363,7 @@ class _EditProfileState extends State<EditProfile> {
 
                   return null;
                 },
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -370,7 +371,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   isDense: true,
                   labelText: 'Phone number',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -389,14 +390,14 @@ class _EditProfileState extends State<EditProfile> {
 
                   return null;
                 },
-                style: TextStyle(color: textColor),
+                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'College Name',
-                  labelStyle: TextStyle(color: textColor),
+                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),

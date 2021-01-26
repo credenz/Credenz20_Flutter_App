@@ -88,7 +88,7 @@ List<String> name = [
 List<String> position = [
   "Vice Chairperson",
   "Joint Secretary",
-  "Vice Treasurer"
+  "Treasurer"
 ];
 
 List<String> number = [
@@ -104,9 +104,9 @@ List<String> linkedin = [
 ];
 
 List<String> email = [
-  "https://www.linkedin.com/in/onkar-litake-80863516b/",
-  "https://www.linkedin.com/in/durvesh-malpure-103388193/",
-  "https://www.linkedin.com/in/rohan-pawar-b52117173/",
+  "Jr.onkarlitake@gmail.com",
+  "durveshmalpurecoc@gmail.com",
+  "rohanpawar1999@gmail.com",
 ];
 
 
@@ -188,7 +188,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               name[x],
                               style: TextStyle(
                                 fontSize: 20.0,
-                                fontFamily: 'Roboto Medium',
+                                fontFamily: 'Segoe UI',
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -202,8 +202,8 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                             child: Text(
                               position[x],
                               style: TextStyle(
+                                fontFamily: 'Segoe UI',
                                 fontSize: 16.0,
-                                fontFamily: 'Roboto Medium',
                                 color: Colors.white,
                                 fontWeight: FontWeight.w200,
                               ),
@@ -218,7 +218,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/mail.png'),
-                                  onPressed:  () => _launchURL(email[x].toString())),
+                                  onPressed:  () => _launchURL("mailto:"+email[x].toString())),
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),
