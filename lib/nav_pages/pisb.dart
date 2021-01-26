@@ -9,8 +9,8 @@ class PISB extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PISB"),
-        //centerTitle: true,
+        title: Text("PISB", style: TextStyle(fontFamily: 'Segoe UI',)),
+        centerTitle: true,
         backgroundColor: primary,
       ),
       body: AboutPISB(),
