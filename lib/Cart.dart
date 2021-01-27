@@ -5,6 +5,7 @@ import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttertoast/fluttertoast_web.dart';
 import 'package:http/http.dart' as http;
 
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -420,7 +421,19 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: () async {
-                                          await pay();
+                                          FluttertoastWebPlugin.registerWith(
+
+                                          )
+                                          Fluttertoast.showToast(
+                                            backgroundColor: Colors.transparent,
+                                              webShowClose: true,
+                                              webBgColor:"linear-gradient(to right, #00b09b, #96c93d)",
+                                              msg: 'Stay tuned for payment page'
+
+                                          );
+
+
+                                          // await pay();
                                         }),
 
                                     /*child: RaisedButton(
