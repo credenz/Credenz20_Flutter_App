@@ -32,7 +32,36 @@ const List<String> eventName = [
   "Network Treasure Hunt"
 ];
 
-Map<String, int> prices1;
+List ieeePrices=[
+  60,
+  60,
+  120,
+  40,
+  100,
+  40,
+  40,
+  40,
+  40,
+  60,
+  180,
+  0
+];
+
+List nonIeeePrices=[
+  80,
+  80,
+  150,
+  50,
+  120,
+  50,
+  50,
+  50,
+  50,
+  60,
+  200,
+  0
+];
+
 
 const List<String> intro = [
 
