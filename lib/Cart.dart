@@ -1,8 +1,11 @@
-import 'package:credenz20/External_Package/fluttertoast.dart';
+import 'dart:convert';
+
+import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'External_Package/RaisedGradientButton.dart';
@@ -16,8 +19,8 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
   int sum = 0;
-  List list = List();
-  List list1 = List();
+  List list=List();
+  List list1=List();
   bool load = false;
 
   // Razorpay _razorpay;
@@ -34,7 +37,6 @@ class _CartState extends State<Cart> {
     // getEventPrices();
     loadCart();
   }
-
   //
   // getEventPrices() async {
   //   prices1 = new Map();
@@ -64,7 +66,7 @@ class _CartState extends State<Cart> {
         String eventName = await storage.read(key: '$i');
         list.add(eventName);
         list1.add(ieeePrices[i]);
-        sum += ieeePrices[i];
+         sum += ieeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -88,10 +90,8 @@ class _CartState extends State<Cart> {
               ), //[Color(0xff615de3), Color(0xff6c73ed)]),
               //color: Colors.purple,
             ),
-            child: eventName.indexOf(list[i], 0) == -1
-                ? Container()
-                : Image.asset(
-                    eventimages[eventName.indexOf(list[i], 0)].assetName),
+            child: eventName.indexOf(list[i], 0)==-1?Container():Image.asset(
+                eventimages[eventName.indexOf(list[i], 0)].assetName),
           ),
         ),
       ));
@@ -150,7 +150,7 @@ class _CartState extends State<Cart> {
         });
       }
     });
-
+    
     */
 
     /*  String username = await storage.read(key: 'username');
@@ -214,12 +214,7 @@ class _CartState extends State<Cart> {
               ),
               title: Column(
                 children: [
-                  Text(
-                    ' Your Cart',
-                    style: TextStyle(
-                      fontFamily: 'Segoe UI',
-                    ),
-                  ),
+                  Text(' Your Cart',style: TextStyle(fontFamily: 'Segoe UI',),),
                 ],
               ),
               backgroundColor: primary,
@@ -240,7 +235,7 @@ class _CartState extends State<Cart> {
                     image: DecorationImage(
                       image: AssetImage("images/cartimage.png"),
                       fit: BoxFit.scaleDown,
-                    ) // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
+                    )                 // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
                     )
                 : BoxDecoration(
                     color: backColor,
@@ -262,19 +257,10 @@ class _CartState extends State<Cart> {
                   ),
                   title: Column(
                     children: [
-                      Text(
-                        ' Your Cart',
-                        style: TextStyle(
-                          fontFamily: 'Segoe UI',
-                        ),
-                      ),
+                      Text(' Your Cart',style: TextStyle(fontFamily: 'Segoe UI',),),
                       Text(
                         ' ${list.length} items ',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.white70,
-                          fontFamily: 'Segoe UI',
-                        ),
+                        style: TextStyle(fontSize: 12, color: Colors.white70,fontFamily: 'Segoe UI',),
                       )
                     ],
                   ),
@@ -285,9 +271,8 @@ class _CartState extends State<Cart> {
                     children: [
                       ListView.builder(
                         itemBuilder: (BuildContext context, int pos) {
-                          AssetImage ig = eventName.indexOf(list[pos], 0) == -1
-                              ? null
-                              : eventimages[eventName.indexOf(list[pos], 0)];
+                          AssetImage ig =
+                          eventName.indexOf(list[pos], 0)==-1?null:eventimages[eventName.indexOf(list[pos], 0)];
                           return Card(
                             color: Color(0x221f67de),
                             elevation: 10.0,
@@ -313,11 +298,7 @@ class _CartState extends State<Cart> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child:
-                                              eventName.indexOf(list[pos], 0) ==
-                                                      -1
-                                                  ? Container()
-                                                  : Image.asset(ig.assetName),
+                                          child: eventName.indexOf(list[pos], 0)==-1?Container():Image.asset(ig.assetName),
                                         ),
                                       ),
                                     ),
@@ -330,13 +311,12 @@ class _CartState extends State<Cart> {
                                           list[pos],
                                           style: TextStyle(
                                               fontFamily: 'Segoe UI',
-                                              color: textColor,
-                                              fontSize: 16),
+                                              color: textColor, fontSize: 16),
                                           maxLines: 2,
                                         ),
                                         SizedBox(height: 10),
                                         Text(
-                                          "${list1[pos]}",
+                                         "\u20B9 ${list1[pos]} ",
                                           style: TextStyle(
                                               fontFamily: 'Segoe UI',
                                               fontWeight: FontWeight.w600,
@@ -411,8 +391,7 @@ class _CartState extends State<Cart> {
                                       text: "Total:\n",
                                       style: TextStyle(
                                           fontFamily: 'Segoe UI',
-                                          fontSize: 16,
-                                          color: Colors.white),
+                                          fontSize: 16, color: Colors.white),
                                       children: [
                                         TextSpan(
                                           text: "\u20B9 " + sum.toString(),
@@ -431,18 +410,13 @@ class _CartState extends State<Cart> {
                                         width: 40.0,
                                         child: Text(
                                           'Register',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'Segoe UI',
-                                          ),
+                                          style: TextStyle(color: Colors.white,fontFamily: 'Segoe UI',),
                                         ),
                                         gradient: LinearGradient(
                                           colors: commonGradient,
                                         ),
-                                        onPressed: () {
-                                          Fluttertoast.showToast(
-                                              msg:
-                                                  'Payment Gateway in progress');
+                                        onPressed: ()  {
+                                          Fluttertoast.showToast(msg: 'Payment Gateway in progress');
                                         }),
 
                                     /*child: RaisedButton(
