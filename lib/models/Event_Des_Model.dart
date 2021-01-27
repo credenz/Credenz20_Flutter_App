@@ -12,6 +12,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
 
+import '../loginPage.dart';
+
 class EventDes extends StatefulWidget {
   int eventIndex;
 
@@ -29,27 +31,41 @@ class _EventDesState extends State<EventDes>
   );
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
+  String ieeeMenber;
   final storage = FlutterSecureStorage();
   String selectedValue, selectedValue1;
-
+  String name;
+  String email;
   Animation<double> _animation;
   AnimationController _animationController;
-
+  List eventGroupIndex=[4,9,10];
   List<String> options = ["FE", "SE", "TE", "BE"];
+  String val1;
   List<String> options1 = ["IEEE Member", "Non IEEE Member"];
+  TextEditingController part1Controller=TextEditingController();
+  TextEditingController email1Controller=TextEditingController();
+  TextEditingController part2Controller=TextEditingController();
+  TextEditingController email2Controller=TextEditingController();
+  TextEditingController part3Controller=TextEditingController();
+  TextEditingController part4Controller=TextEditingController();
+  String accToken;
 
   addToCart() async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
     if (pre) {
-      Fluttertoast.showToast(msg: 'Event already added');
+      Fluttertoast.showToast(
+          backgroundColor: Colors.blue.shade600,
+          msg: 'Event is already added in Cart');
     } else {
       await storage.write(
           key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
-      Fluttertoast.showToast(msg: 'Event added');
+      Fluttertoast.showToast(msg: 'Event added', backgroundColor: Colors.blue.shade600,);
     }
   }
 
   checkInCart() async {
+     accToken=await storage.read(key: 'accToken');
+    name=await storage.read(key: 'username');
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
     if (pre) {
       setState(() {
@@ -90,13 +106,13 @@ class _EventDesState extends State<EventDes>
               children: <Widget>[
                 Stack(
                   children: [
-                    // Image.asset(
-                    //   // "images/contactb.jpg",
-                    //   "gifs/desback.gif",
-                    //   height: MediaQuery.of(context).size.height,
-                    //   width: MediaQuery.of(context).size.width,
-                    //   fit: BoxFit.cover,
-                    // ),
+                    Image.asset(
+                      // "images/contactb.jpg",
+                      "gifs/giphy1.gif",
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
                     // Container(
                     //   color: Color(0xaa4E164B),
                     // ),
@@ -110,8 +126,9 @@ class _EventDesState extends State<EventDes>
                       Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
                   title: Text(eventName[index],
                       style: TextStyle(
+                        fontFamily: 'Segoe UI Bold',
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold)),
                   card: eventimages[index],
                   backButton: true,
@@ -150,7 +167,7 @@ class _EventDesState extends State<EventDes>
                               topRight: Radius.circular(45.0),
                             ),
                             child: Card(
-                                color: Color(0x11000000),
+                                color: Color(0x22000000),
                                 child: Padding(
                                     padding: EdgeInsets.only(top: 10),
                                     child: tabcontroller())),
@@ -196,7 +213,7 @@ class _EventDesState extends State<EventDes>
 */
               ],
             ),
-            floatingActionButton: FloatingActionBubble(
+            floatingActionButton: eventGroupIndex.contains(widget.eventIndex)==true?FloatingActionBubble(
               animation: _animation,
               onPress: () => _animationController.isCompleted
                   ? _animationController.reverse()
@@ -213,13 +230,19 @@ class _EventDesState extends State<EventDes>
                   icon: Icons.person,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
-                    _animationController.reverse();
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }
+                    else {
+                      _animationController.reverse();
 
-                    //await dialogue(context);
-                    setState(() {
-                      favorite = !favorite;
-                      addToCart();
-                    });
+                      await dialogue1(context);
+                    }
+                    // setState(() {
+                    //   favorite = !favorite;
+                    //   addToCart();
+                    // });
                   },
                 ),
                 // Floating action menu item
@@ -230,16 +253,52 @@ class _EventDesState extends State<EventDes>
                   icon: Icons.people,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
+                    print(accToken);
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
                     _animationController.reverse();
-                    await dialogue(context);
-                    setState(() {
-                      favorite = !favorite;
-                      // addToCart();
-                    });
+                    await dialogue(context);}
+                    // setState(() {
+                    //   favorite = !favorite;
+                    //   // addToCart();
+                    // });
                   },
                 ),
               ],
-            )
+            ):FloatingActionBubble(
+              animation: _animation,
+              onPress: () => _animationController.isCompleted
+                  ? _animationController.reverse()
+                  : _animationController.forward(),
+              iconColor: Colors.grey.shade800,
+              iconData: Icons.shopping_cart_outlined,
+              backGroundColor: Colors.white,
+              items: <Bubble>[
+                // Floating action menu item
+                Bubble(
+                  title: "Solo   ",
+                  iconColor: Colors.white,
+                  bubbleColorGradient: commonGradient,
+                  icon: Icons.person,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () async {
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
+                    _animationController.reverse();
+
+                    await dialogue1(context);}
+                    // setState(() {
+                    //   favorite = !favorite;
+                    //   // addToCart();
+                    // });
+                  },
+                )
+              ],
+            ),
 
             /*FloatingActionButton(
             child: new Icon( favorite
@@ -276,50 +335,52 @@ await dialogue(context);
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   intro[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  /*style: TextStyle(fontSize: 18.0, color: Colors.white),
+                  textAlign: TextAlign.justify,
+                ),*/
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   rules[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  //textAlign: TextAlign.justify,
+                  //style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //),
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   structure[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  //style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //),
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   judging[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  //style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //),
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   contact[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                 // style: TextStyle(fontSize: 18.0, color: Colors.white),
+               // ),
               ),
             ),
             // Icon(Icons.home),
@@ -333,7 +394,151 @@ await dialogue(context);
     );
   }
 
+  Future<void> dialogue1(BuildContext context) async {
+    return await showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Center(
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Center(
+                  child: Container(
+                    height: 240,
+                    width: 280,
+                    padding: EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey.shade700,
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0)
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    width: 1.0,
+                                    style: BorderStyle.solid),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0)),
+                              ),
+                            ),
+                            padding:
+                            const EdgeInsets.only(left: 10.0),
+                            child: DropdownButton(
+                              items: [
+                                DropdownMenuItem(
+                                  child: Text('IEEE member'),
+                                  value: 'IEEE',
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('Non-IEEE member'),
+                                  value: 'Non',
+                                ),
+                              ],
+                              isExpanded: true,
+                              onChanged: (String val) {
+                                setState(() {
+                                  ieeeMenber = val;
+                                });
+                              },
+                              value: ieeeMenber,
+                              hint: Text('Select Category'),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10),
+                            child: DropdownButton<String>(
+                              items: [
+                                DropdownMenuItem(
+                                  child: Text('FE'),
+                                  value: 'FE',
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('SE'),
+                                  value: 'SE',
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('TE'),
+                                  value: 'TE',
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('BE'),
+                                  value: 'BE',
+                                ),
+                              ],
+                              isExpanded: true,
+                              onChanged: (String val) {
+                                setState(() {
+                                  val1 = val;
+                                });
+                              },
+                              value: val1,
+                              hint: Text('Select Year'),
+                            ),
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    width: 1.0,
+                                    style: BorderStyle.solid),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              RaisedGradientButton(
+                                height: 40,
+                                width: 80,
+                                gradient: LinearGradient(colors: commonGradient),
+                                child: Text("Cancel"),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              RaisedGradientButton(
+                                height: 40,
+                                width: 80,
+                                gradient: LinearGradient(colors: commonGradient),
+                                child: Text("Submit"),
+                                onPressed: () async{
+                                  if(ieeeMenber==null||val1==null){
+                                    Fluttertoast.showToast(msg: "Please fill the details", backgroundColor: Colors.blue.shade600,);
+
+                                  }else{
+                                    await addToCart();
+                                    Navigator.pop(context);
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
   Future<void> dialogue(BuildContext context) async {
+    part1Controller.text=name;
     String val1;
     String val2;
     return await showDialog(
@@ -377,13 +582,15 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      enabled: false,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
                                       //   return null;
                                       // },
+                                      controller: part1Controller,
                                       style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
+                                      keyboardType: TextInputType.name,
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderSide:
@@ -407,6 +614,7 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      controller: part2Controller,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
@@ -437,6 +645,7 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      controller: part3Controller,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
@@ -467,6 +676,7 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      controller: part4Controller,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
@@ -502,6 +712,7 @@ await dialogue(context);
                                       Padding(
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
+                                          controller: email1Controller,
                                           // validator: (String value) {
                                           //   if (value.isEmpty) return 'Email cannot be empty';
                                           //
@@ -533,6 +744,7 @@ await dialogue(context);
                                       Padding(
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
+                                          controller: email2Controller,
                                           // validator: (String value) {
                                           //   if (value.isEmpty) return 'Email cannot be empty';
                                           //
@@ -670,13 +882,15 @@ await dialogue(context);
                                   width: 80,
                                   gradient: LinearGradient(colors: commonGradient),
                                   child: activeStep == 0 ? Text('Next') : Text("Submit"),
-                                  onPressed: () {
+                                  onPressed: ()async{
                                     if (activeStep == 0) {
                                       setState(() {
                                         activeStep = 1;
                                       });
-                                    } else
+                                    } else {
+                                      addToCart();
                                       Navigator.of(context).pop();
+                                    }
                                   },
                                 ),
                               ],
@@ -697,6 +911,8 @@ await dialogue(context);
       backgroundColor: Colors.transparent,
       appBar: ShiftingTabBar(
         labelStyle: TextStyle(
+          fontFamily: 'Segoe UI Bold',
+          fontWeight: FontWeight.bold,
           color: Colors.white,
           fontSize: 12,
         ),
@@ -706,7 +922,7 @@ await dialogue(context);
         brightness: Brightness.dark,
         tabs: [
           // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
-          ShiftingTab(icon: Icon(Icons.info_outline), text: "Intro"),
+          ShiftingTab(icon: Icon(Icons.info_outline), text: "Intro",),
           ShiftingTab(icon: Icon(Icons.assignment), text: "Rules"),
           ShiftingTab(icon: Icon(Icons.device_hub), text: "Structure"),
           ShiftingTab(icon: Icon(Icons.assessment), text: "Judging"),
@@ -719,62 +935,3 @@ await dialogue(context);
     );
   }
 }
-
-class SerializedFormBloc extends FormBloc<String, String> {
-  final p1 = TextFieldBloc(
-    initialValue: 'username',
-    name: 'name1',
-  );
-  final p2 = TextFieldBloc(
-    name: 'name2',
-  );
-  final p3 = TextFieldBloc(
-    name: 'name3',
-  );
-  final p4 = TextFieldBloc(
-    name: 'name4',
-  );
-  final e1 = TextFieldBloc(
-    initialValue: 'email',
-    name: 'email1',
-  );
-  final e2 = TextFieldBloc(
-    name: 'email2',
-  );
-
-  final year = SelectFieldBloc(
-    name: 'year',
-    initialValue: 'FE',
-    items: ['FE', 'SE', 'TE', 'BE'],
-  );
-
-  final ieee = SelectFieldBloc(
-    name: 'ieee',
-    initialValue: 'Non-IEEE Member',
-    items: [
-      'IEEE Member',
-      'Non-IEEE Member',
-    ],
-  );
-
-  SerializedFormBloc() {
-    addFieldBlocs(
-      fieldBlocs: [
-        p1,
-        p2,
-        p3,
-        p4,
-        e1,
-        e2,
-        year,
-        ieee,
-      ],
-    );
-  }
-
-  @override
-  void onSubmitting() {
-    // TODO: implement onSubmitting
-  }
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

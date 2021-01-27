@@ -72,11 +72,12 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
                 child: Align(
                   alignment: Alignment.center,
                   child: RaisedGradientButton(
-                    height: 35.0,
+                    height: 40.0,
                     width: 160.0,
                     child: Text("Visit our website",
                         textAlign: TextAlign.end,
                         style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontFamily: 'Segoe UI',
                             // decoration: TextDecoration.underline,
                             color: Colors.white,

@@ -30,9 +30,8 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
     // TODO: implement initState
     super.initState();
     controller = AnimationController(
-        duration: const Duration(milliseconds: 1500), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-
 
 
     controller.forward();
@@ -41,25 +40,33 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: StreamBuilder(
-          // This streamBuilder reads the real-time status of SlimyCard.
-          initialData: true,
-          stream: slimyCard.stream, //Stream of SlimyCard
-          builder: ((BuildContext context, AsyncSnapshot snapshot) {
-            return ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                SizedBox(height: 15),
-                topCardWidget(),
-                FadeTransition(child: bottomCardWidget(),opacity: animation,),
-                SizedBox(height: 25,)
-                // SlimyCard is being called here.
-              ],
-            );
-          }),
+      // backgroundColor: backColor,
+      body: Container(
+        decoration: BoxDecoration(
+            color: backColor,
+            image: DecorationImage(
+              image: AssetImage("images/contactb.jpg"),
+              fit: BoxFit.fill,
+            )),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: StreamBuilder(
+            // This streamBuilder reads the real-time status of SlimyCard.
+            initialData: true,
+            stream: slimyCard.stream, //Stream of SlimyCard
+            builder: ((BuildContext context, AsyncSnapshot snapshot) {
+              return ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  SizedBox(height: 15),
+                  topCardWidget(),
+                  FadeTransition(child: bottomCardWidget(),opacity: animation,),
+                  SizedBox(height: 25,)
+                  // SlimyCard is being called here.
+                ],
+              );
+            }),
+          ),
         ),
       ),
     );
@@ -83,7 +90,7 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(  // Image goes here
-            height: 180,
+            height: 190,
             // width: 500,
             decoration: BoxDecoration(
               //color: Colors.white,

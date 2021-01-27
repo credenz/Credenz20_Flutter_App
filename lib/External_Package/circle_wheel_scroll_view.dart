@@ -575,6 +575,7 @@ class CircleListScrollView extends StatefulWidget {
   /// are passed to a delegate and lazily built during layout.
   CircleListScrollView({
     Key key,
+    this.animate,
     this.controller,
     this.physics,
     @required this.itemExtent,
@@ -603,6 +604,7 @@ class CircleListScrollView extends StatefulWidget {
   /// are managed by a delegate and are lazily built during layout.
   const CircleListScrollView.useDelegate({
     Key key,
+    this.animate,
     this.controller,
     this.physics,
     @required this.itemExtent,
@@ -643,6 +645,10 @@ class CircleListScrollView extends StatefulWidget {
   /// [onSelectedItemChanged].
   final ScrollController controller;
 
+final bool animate;
+
+// bool animate;
+
   /// How the scroll view should respond to user input.
   ///
   /// For example, determines how the scroll view continues to animate after the
@@ -682,6 +688,9 @@ class CircleListScrollView extends StatefulWidget {
 }
 
 class _CircleListScrollViewState extends State<CircleListScrollView> {
+
+
+
   int _lastReportedItemIndex = 0;
   ScrollController scrollController;
   ScrollNotification notification1;
@@ -693,11 +702,11 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
   @override
   void initState() {
     super.initState();
-    scrollController = widget.controller ?? fixedExtentScrollController;
-    if (widget.controller is FixedExtentScrollController) {
-      final FixedExtentScrollController controller = widget.controller;
-      _lastReportedItemIndex = controller.initialItem;
-    }
+      scrollController = widget.controller ?? fixedExtentScrollController;
+      if (widget.controller is FixedExtentScrollController) {
+        final FixedExtentScrollController controller = widget.controller;
+        _lastReportedItemIndex = controller.initialItem;
+      }
     _checkAnimator();
   }
 
@@ -776,9 +785,11 @@ class _CircleListScrollViewState extends State<CircleListScrollView> {
             if (_lastReportedItemIndex == 0 && animator == null) {
               securestorage.write(key: 'animation', value: 'Animationdone');
               _checkAnimator();
-              fixedExtentScrollController.animateToItem(2,
-                  duration: new Duration(milliseconds: 2500),
-                  curve: Interval(0.1, 1.0, curve: Curves.linear));
+              if(widget.animate) {
+                fixedExtentScrollController.animateToItem(2,
+                    duration: new Duration(milliseconds: 2500),
+                    curve: Interval(0.1, 1.0, curve: Curves.linear));
+              }
             }
             return CircleListViewport(
               axis: widget.axis,

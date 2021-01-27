@@ -98,6 +98,9 @@ flutter:
     - family: Segoe UI
       fonts:
         - asset: fonts/segoeuil.ttf
+    - family: Segoe UI Bold
+      fonts:
+        - asset: fonts/SEGOEUI.TTF
   #      - family: Raleway
   #        fonts:
   #          - asset: fonts/Raleway-Regular.ttf

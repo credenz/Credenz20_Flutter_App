@@ -1,3 +1,4 @@
+
 import 'package:badges/badges.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/size_config.dart';
@@ -10,6 +11,7 @@ import 'BottomNav/Events.dart';
 import 'BottomNav/News.dart';
 import 'BottomNav/Profile.dart';
 import 'Cart.dart';
+import 'External_Package/circle_wheel_scroll_view.dart';
 import 'commons/slide_drawer.dart';
 
 class Home extends StatefulWidget {
@@ -34,27 +36,15 @@ class _HomeState extends State<Home> {
   int _counter = 0;
   int currentTab = 2;
 
-  final List<Widget> screens = [
-    Profile(),
-    About(),
-    ContactUs(),
-    Noti(),
-  ];
   final list = List();
   int cnt = 0;
-  Widget currentScreen = Events(); //
+  Widget currentScreen = Events(true); //
   final PageStorageBucket bucket = PageStorageBucket();
   int currentIndex = 2;
   PageController pageController;
   final securestorage = FlutterSecureStorage();
 
-  List<Widget> tabPages = [
-    new Profile(),
-    new ContactUs(),
-    new Events(),
-    new About(),
-    new Noti(),
-  ];
+
 
   @override
   void initState() {
@@ -91,6 +81,7 @@ class _HomeState extends State<Home> {
     });
   }
 
+
   // void onTabTapped(int index) {
   //   this.pageController.animateToPage(index,
   //       duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
@@ -113,8 +104,11 @@ class _HomeState extends State<Home> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
+
+
     SizeConfig().init(context);
     cartNo();
     return Scaffold(
@@ -192,14 +186,14 @@ class _HomeState extends State<Home> {
                       ? Image.asset("images/homeFab.png", scale: 0.5)
                       : Image.asset("images/homeFab2.png", scale: 0.5))),
         ),
-        tooltip: 'Increment',
+        tooltip: 'Events',
         elevation: 10.0,
         backgroundColor: Colors.white,
         onPressed: () {
           setState(
             () {
               // onTabTapped(2);
-              currentScreen = Events();
+              currentScreen=Events(false);
               currentTab = 2;
             },
           );
@@ -224,6 +218,7 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomAppBar(
         color: primary,
         shape: CircularNotchedRectangle(),
+        notchMargin: 0,
         // notchMargin: 3.0,
         child: Container(
             height: 60,
@@ -259,6 +254,8 @@ class _HomeState extends State<Home> {
                           'Profile',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Segoe UI',
                             color: currentTab == 0
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
@@ -293,6 +290,8 @@ class _HomeState extends State<Home> {
                           'Contact',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Segoe UI',
                             color: currentTab == 1
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
@@ -332,6 +331,8 @@ class _HomeState extends State<Home> {
                           'About',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Segoe UI',
                             color: currentTab == 3
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
@@ -366,6 +367,8 @@ class _HomeState extends State<Home> {
                           'News',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                            fontFamily: 'Segoe UI',
+                            fontWeight: FontWeight.bold,
                             color: currentTab == 4
                                 ? Color(0xff0998b7)
                                 : Color(0xff8b91ad),
