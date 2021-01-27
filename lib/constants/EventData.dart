@@ -37,30 +37,30 @@ const List<String> eventName = [
 List ieeePrices=[
   60,
   60,
-  120,
+  40,
   40,
   100,
   40,
-  40,
+  60,
   40,
   40,
   60,
-  180,
+  120,
   0
 ];
 
 List nonIeeePrices=[
   80,
   80,
-  150,
+  50,
   50,
   120,
   50,
-  50,
+  80,
   50,
   50,
   60,
-  200,
+  150,
   0
 ];
 
@@ -99,8 +99,8 @@ List<RichText> intro = [
     children: <TextSpan>[
       TextSpan(text: 'Get ready to paint virtual canvas with your creative and thoughtful designs! Come, digitalise your art and let your mouse be your brush.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 120/-\n' +
-          'Non IEEE Members: 150/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 40/-\n' +
+          'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 
@@ -159,8 +159,8 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
     children: <TextSpan>[
       TextSpan(text: 'Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 40/-\n' +
-          'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 60/-\n' +
+          'Non IEEE Members: 80/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 
@@ -218,8 +218,8 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
     children: <TextSpan>[
       TextSpan(text: 'An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 180/-\n' +
-          'Non IEEE Members: 200/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 120/-\n' +
+          'Non IEEE Members: 150/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 
@@ -429,63 +429,99 @@ List<RichText> judging = [
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nJunior Category:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nSenior Category:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: "1) The competition will test the participants' logical and coding skills.\n\n2) Time and cost efficiency of the code will be tested in round 2.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nJunior Category:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nSenior Category:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
-  ),),
+  ),
+  ),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: '1) Creativity and originality of the design.\n\n2) Distinct features incorporated in the design.\n\n3) Persuasiveness of the design, i.e. the efficiency of the design to convey the required message.\n\n4) Photoshop skills.\n\n5) Layering and masking.\n\n6) The decision of the judges will be final and shall be respected.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Round 1:\nEach question carries a single mark. No negative marking. Teams having score above the score threshold will be selected for Round 2.\n\nRound 2:\nTop two teams earning maximum credits based on the understanding of the problem statement, component selection, practical performance and explanation of the implemented circuit will be declared as winners.Winner and runner-up will be awarded.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 2000/-\nRunner-up - 1000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: '1) Innovation involved in the development of the idea and its practicality.\n\n2) Originality and Patentability.\n\n3) Technical feasibility.\n\n4) Implementation of the product.\n\n5) Cost efficiency (if relevant).\n\n6) Superiority of the product over existing products in market.\n\n7) Participants will be judged on the basis of their business acumen and on how sustainable and innovative their solution is.\n\n8) The decision of the judges will be final and shall be respected', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Submission Limits:\nYou may submit a maximum of 10 entries per day.\nYou may select up to 2 final submissions for judging.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 2000/-\nRunner-up - 1000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: '1)There will be two rounds.\n\n2)You need to qualify the threshold score to get into the next round. The threshold will be decided based upon the performance of all the teams.\n\n3)The decision of the organizer will be final.\n\n4)There is no negative marking at any stage.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'The winner will be selected on the basis of the maximum points scored in final round and/or on the exclusive discretion of the quiz master.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nGeneral Quiz:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nMela Quiz:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nBiztech Quiz:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\nWinner - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Participants can participate either individually or in a group of 2 and develop a website which is supposed to be submitted 1-2 days before the start of Credenz. On the first day of Credenz, the best website teams are promoted to the second round where people are informed by us to add specific changes to their website. The website with the most aesthetic changes and best compatibility will be announced as the winner.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
 
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: "1) Oratory and Presentation skills will be of prime importance.\n\n2) Relevance of the content in context with the chosen topic.\n\n3) Judge's decision will be final and binding on all.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 2500/-\nRunner-up - 1500/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
 
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'The person who has cracked the highest number of levels wins.\n\nNOTE: In case of a tie, the one who has reached first on that level is the winner.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
+      TextSpan(text: '\n\nWinner - 2500/-\nRunner-up - 1500/-\n2nd Runner-up - 1000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   /*"Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners."
