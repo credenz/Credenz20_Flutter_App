@@ -289,7 +289,7 @@ await dialogue(context);
                 padding: EdgeInsets.all(10.0),
                 child: Text(
                   rules[widget.eventIndex],
-                  //textAlign: TextAlign.justify,
+                  textAlign: TextAlign.justify,
                   style: TextStyle(fontSize: 18.0, color: Colors.white),
                 ),
               ),
