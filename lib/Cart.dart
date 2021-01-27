@@ -416,7 +416,9 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  {
-                                          Fluttertoast.showToast(msg: 'Payment Gateway in progress');
+                                          Fluttertoast.showToast(
+                                              backgroundColor: Colors.blue.shade600,
+                                              msg: 'Payment gateway will open soon. Stay tuned!');
                                         }),
 
                                     /*child: RaisedButton(

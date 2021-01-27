@@ -58,7 +58,7 @@ class _LoginState extends State<Login> {
         print(accessToken);
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
-        Fluttertoast.showToast(msg: 'LoggedIn');
+        Fluttertoast.showToast(msg: 'Logged In');
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
       }
     }else{
