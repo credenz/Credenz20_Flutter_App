@@ -29,7 +29,7 @@ class _ProfileState extends State<Profile> {
   TextEditingController passwordController;
   TextEditingController phoneController;
   TextEditingController collegeController;
-  String name=' ';
+  String name = ' ';
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _ProfileState extends State<Profile> {
     String url = userProfileUrl;
     String accToken = await storage.read(key: "accToken");
     String username = await storage.read(key: 'username');
-    name=username;
+    name = username;
     if (username == null || accToken == null) {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) => Login()));
@@ -103,7 +103,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backColor,
+        // backgroundColor: backColor,
         // floatingActionButton: FloatingActionButton(
         //   heroTag: 'abc',
         //   child: Icon(Icons.edit),
@@ -125,20 +125,29 @@ class _ProfileState extends State<Profile> {
                 child: loader1,
                 color: notiBackColor,
               )
-            : SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _headerofProfile(),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
-                      child: _buildForm(),
-                    ),
-                  ],
+            : Container(
+          height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                    color: backColor,
+                    image: DecorationImage(
+                      image: AssetImage("images/contactb.jpg"),
+                      fit: BoxFit.fill,
+                    )),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _headerofProfile(),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
+                        child: _buildForm(),
+                      ),
+                    ],
+                  ),
                 ),
               ));
   }
 
-  _headerofProfile(){
+  _headerofProfile() {
     return ClipPath(
       // clipper: new CustomHalfCircleClipper(),
       child: Container(
@@ -147,10 +156,13 @@ class _ProfileState extends State<Profile> {
           // color: Color(0xff128ba5),
           gradient: LinearGradient(
             begin: Alignment.topLeft,
-            end:Alignment.bottomRight,
-            colors: [Color(0xff1269a0),Color(0xff0e3876)],
+            end: Alignment.bottomRight,
+            colors: [Color(0xff1269a0), Color(0xff0e3876)],
           ),
-          borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0),bottomLeft:Radius.circular(8.0), ),
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -160,8 +172,7 @@ class _ProfileState extends State<Profile> {
               CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 30.0,
-                backgroundImage:
-                AssetImage("images/profileHeadIcon.png"),
+                backgroundImage: AssetImage("images/profileHeadIcon.png"),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12.0),
@@ -198,7 +209,7 @@ class _ProfileState extends State<Profile> {
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child:RaisedGradientButton(
+                child: RaisedGradientButton(
                     height: 40.0,
                     width: 40.0,
                     child: Icon(
@@ -208,15 +219,13 @@ class _ProfileState extends State<Profile> {
                     gradient: LinearGradient(
                       colors: commonGradient,
                     ),
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                EditProfile(),
+                            builder: (BuildContext context) => EditProfile(),
                           ));
-                    }
-                ),
+                    }),
                 /*RawMaterialButton(
                   constraints: BoxConstraints(),
                   fillColor: Colors.blue,
@@ -256,17 +265,26 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: nameController,
-                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: 'Segoe UI',
+                ),
                 validator: (String value) {
                   if (value.isEmpty) return 'Name cannot be empty';
 
                   return null;
                 },
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                  labelStyle: TextStyle(
+                    color: textColor,
+                    fontFamily: 'Segoe UI',
+                  ),
                   isDense: true,
                   labelText: 'Name',
                   enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: dividerColor),
+                  ),
+                  disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   border: OutlineInputBorder(
@@ -280,7 +298,10 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: usernameController,
-                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: 'Segoe UI',
+                ),
                 validator: (String value) {
                   if (value.isEmpty) return 'username cannot be empty';
                   return null;
@@ -288,7 +309,10 @@ class _ProfileState extends State<Profile> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelText: 'Username',
-                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                  labelStyle: TextStyle(
+                    color: textColor,
+                    fontFamily: 'Segoe UI',
+                  ),
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
@@ -303,7 +327,10 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
                 controller: emailController,
-                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: 'Segoe UI',
+                ),
                 validator: (String value) {
                   if (value.isEmpty) return 'Email cannot be empty';
 
@@ -316,7 +343,10 @@ class _ProfileState extends State<Profile> {
                   ),
                   isDense: true,
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                  labelStyle: TextStyle(
+                    color: textColor,
+                    fontFamily: 'Segoe UI',
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -372,7 +402,10 @@ class _ProfileState extends State<Profile> {
 
                   return null;
                 },
-                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: 'Segoe UI',
+                ),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   disabledBorder: OutlineInputBorder(
@@ -380,7 +413,10 @@ class _ProfileState extends State<Profile> {
                   ),
                   isDense: true,
                   labelText: 'Phone number',
-                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                  labelStyle: TextStyle(
+                    color: textColor,
+                    fontFamily: 'Segoe UI',
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -396,14 +432,20 @@ class _ProfileState extends State<Profile> {
                   if (value.isEmpty) return 'College Name cannot be empty';
                   return null;
                 },
-                style: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                style: TextStyle(
+                  color: textColor,
+                  fontFamily: 'Segoe UI',
+                ),
                 decoration: InputDecoration(
                   disabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: dividerColor),
                   ),
                   isDense: true,
                   labelText: 'College Name',
-                  labelStyle: TextStyle(color: textColor,fontFamily: 'Segoe UI',),
+                  labelStyle: TextStyle(
+                    color: textColor,
+                    fontFamily: 'Segoe UI',
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
