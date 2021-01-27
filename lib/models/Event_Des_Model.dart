@@ -99,7 +99,7 @@ class _EventDesState extends State<EventDes>
                   children: [
                     Image.asset(
                       // "images/contactb.jpg",
-                      "gifs/giphy3.gif",
+                      "gifs/giphy1.gif",
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
@@ -158,7 +158,7 @@ class _EventDesState extends State<EventDes>
                               topRight: Radius.circular(45.0),
                             ),
                             child: Card(
-                                color: Color(0x11000000),
+                                color: Color(0x22000000),
                                 child: Padding(
                                     padding: EdgeInsets.only(top: 10),
                                     child: tabcontroller())),
