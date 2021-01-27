@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color(0xff000000),
       body: new Center(
         child: new Image.asset(
-          "gifs/eyegif.gif",
+          "gifs/eyegif1.gif",
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.fitWidth,

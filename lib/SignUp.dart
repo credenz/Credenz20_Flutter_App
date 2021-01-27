@@ -85,6 +85,7 @@ class _SignUpState extends State<SignUp> {
                   "Sign Up",
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      fontFamily: 'Segoe UI',
                       color: Colors.white,
                       fontSize: getProportionateScreenWidth(28),
                       fontWeight: FontWeight.bold),
@@ -95,7 +96,7 @@ class _SignUpState extends State<SignUp> {
                 Text(
                   "Enter your details",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(fontFamily: 'Segoe UI',color: Colors.white),
                 ),
                 SizedBox(
                   height: getProportionateScreenHeight(20),

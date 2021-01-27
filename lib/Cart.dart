@@ -5,7 +5,6 @@ import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:fluttertoast/fluttertoast_web.dart';
 import 'package:http/http.dart' as http;
 
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -20,8 +19,9 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
   int sum = 0;
-  List list;
-  bool load = true;
+  List list=List();
+  List list1=List();
+  bool load = false;
 
   // Razorpay _razorpay;
   final children1 = <Widget>[];
@@ -34,27 +34,27 @@ class _CartState extends State<Cart> {
     // _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     // _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     // _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    getEventPrices();
-    sum = 0;
+    // getEventPrices();
+    loadCart();
   }
-
-  getEventPrices() async {
-    prices1 = new Map();
-    String url = allEventUrl;
-    http.Response response = await http.get(url);
-    if (response.statusCode == 200) {
-      List list = jsonDecode(response.body) as List;
-      for (int i = 0; i < list.length; i++) {
-        prices1[list[i]['event_name']] = list[i]['event_price'];
-      }
-      await loadCart();
-    }else{
-      setState(() {
-        load=false;
-        Navigator.pop(context);
-      });
-    }
-  }
+  //
+  // getEventPrices() async {
+  //   prices1 = new Map();
+  //   String url = allEventUrl;
+  //   http.Response response = await http.get(url);
+  //   if (response.statusCode == 200) {
+  //     List list = jsonDecode(response.body) as List;
+  //     for (int i = 0; i < list.length; i++) {
+  //       prices1[list[i]['event_name']] = list[i]['event_price'];
+  //     }
+  //     await loadCart();
+  //   }else{
+  //     setState(() {
+  //       load=false;
+  //       Navigator.pop(context);
+  //     });
+  //   }
+  // }
 
   loadCart() async {
     sum = 0;
@@ -65,9 +65,8 @@ class _CartState extends State<Cart> {
       if (pre) {
         String eventName = await storage.read(key: '$i');
         list.add(eventName);
-        prices1.containsKey(eventName)
-            ? sum += prices1[eventName].toInt()
-            : sum += 120;
+        list1.add(ieeePrices[i]);
+         sum += ieeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -91,7 +90,7 @@ class _CartState extends State<Cart> {
               ), //[Color(0xff615de3), Color(0xff6c73ed)]),
               //color: Colors.purple,
             ),
-            child: Image.asset(
+            child: eventName.indexOf(list[i], 0)==-1?Container():Image.asset(
                 eventimages[eventName.indexOf(list[i], 0)].assetName),
           ),
         ),
@@ -151,7 +150,7 @@ class _CartState extends State<Cart> {
         });
       }
     });
-    
+
     */
 
     /*  String username = await storage.read(key: 'username');
@@ -234,10 +233,9 @@ class _CartState extends State<Cart> {
                 ? BoxDecoration(
                     color: backColor,
                     image: DecorationImage(
-                      image: AssetImage("images/emptycart.png"),
+                      image: AssetImage("images/cartimage.png"),
                       fit: BoxFit.scaleDown,
-                    )
-                    // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
+                    )                 // gradient: LinearGradient(colors: [Color.fromRGBO(0, 0, 0, 0), Color.fromRGBO(0, 0, 0, 0)], stops: [0, 1])
                     )
                 : BoxDecoration(
                     color: backColor,
@@ -274,7 +272,7 @@ class _CartState extends State<Cart> {
                       ListView.builder(
                         itemBuilder: (BuildContext context, int pos) {
                           AssetImage ig =
-                              eventimages[eventName.indexOf(list[pos], 0)];
+                          eventName.indexOf(list[pos], 0)==-1?null:eventimages[eventName.indexOf(list[pos], 0)];
                           return Card(
                             color: Color(0x221f67de),
                             elevation: 10.0,
@@ -300,7 +298,7 @@ class _CartState extends State<Cart> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child: Image.asset(ig.assetName),
+                                          child: eventName.indexOf(list[pos], 0)==-1?Container():Image.asset(ig.assetName),
                                         ),
                                       ),
                                     ),
@@ -318,10 +316,7 @@ class _CartState extends State<Cart> {
                                         ),
                                         SizedBox(height: 10),
                                         Text(
-                                          prices1.containsKey(list[pos])
-                                              ? "\u20B9 " +
-                                                  prices1[list[pos]].toString()
-                                              : "\u20B9 " + "120",
+                                         "${list1[pos]}",
                                           style: TextStyle(
                                               fontFamily: 'Segoe UI',
                                               fontWeight: FontWeight.w600,
@@ -420,20 +415,8 @@ class _CartState extends State<Cart> {
                                         gradient: LinearGradient(
                                           colors: commonGradient,
                                         ),
-                                        onPressed: () async {
-                                          FluttertoastWebPlugin.registerWith(
-
-                                          )
-                                          Fluttertoast.showToast(
-                                            backgroundColor: Colors.transparent,
-                                              webShowClose: true,
-                                              webBgColor:"linear-gradient(to right, #00b09b, #96c93d)",
-                                              msg: 'Stay tuned for payment page'
-
-                                          );
-
-
-                                          // await pay();
+                                        onPressed: ()  {
+                                          Fluttertoast.showToast(msg: 'Payment Gateway in progress');
                                         }),
 
                                     /*child: RaisedButton(
