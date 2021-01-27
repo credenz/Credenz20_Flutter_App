@@ -29,14 +29,21 @@ class _EventDesState extends State<EventDes>
   );
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
+  String ieeeMenber;
   final storage = FlutterSecureStorage();
   String selectedValue, selectedValue1;
 
   Animation<double> _animation;
   AnimationController _animationController;
-
+  List eventGroupIndex=[4,9,10];
   List<String> options = ["FE", "SE", "TE", "BE"];
   List<String> options1 = ["IEEE Member", "Non IEEE Member"];
+  TextEditingController part1Controller=TextEditingController();
+  TextEditingController email1Controller=TextEditingController();
+  TextEditingController part2Controller=TextEditingController();
+  TextEditingController email2Controller=TextEditingController();
+  TextEditingController part3Controller=TextEditingController();
+  TextEditingController part4Controller=TextEditingController();
 
   addToCart() async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
@@ -196,7 +203,7 @@ class _EventDesState extends State<EventDes>
 */
               ],
             ),
-            floatingActionButton: FloatingActionBubble(
+            floatingActionButton: eventGroupIndex.contains(widget.eventIndex)?FloatingActionBubble(
               animation: _animation,
               onPress: () => _animationController.isCompleted
                   ? _animationController.reverse()
@@ -239,7 +246,12 @@ class _EventDesState extends State<EventDes>
                   },
                 ),
               ],
-            )
+            ):FloatingActionButton(
+              child: Icon(Icons.shopping_cart_outlined,color: Colors.grey.shade800,),
+              backgroundColor: Colors.white,
+              onPressed: ()async{
+                await dialogue1(context);
+              },)
 
             /*FloatingActionButton(
             child: new Icon( favorite
@@ -335,6 +347,66 @@ await dialogue(context);
     );
   }
 
+  Future<void> dialogue1(BuildContext context) async {
+    return await showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Center(
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Center(
+                  child: Container(
+                    height: 200,
+                    width: 280,
+                    padding: EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey.shade700,
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0)
+                    ),
+                    child: Column(
+                      children: [
+                        DropdownButton(
+                          items: [
+                            DropdownMenuItem(
+                              child: Text('IEEE member'),
+                              value: 'IEEE',
+                            ),
+                            DropdownMenuItem(
+                              child: Text('Non-IEEE member'),
+                              value: 'Non',
+                            ),
+                          ],
+                          isExpanded: true,
+                          onChanged: (String val) {
+                            setState(() {
+                              ieeeMenber = val;
+                            });
+                          },
+                          value: ieeeMenber,
+                          hint: Text('Select Category'),
+                        ),
+                        RaisedGradientButton(
+                          height: 40,
+                          width: 80,
+                          gradient: LinearGradient(colors: commonGradient),
+                          child: Text("Submit"),
+                          onPressed: () {
+                          },
+                        ),
+                      ],
+                    )
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
   Future<void> dialogue(BuildContext context) async {
     String val1;
     String val2;
@@ -384,8 +456,9 @@ await dialogue(context);
                                       //
                                       //   return null;
                                       // },
+                                      controller: part1Controller,
                                       style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
+                                      keyboardType: TextInputType.name,
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderSide:
@@ -409,6 +482,7 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      controller: part2Controller,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
@@ -439,6 +513,7 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      controller: part3Controller,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
@@ -469,6 +544,7 @@ await dialogue(context);
                                   Padding(
                                     padding: EdgeInsets.all(8),
                                     child: TextFormField(
+                                      controller: part4Controller,
                                       // validator: (String value) {
                                       //   if (value.isEmpty) return 'Email cannot be empty';
                                       //
@@ -504,6 +580,7 @@ await dialogue(context);
                                       Padding(
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
+                                          controller: email1Controller,
                                           // validator: (String value) {
                                           //   if (value.isEmpty) return 'Email cannot be empty';
                                           //
@@ -535,6 +612,7 @@ await dialogue(context);
                                       Padding(
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
+                                          controller: email2Controller,
                                           // validator: (String value) {
                                           //   if (value.isEmpty) return 'Email cannot be empty';
                                           //
@@ -721,62 +799,3 @@ await dialogue(context);
     );
   }
 }
-
-class SerializedFormBloc extends FormBloc<String, String> {
-  final p1 = TextFieldBloc(
-    initialValue: 'username',
-    name: 'name1',
-  );
-  final p2 = TextFieldBloc(
-    name: 'name2',
-  );
-  final p3 = TextFieldBloc(
-    name: 'name3',
-  );
-  final p4 = TextFieldBloc(
-    name: 'name4',
-  );
-  final e1 = TextFieldBloc(
-    initialValue: 'email',
-    name: 'email1',
-  );
-  final e2 = TextFieldBloc(
-    name: 'email2',
-  );
-
-  final year = SelectFieldBloc(
-    name: 'year',
-    initialValue: 'FE',
-    items: ['FE', 'SE', 'TE', 'BE'],
-  );
-
-  final ieee = SelectFieldBloc(
-    name: 'ieee',
-    initialValue: 'Non-IEEE Member',
-    items: [
-      'IEEE Member',
-      'Non-IEEE Member',
-    ],
-  );
-
-  SerializedFormBloc() {
-    addFieldBlocs(
-      fieldBlocs: [
-        p1,
-        p2,
-        p3,
-        p4,
-        e1,
-        e2,
-        year,
-        ieee,
-      ],
-    );
-  }
-
-  @override
-  void onSubmitting() {
-    // TODO: implement onSubmitting
-  }
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
