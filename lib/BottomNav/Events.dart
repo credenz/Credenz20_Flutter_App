@@ -10,6 +10,12 @@ import 'package:toast/toast.dart';
 import '../constants/theme.dart';
 
 class Events extends StatefulWidget {
+  bool animate;
+
+  Events(bool animate){
+    this.animate=animate;
+  }
+
   @override
   WheelExample createState() => WheelExample();
 }
@@ -101,8 +107,14 @@ class WheelExample extends State<Events> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     (flag == 0) ? _selectedItem(0, context) : null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     double x = 10;
     return MaterialApp(
 
@@ -142,6 +154,7 @@ class WheelExample extends State<Events> {
               // height: 260,
               // width: 160,
               child: CircleListScrollView(
+                animate: widget.animate,
                 physics: CircleFixedExtentScrollPhysics(),
                 axis: Axis.vertical,
                 itemExtent: 150,

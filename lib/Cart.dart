@@ -316,7 +316,7 @@ class _CartState extends State<Cart> {
                                         ),
                                         SizedBox(height: 10),
                                         Text(
-                                         "${list1[pos]}",
+                                         "\u20B9 ${list1[pos]} ",
                                           style: TextStyle(
                                               fontFamily: 'Segoe UI',
                                               fontWeight: FontWeight.w600,
