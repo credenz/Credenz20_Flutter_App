@@ -19,8 +19,9 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
   int sum = 0;
-  List list;
-  bool load = true;
+  List list=List();
+  List list1=List();
+  bool load = false;
 
   // Razorpay _razorpay;
   final children1 = <Widget>[];
@@ -33,27 +34,27 @@ class _CartState extends State<Cart> {
     // _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     // _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     // _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    getEventPrices();
-    sum = 0;
+    // getEventPrices();
+    loadCart();
   }
-
-  getEventPrices() async {
-    prices1 = new Map();
-    String url = allEventUrl;
-    http.Response response = await http.get(url);
-    if (response.statusCode == 200) {
-      List list = jsonDecode(response.body) as List;
-      for (int i = 0; i < list.length; i++) {
-        prices1[list[i]['event_name']] = list[i]['event_price'];
-      }
-      await loadCart();
-    }else{
-      setState(() {
-        load=false;
-        Navigator.pop(context);
-      });
-    }
-  }
+  //
+  // getEventPrices() async {
+  //   prices1 = new Map();
+  //   String url = allEventUrl;
+  //   http.Response response = await http.get(url);
+  //   if (response.statusCode == 200) {
+  //     List list = jsonDecode(response.body) as List;
+  //     for (int i = 0; i < list.length; i++) {
+  //       prices1[list[i]['event_name']] = list[i]['event_price'];
+  //     }
+  //     await loadCart();
+  //   }else{
+  //     setState(() {
+  //       load=false;
+  //       Navigator.pop(context);
+  //     });
+  //   }
+  // }
 
   loadCart() async {
     sum = 0;
@@ -64,9 +65,8 @@ class _CartState extends State<Cart> {
       if (pre) {
         String eventName = await storage.read(key: '$i');
         list.add(eventName);
-        prices1.containsKey(eventName)
-            ? sum += prices1[eventName].toInt()
-            : sum += 120;
+        list1.add(ieeePrices[i]);
+         sum += ieeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -316,10 +316,7 @@ class _CartState extends State<Cart> {
                                         ),
                                         SizedBox(height: 10),
                                         Text(
-                                          prices1.containsKey(list[pos])
-                                              ? "\u20B9 " +
-                                                  prices1[list[pos]].toString()
-                                              : "\u20B9 " + "120",
+                                         "${list1[pos]}",
                                           style: TextStyle(
                                               fontFamily: 'Segoe UI',
                                               fontWeight: FontWeight.w600,
@@ -418,8 +415,8 @@ class _CartState extends State<Cart> {
                                         gradient: LinearGradient(
                                           colors: commonGradient,
                                         ),
-                                        onPressed: () async {
-                                          await pay();
+                                        onPressed: ()  {
+                                          Fluttertoast.showToast(msg: 'Payment Gateway in progress');
                                         }),
 
                                     /*child: RaisedButton(

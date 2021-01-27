@@ -32,7 +32,36 @@ const List<String> eventName = [
   "Network Treasure Hunt"
 ];
 
-Map<String, int> prices1;
+List ieeePrices=[
+  60,
+  60,
+  120,
+  40,
+  100,
+  40,
+  40,
+  40,
+  40,
+  60,
+  180,
+  0
+];
+
+List nonIeeePrices=[
+  80,
+  80,
+  150,
+  50,
+  120,
+  50,
+  50,
+  50,
+  50,
+  60,
+  200,
+  0
+];
+
 
 const List<String> intro = [
   "Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++.\n\nShowcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.\n\n" +
