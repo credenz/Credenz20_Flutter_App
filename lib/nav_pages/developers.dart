@@ -105,10 +105,10 @@ List<String> linkedin = [
 ];
 
 List<String> email = [
-  "sarafatharva123@gmail.com",
-  "vaibhavpallod@gmail.com",
-  "tanujagrawal223@gmail.com",
-  "durveshmalpurecoc@gmail.com",
+  "https://github.com/atharvasaraf123",
+  "https://github.com/vaibhavpallod",
+  "https://github.com/tanuj223",
+  "https://github.com/durvesh8",
 ];
 
 List<String> position = [
@@ -232,8 +232,8 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               //     onPressed: null),
                               IconButton(
                                   iconSize: 42.0,
-                                  icon: Image.asset('images/mail.png'),
-                                  onPressed:  () => _launchURL("mailto:"+email[x].toString())),
+                                  icon: Image.asset('images/github.png'),
+                                  onPressed:  () => _launchURL(email[x].toString())),
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),
