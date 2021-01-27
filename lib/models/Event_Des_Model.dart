@@ -48,6 +48,7 @@ class _EventDesState extends State<EventDes>
   TextEditingController email2Controller=TextEditingController();
   TextEditingController part3Controller=TextEditingController();
   TextEditingController part4Controller=TextEditingController();
+  String accToken;
 
   addToCart() async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
@@ -63,12 +64,7 @@ class _EventDesState extends State<EventDes>
   }
 
   checkInCart() async {
-    String accToken=await storage.read(key: 'accToken');
-    print(accToken);
-    if(accToken==null || accToken.isEmpty){
-      Navigator.pop(context);
-      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
-    }
+     accToken=await storage.read(key: 'accToken');
     name=await storage.read(key: 'username');
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
     if (pre) {
@@ -234,9 +230,15 @@ class _EventDesState extends State<EventDes>
                   icon: Icons.person,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
-                    _animationController.reverse();
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }
+                    else {
+                      _animationController.reverse();
 
-                    await dialogue1(context);
+                      await dialogue1(context);
+                    }
                     // setState(() {
                     //   favorite = !favorite;
                     //   addToCart();
@@ -251,8 +253,13 @@ class _EventDesState extends State<EventDes>
                   icon: Icons.people,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
+                    print(accToken);
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
                     _animationController.reverse();
-                    await dialogue(context);
+                    await dialogue(context);}
                     // setState(() {
                     //   favorite = !favorite;
                     //   // addToCart();
@@ -277,9 +284,13 @@ class _EventDesState extends State<EventDes>
                   icon: Icons.person,
                   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
                   onPress: () async {
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
                     _animationController.reverse();
 
-                    await dialogue1(context);
+                    await dialogue1(context);}
                     // setState(() {
                     //   favorite = !favorite;
                     //   // addToCart();
