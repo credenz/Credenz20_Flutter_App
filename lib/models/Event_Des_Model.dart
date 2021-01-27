@@ -117,8 +117,9 @@ class _EventDesState extends State<EventDes>
                       Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
                   title: Text(eventName[index],
                       style: TextStyle(
+                        fontFamily: 'Segoe UI Bold',
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold)),
                   card: eventimages[index],
                   backButton: true,
@@ -288,52 +289,52 @@ await dialogue(context);
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   intro[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
+                  /*style: TextStyle(fontSize: 18.0, color: Colors.white),
                   textAlign: TextAlign.justify,
-                ),
+                ),*/
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   rules[widget.eventIndex],
                   //textAlign: TextAlign.justify,
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  //style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //),
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   structure[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  //style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //),
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   judging[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                  //style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //),
               ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 padding: EdgeInsets.all(10.0),
-                child: Text(
+                child: //Text(
                   contact[widget.eventIndex],
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
+                 // style: TextStyle(fontSize: 18.0, color: Colors.white),
+               // ),
               ),
             ),
             // Icon(Icons.home),
@@ -777,6 +778,8 @@ await dialogue(context);
       backgroundColor: Colors.transparent,
       appBar: ShiftingTabBar(
         labelStyle: TextStyle(
+          fontFamily: 'Segoe UI Bold',
+          fontWeight: FontWeight.bold,
           color: Colors.white,
           fontSize: 12,
         ),
@@ -786,7 +789,7 @@ await dialogue(context);
         brightness: Brightness.dark,
         tabs: [
           // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
-          ShiftingTab(icon: Icon(Icons.info_outline), text: "Intro"),
+          ShiftingTab(icon: Icon(Icons.info_outline), text: "Intro",),
           ShiftingTab(icon: Icon(Icons.assignment), text: "Rules"),
           ShiftingTab(icon: Icon(Icons.device_hub), text: "Structure"),
           ShiftingTab(icon: Icon(Icons.assessment), text: "Judging"),
