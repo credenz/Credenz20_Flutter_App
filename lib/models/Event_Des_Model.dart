@@ -97,13 +97,13 @@ class _EventDesState extends State<EventDes>
               children: <Widget>[
                 Stack(
                   children: [
-                    // Image.asset(
-                    //   // "images/contactb.jpg",
-                    //   "gifs/desback.gif",
-                    //   height: MediaQuery.of(context).size.height,
-                    //   width: MediaQuery.of(context).size.width,
-                    //   fit: BoxFit.cover,
-                    // ),
+                    Image.asset(
+                      // "images/contactb.jpg",
+                      "gifs/giphy1.gif",
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ),
                     // Container(
                     //   color: Color(0xaa4E164B),
                     // ),
