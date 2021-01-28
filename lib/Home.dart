@@ -1,6 +1,7 @@
 
 import 'package:badges/badges.dart';
 import 'package:credenz20/constants/theme.dart';
+import 'package:credenz20/loginPage.dart';
 import 'package:credenz20/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -35,7 +36,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _counter = 0;
   int currentTab = 2;
-
+  String accToken;
   final list = List();
   int cnt = 0;
   Widget currentScreen = Events(true); //
@@ -50,6 +51,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     _initAnimation();
+    getLogIn();
     cartNo();
     pageController = PageController(initialPage: currentIndex);
   }
@@ -86,6 +88,10 @@ class _HomeState extends State<Home> {
   //   this.pageController.animateToPage(index,
   //       duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
   // }
+
+  getLogIn()async{
+    accToken=await securestorage.read(key: 'accToken');
+  }
 
   cartNo() async {
     list.clear();
@@ -236,8 +242,11 @@ class _HomeState extends State<Home> {
                       setState(
                         () {
                           // onTabTapped(0);
+                          if(accToken==null){
+                            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                          }else{
                           currentScreen = Profile();
-                          currentTab = 0;
+                          currentTab = 0;}
                         },
                       );
                     },
