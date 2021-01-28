@@ -99,213 +99,213 @@ class _LoginState extends State<Login> {
             )),
         centerTitle: true,
         backgroundColor: primary,
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () =>  Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => SlideDrawer(
-                        drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))),
-                    (route) => false)
-        ),
+
       ),
       backgroundColor: Color(0xFF121212),
       resizeToAvoidBottomPadding: true,
       body: SafeArea(
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: getProportionateScreenHeight(70),
-                ),
-                Text(
-                  "Welcome",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: 'Segoe UI',
-                      color: Colors.white,
-                      fontSize: getProportionateScreenWidth(28),
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Sign In with your username and password",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: 'Segoe UI',color: Colors.white),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(100),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                //   decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.white),
-                //
-                //     borderRadius: BorderRadius.circular(5),
-                //   ),
-                //   child: TextFormField(
-                //     style: textFieldStyle,
-                //     onChanged: (val){
-                //       setState(() {
-                //         userName=val;
-                //       });
-                //     },
-                //     decoration: InputDecoration(
-                //       border: InputBorder.none,
-                //       contentPadding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
-                //       labelText: 'Username',
-                //       labelStyle: hintTextStyle,
-                //     ),
-                //   ),
-                // ),
-                // ),
-                Column(
-                  children: <Widget>[
-                    TextFormField(
-                      controller: usernameController,
-                      keyboardType: TextInputType.text,
-                      autofocus: true,
-                      style: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
-                      decoration: InputDecoration(
-                        labelText: "Username",
-                        hintText: "eg. user1234",
-                        hintStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
-                        labelStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        suffixIcon: Icon(
-                          Icons.alternate_email,
-                          color: Color(0xff0aa9d7),
+          child: Container(
+            decoration: BoxDecoration(
+                color: backColor,
+                image: DecorationImage(
+                  image: AssetImage("images/contactb.jpg"),
+                  fit: BoxFit.fill,
+                )),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: getProportionateScreenHeight(70),
+                  ),
+                  Text(
+                    "Welcome",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: 'Segoe UI',
+                        color: Colors.white,
+                        fontSize: getProportionateScreenWidth(28),
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "Sign In with your username and password",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: 'Segoe UI',color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(100),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
+                  //   decoration: BoxDecoration(
+                  //     border: Border.all(color: Colors.white),
+                  //
+                  //     borderRadius: BorderRadius.circular(5),
+                  //   ),
+                  //   child: TextFormField(
+                  //     style: textFieldStyle,
+                  //     onChanged: (val){
+                  //       setState(() {
+                  //         userName=val;
+                  //       });
+                  //     },
+                  //     decoration: InputDecoration(
+                  //       border: InputBorder.none,
+                  //       contentPadding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
+                  //       labelText: 'Username',
+                  //       labelStyle: hintTextStyle,
+                  //     ),
+                  //   ),
+                  // ),
+                  // ),
+                  Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: usernameController,
+                        keyboardType: TextInputType.text,
+                        autofocus: true,
+                        style: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                        decoration: InputDecoration(
+                          labelText: "Username",
+                          hintText: "eg. user1234",
+                          hintStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                          labelStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          suffixIcon: Icon(
+                            Icons.alternate_email,
+                            color: Color(0xff0aa9d7),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(40),
-                    ),
-                    TextFormField(
-                      controller: passwordController,
-                      obscureText: _obscuretext,
-                      style: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        hintText: "Enter Your Password",
-                        hintStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
-                        labelStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                      SizedBox(
+                        height: getProportionateScreenHeight(40),
+                      ),
+                      TextFormField(
+                        controller: passwordController,
+                        obscureText: _obscuretext,
+                        style: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                        decoration: InputDecoration(
+                          labelText: "Password",
+                          hintText: "Enter Your Password",
+                          hintStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
+                          labelStyle: TextStyle(fontFamily: 'Segoe UI',color: Color(0xFFd9d9d9)),
 
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        suffixIcon: IconButton(
-                          onPressed: toggle,
-                          icon: Icon(
-                            Icons.remove_red_eye,
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          suffixIcon: IconButton(
+                            onPressed: toggle,
+                            icon: Icon(
+                              Icons.remove_red_eye,
+                            ),
+                            color: Color(0xff0aa9d7),
                           ),
-                          color: Color(0xff0aa9d7),
                         ),
                       ),
-                    ),
-                    SizedBox(height: getProportionateScreenHeight(20)),
-                  ],
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(50),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: RaisedGradientButton(
-                      height: 40.0,
-                      width: 40.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.lock,color: Colors.white,),
-                          SizedBox(width: 20,),
-                          Text(
-                            'Sign In',
-                            style: TextStyle(fontFamily: 'Segoe UI',fontWeight: FontWeight.bold,color: Colors.white,fontSize: 24),
-                          ),
-                        ],
-                      ),
-                      gradient: LinearGradient(
-                        colors: commonGradient,
-                      ),
-                      onPressed: () async {
-                        await makeRequest();
-                      }),
-                ),
-                SizedBox(height: getProportionateScreenHeight(30),),
+                      SizedBox(height: getProportionateScreenHeight(20)),
+                    ],
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(50),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: RaisedGradientButton(
+                        height: 40.0,
+                        width: 40.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.lock,color: Colors.white,),
+                            SizedBox(width: 20,),
+                            Text(
+                              'Sign In',
+                              style: TextStyle(fontFamily: 'Segoe UI',fontWeight: FontWeight.bold,color: Colors.white,fontSize: 24),
+                            ),
+                          ],
+                        ),
+                        gradient: LinearGradient(
+                          colors: commonGradient,
+                        ),
+                        onPressed: () async {
+                          await makeRequest();
+                        }),
+                  ),
+                  SizedBox(height: getProportionateScreenHeight(30),),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text("Don't have an account?",
-                        style:
-                        TextStyle(fontFamily: 'Segoe UI',fontSize: getProportionateScreenWidth(16),color: Colors.white)),
-                    RichText(
-                      text: TextSpan(
-                          text: "Sign Up",
-                          recognizer: TapGestureRecognizer()..
-                          onTap=(){
-                            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SignUp()));
-                          },
-                          style: TextStyle(
-                              fontFamily: 'Segoe UI',
-                              fontWeight: FontWeight.bold,
-                              fontSize: getProportionateScreenWidth(16),
-                              color: Color(0xff0aa9d7))),
-                    ),
-                  ],
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                //   decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.white),
-                //
-                //     borderRadius: BorderRadius.circular(5),
-                //   ),
-                //   child: TextFormField(
-                //     style: textFieldStyle,
-                //     onChanged: (val){
-                //       setState(() {
-                //         password=val;
-                //       });
-                //     },
-                //     obscureText: true,
-                //     decoration: InputDecoration(
-                //       border: InputBorder.none,
-                //       contentPadding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
-                //       labelText: 'Password',
-                //       labelStyle: hintTextStyle,
-                //     ),
-                //   ),
-                // ),
-                // ),
-                // SizedBox(height: 20,),
-                // RaisedButton(
-                //   color: Colors.white,
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(8.0),
-                //     child: Text('Login',style: TextStyle(fontSize: 18),),
-                //   ),
-                //   onPressed: ()async{
-                //     await makeRequest();
-                //   },
-                // ),
-                // SizedBox(height: 20,),
-                // InkWell(
-                //   onTap: (){
-                //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SignUp()));
-                //   },
-                //   child: Container(
-                //     // color: Colors.white,
-                //     child: Padding(
-                //       padding: const EdgeInsets.all(8.0),
-                //       child: Text('New user',style: TextStyle(fontSize: 15,color: Colors.white),),
-                //     ),
-                //     // onPressed: ()async{
-                //     // await makeRequest();
-                //     // },
-                //   ),
-                // )
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Don't have an account?",
+                          style:
+                          TextStyle(fontFamily: 'Segoe UI',fontSize: getProportionateScreenWidth(16),color: Colors.white)),
+                      RichText(
+                        text: TextSpan(
+                            text: "Sign Up",
+                            recognizer: TapGestureRecognizer()..
+                            onTap=(){
+                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SignUp()));
+                            },
+                            style: TextStyle(
+                                fontFamily: 'Segoe UI',
+                                fontWeight: FontWeight.bold,
+                                fontSize: getProportionateScreenWidth(16),
+                                color: Color(0xff0aa9d7))),
+                      ),
+                    ],
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
+                  //   decoration: BoxDecoration(
+                  //     border: Border.all(color: Colors.white),
+                  //
+                  //     borderRadius: BorderRadius.circular(5),
+                  //   ),
+                  //   child: TextFormField(
+                  //     style: textFieldStyle,
+                  //     onChanged: (val){
+                  //       setState(() {
+                  //         password=val;
+                  //       });
+                  //     },
+                  //     obscureText: true,
+                  //     decoration: InputDecoration(
+                  //       border: InputBorder.none,
+                  //       contentPadding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
+                  //       labelText: 'Password',
+                  //       labelStyle: hintTextStyle,
+                  //     ),
+                  //   ),
+                  // ),
+                  // ),
+                  // SizedBox(height: 20,),
+                  // RaisedButton(
+                  //   color: Colors.white,
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Text('Login',style: TextStyle(fontSize: 18),),
+                  //   ),
+                  //   onPressed: ()async{
+                  //     await makeRequest();
+                  //   },
+                  // ),
+                  // SizedBox(height: 20,),
+                  // InkWell(
+                  //   onTap: (){
+                  //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SignUp()));
+                  //   },
+                  //   child: Container(
+                  //     // color: Colors.white,
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: Text('New user',style: TextStyle(fontSize: 15,color: Colors.white),),
+                  //     ),
+                  //     // onPressed: ()async{
+                  //     // await makeRequest();
+                  //     // },
+                  //   ),
+                  // )
+                ],
+              ),
             ),
           ),
         ),

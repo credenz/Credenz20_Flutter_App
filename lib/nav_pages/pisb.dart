@@ -35,7 +35,7 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
     // TODO: implement initState
     super.initState();
     controller = AnimationController(
-        duration: const Duration(milliseconds: 1500), vsync: this);
+        duration: const Duration(milliseconds: 1000), vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
 

@@ -114,6 +114,7 @@ class _SponsorsState extends State<Sponsors> {
             fit: BoxFit.fill,
           )),
         child: ListWheelScrollView(
+
           children: [
             card(0),
             card(1),
