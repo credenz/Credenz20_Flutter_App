@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
       String msg=jsonDecode(response.body)['message'];
       print(msg);
       if(msg!=null){
-        // Fluttertoast.showToast(msg: msg);
+        Fluttertoast.showToast(msg: msg);
         setState(() {
           error = msg;
         });
