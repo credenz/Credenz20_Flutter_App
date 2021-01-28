@@ -66,7 +66,7 @@ class _MyEventsState extends State<MyEvents> {
               image: AssetImage("images/contactb.jpg"),
               fit: BoxFit.fill,
             )*/),
-        child: ListView.builder(itemBuilder: (BuildContext context,int pos){
+        child: eventList.length==0?Image.asset('images/noEventImage.png'):ListView.builder(itemBuilder: (BuildContext context,int pos){
           return Column(
             children: [
               ListTile(
