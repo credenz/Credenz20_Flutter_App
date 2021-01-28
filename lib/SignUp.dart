@@ -289,7 +289,7 @@ class _SignUpState extends State<SignUp> {
                   height: 30,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 60),
                   child: RaisedGradientButton(
                       height: 40.0,
                       width: 40.0,

@@ -92,6 +92,23 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("LOGIN",
+            style: TextStyle(
+              fontFamily: 'Segoe UI',
+            )),
+        centerTitle: true,
+        backgroundColor: primary,
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () =>  Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => SlideDrawer(
+                        drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))),
+                    (route) => false)
+        ),
+      ),
       backgroundColor: Color(0xFF121212),
       resizeToAvoidBottomPadding: true,
       body: SafeArea(
@@ -192,7 +209,7 @@ class _LoginState extends State<Login> {
                   height: getProportionateScreenHeight(50),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: RaisedGradientButton(
                       height: 40.0,
                       width: 40.0,
