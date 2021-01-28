@@ -45,8 +45,9 @@ class _ProfileState extends State<Profile> {
     String username = await storage.read(key: 'username');
     name = username;
     if (username == null || accToken == null) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => Login()));
+      // Navigator.push(context,
+      //     MaterialPageRoute(builder: (BuildContext context) => Login()));
+      // Navigator.pop(context);
     } else {
       url += username;
       Map<String, String> headers = {"Authorization": "Bearer $accToken"};
@@ -123,7 +124,11 @@ class _ProfileState extends State<Profile> {
         body: load == true
             ? Container(
                 child: loader1,
-                color: notiBackColor,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/contactb.jpg"),
+                fit: BoxFit.fill,
+              )),
               )
             : Container(
           height: MediaQuery.of(context).size.height,

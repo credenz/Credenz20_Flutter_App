@@ -1,7 +1,6 @@
 import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:credenz20/extra_lib/modified_slimy_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -59,7 +58,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
         child: StreamBuilder(
           // This streamBuilder reads the real-time status of SlimyCard.
           initialData: true,
-          stream: slimyCard.stream, //Stream of SlimyCard
+          //Stream of SlimyCard
           builder: ((BuildContext context, AsyncSnapshot snapshot) {
             return ListView(
               padding: EdgeInsets.zero,
@@ -103,7 +102,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
                             colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
                           ),
                         onPressed: () {
-                          launch('http://pictieee.in/');
+                          launch('https://pictieee.in/ping.html');
                         },
                       ),
 
@@ -157,7 +156,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(image: AssetImage('images/ping.jpg',),fit: BoxFit.fitHeight),
+              image: DecorationImage(image: AssetImage('images/ping.png',),fit: BoxFit.fitHeight),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),

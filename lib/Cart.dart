@@ -220,10 +220,15 @@ class _CartState extends State<Cart> {
               backgroundColor: primary,
             ),
             body: Container(
-                color: notiBackColor,
+                //color: notiBackColor,
                 child: Center(
                   child: Container(
                     child: loader1,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("images/contactb.jpg"),
+                          fit: BoxFit.fill,
+                        )),
                   ),
                 )),
           )

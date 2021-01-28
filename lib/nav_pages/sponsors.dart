@@ -15,12 +15,20 @@ class _SponsorsState extends State<Sponsors> {
     AssetImage("images/cc.jpg"),
     AssetImage("images/collegepond.jpg"),
     AssetImage("images/finiq.png"),*/
-    "images/aarnel.png",
+    /*"images/aarnel.png",
     "images/byju.jpg",
-    "images/cc.jpg",
-    "images/collegepond.jpg",
-    "images/finiq.png",
+    "images/cc.jpg",*/
+    // "images/collegepond.jpg",
+    // "images/finiq.png",
+    "images/yocket.png"
 
+  ];
+  List<String> name = [
+    "Yocket",
+
+    ];
+  List<String> title = [
+    "Educational Partner",
   ];
 
   Widget card(int index){
@@ -30,6 +38,7 @@ class _SponsorsState extends State<Sponsors> {
       child: Center(
         child: Column(
           children: [
+
             Expanded(
               child: Container(
                 width: MediaQuery.of(context).size.width*0.7,
@@ -45,23 +54,32 @@ class _SponsorsState extends State<Sponsors> {
                   boxShadow: [
                     BoxShadow(
                       offset: Offset(0, 10),
-                      blurRadius: 20,
-                      color: Colors.grey.withOpacity(0.5),
+                      blurRadius: 150,
+                      color: Colors.blueGrey.withOpacity(1),
                     )
                   ],
                 ),
                 child: CircleAvatar(
                   radius: 300,
                   backgroundColor: Colors.white,
-                  //backgroundImage: AssetImage("images/aarnel.png"),
+                  backgroundImage: AssetImage(images[index]),
                   child: ClipOval(child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Image.asset(images[index]),
+                    //child: Image.asset(images[index]),
                   )),
                 ),
               ),
             ),
-            Text("Sponsor", style: TextStyle(fontSize: 30,color: Color(0xFF121212)),)
+            SizedBox(
+              height: 20,
+            ),
+            Text(name[index], style: TextStyle(fontFamily:"Segoe UI Bold",fontSize: 30,color: Color(0xFF121212)),),
+            SizedBox(
+              height: 10,
+            ),
+            Text(title[index], style: TextStyle(fontFamily:"Segoe UI Bold", fontSize: 20,color: Color(0xFF121212)),),
+
+
           ],
         ),
       )
@@ -108,21 +126,17 @@ class _SponsorsState extends State<Sponsors> {
       ),
       body: Container(
          decoration: BoxDecoration(
-          color: backColor,
+          color: notiBackColor,
           image: DecorationImage(
             image: AssetImage("images/sponsorsbackground.jpg"),
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
           )),
         child: ListWheelScrollView(
+          itemExtent: MediaQuery.of(context).size.width,
           children: [
             card(0),
-            card(1),
-            card(2),
-            card(3),
-            card(4),
 
           ],
-          itemExtent: 500,
           diameterRatio: 3,
           physics: FixedExtentScrollPhysics(),
 

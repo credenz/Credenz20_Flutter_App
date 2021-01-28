@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 import 'Home.dart';
 import 'commons/collap_nav_dr.dart';
@@ -48,7 +47,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => SlideDrawer(
+                drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))),
+        (route) => false);
   }
 
   @override
@@ -63,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color(0xff101010),
       body: new Center(
         child: new Image.asset(
-          "gifs/eyegif1.gif",
+          "gifs/eyegif.gif",
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.fitWidth,
@@ -78,7 +82,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    FlutterStatusbarcolor.setStatusBarColor(primary);
+    //FlutterStatusbarcolor.setStatusBarColor(primary);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
