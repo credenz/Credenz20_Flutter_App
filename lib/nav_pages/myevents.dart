@@ -61,11 +61,11 @@ class _MyEventsState extends State<MyEvents> {
       ):Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-            color: backColor,
-            image: DecorationImage(
+            color: notiBackColor,
+            /*image: DecorationImage(
               image: AssetImage("images/contactb.jpg"),
               fit: BoxFit.fill,
-            )),
+            )*/),
         child: ListView.builder(itemBuilder: (BuildContext context,int pos){
           return Column(
             children: [

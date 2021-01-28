@@ -124,7 +124,11 @@ class _ProfileState extends State<Profile> {
         body: load == true
             ? Container(
                 child: loader1,
-                color: notiBackColor,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/contactb.jpg"),
+                fit: BoxFit.fill,
+              )),
               )
             : Container(
           height: MediaQuery.of(context).size.height,
