@@ -37,11 +37,17 @@ class _NotiState extends State<Noti> {
     return load == true
         ? Container(
             height: MediaQuery.of(context).size.height,
-            color: Color(0xFF000000),
+
+            //color: Color(0xFF000000),
             child: Center(
               child: Container(
                 child: animatedloader,
-                color: notiBackColor,
+                //color: notiBackColor,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("images/contactb.jpg"),
+                      fit: BoxFit.fill,
+                    )),
               ),
             ))
         : Container(
