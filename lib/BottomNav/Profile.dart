@@ -45,8 +45,9 @@ class _ProfileState extends State<Profile> {
     String username = await storage.read(key: 'username');
     name = username;
     if (username == null || accToken == null) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => Login()));
+      // Navigator.push(context,
+      //     MaterialPageRoute(builder: (BuildContext context) => Login()));
+      // Navigator.pop(context);
     } else {
       url += username;
       Map<String, String> headers = {"Authorization": "Bearer $accToken"};
