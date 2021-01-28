@@ -6,7 +6,6 @@ import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:im_stepper/stepper.dart';
@@ -25,10 +24,7 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes>
     with SingleTickerProviderStateMixin {
-  final gender = SelectFieldBloc(
-    name: 'gender',
-    items: ['male', 'female'],
-  );
+
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
   String ieeeMenber;
