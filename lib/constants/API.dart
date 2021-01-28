@@ -1,4 +1,4 @@
-final String baseUrl='https://credenzwebsite.herokuapp.com/';
+final String baseUrl='https://34.122.220.40/';
 final String signUpUrl=baseUrl+'signup';
 final String loginUrl=baseUrl+'login';
 final String newsUrl=baseUrl+'updates';
