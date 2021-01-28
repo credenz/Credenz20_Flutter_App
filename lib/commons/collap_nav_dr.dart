@@ -8,10 +8,17 @@ import 'package:credenz20/nav_pages/ping.dart';
 import 'package:credenz20/nav_pages/pisb.dart';
 import 'package:credenz20/nav_pages/sponsors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-class MenuDrawer extends StatelessWidget {
+import 'package:credenz20/loginPage.dart';
+class MenuDrawer extends StatefulWidget {
 
+  @override
+  _MenuDrawerState createState() => _MenuDrawerState();
+}
+
+class _MenuDrawerState extends State<MenuDrawer> {
   BoxDecoration get _gradient => BoxDecoration(
     // color: Color(0xff101010)
     gradient: LinearGradient(
@@ -24,7 +31,27 @@ class MenuDrawer extends StatelessWidget {
     ),
   );
 
+  bool loggedin=false;
+  final storage=FlutterSecureStorage();
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getInfo();
+  }
+
+  getInfo()async{
+    String accToken=await storage.read(key: 'accToken');
+    if(accToken==null){
+      loggedin=false;
+    }else{
+      setState(() {
+        loggedin=true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +137,7 @@ class MenuDrawer extends StatelessWidget {
                             leading: Icon(Icons.web_asset),
                             title: Text('Visit Website',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
-                              _launchURL('https://credenz-2c8cb.web.app/home');
+                              _launchURL('https://credenz.in/');
                               //Navigator.of(context).pop();
                             },
                           ),
@@ -130,9 +157,32 @@ class MenuDrawer extends StatelessWidget {
                             leading: Icon(Icons.policy),
                             title: Text('Privacy Policy',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
-
+                              _launchURL('https://docs.google.com/document/d/1mRYU1bio4h2CDVA8HMBzUgcMX4Drhx9hKOuG0zmjiVU/edit?usp=sharing');
                             },
                           ),
+                          Divider(
+                          ),
+                          loggedin?
+                          ListTile(
+                            leading: Icon(Icons.logout),
+                            title: Text('Logout',style: TextStyle(fontFamily: 'Segoe UI',)),
+                            onTap: () async{
+                              await storage.deleteAll();
+                              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                                  builder: (BuildContext cotext) => Login()
+                              ), (route) => false);
+
+                            },
+                          ):
+                          ListTile(
+                            leading: Icon(Icons.login),
+                            title: Text('Login',style: TextStyle(fontFamily: 'Segoe UI',)),
+                            onTap: () {
+                              Navigator.push(context,  MaterialPageRoute(
+                                  builder: (BuildContext cotext) => Login()));
+                            },
+                          ),
+
                           Divider(
                           ),
 
