@@ -1,9 +1,7 @@
 import 'dart:ffi';
 
-import 'package:credenz20/BottomNav/Contact.dart';
 import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:credenz20/nav_pages/developers.dart';
-import 'package:credenz20/nav_pages/editprofile.dart';
 import 'package:credenz20/nav_pages/myevents.dart';
 import 'package:credenz20/nav_pages/ping.dart';
 import 'package:credenz20/nav_pages/pisb.dart';

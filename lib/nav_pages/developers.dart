@@ -78,7 +78,7 @@ class PageViewWidget extends StatefulWidget {
 
 List<String> profilepic = [
   "images/atharva.jpg",
-  "images/vaibhav.png",
+  "images/vaibhav.jpg",
   "images/tanuj.jpg",
   "images/durvesh.jpg",
 ];

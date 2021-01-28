@@ -4,7 +4,6 @@ import 'package:credenz20/constants/EventData.dart';
 import 'package:credenz20/models/Event_Des_Model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 
 // import 'package:fluttertoast/fluttertoast.dart';
 import '../constants/theme.dart';
@@ -28,13 +27,6 @@ class WheelExample extends State<Events> {
 
   Widget _buildItem(int i) {
     return InkWell(
-        onTap: () {
-          Toast.show('$i', context,
-              textColor: Colors.red,
-              duration: Toast.LENGTH_SHORT,
-              gravity: Toast.BOTTOM,
-              backgroundColor: Colors.white);
-        },
         child: Center(
           child: isselected[i]
               ? ClipRRect(
