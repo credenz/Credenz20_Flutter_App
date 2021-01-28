@@ -110,7 +110,7 @@ class MenuDrawer extends StatelessWidget {
                             leading: Icon(Icons.web_asset),
                             title: Text('Visit Website',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
-                              _launchURL('https://credenz-2c8cb.web.app/home');
+                              _launchURL('https://credenz.in/');
                               //Navigator.of(context).pop();
                             },
                           ),
@@ -130,7 +130,7 @@ class MenuDrawer extends StatelessWidget {
                             leading: Icon(Icons.policy),
                             title: Text('Privacy Policy',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () {
-
+                              _launchURL('https://docs.google.com/document/d/1mRYU1bio4h2CDVA8HMBzUgcMX4Drhx9hKOuG0zmjiVU/edit?usp=sharing');
                             },
                           ),
                           Divider(

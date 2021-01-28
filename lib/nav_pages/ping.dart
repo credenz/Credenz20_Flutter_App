@@ -103,7 +103,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
                             colors: <Color>[Color(0xff4e50bc), Color(0xff55c2fc)],
                           ),
                         onPressed: () {
-                          launch('http://pictieee.in/');
+                          launch('https://pictieee.in/ping.html');
                         },
                       ),
 
@@ -157,7 +157,7 @@ class _AboutPingState extends State<AboutPing> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(image: AssetImage('images/ping.jpg',),fit: BoxFit.fitHeight),
+              image: DecorationImage(image: AssetImage('images/ping.png',),fit: BoxFit.fitHeight),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
