@@ -1,6 +1,5 @@
 import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/theme.dart';
-import 'package:credenz20/extra_lib/modified_slimy_card.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -50,7 +49,6 @@ class _AboutPISBState extends State<AboutPISB> with SingleTickerProviderStateMix
       body: StreamBuilder(
         // This streamBuilder reads the real-time status of SlimyCard.
         initialData: true,
-        stream: slimyCard.stream, //Stream of SlimyCard
         builder: ((BuildContext context, AsyncSnapshot snapshot) {
           return ListView(
             padding: EdgeInsets.zero,

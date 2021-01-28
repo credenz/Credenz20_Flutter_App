@@ -1,6 +1,5 @@
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:credenz20/extra_lib/modified_slimy_card.dart';
 
 
 class About extends StatelessWidget {
@@ -53,7 +52,6 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
           child: StreamBuilder(
             // This streamBuilder reads the real-time status of SlimyCard.
             initialData: true,
-            stream: slimyCard.stream, //Stream of SlimyCard
             builder: ((BuildContext context, AsyncSnapshot snapshot) {
               return ListView(
                 padding: EdgeInsets.zero,
