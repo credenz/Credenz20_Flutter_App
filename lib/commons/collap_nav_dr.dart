@@ -10,8 +10,13 @@ import 'package:credenz20/nav_pages/sponsors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-class MenuDrawer extends StatelessWidget {
+class MenuDrawer extends StatefulWidget {
 
+  @override
+  _MenuDrawerState createState() => _MenuDrawerState();
+}
+
+class _MenuDrawerState extends State<MenuDrawer> {
   BoxDecoration get _gradient => BoxDecoration(
     // color: Color(0xff101010)
     gradient: LinearGradient(
@@ -24,7 +29,7 @@ class MenuDrawer extends StatelessWidget {
     ),
   );
 
-
+bool loggedin=false;
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +138,24 @@ class MenuDrawer extends StatelessWidget {
                               _launchURL('https://docs.google.com/document/d/1mRYU1bio4h2CDVA8HMBzUgcMX4Drhx9hKOuG0zmjiVU/edit?usp=sharing');
                             },
                           ),
+                          Divider(
+                          ),
+                          loggedin?
+                          ListTile(
+                            leading: Icon(Icons.logout),
+                            title: Text('Logout',style: TextStyle(fontFamily: 'Segoe UI',)),
+                            onTap: () {
+
+                            },
+                          ):
+                          ListTile(
+                            leading: Icon(Icons.login),
+                            title: Text('Login',style: TextStyle(fontFamily: 'Segoe UI',)),
+                            onTap: () {
+
+                            },
+                          ),
+
                           Divider(
                           ),
 
