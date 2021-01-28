@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:credenz20/BottomNav/Contact.dart';
+import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:credenz20/nav_pages/developers.dart';
 import 'package:credenz20/nav_pages/editprofile.dart';
 import 'package:credenz20/nav_pages/myevents.dart';
@@ -12,6 +13,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:credenz20/loginPage.dart';
+
+import '../Home.dart';
 class MenuDrawer extends StatefulWidget {
 
   @override
@@ -168,9 +171,12 @@ class _MenuDrawerState extends State<MenuDrawer> {
                             title: Text('Logout',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () async{
                               await storage.deleteAll();
-                              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                                  builder: (BuildContext cotext) => Login()
-                              ), (route) => false);
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) => SlideDrawer(
+                                          drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))),
+                                      (route) => false);
 
                             },
                           ):

@@ -74,249 +74,257 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: Color(0xFF121212),
       body: SafeArea(
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: getProportionateScreenHeight(40),
-                ),
-                Text(
-                  "Sign Up",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: 'Segoe UI',
-                      color: Colors.white,
-                      fontSize: getProportionateScreenWidth(28),
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(20),
-                ),
-                Text(
-                  "Enter your details",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: 'Segoe UI',color: Colors.white),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(20),
-                ),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person,
-                          color: Color(0xff0aa9d7), size: 20),
-                      hintText: "Name",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none),
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        name = val;
-                      });
-                    },
+          child: Container(
+            decoration: BoxDecoration(
+                color: backColor,
+                image: DecorationImage(
+                  image: AssetImage("images/contactb.jpg"),
+                  fit: BoxFit.fill,
+                )),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: getProportionateScreenHeight(40),
                   ),
-                ),
-                SizedBox(height: _height / 30.0),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person,
-                          color: Color(0xff0aa9d7), size: 20),
-                      hintText: "Username",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none),
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        userName = val;
-                      });
-                    },
+                  Text(
+                    "Sign Up",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: 'Segoe UI',
+                        color: Colors.white,
+                        fontSize: getProportionateScreenWidth(28),
+                        fontWeight: FontWeight.bold),
                   ),
-                ),
-                SizedBox(height: _height / 30.0),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email,
-                          color: Color(0xff0aa9d7), size: 20),
-                      hintText: "Email",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none),
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        email = val;
-                      });
-                    },
+                  SizedBox(
+                    height: getProportionateScreenHeight(20),
                   ),
-                ),
-                SizedBox(height: _height / 30.0),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.phone,
-                          color: Color(0xff0aa9d7), size: 20),
-                      hintText: "Phone Number",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none),
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        phoneNumber = val;
-                      });
-                    },
+                  Text(
+                    "Enter your details",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: 'Segoe UI',color: Colors.white),
                   ),
-                ),
-                SizedBox(height: _height / 30.0),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.school,
-                          color: Color(0xff0aa9d7), size: 20),
-                      hintText: "College Name",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                          borderSide: BorderSide.none),
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        collegeName = val;
-                      });
-                    },
+                  SizedBox(
+                    height: getProportionateScreenHeight(20),
                   ),
-                ),
-                SizedBox(height: _height / 30.0),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.person,
                             color: Color(0xff0aa9d7), size: 20),
-                        hintText: "Password",
+                        hintText: "Name",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),
                             borderSide: BorderSide.none),
-                        suffixIcon: IconButton(
-                            icon: Icon(Icons.remove_red_eye),
-                            color: Color(0xff0aa9d7),
-                            onPressed: toggle)),
-                    onChanged: (val) {
-                      setState(() {
-                        password = val;
-                      });
-                    },
-                    obscureText: _obscureText,
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          name = val;
+                        });
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(height: _height / 30.0),
-                Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  elevation: _large ? 12 : (_medium ? 10 : 8),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Color(0xff0aa9d7),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.person,
                             color: Color(0xff0aa9d7), size: 20),
-                        hintText: "Confirm Password",
+                        hintText: "Username",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),
                             borderSide: BorderSide.none),
-                        suffixIcon: IconButton(
-                            icon: Icon(Icons.remove_red_eye),
-                            color: Color(0xff0aa9d7),
-                            onPressed: toggle)),
-                    onChanged: (val) {
-                      setState(() {
-                        password = val;
-                      });
-                    },
-                    obscureText: _obscureText,
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          userName = val;
+                        });
+                      },
+                    ),
                   ),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
-                //     decoration: BoxDecoration(
-                //       border: Border.all(color: Colors.white),
-                //       borderRadius: BorderRadius.circular(5),
-                //     ),
-                //     child: TextFormField(
-                //       style: textFieldStyle,
-                //       onChanged: (val){
-                //         setState(() {
-                //           password=val;
-                //         });
-                //       },
-                //       decoration: InputDecoration(
-                //           hintText: 'Password',
-                //         border: InputBorder.none,
-                //         contentPadding: EdgeInsets.only(left: 10),
-                //         hintStyle: hintTextStyle,
-                //       ),
-                //       obscureText: true,
-                //     ),
-                //   ),
-                // ),
-                SizedBox(
-                  height: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 60),
-                  child: RaisedGradientButton(
-                      height: 40.0,
-                      width: 40.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 20,),
-                          Text(
-                            'Sign Up',
-                            style: TextStyle(color: Colors.white,fontSize: 24),
-                          ),
-                          SizedBox(width: 20,),
-                          Icon(
-                            Icons.double_arrow_sharp,
-                            color: Colors.white,
-                            size: 25,
-                          ),
-                        ],
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email,
+                            color: Color(0xff0aa9d7), size: 20),
+                        hintText: "Email",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
                       ),
-                      gradient: LinearGradient(
-                        colors: commonGradient,
+                      onChanged: (val) {
+                        setState(() {
+                          email = val;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.phone,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.phone,
+                            color: Color(0xff0aa9d7), size: 20),
+                        hintText: "Phone Number",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
                       ),
-                      onPressed: () async {
-                        await makeRequest();
-                      }),
-                ),
-              ],
+                      onChanged: (val) {
+                        setState(() {
+                          phoneNumber = val;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.school,
+                            color: Color(0xff0aa9d7), size: 20),
+                        hintText: "College Name",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          collegeName = val;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock,
+                              color: Color(0xff0aa9d7), size: 20),
+                          hintText: "Password",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: BorderSide.none),
+                          suffixIcon: IconButton(
+                              icon: Icon(Icons.remove_red_eye),
+                              color: Color(0xff0aa9d7),
+                              onPressed: toggle)),
+                      onChanged: (val) {
+                        setState(() {
+                          password = val;
+                        });
+                      },
+                      obscureText: _obscureText,
+                    ),
+                  ),
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock,
+                              color: Color(0xff0aa9d7), size: 20),
+                          hintText: "Confirm Password",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: BorderSide.none),
+                          suffixIcon: IconButton(
+                              icon: Icon(Icons.remove_red_eye),
+                              color: Color(0xff0aa9d7),
+                              onPressed: toggle)),
+                      onChanged: (val) {
+                        setState(() {
+                          password = val;
+                        });
+                      },
+                      obscureText: _obscureText,
+                    ),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
+                  //     decoration: BoxDecoration(
+                  //       border: Border.all(color: Colors.white),
+                  //       borderRadius: BorderRadius.circular(5),
+                  //     ),
+                  //     child: TextFormField(
+                  //       style: textFieldStyle,
+                  //       onChanged: (val){
+                  //         setState(() {
+                  //           password=val;
+                  //         });
+                  //       },
+                  //       decoration: InputDecoration(
+                  //           hintText: 'Password',
+                  //         border: InputBorder.none,
+                  //         contentPadding: EdgeInsets.only(left: 10),
+                  //         hintStyle: hintTextStyle,
+                  //       ),
+                  //       obscureText: true,
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 60),
+                    child: RaisedGradientButton(
+                        height: 40.0,
+                        width: 40.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(width: 20,),
+                            Text(
+                              'Sign Up',
+                              style: TextStyle(color: Colors.white,fontSize: 24),
+                            ),
+                            SizedBox(width: 20,),
+                            Icon(
+                              Icons.double_arrow_sharp,
+                              color: Colors.white,
+                              size: 25,
+                            ),
+                          ],
+                        ),
+                        gradient: LinearGradient(
+                          colors: commonGradient,
+                        ),
+                        onPressed: () async {
+                          await makeRequest();
+                        }),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
