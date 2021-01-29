@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:upi_india/upi_india.dart';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
@@ -224,6 +225,8 @@ class _CartState extends State<Cart> {
     return load == true
         ? Scaffold(
             appBar: AppBar(
+              backwardsCompatibility: false,
+              systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
               centerTitle: true,
               leading: Builder(
                 builder: (context) {
