@@ -48,7 +48,9 @@ class _LoginState extends State<Login> {
       String msg=jsonDecode(response.body)['message'];
       print(msg);
       if(msg!=null){
-        Fluttertoast.showToast(msg: msg);
+        Fluttertoast.showToast(
+            backgroundColor: Colors.blue.shade600,
+            msg: msg);
         setState(() {
           error = msg;
         });
@@ -57,7 +59,6 @@ class _LoginState extends State<Login> {
         print(accessToken);
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
-        Fluttertoast.showToast(msg: 'Logged In');
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
       }
     }else{
