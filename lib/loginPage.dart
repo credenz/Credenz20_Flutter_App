@@ -59,11 +59,11 @@ class _LoginState extends State<Login> {
           error = msg;
         });
       }else{
-        Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
         String accessToken=jsonDecode(response.body)['accessToken'];
         print(accessToken);
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
+        Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
       }
     }else{
@@ -122,7 +122,6 @@ class _LoginState extends State<Login> {
 
       ),
       backgroundColor: Color(0xFF121212),
-      resizeToAvoidBottomPadding: true,
       body: SafeArea(
         child: Center(
           child: Container(
