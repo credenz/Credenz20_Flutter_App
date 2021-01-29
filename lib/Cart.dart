@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:upi_india/upi_india.dart';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,9 @@ class _CartState extends State<Cart> {
   int sum = 0;
   List list=List();
   List list1=List();
-  bool load = false;
+  bool load = true;
+  UpiIndia _upiIndia = UpiIndia();
+  List<UpiApp> apps;
 
   // Razorpay _razorpay;
   final children1 = <Widget>[];
@@ -35,6 +37,11 @@ class _CartState extends State<Cart> {
     // _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     // _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     // getEventPrices();
+    _upiIndia.getAllUpiApps().then((value) {
+      setState(() {
+        apps = value;
+      });
+    });
     loadCart();
   }
   //
@@ -132,6 +139,20 @@ class _CartState extends State<Cart> {
   }
 */
   pay() async {
+    // UpiApp app = UpiApp.phonePe;
+     UpiResponse upiResponse=await _upiIndia.startTransaction(
+      app: apps[0],
+      receiverUpiId: '9834570868@okbizaxis',
+      //  I took only the first app from List<UpiApp> app.
+      // receiverId: 'tester@test', // Make Sure to change this UPI Id
+      receiverName: 'Tester',
+      transactionRefId: 'TestingId',
+      transactionNote: 'Not actual. Just an example.',
+      amount: 1,
+    );
+     Fluttertoast.showToast(msg: upiResponse.status);
+     print(upiResponse.transactionId);
+     print(upiResponse.status);
     /*  var response = AllInOneSdk.startTransaction(
         mid, orderId, "100", txnToken, null, isStaging, restrictAppInvoke);
     response.then((value) {
@@ -420,7 +441,8 @@ class _CartState extends State<Cart> {
                                         gradient: LinearGradient(
                                           colors: commonGradient,
                                         ),
-                                        onPressed: ()  {
+                                        onPressed: ()  async{
+                                          // await pay();
                                           Fluttertoast.showToast(
                                               backgroundColor: Colors.blue.shade600,
                                               msg: 'Payment gateway will open soon. Stay tuned!');
