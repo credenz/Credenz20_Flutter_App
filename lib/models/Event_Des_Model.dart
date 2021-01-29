@@ -425,8 +425,8 @@ await dialogue(context);
                               ),
                             ),
                             padding:
-                            const EdgeInsets.only(left: 10.0),
-                            child: DropdownButton(
+                            const EdgeInsets.all(10.0),
+                            child: DropdownButtonFormField(
                               items: [
                                 DropdownMenuItem(
                                   child: Text('IEEE member'),
@@ -444,15 +444,16 @@ await dialogue(context);
                                 });
                               },
                               value: ieeeMenber,
-                              hint: Text('Select Category'),
+                              decoration: InputDecoration.collapsed(hintText: 'Select Category'),
+                              // hint: Text('Select Category'),
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            padding: EdgeInsets.only(left: 10),
-                            child: DropdownButton<String>(
+                            padding: EdgeInsets.all(10),
+                            child: DropdownButtonFormField<String>(
                               items: [
                                 DropdownMenuItem(
                                   child: Text('FE'),
@@ -478,7 +479,8 @@ await dialogue(context);
                                 });
                               },
                               value: val1,
-                              hint: Text('Select Year'),
+                              decoration: InputDecoration.collapsed(hintText: 'Select Year'),
+                              // hint: Text('Select Year'),
                             ),
                             decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
@@ -772,8 +774,8 @@ await dialogue(context);
                                       Padding(
                                         padding: const EdgeInsets.all(10.0),
                                         child: Container(
-                                          padding: EdgeInsets.only(left: 10),
-                                          child: DropdownButton(
+                                          padding: EdgeInsets.all( 10),
+                                          child: DropdownButtonFormField(
                                             items: [
                                               DropdownMenuItem(
                                                 child: Text('FE'),
@@ -799,7 +801,7 @@ await dialogue(context);
                                               });
                                             },
                                             value: val1,
-                                            hint: Text('Select Year'),
+                                            decoration: InputDecoration.collapsed(hintText: 'Select Year'),
                                           ),
                                           decoration: ShapeDecoration(
                                             shape: RoundedRectangleBorder(
@@ -816,8 +818,8 @@ await dialogue(context);
                                         padding: const EdgeInsets.all(10.0),
                                         child: Container(
                                           padding:
-                                              const EdgeInsets.only(left: 10.0),
-                                          child: DropdownButton(
+                                              const EdgeInsets.all( 10.0),
+                                          child: DropdownButtonFormField(
                                             items: [
                                               DropdownMenuItem(
                                                 child: Text('IEEE member'),
@@ -835,7 +837,7 @@ await dialogue(context);
                                               });
                                             },
                                             value: val2,
-                                            hint: Text('Select Category'),
+                                            decoration: InputDecoration.collapsed(hintText: "Select Category"),
                                           ),
                                           decoration: ShapeDecoration(
                                             shape: RoundedRectangleBorder(

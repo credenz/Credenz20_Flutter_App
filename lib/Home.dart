@@ -126,6 +126,7 @@ class _HomeState extends State<Home> {
         backgroundColor: drawerBackgroundColor,
         title: Text(widget.title),*/
       appBar: AppBar(
+        brightness: Brightness.dark,
         centerTitle: true,
         leading: Builder(
           builder: (context) {
