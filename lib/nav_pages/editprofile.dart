@@ -6,6 +6,7 @@ import 'package:credenz20/commons/slide_drawer.dart';
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -129,6 +130,8 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backwardsCompatibility: false,
+          systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
           centerTitle: true,
           backgroundColor: drawerBackgroundColor,
           title: Text("Edit Profile",style: TextStyle(fontFamily: 'Segoe UI',),),

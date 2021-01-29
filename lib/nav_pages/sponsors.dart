@@ -1,6 +1,7 @@
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 class Sponsors extends StatefulWidget {
   @override
   _SponsorsState createState() => _SponsorsState();
@@ -120,6 +121,8 @@ class _SponsorsState extends State<Sponsors> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backwardsCompatibility: false,
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
         centerTitle: true,
         backgroundColor: primary,
         title: Text("Sponsors",style: TextStyle(color: Colors.white),),

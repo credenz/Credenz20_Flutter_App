@@ -4,6 +4,7 @@ import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/loginPage.dart';
 import 'package:credenz20/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'BottomNav/About.dart';
@@ -126,6 +127,8 @@ class _HomeState extends State<Home> {
         backgroundColor: drawerBackgroundColor,
         title: Text(widget.title),*/
       appBar: AppBar(
+        backwardsCompatibility: false,
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
         centerTitle: true,
         leading: Builder(
           builder: (context) {

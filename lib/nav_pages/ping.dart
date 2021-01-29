@@ -1,6 +1,7 @@
 import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -10,6 +11,8 @@ class Ping extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("P.I.N.G.", style: TextStyle(fontFamily: 'Segoe UI',),),
+        backwardsCompatibility: false,
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
 
         centerTitle: true,
         backgroundColor: primary,

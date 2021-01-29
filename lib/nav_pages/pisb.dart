@@ -1,6 +1,7 @@
 import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PISB extends StatelessWidget {
@@ -8,6 +9,8 @@ class PISB extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backwardsCompatibility: false,
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
         title: Text("PISB", style: TextStyle(fontFamily: 'Segoe UI',)),
         centerTitle: true,
         backgroundColor: primary,
