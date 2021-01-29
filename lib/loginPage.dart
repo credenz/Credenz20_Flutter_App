@@ -32,6 +32,7 @@ class _LoginState extends State<Login> {
   String error = "";
   bool _obscuretext = true;
   final storage=FlutterSecureStorage();
+  bool load=false;
 
   makeRequest()async{
     userName = usernameController.text;
@@ -48,6 +49,9 @@ class _LoginState extends State<Login> {
       String msg=jsonDecode(response.body)['message'];
       print(msg);
       if(msg!=null){
+        setState(() {
+          load=false;
+        });
         Fluttertoast.showToast(
             backgroundColor: Colors.blue.shade600,
             msg: msg);
@@ -55,6 +59,7 @@ class _LoginState extends State<Login> {
           error = msg;
         });
       }else{
+        Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
         String accessToken=jsonDecode(response.body)['accessToken'];
         print(accessToken);
         await storage.write(key: "accToken", value: accessToken);
@@ -91,7 +96,22 @@ class _LoginState extends State<Login> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return load == true
+        ? Container(
+        height: MediaQuery.of(context).size.height,
+
+        //color: Color(0xFF000000),
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            //color: notiBackColor,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/contactb.jpg"),
+                  fit: BoxFit.fill,
+                )),
+          ),
+        )):Scaffold(
       appBar: AppBar(
         title: Text("LOGIN",
             style: TextStyle(
@@ -227,6 +247,9 @@ class _LoginState extends State<Login> {
                           colors: commonGradient,
                         ),
                         onPressed: () async {
+                          setState(() {
+                            load=true;
+                          });
                           await makeRequest();
                         }),
                   ),
