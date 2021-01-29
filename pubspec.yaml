@@ -31,8 +31,6 @@ dependencies:
   flutter_secure_storage: ^3.3.5
   flutter_spinkit: ^4.1.2+1
   upi_india: ^2.2.0+1
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   im_stepper: ^0.1.2+9
   badges: ^1.1.6
