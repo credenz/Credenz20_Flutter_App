@@ -88,7 +88,6 @@ class _SignUpState extends State<SignUp> {
                 )),
           ),
         )):Scaffold(
-      resizeToAvoidBottomPadding: true,
       backgroundColor: Color(0xFF121212),
       body: SafeArea(
         child: Center(
