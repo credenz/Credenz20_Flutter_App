@@ -32,6 +32,7 @@ class _SignUpState extends State<SignUp> {
   String password;
   String phoneNumber;
   String userName;
+  bool load=false;
   final storage = FlutterSecureStorage();
 
   makeRequest() async {
@@ -50,6 +51,9 @@ class _SignUpState extends State<SignUp> {
       await storage.write(key: 'username', value: userName);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
     } else {
+      setState(() {
+        load=false;
+      });
       String msg = jsonDecode(response.body)['message'];
       Fluttertoast.showToast(
           msg: msg.substring(0, 1).toUpperCase() + msg.substring(1),backgroundColor: Colors.blue.shade600);
@@ -69,7 +73,21 @@ class _SignUpState extends State<SignUp> {
       });
     }
 
-    return Scaffold(
+    return load==true?Container(
+        height: MediaQuery.of(context).size.height,
+
+        //color: Color(0xFF000000),
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            //color: notiBackColor,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/contactb.jpg"),
+                  fit: BoxFit.fill,
+                )),
+          ),
+        )):Scaffold(
       resizeToAvoidBottomPadding: true,
       backgroundColor: Color(0xFF121212),
       body: SafeArea(
@@ -320,6 +338,9 @@ class _SignUpState extends State<SignUp> {
                           colors: commonGradient,
                         ),
                         onPressed: () async {
+                          setState(() {
+                            load=true;
+                          });
                           await makeRequest();
                         }),
                   ),
