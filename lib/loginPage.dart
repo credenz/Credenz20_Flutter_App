@@ -106,7 +106,6 @@ class _LoginState extends State<Login> {
 
       ),
       backgroundColor: Color(0xFF121212),
-      resizeToAvoidBottomPadding: true,
       body: SafeArea(
         child: Center(
           child: Container(

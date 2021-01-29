@@ -70,7 +70,6 @@ class _SignUpState extends State<SignUp> {
     }
 
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
       backgroundColor: Color(0xFF121212),
       body: SafeArea(
         child: Center(
