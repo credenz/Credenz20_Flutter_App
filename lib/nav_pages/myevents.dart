@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/theme.dart';
+import 'package:credenz20/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -21,6 +22,12 @@ class _MyEventsState extends State<MyEvents> {
   getEvents()async{
     String username=await storage.read(key: 'username');
     String accToken=await storage.read(key: "accToken");
+
+    if(accToken==null || accToken.isEmpty){
+      Navigator.pop(context);
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+    }
+
     if(username!=null && accToken!=null){
       String url=baseUrl+username+'/present';
       Map<String,String>headers={

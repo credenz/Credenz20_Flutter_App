@@ -275,6 +275,8 @@ class _CartState extends State<Cart> {
             child: Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
+                  backwardsCompatibility: false,
+                  systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
                   centerTitle: true,
                   leading: Builder(
                     builder: (context) {

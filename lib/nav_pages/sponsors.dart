@@ -132,7 +132,7 @@ class _SponsorsState extends State<Sponsors> {
           color: notiBackColor,
           image: DecorationImage(
             image: AssetImage("images/sponsorsbackground.jpg"),
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
           )),
         child: ListWheelScrollView(
           itemExtent: MediaQuery.of(context).size.width,
