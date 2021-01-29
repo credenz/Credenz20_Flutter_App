@@ -52,7 +52,7 @@ class _SignUpState extends State<SignUp> {
     } else {
       String msg = jsonDecode(response.body)['message'];
       Fluttertoast.showToast(
-          msg: msg.substring(0, 1).toUpperCase() + msg.substring(1));
+          msg: msg.substring(0, 1).toUpperCase() + msg.substring(1),backgroundColor: Colors.blue.shade600);
     }
   }
 
