@@ -32,6 +32,7 @@ class _LoginState extends State<Login> {
   String error = "";
   bool _obscuretext = true;
   final storage=FlutterSecureStorage();
+  bool load=false;
 
   makeRequest()async{
     userName = usernameController.text;
@@ -48,6 +49,9 @@ class _LoginState extends State<Login> {
       String msg=jsonDecode(response.body)['message'];
       print(msg);
       if(msg!=null){
+        setState(() {
+          load=false;
+        });
         Fluttertoast.showToast(
             backgroundColor: Colors.blue.shade600,
             msg: msg);
@@ -59,6 +63,7 @@ class _LoginState extends State<Login> {
         print(accessToken);
         await storage.write(key: "accToken", value: accessToken);
         await storage.write(key: 'username', value: userName);
+        Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
       }
     }else{
@@ -91,7 +96,22 @@ class _LoginState extends State<Login> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return load == true
+        ? Container(
+        height: MediaQuery.of(context).size.height,
+
+        //color: Color(0xFF000000),
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            //color: notiBackColor,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/contactb.jpg"),
+                  fit: BoxFit.fill,
+                )),
+          ),
+        )):Scaffold(
       appBar: AppBar(
         title: Text("LOGIN",
             style: TextStyle(
@@ -102,7 +122,6 @@ class _LoginState extends State<Login> {
 
       ),
       backgroundColor: Color(0xFF121212),
-      resizeToAvoidBottomPadding: true,
       body: SafeArea(
         child: Center(
           child: Container(
@@ -227,6 +246,9 @@ class _LoginState extends State<Login> {
                           colors: commonGradient,
                         ),
                         onPressed: () async {
+                          setState(() {
+                            load=true;
+                          });
                           await makeRequest();
                         }),
                   ),

@@ -4,3 +4,4 @@ final String loginUrl=baseUrl+'login';
 final String newsUrl=baseUrl+'updates';
 final String userProfileUrl=baseUrl+'user/';
 final String allEventUrl=baseUrl+'allevents';
+final String sponsorUrl=baseUrl+'sponsors';
