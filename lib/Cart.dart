@@ -73,6 +73,7 @@ class _CartState extends State<Cart> {
     grpEvent=[];
     grpName=[];
     user2=[];
+    String ieee=await storage.read(key: 'ieee');
     user3=[];
     list = List();
     for (int i = 0; i < 12; i++) {
@@ -104,8 +105,8 @@ class _CartState extends State<Cart> {
           grpName.add(' ');
         }
         list.add(eventName);
-        list1.add(ieeePrices[i]);
-         sum += ieeePrices[i];
+        ieee=='true'?list1.add(ieeePrices[i]):list1.add(nonIeeePrices[i]);
+         sum +=  ieee=='true'?ieeePrices[i]:nonIeeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
