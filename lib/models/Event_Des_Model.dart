@@ -233,7 +233,7 @@ class _EventDesState extends State<EventDes>
                     else {
                       _animationController.reverse();
 
-                      await dialogue1(context);
+                      await addToCart();
                     }
                     // setState(() {
                     //   favorite = !favorite;
@@ -286,7 +286,7 @@ class _EventDesState extends State<EventDes>
                     }else{
                     _animationController.reverse();
 
-                    await dialogue1(context);}
+                    await addToCart();}
                     // setState(() {
                     //   favorite = !favorite;
                     //   // addToCart();
@@ -536,6 +536,7 @@ await dialogue(context);
   }
 
   Future<void> dialogue(BuildContext context) async {
+    final _formKey = GlobalKey<FormState>();
     part1Controller.text=name;
     String val1;
     String val2;
@@ -558,343 +559,186 @@ await dialogue(context);
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15.0)
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        NumberStepper(
-                          numbers: [
-                            1,
-                            2,
-                          ],
-                          stepRadius: 12,
-                          activeStep: activeStep,
-                          onStepReached: (x) {
-                            setState(() {
-                              activeStep = x;
-                            });
-                          },
-                        ),
-                        activeStep == 0
-                            ? Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      enabled: false,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      controller: part1Controller,
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.name,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 1',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: part4Controller,
+                                        validator: (String value) {
+                                          if (value.isEmpty) return 'Team Name cannot be empty';
+
+                                          return null;
+                                        },
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                            BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Team Name',
+                                          labelStyle:
+                                          TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                            BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(5.0),
+                                          ),
                                         ),
                                       ),
                                     ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        enabled: false,
+                                        // validator: (String value) {
+                                        //   if (value.isEmpty) return 'Email cannot be empty';
+                                        //
+                                        //   return null;
+                                        // },
+                                        onTap: () {
+                                          Fluttertoast.showToast(backgroundColor: Colors.blue.shade600,
+                                              msg: "First username is non-editable.");
+                                          },
+                                        controller: part1Controller,
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.name,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Username 1',
+                                          labelStyle:
+                                              TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: part2Controller,
+                                        // validator: (String value) {
+                                        //   if (value.isEmpty) return 'Email cannot be empty';
+                                        //
+                                        //   return null;
+                                        // },
+
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Username 2',
+                                          labelStyle:
+                                              TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: part3Controller,
+                                        // validator: (String value) {
+                                        //   if (value.isEmpty) return 'Email cannot be empty';
+                                        //
+                                        //   return null;
+                                        // },
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Username 3',
+                                          labelStyle:
+                                              TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+
+
+
+
+
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  RaisedGradientButton(
+                                    height: 40,
+                                    width: 80,
+                                    gradient: LinearGradient(colors: commonGradient),
+                                    child: activeStep == 0 ? Text("Cancel") : Text("Back"),
+                                    onPressed: () {
+                                      if (activeStep == 1) {
+                                        setState(() {
+                                          activeStep = 0;
+                                        });
+                                      } else
+                                        Navigator.of(context).pop();
+                                    },
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      controller: part2Controller,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 2',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      controller: part3Controller,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 3',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      controller: part4Controller,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 4',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                      ),
-                                    ),
+                                  RaisedGradientButton(
+                                    height: 40,
+                                    width: 80,
+                                    gradient: LinearGradient(colors: commonGradient),
+                                    child: Text("Submit"),
+                                    onPressed: () async{
+                                      if(_formKey.currentState.validate())
+                                        {
+                                          await addToCart();
+                                          Navigator.pop(context);
+                                        }
+                                    },
                                   ),
                                 ],
-                              )
-                            : activeStep == 1
-                                ? Column(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: email1Controller,
-                                          // validator: (String value) {
-                                          //   if (value.isEmpty) return 'Email cannot be empty';
-                                          //
-                                          //   return null;
-                                          // },
-                                          style: TextStyle(color: Colors.black),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            isDense: true,
-                                            labelText: 'Email 1',
-                                            labelStyle:
-                                                TextStyle(color: Colors.black),
-                                            disabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: email2Controller,
-                                          // validator: (String value) {
-                                          //   if (value.isEmpty) return 'Email cannot be empty';
-                                          //
-                                          //   return null;
-                                          // },
-                                          style: TextStyle(color: Colors.black),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            isDense: true,
-                                            labelText: 'Email 2',
-                                            labelStyle:
-                                                TextStyle(color: Colors.black),
-                                            disabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Container(
-                                          padding: EdgeInsets.all( 10),
-                                          child: DropdownButtonFormField(
-                                            items: [
-                                              DropdownMenuItem(
-                                                child: Text('FE'),
-                                                value: 'FE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('SE'),
-                                                value: 'SE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('TE'),
-                                                value: 'TE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('BE'),
-                                                value: 'BE',
-                                              ),
-                                            ],
-                                            isExpanded: true,
-                                            onChanged: (String val) {
-                                              setState(() {
-                                                val1 = val;
-                                              });
-                                            },
-                                            value: val1,
-                                            decoration: InputDecoration.collapsed(hintText: 'Select Year'),
-                                          ),
-                                          decoration: ShapeDecoration(
-                                            shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 1.0,
-                                                  style: BorderStyle.solid),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.all( 10.0),
-                                          child: DropdownButtonFormField(
-                                            items: [
-                                              DropdownMenuItem(
-                                                child: Text('IEEE member'),
-                                                value: 'IEEE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('Non-IEEE member'),
-                                                value: 'Non',
-                                              ),
-                                            ],
-                                            isExpanded: true,
-                                            onChanged: (String val) {
-                                              setState(() {
-                                                val2 = val;
-                                              });
-                                            },
-                                            value: val2,
-                                            decoration: InputDecoration.collapsed(hintText: "Select Category"),
-                                          ),
-                                          decoration: ShapeDecoration(
-                                            shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 1.0,
-                                                  style: BorderStyle.solid),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                            )
 
-                                    ],
-                                  )
-                                : Column(
-                                    children: [
-
-                                    ],
-                                  ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                                RaisedGradientButton(
-                                  height: 40,
-                                  width: 80,
-                                  gradient: LinearGradient(colors: commonGradient),
-                                  child: activeStep == 0 ? Text("Cancel") : Text("Back"),
-                                  onPressed: () {
-                                    if (activeStep == 1) {
-                                      setState(() {
-                                        activeStep = 0;
-                                      });
-                                    } else
-                                      Navigator.of(context).pop();
-                                  },
-                                ),
-                                RaisedGradientButton(
-                                  height: 40,
-                                  width: 80,
-                                  gradient: LinearGradient(colors: commonGradient),
-                                  child: activeStep == 0 ? Text('Next') : Text("Submit"),
-                                  onPressed: ()async{
-                                    if (activeStep == 0) {
-                                      setState(() {
-                                        activeStep = 1;
-                                      });
-                                    } else {
-                                      addToCart();
-                                      Navigator.of(context).pop();
-                                    }
-                                  },
-                                ),
-                              ],
-                          )
-
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
