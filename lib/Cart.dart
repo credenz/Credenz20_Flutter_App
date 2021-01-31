@@ -20,6 +20,10 @@ class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
   int sum = 0;
   List list=List();
+  List<bool>grpEvent=[];
+  List<String>grpName;
+  List<String>user2;
+  List<String>user3;
   List list1=List();
   bool load = true;
   UpiIndia _upiIndia = UpiIndia();
@@ -66,11 +70,35 @@ class _CartState extends State<Cart> {
   loadCart() async {
     sum = 0;
     children1.clear();
+    grpEvent=[];
+    grpName=[];
     list = List();
     for (int i = 0; i < 12; i++) {
       bool pre = await storage.containsKey(key: '$i');
       if (pre) {
         String eventName = await storage.read(key: '$i');
+        bool b=await storage.containsKey(key: '${i}grp');
+        grpEvent.add(b);
+        if(b){
+          String name=await storage.read(key: '${i}grp');
+          grpName.add(name);
+          bool c=await storage.containsKey(key: '${i}part2');
+          if(c){
+            String us2=await storage.read(key: '${i}part2');
+            user2.add(us2);
+          }else{
+            user2.add(' ');
+          }
+          bool d=await storage.containsKey(key: '${i}part3');
+          if(d){
+            String us2=await storage.read(key: '${i}part3');
+            user3.add(us2);
+          }else{
+            user3.add(' ');
+          }
+        }else{
+          grpName.add(' ');
+        }
         list.add(eventName);
         list1.add(ieeePrices[i]);
          sum += ieeePrices[i];
@@ -348,6 +376,17 @@ class _CartState extends State<Cart> {
                                               fontWeight: FontWeight.w600,
                                               color: textColor),
                                         ),
+                                        SizedBox(height: 5),
+                                        grpEvent[pos]?Text(
+                                          "Group: ${grpName[pos]}",
+                                          style: TextStyle(
+                                              fontFamily: 'Segoe UI',
+                                              fontWeight: FontWeight.w600,
+                                              color: textColor),
+                                        ):Text('Solo',style: TextStyle(
+                                            fontFamily: 'Segoe UI',
+                                            fontWeight: FontWeight.w600,
+                                            color: textColor),),
                                       ],
                                     ),
                                   ],

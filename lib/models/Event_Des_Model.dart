@@ -39,23 +39,39 @@ class _EventDesState extends State<EventDes>
   String val1;
   List<String> options1 = ["IEEE Member", "Non IEEE Member"];
   TextEditingController part1Controller=TextEditingController();
-  TextEditingController email1Controller=TextEditingController();
   TextEditingController part2Controller=TextEditingController();
-  TextEditingController email2Controller=TextEditingController();
   TextEditingController part3Controller=TextEditingController();
-  TextEditingController part4Controller=TextEditingController();
+  TextEditingController teamController=TextEditingController();
   String accToken;
 
-  addToCart() async {
+  addToCart({bool grp=false}) async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
     if (pre) {
       Fluttertoast.showToast(
           backgroundColor: Colors.blue.shade600,
           msg: 'Event is already added in Cart');
     } else {
-      await storage.write(
-          key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
-      Fluttertoast.showToast(msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+      if(grp==false) {
+        await storage.write(
+            key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+        Fluttertoast.showToast(
+          msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+      }else{
+        await storage.write(
+            key: '${widget.eventIndex}grp', value: teamController.text.trim());
+        await storage.write(
+            key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+        if(part2Controller.text.trim().isNotEmpty){
+          await storage.write(
+              key: '${widget.eventIndex}part2', value: part2Controller.text.trim());
+        }
+        if(part3Controller.text.trim().isNotEmpty){
+          await storage.write(
+              key: '${widget.eventIndex}part3', value: part3Controller.text.trim());
+        }
+        Fluttertoast.showToast(
+          msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+      }
     }
   }
 
@@ -212,28 +228,28 @@ class _EventDesState extends State<EventDes>
               backGroundColor: Colors.white,
               items: <Bubble>[
                 // Floating action menu item
-                Bubble(
-                  title: "Solo   ",
-                  iconColor: Colors.white,
-                  bubbleColorGradient: commonGradient,
-                  icon: Icons.person,
-                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-                  onPress: () async {
-                    if(accToken==null || accToken.isEmpty){
-                      Navigator.pop(context);
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
-                    }
-                    else {
-                      _animationController.reverse();
-
-                      await addToCart();
-                    }
-                    // setState(() {
-                    //   favorite = !favorite;
-                    //   addToCart();
-                    // });
-                  },
-                ),
+                // Bubble(
+                //   title: "Solo   ",
+                //   iconColor: Colors.white,
+                //   bubbleColorGradient: commonGradient,
+                //   icon: Icons.person,
+                //   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                //   onPress: () async {
+                //     if(accToken==null || accToken.isEmpty){
+                //       Navigator.pop(context);
+                //       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                //     }
+                //     else {
+                //       _animationController.reverse();
+                //
+                //       await addToCart();
+                //     }
+                //     // setState(() {
+                //     //   favorite = !favorite;
+                //     //   addToCart();
+                //     // });
+                //   },
+                // ),
                 // Floating action menu item
                 Bubble(
                   title: "Group",
@@ -561,7 +577,7 @@ await dialogue(context);
                                     Padding(
                                       padding: EdgeInsets.all(8),
                                       child: TextFormField(
-                                        controller: part4Controller,
+                                        controller: teamController,
                                         validator: (String value) {
                                           if (value.isEmpty) return 'Team Name cannot be empty';
 
@@ -592,12 +608,13 @@ await dialogue(context);
                                     Padding(
                                       padding: EdgeInsets.all(8),
                                       child: TextFormField(
-                                        enabled: false,
+                                        // enabled: false,
                                         // validator: (String value) {
                                         //   if (value.isEmpty) return 'Email cannot be empty';
                                         //
                                         //   return null;
                                         // },
+                                        readOnly: true,
                                         onTap: () {
                                           Fluttertoast.showToast(backgroundColor: Colors.blue.shade600,
                                               msg: "First username is non-editable.");
@@ -606,6 +623,7 @@ await dialogue(context);
                                         style: TextStyle(color: Colors.black),
                                         keyboardType: TextInputType.name,
                                         decoration: InputDecoration(
+                                          // enabled: false,
                                           enabledBorder: OutlineInputBorder(
                                             borderSide:
                                                 BorderSide(color: Colors.black),
@@ -691,13 +709,7 @@ await dialogue(context);
 
                                   ],
                                 ),
-
-
-
-
-
-
-                            Row(
+                          Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                   RaisedGradientButton(
@@ -722,7 +734,7 @@ await dialogue(context);
                                     onPressed: () async{
                                       if(_formKey.currentState.validate())
                                         {
-                                          await addToCart();
+                                          await addToCart(grp: true);
                                           Navigator.pop(context);
                                         }
                                     },
