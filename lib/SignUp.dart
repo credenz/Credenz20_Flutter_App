@@ -20,6 +20,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String ieeeMenber;
   double _height;
   double _width;
   double _pixelRatio;
@@ -291,6 +292,33 @@ class _SignUpState extends State<SignUp> {
                       },
                     ),
                   ),
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: DropdownButtonFormField<String>(
+                      items: [
+                        DropdownMenuItem(
+                          child: Text('IEEE member'),
+                          value: 'IEEE',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('Non-IEEE member'),
+                          value: 'Non',
+                        ),
+                      ],
+                      isExpanded: true,
+                      onChanged: (String val) {
+                        setState(() {
+                          ieeeMenber = val;
+                        });
+                      },
+                      value: ieeeMenber,
+                      decoration: InputDecoration.collapsed(hintText: 'Select Category'),
+                      // hint: Text('Select Category'),
+                    ),
+                  ),
+
                   SizedBox(height: _height / 30.0),
                   Material(
                     borderRadius: BorderRadius.circular(10.0),
