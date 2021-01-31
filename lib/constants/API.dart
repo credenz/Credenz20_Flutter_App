@@ -5,3 +5,5 @@ final String newsUrl=baseUrl+'updates';
 final String userProfileUrl=baseUrl+'user/';
 final String allEventUrl=baseUrl+'allevents';
 final String sponsorUrl=baseUrl+'sponsors';
+final String allUserUrl=baseUrl+'allusers';
+final String groupRegisterUrl=baseUrl+'addteam';
