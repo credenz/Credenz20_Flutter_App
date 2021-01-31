@@ -26,16 +26,52 @@ class _SignUpState extends State<SignUp> {
   bool _large;
   bool _medium;
   bool _obscureText = true;
+  TextEditingController nameController=TextEditingController();
+  TextEditingController usernameController=TextEditingController();
+  TextEditingController emailController=TextEditingController();
+  TextEditingController phoneController=TextEditingController();
+  TextEditingController collegeController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
+  TextEditingController password1Controller=TextEditingController();
+  // TextEditingController emailController;
   String name;
   String email;
   String collegeName;
-  String password;
+  String password="";
+  String password1="";
   String phoneNumber;
   String userName;
   bool load=false;
   final storage = FlutterSecureStorage();
 
   makeRequest() async {
+    if(nameController.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter name',backgroundColor: Colors.blue.shade600);
+      return;
+    }else if(usernameController.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter username',backgroundColor: Colors.blue.shade600);
+      return;
+    }else if(emailController.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter email',backgroundColor: Colors.blue.shade600);
+      return;
+    }else if(collegeController.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter college name',backgroundColor: Colors.blue.shade600);
+      return;
+    }else if(passwordController.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter password',backgroundColor: Colors.blue.shade600);
+      return;
+    }else if(password1Controller.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter confirm password',backgroundColor: Colors.blue.shade600);
+      return;
+    }
+    if(passwordController.text.trim()!=password1Controller.text.trim()) {
+      Fluttertoast.showToast(
+          msg: 'Passwords do not match', backgroundColor: Colors.blue.shade600);
+      return;
+    }
+    setState(() {
+      load=true;
+    });
     String url = signUpUrl;
     Map<String, String> headers = {"Content-Type": "application/json"};
     String body =
@@ -49,6 +85,8 @@ class _SignUpState extends State<SignUp> {
       await storage.write(
           key: "accToken", value: jsonDecode(response.body)['accessToken']);
       await storage.write(key: 'username', value: userName);
+      await storage.write(key: 'email', value: email);
+      Fluttertoast.showToast(msg: 'Signed Up',backgroundColor: Colors.blue.shade600);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
     } else {
       setState(() {
@@ -58,6 +96,20 @@ class _SignUpState extends State<SignUp> {
       Fluttertoast.showToast(
           msg: msg.substring(0, 1).toUpperCase() + msg.substring(1),backgroundColor: Colors.blue.shade600);
     }
+  }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    nameController.dispose();
+    usernameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    collegeController.dispose();
+    passwordController.dispose();
+    password1Controller.dispose();
   }
 
   @override
@@ -129,6 +181,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: nameController,
                       keyboardType: TextInputType.text,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -151,6 +204,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: usernameController,
                       keyboardType: TextInputType.text,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -173,6 +227,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -195,6 +250,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: phoneController,
                       keyboardType: TextInputType.phone,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -217,6 +273,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: collegeController,
                       keyboardType: TextInputType.text,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -239,6 +296,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: passwordController,
                       keyboardType: TextInputType.text,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -265,6 +323,7 @@ class _SignUpState extends State<SignUp> {
                     borderRadius: BorderRadius.circular(10.0),
                     elevation: _large ? 12 : (_medium ? 10 : 8),
                     child: TextFormField(
+                      controller: password1Controller,
                       keyboardType: TextInputType.text,
                       cursorColor: Color(0xff0aa9d7),
                       decoration: InputDecoration(
@@ -280,7 +339,7 @@ class _SignUpState extends State<SignUp> {
                               onPressed: toggle)),
                       onChanged: (val) {
                         setState(() {
-                          password = val;
+                          password1 = val;
                         });
                       },
                       obscureText: _obscureText,
@@ -313,7 +372,7 @@ class _SignUpState extends State<SignUp> {
                     height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 60),
+                    padding: const EdgeInsets.symmetric(horizontal: 60,vertical: 20),
                     child: RaisedGradientButton(
                         height: 40.0,
                         width: 40.0,
@@ -337,9 +396,6 @@ class _SignUpState extends State<SignUp> {
                           colors: commonGradient,
                         ),
                         onPressed: () async {
-                          setState(() {
-                            load=true;
-                          });
                           await makeRequest();
                         }),
                   ),

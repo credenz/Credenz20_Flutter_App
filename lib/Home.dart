@@ -43,6 +43,7 @@ class _HomeState extends State<Home> {
   final PageStorageBucket bucket = PageStorageBucket();
   int currentIndex = 2;
   PageController pageController;
+  String username;
   final securestorage = FlutterSecureStorage();
 
 
@@ -91,6 +92,7 @@ class _HomeState extends State<Home> {
 
   getLogIn()async{
     accToken=await securestorage.read(key: 'accToken');
+    username=await securestorage.read(key: 'username');
   }
 
   cartNo() async {
@@ -243,7 +245,9 @@ class _HomeState extends State<Home> {
                       setState(
                         () {
                           // onTabTapped(0);
-                          if(accToken==null){
+                          print(accToken);
+                          print(username);
+                          if(accToken==null || username==null){
                             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
                           }else{
                           currentScreen = Profile();

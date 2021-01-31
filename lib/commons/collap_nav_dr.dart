@@ -9,6 +9,7 @@ import 'package:credenz20/nav_pages/sponsors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:credenz20/loginPage.dart';
 
@@ -169,6 +170,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
                             title: Text('Logout',style: TextStyle(fontFamily: 'Segoe UI',)),
                             onTap: () async{
                               await storage.deleteAll();
+                              Fluttertoast.showToast(msg: 'Logged out',backgroundColor: Colors.blue.shade600);
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
