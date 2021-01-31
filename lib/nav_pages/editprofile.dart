@@ -41,6 +41,9 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   updateProfile() async {
+    setState(() {
+      load=true;
+    });
     String url = baseUrl + usernameController.text.toString() + '/update';
     print(url);
     String body =
@@ -53,7 +56,12 @@ class _EditProfileState extends State<EditProfile> {
     print(headers);
     http.Response response = await http.put(url, body: body, headers: headers);
     if (response.statusCode == 200) {
-      Fluttertoast.showToast(msg: 'Profile updated');
+      await storage.write(key: 'username', value: usernameController.text.trim());
+      await storage.write(key: 'email', value: emailController.text.trim());
+      setState(() {
+        load=false;
+      });
+      Fluttertoast.showToast(msg: 'Profile updated',backgroundColor: Colors.blue.shade600);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -61,7 +69,10 @@ class _EditProfileState extends State<EditProfile> {
                   drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))),
           (route) => false);
     } else {
-      Fluttertoast.showToast(msg: 'Please try again in sometime');
+      setState(() {
+        load=false;
+      });
+      Fluttertoast.showToast(msg: 'Please try again in sometime',backgroundColor: Colors.blue.shade600);
     }
     print(response.body);
   }
@@ -128,7 +139,21 @@ class _EditProfileState extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return load==true?Container(
+        height: MediaQuery.of(context).size.height,
+
+        //color: Color(0xFF000000),
+        child: Center(
+          child: Container(
+            child: animatedloader,
+            //color: notiBackColor,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("images/contactb.jpg"),
+                  fit: BoxFit.fill,
+                )),
+          ),
+        )):Scaffold(
         appBar: AppBar(
           backwardsCompatibility: false,
           systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light,statusBarColor:Colors.transparent),
