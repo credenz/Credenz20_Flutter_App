@@ -100,26 +100,19 @@ class _EventDesState extends State<EventDes>
         child: Scaffold(
             body: Stack(
               children: <Widget>[
-                Stack(
-                  children: [
-                    Image.asset(
-                      // "images/contactb.jpg",
-                      "gifs/giphy1.gif",
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ),
-                    // Container(
-                    //   color: Color(0xaa4E164B),
-                    // ),
-                  ],
+                Image.asset(
+                  // "images/contactb.jpg",
+                  "gifs/giphy1.gif",
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
                 ),
                 CardSliverAppBar(
                   // index: widget.eventIndex,
                   height: 250,
                   //gifs/space2.gif
-                  background:
-                      Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
+                  // background:
+                  //     Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
                   title: Text(eventName[index],
                       style: TextStyle(
                         fontFamily: 'Segoe UI Bold',
@@ -129,22 +122,22 @@ class _EventDesState extends State<EventDes>
                   card: eventimages[index],
                   backButton: true,
                   backButtonColors: [Colors.white, Colors.white],
-                  action: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        // favorite = !favorite;
-                        addToCart();
-                        checkInCart();
-                      });
-                    },
-                    icon: favorite
-                        ? Icon(Icons.shopping_cart)
-                        : Icon(Icons.add_shopping_cart),
-                    color: Colors.black,
-                    iconSize: 30.0,
-                  ),
-
-                  onTap: (int tap_index) => _get_tap(tap_index),
+                  // action: IconButton(
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       // favorite = !favorite;
+                  //       addToCart();
+                  //       checkInCart();
+                  //     });
+                  //   },
+                  //   icon: favorite
+                  //       ? Icon(Icons.shopping_cart)
+                  //       : Icon(Icons.add_shopping_cart),
+                  //   color: Colors.black,
+                  //   iconSize: 30.0,
+                  // ),
+                  //
+                  // onTap: (int tap_index) => _get_tap(tap_index),
 
                   body: Padding(
                     padding: const EdgeInsets.only(top: 30),
