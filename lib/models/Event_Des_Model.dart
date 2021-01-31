@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:credenz20/External_Package/CardSilverAppBar.dart';
 import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/External_Package/floating_action_bubble.dart';
+import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +13,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
-
+import 'package:http/http.dart' as http;
 import '../loginPage.dart';
 
 class EventDes extends StatefulWidget {
@@ -24,6 +27,7 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes>
     with SingleTickerProviderStateMixin {
+
 
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
@@ -44,12 +48,13 @@ class _EventDesState extends State<EventDes>
   TextEditingController teamController=TextEditingController();
   String accToken;
 
-  addToCart({bool grp=false}) async {
+  addToCart(BuildContext context,{bool grp=false}) async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
     if (pre) {
       Fluttertoast.showToast(
           backgroundColor: Colors.blue.shade600,
           msg: 'Event is already added in Cart');
+      if(grp)Navigator.pop(context);
     } else {
       if(grp==false) {
         await storage.write(
@@ -69,6 +74,7 @@ class _EventDesState extends State<EventDes>
           await storage.write(
               key: '${widget.eventIndex}part3', value: part3Controller.text.trim());
         }
+        Navigator.pop(context);
         Fluttertoast.showToast(
           msg: 'Event added', backgroundColor: Colors.blue.shade600,);
       }
@@ -295,7 +301,7 @@ class _EventDesState extends State<EventDes>
                     }else{
                     _animationController.reverse();
 
-                    await addToCart();}
+                    await addToCart(context);}
                     // setState(() {
                     //   favorite = !favorite;
                     //   // addToCart();
@@ -327,9 +333,7 @@ await dialogue(context);
     );
   }
 
-  _get_tap(int index) {
-    addToCart();
-  }
+
 
   Widget _mainbody() {
     return Stack(
@@ -399,155 +403,13 @@ await dialogue(context);
     );
   }
 
-  Future<void> dialogue1(BuildContext context) async {
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return StatefulBuilder(builder: (context, setState) {
-            return Center(
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: Center(
-                  child: Container(
-                    height: 240,
-                    width: 280,
-                    padding: EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.shade700,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15.0)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    width: 1.0,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0)),
-                              ),
-                            ),
-                            padding:
-                            const EdgeInsets.all(10.0),
-                            child: DropdownButtonFormField(
-                              items: [
-                                DropdownMenuItem(
-                                  child: Text('IEEE member'),
-                                  value: 'IEEE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('Non-IEEE member'),
-                                  value: 'Non',
-                                ),
-                              ],
-                              isExpanded: true,
-                              onChanged: (String val) {
-                                setState(() {
-                                  ieeeMenber = val;
-                                });
-                              },
-                              value: ieeeMenber,
-                              decoration: InputDecoration.collapsed(hintText: 'Select Category'),
-                              // hint: Text('Select Category'),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            child: DropdownButtonFormField<String>(
-                              items: [
-                                DropdownMenuItem(
-                                  child: Text('FE'),
-                                  value: 'FE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('SE'),
-                                  value: 'SE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('TE'),
-                                  value: 'TE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('BE'),
-                                  value: 'BE',
-                                ),
-                              ],
-                              isExpanded: true,
-                              onChanged: (String val) {
-                                setState(() {
-                                  val1 = val;
-                                });
-                              },
-                              value: val1,
-                              decoration: InputDecoration.collapsed(hintText: 'Select Year'),
-                              // hint: Text('Select Year'),
-                            ),
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    width: 1.0,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RaisedGradientButton(
-                                height: 40,
-                                width: 80,
-                                gradient: LinearGradient(colors: commonGradient),
-                                child: Text("Cancel"),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                              RaisedGradientButton(
-                                height: 40,
-                                width: 80,
-                                gradient: LinearGradient(colors: commonGradient),
-                                child: Text("Submit"),
-                                onPressed: () async{
-                                  if(ieeeMenber==null||val1==null){
-                                    Fluttertoast.showToast(msg: "Please fill the details", backgroundColor: Colors.blue.shade600,);
 
-                                  }else{
-                                    await addToCart();
-                                    Navigator.pop(context);
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),
-                ),
-              ),
-            );
-          });
-        });
-  }
 
   Future<void> dialogue(BuildContext context) async {
     final _formKey = GlobalKey<FormState>();
     part1Controller.text=name;
     String val1;
+    bool a=false;
     String val2;
     return await showDialog(
         context: context,
@@ -730,12 +592,17 @@ await dialogue(context);
                                     height: 40,
                                     width: 80,
                                     gradient: LinearGradient(colors: commonGradient),
-                                    child: Text("Submit"),
+                                    child: a==true?loader:Text("Submit"),
                                     onPressed: () async{
                                       if(_formKey.currentState.validate())
                                         {
-                                          await addToCart(grp: true);
-                                          Navigator.pop(context);
+                                          setState(() {
+                                            a=true;
+                                          });
+                                          await checkValidandAddToCart(context);
+                                          setState(() {
+                                            a=false;
+                                          });
                                         }
                                     },
                                   ),
@@ -751,6 +618,51 @@ await dialogue(context);
             );
           });
         });
+  }
+
+
+  checkValidandAddToCart(BuildContext context)async{
+
+    String url=allUserUrl;
+    if(part2Controller.text!=null || part3Controller.text!=null){
+      http.Response response=await http.get(url);
+      if(response.statusCode==200){
+        List list=jsonDecode(response.body) as List;
+        if(part2Controller.text!=null){
+          String user2=part2Controller.text.trim();
+          bool flag=false;
+          for(int i=0;i<list.length;i++){
+            if(list[i]['username']==user2){
+              flag=true;
+              break;
+            }
+          }
+          if(flag==false){
+            Fluttertoast.showToast(msg: 'Enter valid username for Username 2',backgroundColor: Colors.blue.shade600);
+            return;
+          }
+        }
+        if(part3Controller.text!=null){
+          String user2=part3Controller.text.trim();
+          bool flag=false;
+          for(int i=0;i<list.length;i++){
+            if(list[i]['username']==user2){
+              flag=true;
+              break;
+            }
+          }
+          if(flag==false){
+            Fluttertoast.showToast(msg: 'Enter valid username for Username 3',backgroundColor: Colors.blue.shade600);
+            return;
+          }
+        }
+        await addToCart(context,grp: true);
+      }
+
+    }else{
+      await addToCart(context,grp: true);
+    }
+
   }
 
   Widget tabcontroller() {

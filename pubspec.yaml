@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   im_stepper: ^0.1.2+9
   badges: ^1.1.6
+  rounded_loading_button: ^1.0.18
   #paytm_allinonesdk: ^1.0.0
 
 dev_dependencies:

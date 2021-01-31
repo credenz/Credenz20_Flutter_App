@@ -19,7 +19,7 @@ List<Color> backGradient = <Color>[Color(0xff21d6d4), Color(0xff0aa9d7)];
 //12151e
 final loader = SpinKitThreeBounce(
   color: drawerBackgroundColor,
-  size: 30,
+  size: 20,
 );
 
 final animatedloader = SpinKitDoubleBounce(
