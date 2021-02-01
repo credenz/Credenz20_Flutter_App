@@ -198,10 +198,6 @@ class _CartState extends State<Cart> {
   }
 */
   pay(UpiApp app) async {
-    if(apps.isEmpty){
-      Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
-      return;
-    }
      UpiResponse upiResponse=await _upiIndia.startTransaction(
       app: app,
       receiverUpiId: '9834570868@okbizaxis',
@@ -556,6 +552,9 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  async{
+                                          if(apps.length==0){
+                                            Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
+                                          }else
                                           await dialogue(context);
                                           //await pay();
                                           // Fluttertoast.showToast(
