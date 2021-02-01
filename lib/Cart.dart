@@ -81,7 +81,8 @@ class _CartState extends State<Cart> {
                 itemBuilder: (BuildContext context, int pos){
                   return ListTile(contentPadding:EdgeInsets.symmetric(vertical: 15, horizontal: 10),title: Text(apps[pos].name),leading: Image.memory(apps[pos].icon),
                   onTap: () async{
-                    await pay(apps[pos]);
+                    await pay(apps[pos], context);
+
                   },);
                 },
                 itemCount: apps.length,
@@ -205,7 +206,7 @@ class _CartState extends State<Cart> {
         msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
 */
-  pay(UpiApp app) async {
+  pay(UpiApp app, BuildContext context1) async {
      UpiResponse upiResponse=await _upiIndia.startTransaction(
       app: app,
       receiverUpiId: '9834570868@okbizaxis',
@@ -214,12 +215,18 @@ class _CartState extends State<Cart> {
       receiverName: 'PISB',
       transactionRefId: 'PISB ID',
       transactionNote: 'Event payment',
-      amount: 1.00,
+      amount: 10.00,
     );
      // Fluttertoast.showToast(msg: upiResponse.status);
      // print(upiResponse.transactionId);
      // print(upiResponse.status);
+     Navigator.pop(context1);
     if(upiResponse.status=='success'){
+      Fluttertoast.showToast(msg: "Please Wait while we register you to your events.",backgroundColor: Colors.blue.shade600);
+      setState(() {
+        load=true;
+      });
+
       String an="";
       String username = await storage.read(key: 'username');
       String accToken = await storage.read(key: "accToken");
@@ -234,8 +241,11 @@ class _CartState extends State<Cart> {
           if(list2[i].toString().toLowerCase()=='reversecoding'){
             url= baseUrl + username + '/rc';
           }
-         url=
-              baseUrl + username + '/${list2[i].toString().toLowerCase()}';
+          else if(list2[i].toString().toLowerCase()=='networktreasurehunt'){
+            url= baseUrl + username + '/nth';
+          }
+          else
+              url= baseUrl + username + '/${list2[i].toString().toLowerCase()}';
           print(accToken);
           String body='{"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           print(body);
@@ -269,7 +279,11 @@ class _CartState extends State<Cart> {
           if(list2[i].toString().toLowerCase()=='reversecoding'){
             body='{"event_name":"rc","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           }
-         body='{"event_name":"${list2[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+          else if(list2[i].toString().toLowerCase()=='networktreasurehunt'){
+            body='{"event_name":"nth","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+          }
+          else
+            body='{"event_name":"${list2[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response=await http.post(url,headers: header,body: body);
           print(url);
@@ -291,9 +305,16 @@ class _CartState extends State<Cart> {
           }
         }
         await loadCart();
+        setState(() {
+          load=false;
+        });
+
         Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
 
       }else{
+        setState(() {
+          load=false;
+        });
         Fluttertoast.showToast(msg: "Error in registration for $an",backgroundColor: Colors.blue.shade600);
       }
     }else if(upiResponse.status=='failure'){

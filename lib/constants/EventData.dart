@@ -246,16 +246,16 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
 List<RichText> contact = [
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: 'Tanmay Nale: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: '+91-9969108722', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
+      TextSpan(text: 'Tanmay Pardeshi: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '+91 99227 04483', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91-9969108722");
+        launch("tel://99227 04483");
 
       }),
       TextSpan(text: '\n\n' + 'Pranjal Newalkar: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 95529 50492', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 95529 50492");
+        launch("tel://95529 50492");
 
       }),
     ],
@@ -266,12 +266,12 @@ List<RichText> contact = [
       TextSpan(text: 'Sanket Landge: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 70209 83032', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 70209 83032");
+        launch("tel://70209 83032");
       }),
       TextSpan(text: '\n\nKaustubh Odak: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 96502 11332', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 96502 11332");
+        launch("tel://96502 11332");
       }),
     ],
   ),),
@@ -281,7 +281,7 @@ List<RichText> contact = [
       TextSpan(text: 'Shreya Deshpande: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 7588404218', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 7588404218");
+        launch("tel://7588404218");
       }),
     ],
   ),),
@@ -291,12 +291,12 @@ List<RichText> contact = [
       TextSpan(text: 'Ajay Kompalwad: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 8668460490', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 8668460490");
+        launch("tel://8668460490");
       }),
       TextSpan(text: '\n\nAkshay Satpute: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 7057602590', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 7057602590");
+        launch("tel://7057602590");
       }),
     ],
   ),),
@@ -306,17 +306,17 @@ List<RichText> contact = [
       TextSpan(text: 'Janhavi Bagul: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 9970004781', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 9970004781");
+        launch("tel://9970004781");
       }),
       TextSpan(text: '\n\nManasi Thonte: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 9561118320', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 9561118320");
+        launch("tel://9561118320");
       }),
       TextSpan(text: '\n\nSampreeti Saha: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 9168743366', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 9168743366");
+        launch("tel://9168743366");
       }),
     ],
   ),),
@@ -327,12 +327,12 @@ List<RichText> contact = [
       TextSpan(text: 'Muffadal Diwan: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 7073152539', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 7073152539");
+        launch("tel://7073152539");
       }),
       TextSpan(text: '\n\nKrishiv Mewani: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 9158087902', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 9158087902");
+        launch("tel://9158087902");
       }),
     ],
   ),),
@@ -342,12 +342,12 @@ List<RichText> contact = [
       TextSpan(text: 'Aboli Marathe: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 9545413291', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 9545413291");
+        launch("tel://9545413291");
       }),
       TextSpan(text: '\n\nAyush Das: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 9373236438', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 9373236438");
+        launch("tel://9373236438");
       }),
     ],
   ),),
@@ -357,12 +357,12 @@ List<RichText> contact = [
       TextSpan(text: 'Saket Gupta: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 77200 79968', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 77200 79968");
+        launch("tel://77200 79968");
       }),
       TextSpan(text: '\n\nAtharva Sadre: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 75882 46742', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 75882 46742");
+        launch("tel://75882 46742");
       }),
     ],
   ),),
@@ -372,12 +372,12 @@ List<RichText> contact = [
       TextSpan(text: 'Aparna Ranade: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 8149841027', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 8149841027");
+        launch("tel://8149841027");
       }),
       TextSpan(text: '\n\nAsawari Walkade: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 8956783613', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 8956783613");
+        launch("tel://8956783613");
       }),
     ],
   ),),
@@ -387,12 +387,12 @@ List<RichText> contact = [
       TextSpan(text: 'Yash Sonar: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 97631 26056', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 97631 26056");
+        launch("tel://97631 26056");
       }),
       TextSpan(text: '\n\nElika Mishra: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 96736 42654', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 96736 42654");
+        launch("tel://96736 42654");
       }),
     ],
   ),),
@@ -402,7 +402,7 @@ List<RichText> contact = [
       TextSpan(text: 'Anushka Mali: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 7385747678', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 7385747678");
+        launch("tel://7385747678");
       }),
     ],
   ),),
@@ -412,12 +412,12 @@ List<RichText> contact = [
       TextSpan(text: 'Garvita Jain: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 89895 53238', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 89895 53238");
+        launch("tel://89895 53238");
       }),
       TextSpan(text: '\n\nPrajwal Patankar: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 88887 26344', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
-        launch("tel://+91 88887 26344");
+        launch("tel://88887 26344");
       }),
     ],
   ),),

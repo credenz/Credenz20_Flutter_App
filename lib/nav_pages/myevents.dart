@@ -32,6 +32,7 @@ class _MyEventsState extends State<MyEvents> {
           eventList=jsonDecode(response.body) as List;
           load=false;
         });
+        print(eventList);
       }
     }else{
       Fluttertoast.showToast(msg: 'Cannot get events',backgroundColor: Colors.blue.shade600);
