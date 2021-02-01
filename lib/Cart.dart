@@ -26,6 +26,7 @@ class _CartState extends State<Cart> {
   List<String>user2;
   List<String>user3;
   List list1=List();
+  List list2;
   bool load = true;
   UpiIndia _upiIndia = UpiIndia();
   List<UpiApp> apps;
@@ -67,6 +68,33 @@ class _CartState extends State<Cart> {
   //     });
   //   }
   // }
+  Future<void> dialogue(BuildContext context) async {
+    // final _formKey = GlobalKey<FormState>();
+    // bool a=false;
+    return await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return new SimpleDialog(
+          children: <Widget>[
+            Container(
+              width: 250,
+              child: new ListView.builder(
+                itemBuilder: (BuildContext context, int pos){
+                  return ListTile(contentPadding:EdgeInsets.symmetric(vertical: 15, horizontal: 10),title: Text(apps[pos].name),leading: Image.memory(apps[pos].icon),
+                  onTap: () async{
+                    await pay(apps[pos], context);
+
+                  },);
+                },
+                itemCount: apps.length,
+                shrinkWrap: true,
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
 
   loadCart() async {
     sum = 0;
@@ -77,6 +105,7 @@ class _CartState extends State<Cart> {
     String ieee=await storage.read(key: 'ieee');
     user3=[];
     list = List();
+    list2=[];
     for (int i = 0; i < 12; i++) {
       bool pre = await storage.containsKey(key: '$i');
       if (pre) {
@@ -105,9 +134,15 @@ class _CartState extends State<Cart> {
           user3.add(' ');
           grpName.add(' ');
         }
-        list.add(eventName);
-        ieee=='true'?list1.add(ieeePrices[i]):list1.add(nonIeeePrices[i]);
-         sum +=  ieee=='true'?ieeePrices[i]:nonIeeePrices[i];
+        String e='';
+        for(int i=0;i<eventName.split(' ').length;i++) {
+          e=e+eventName.split(' ')[i];}
+        print(e);
+          list.add(eventName);
+          list2.add(e);
+          ieee == 'true' ? list1.add(ieeePrices[i]) : list1.add(
+              nonIeeePrices[i]);
+          sum += ieee == 'true' ? ieeePrices[i] : nonIeeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -172,13 +207,9 @@ class _CartState extends State<Cart> {
         msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
 */
-  pay() async {
-    if(apps.isEmpty){
-      Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
-      return;
-    }
-    UpiResponse upiResponse=await _upiIndia.startTransaction(
-      app: apps[0],
+  pay(UpiApp app, BuildContext context1) async {
+     UpiResponse upiResponse=await _upiIndia.startTransaction(
+      app: app,
       receiverUpiId: '9834570868@okbizaxis',
       //  I took only the first app from List<UpiApp> app.
       // receiverId: 'tester@test', // Make Sure to change this UPI Id
@@ -187,22 +218,35 @@ class _CartState extends State<Cart> {
       transactionNote: 'Event payment',
       amount: sum.toDouble(),
     );
-    // Fluttertoast.showToast(msg: upiResponse.status);
-    // print(upiResponse.transactionId);
-    // print(upiResponse.status);
+     // Fluttertoast.showToast(msg: upiResponse.status);
+     // print(upiResponse.transactionId);
+     // print(upiResponse.status);
+     Navigator.pop(context1);
     if(upiResponse.status=='success'){
+      Fluttertoast.showToast(msg: "Please Wait while we register you to your events.",backgroundColor: Colors.blue.shade600);
+      setState(() {
+        load=true;
+      });
+
       String an="";
       String username = await storage.read(key: 'username');
       String accToken = await storage.read(key: "accToken");
-      for (int i = 0; i < list.length; i++) {
+      for (int i = 0; i < list2.length; i++) {
         print(list[i]);
         print(grpEvent[i]);
         if(grpEvent[i]){
           print(user2[i]);
           print(user3[i]);}
         if(grpEvent[i]==false) {
-          String url =
-              baseUrl + username + '/${list[i].toString().toLowerCase()}';
+          String url;
+          if(list2[i].toString().toLowerCase()=='reversecoding'){
+            url= baseUrl + username + '/rc';
+          }
+          else if(list2[i].toString().toLowerCase()=='networktreasurehunt'){
+            url= baseUrl + username + '/nth';
+          }
+          else
+              url= baseUrl + username + '/${list2[i].toString().toLowerCase()}';
           print(accToken);
           String body='{"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           print(body);
@@ -218,7 +262,7 @@ class _CartState extends State<Cart> {
             if (msg == null) {
             }
           }else{
-            an=an+list[i]+" ";
+            an=an+list2[i]+" ";
           }
         }else{
           String url=groupRegisterUrl;
@@ -232,7 +276,15 @@ class _CartState extends State<Cart> {
             nop++;
             ls.add("${user3[i]}");
           }
-          String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+          String body;
+          if(list2[i].toString().toLowerCase()=='reversecoding'){
+            body='{"event_name":"rc","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+          }
+          else if(list2[i].toString().toLowerCase()=='networktreasurehunt'){
+            body='{"event_name":"nth","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+          }
+          else
+            body='{"event_name":"${list2[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response=await http.post(url,headers: header,body: body);
           print(url);
@@ -242,7 +294,7 @@ class _CartState extends State<Cart> {
           if(response.statusCode==200||response.statusCode==201){
             print(response.body);
           }else{
-            an=an+list[i]+" ";
+            an=an+list2[i]+" ";
           }
         }
       }
@@ -254,9 +306,16 @@ class _CartState extends State<Cart> {
           }
         }
         await loadCart();
+        setState(() {
+          load=false;
+        });
+
         Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
 
       }else{
+        setState(() {
+          load=false;
+        });
         Fluttertoast.showToast(msg: "Error in registration for $an",backgroundColor: Colors.blue.shade600);
       }
     }else if(upiResponse.status=='failure'){
@@ -287,7 +346,7 @@ class _CartState extends State<Cart> {
     
     */
 
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -527,7 +586,11 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  async{
-                                          await pay();
+                                          if(apps.length==0){
+                                            Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
+                                          }else
+                                          await dialogue(context);
+                                          //await pay();
                                           // Fluttertoast.showToast(
                                           //     backgroundColor: Colors.blue.shade600,
                                           //     msg: 'Payment gateway will open soon. Stay tuned!');
