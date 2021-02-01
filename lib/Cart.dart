@@ -226,14 +226,14 @@ class _CartState extends State<Cart> {
           print(user2[i]);
           print(user3[i]);}
         if(grpEvent[i]==false) {
-          String url =
+          String url;
+          if(list[i].toString().toLowerCase()=='reversecoding'){
+            url= baseUrl + username + '/rc';
+          }
+         url=
               baseUrl + username + '/${list[i].toString().toLowerCase()}';
           print(accToken);
-          Map<String,dynamic>mapp={
-            "approved":true,
-            "trans_id":"T2101292246376173901775"
-          };
-          String body='{"approved":true,"trans_id":"T2101292246376173901775"}';
+          String body='{"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           print(body);
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response = await http.post(url, headers: header,body: body);
@@ -261,7 +261,11 @@ class _CartState extends State<Cart> {
             nop++;
             ls.add("${user3[i]}");
           }
-          String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"T2101292246376173901775"}';
+          String body;
+          if(list[i].toString().toLowerCase()=='reversecoding'){
+            body='{"event_name":"rc","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+          }
+         body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response=await http.post(url,headers: header,body: body);
           print(url);
@@ -281,7 +285,7 @@ class _CartState extends State<Cart> {
             await storage.delete(key: '$i');
 
           }
-        };
+        }
         await loadCart();
         Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
 
