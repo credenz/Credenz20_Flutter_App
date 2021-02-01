@@ -172,29 +172,101 @@ class _CartState extends State<Cart> {
   }
 */
   pay() async {
-    // if(apps.isEmpty){
-    //   Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
-    //   return;
-    // }
-    // UpiApp app = UpiApp.phonePe;
-    //  UpiResponse upiResponse=await _upiIndia.startTransaction(
-    //   app: apps[0],
-    //   receiverUpiId: '9834570868@okbizaxis',
-    //   //  I took only the first app from List<UpiApp> app.
-    //   // receiverId: 'tester@test', // Make Sure to change this UPI Id
-    //   receiverName: 'Tester',
-    //   transactionRefId: 'TestingId',
-    //   transactionNote: 'Not actual. Just an example.',
-    //   amount: 1,
-    // );
+    if(apps.isEmpty){
+      Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
+      return;
+    }
+     UpiResponse upiResponse=await _upiIndia.startTransaction(
+      app: apps[0],
+      receiverUpiId: '9834570868@okbizaxis',
+      //  I took only the first app from List<UpiApp> app.
+      // receiverId: 'tester@test', // Make Sure to change this UPI Id
+      receiverName: 'PISB',
+      transactionRefId: 'PISB ID',
+      transactionNote: 'Event payment',
+      amount: sum.toDouble(),
+    );
      // Fluttertoast.showToast(msg: upiResponse.status);
      // print(upiResponse.transactionId);
      // print(upiResponse.status);
-    // if(upiResponse.status=='success'){
-    //
-    // }else if(upiResponse.status=='failure'){
-    //   Fluttertoast.showToast(msg: 'Payment Failed',backgroundColor: Colors.blue.shade600);
-    // }
+    if(upiResponse.status=='success'){
+      String an="";
+      String username = await storage.read(key: 'username');
+      String accToken = await storage.read(key: "accToken");
+      for (int i = 0; i < list.length; i++) {
+        print(list[i]);
+        print(grpEvent[i]);
+        if(grpEvent[i]){
+          print(user2[i]);
+          print(user3[i]);}
+        if(grpEvent[i]==false) {
+          String url =
+              baseUrl + username + '/${list[i].toString().toLowerCase()}';
+          print(accToken);
+          Map<String,dynamic>mapp={
+            "approved":true,
+            "trans_id":"T2101292246376173901775"
+          };
+          String body='{"approved":true,"trans_id":"T2101292246376173901775"}';
+          print(body);
+          Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+          http.Response response = await http.post(url, headers: header,body: body);
+          print(header);
+          print(response.body);
+          print(url);
+          print(response.statusCode);
+          if (response.statusCode == 201||response.statusCode == 200) {
+            print(response.body);
+            String msg = jsonDecode(response.body)['message'];
+            if (msg == null) {
+            }
+          }else{
+            an=an+list[i]+" ";
+          }
+        }else{
+          String url=groupRegisterUrl;
+          int nop=1;
+          List<String>ls=[];
+          if(user2[i]!=" "){
+            nop++;
+            ls.add('"${user2[i]}"');
+          }
+          if(user3[i]!=" "){
+            nop++;
+            ls.add("${user3[i]}");
+          }
+          String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"T2101292246376173901775"}';
+          Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+          http.Response response=await http.post(url,headers: header,body: body);
+          print(url);
+          print(header);
+          print(body);
+          print(response.body);
+          if(response.statusCode==200||response.statusCode==201){
+            print(response.body);
+          }else{
+            an=an+list[i]+" ";
+          }
+        }
+      }
+      if(an==""){
+        for(int i=0;i<12;i++){
+          if(await storage.containsKey(key: '$i')){
+            await storage.delete(key: '$i');
+
+          }
+        };
+        await loadCart();
+        Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
+
+      }else{
+        Fluttertoast.showToast(msg: "Error in registration for $an",backgroundColor: Colors.blue.shade600);
+      }
+    }else if(upiResponse.status=='failure'){
+      Fluttertoast.showToast(msg: 'Payment Failed',backgroundColor: Colors.blue.shade600);
+    }else{
+      Fluttertoast.showToast(msg: 'Payment ${upiResponse.status}',backgroundColor: Colors.blue.shade600);
+    }
 
 
     /*  var response = AllInOneSdk.startTransaction(
@@ -217,75 +289,7 @@ class _CartState extends State<Cart> {
     });
     
     */
-    String an="";
 
-      String username = await storage.read(key: 'username');
-    String accToken = await storage.read(key: "accToken");
-     for (int i = 0; i < list.length; i++) {
-       print(list[i]);
-       print(grpEvent[i]);
-       if(grpEvent[i]){
-       print(user2[i]);
-       print(user3[i]);}
-       if(grpEvent[i]==false) {
-         String url =
-             baseUrl + username + '/${list[i].toString().toLowerCase()}';
-         print(accToken);
-         String body='{"approved":true,"trans_id":"T2101292246376173901775"}';
-         print(body);
-         Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
-         http.Response response = await http.post(url, headers: header);
-         print(header);
-         print(response.body);
-         print(url);
-         print(response.statusCode);
-         if (response.statusCode == 201||response.statusCode == 200) {
-           print(response.body);
-           String msg = jsonDecode(response.body)['message'];
-           if (msg == null) {
-           }
-         }else{
-           an=an+list[i]+" ";
-         }
-       }else{
-         String url=groupRegisterUrl;
-         int nop=1;
-         List<String>ls=[];
-         if(user2[i]!=" "){
-           nop++;
-           ls.add('"${user2[i]}"');
-         }
-         if(user3[i]!=" "){
-           nop++;
-           ls.add("${user3[i]}");
-         }
-         String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"T2101292246376173901775"}';
-         Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
-         http.Response response=await http.post(url,headers: header,body: body);
-         print(url);
-         print(header);
-         print(body);
-         print(response.body);
-         if(response.statusCode==200||response.statusCode==201){
-           print(response.body);
-         }else{
-           an=an+list[i]+" ";
-         }
-       }
-      }
-     if(an==""){
-       for(int i=0;i<12;i++){
-         if(await storage.containsKey(key: '$i')){
-           await storage.delete(key: '$i');
-
-         }
-       };
-       await loadCart();
-       Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
-
-     }else{
-       Fluttertoast.showToast(msg: "Error in registration for $an",backgroundColor: Colors.blue.shade600);
-     }
     }
 
   @override
@@ -522,10 +526,10 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  async{
-                                          // await pay();
-                                          Fluttertoast.showToast(
-                                              backgroundColor: Colors.blue.shade600,
-                                              msg: 'Payment gateway will open soon. Stay tuned!');
+                                          await pay();
+                                          // Fluttertoast.showToast(
+                                          //     backgroundColor: Colors.blue.shade600,
+                                          //     msg: 'Payment gateway will open soon. Stay tuned!');
                                         }),
 
                                     /*child: RaisedButton(
