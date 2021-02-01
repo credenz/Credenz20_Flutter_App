@@ -13,7 +13,7 @@ Future main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  await SystemChrome.setEnabledSystemUIOverlays([]);
+  //await SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 

@@ -66,6 +66,32 @@ class _CartState extends State<Cart> {
   //     });
   //   }
   // }
+  Future<void> dialogue(BuildContext context) async {
+    // final _formKey = GlobalKey<FormState>();
+    // bool a=false;
+    return await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return new SimpleDialog(
+          children: <Widget>[
+            Container(
+              width: 250,
+              child: new ListView.builder(
+                itemBuilder: (BuildContext context, int pos){
+                  return ListTile(contentPadding:EdgeInsets.symmetric(vertical: 15, horizontal: 10),title: Text(apps[pos].name),leading: Image.memory(apps[pos].icon),
+                  onTap: () async{
+                    await pay(apps[pos]);
+                  },);
+                },
+                itemCount: apps.length,
+                shrinkWrap: true,
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
 
   loadCart() async {
     sum = 0;
@@ -171,13 +197,13 @@ class _CartState extends State<Cart> {
         msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
 */
-  pay() async {
+  pay(UpiApp app) async {
     if(apps.isEmpty){
       Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
       return;
     }
      UpiResponse upiResponse=await _upiIndia.startTransaction(
-      app: apps[0],
+      app: app,
       receiverUpiId: '9834570868@okbizaxis',
       //  I took only the first app from List<UpiApp> app.
       // receiverId: 'tester@test', // Make Sure to change this UPI Id
@@ -526,7 +552,8 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  async{
-                                          await pay();
+                                          await dialogue(context);
+                                          //await pay();
                                           // Fluttertoast.showToast(
                                           //     backgroundColor: Colors.blue.shade600,
                                           //     msg: 'Payment gateway will open soon. Stay tuned!');
