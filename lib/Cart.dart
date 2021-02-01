@@ -25,6 +25,7 @@ class _CartState extends State<Cart> {
   List<String>user2;
   List<String>user3;
   List list1=List();
+  List list2;
   bool load = true;
   UpiIndia _upiIndia = UpiIndia();
   List<UpiApp> apps;
@@ -102,6 +103,7 @@ class _CartState extends State<Cart> {
     String ieee=await storage.read(key: 'ieee');
     user3=[];
     list = List();
+    list2=[];
     for (int i = 0; i < 12; i++) {
       bool pre = await storage.containsKey(key: '$i');
       if (pre) {
@@ -134,7 +136,8 @@ class _CartState extends State<Cart> {
         for(int i=0;i<eventName.split(' ').length;i++) {
           e=e+eventName.split(' ')[i];}
         print(e);
-          list.add(e);
+          list.add(eventName);
+          list2.add(e);
           ieee == 'true' ? list1.add(ieeePrices[i]) : list1.add(
               nonIeeePrices[i]);
           sum += ieee == 'true' ? ieeePrices[i] : nonIeeePrices[i];
@@ -220,7 +223,7 @@ class _CartState extends State<Cart> {
       String an="";
       String username = await storage.read(key: 'username');
       String accToken = await storage.read(key: "accToken");
-      for (int i = 0; i < list.length; i++) {
+      for (int i = 0; i < list2.length; i++) {
         print(list[i]);
         print(grpEvent[i]);
         if(grpEvent[i]){
@@ -228,11 +231,11 @@ class _CartState extends State<Cart> {
           print(user3[i]);}
         if(grpEvent[i]==false) {
           String url;
-          if(list[i].toString().toLowerCase()=='reversecoding'){
+          if(list2[i].toString().toLowerCase()=='reversecoding'){
             url= baseUrl + username + '/rc';
           }
          url=
-              baseUrl + username + '/${list[i].toString().toLowerCase()}';
+              baseUrl + username + '/${list2[i].toString().toLowerCase()}';
           print(accToken);
           String body='{"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           print(body);
@@ -248,7 +251,7 @@ class _CartState extends State<Cart> {
             if (msg == null) {
             }
           }else{
-            an=an+list[i]+" ";
+            an=an+list2[i]+" ";
           }
         }else{
           String url=groupRegisterUrl;
@@ -263,10 +266,10 @@ class _CartState extends State<Cart> {
             ls.add("${user3[i]}");
           }
           String body;
-          if(list[i].toString().toLowerCase()=='reversecoding'){
+          if(list2[i].toString().toLowerCase()=='reversecoding'){
             body='{"event_name":"rc","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           }
-         body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
+         body='{"event_name":"${list2[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response=await http.post(url,headers: header,body: body);
           print(url);
@@ -276,7 +279,7 @@ class _CartState extends State<Cart> {
           if(response.statusCode==200||response.statusCode==201){
             print(response.body);
           }else{
-            an=an+list[i]+" ";
+            an=an+list2[i]+" ";
           }
         }
       }
