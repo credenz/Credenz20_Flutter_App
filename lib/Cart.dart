@@ -177,7 +177,7 @@ class _CartState extends State<Cart> {
       Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
       return;
     }
-     UpiResponse upiResponse=await _upiIndia.startTransaction(
+    UpiResponse upiResponse=await _upiIndia.startTransaction(
       app: apps[0],
       receiverUpiId: '9834570868@okbizaxis',
       //  I took only the first app from List<UpiApp> app.
@@ -187,9 +187,9 @@ class _CartState extends State<Cart> {
       transactionNote: 'Event payment',
       amount: sum.toDouble(),
     );
-     // Fluttertoast.showToast(msg: upiResponse.status);
-     // print(upiResponse.transactionId);
-     // print(upiResponse.status);
+    // Fluttertoast.showToast(msg: upiResponse.status);
+    // print(upiResponse.transactionId);
+    // print(upiResponse.status);
     if(upiResponse.status=='success'){
       String an="";
       String username = await storage.read(key: 'username');
@@ -204,11 +204,7 @@ class _CartState extends State<Cart> {
           String url =
               baseUrl + username + '/${list[i].toString().toLowerCase()}';
           print(accToken);
-          Map<String,dynamic>mapp={
-            "approved":true,
-            "trans_id":"T2101292246376173901775"
-          };
-          String body='{"approved":true,"trans_id":"T2101292246376173901775"}';
+          String body='{"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           print(body);
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response = await http.post(url, headers: header,body: body);
@@ -236,7 +232,7 @@ class _CartState extends State<Cart> {
             nop++;
             ls.add("${user3[i]}");
           }
-          String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"T2101292246376173901775"}';
+          String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"${upiResponse.transactionId}"}';
           Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
           http.Response response=await http.post(url,headers: header,body: body);
           print(url);
@@ -256,7 +252,7 @@ class _CartState extends State<Cart> {
             await storage.delete(key: '$i');
 
           }
-        };
+        }
         await loadCart();
         Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
 
@@ -291,7 +287,7 @@ class _CartState extends State<Cart> {
     
     */
 
-    }
+  }
 
   @override
   Widget build(BuildContext context) {

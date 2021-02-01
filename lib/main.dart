@@ -8,12 +8,12 @@ import 'Home.dart';
 import 'commons/collap_nav_dr.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
-Future main() async {
+Future main()  async{
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  await SystemChrome.setEnabledSystemUIOverlays([]);
+  //await SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 
