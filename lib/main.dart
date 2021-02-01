@@ -2,38 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'Home.dart';
 import 'commons/collap_nav_dr.dart';
 import 'commons/slide_drawer.dart';
 import 'constants/theme.dart';
-
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+  await SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
-/*
-class Splash2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 2,
-      // imageBackground: AssetImage("gifs/preloader2.gif", ),
-      navigateAfterSeconds: new SlideDrawer(drawer: MenuDrawer(), child: Home(title: "Credenz \'21")),
-      //title: new Text('Credenz Live',textScaleFactor: 2,style: Te,),
-      image: new Image.asset("gifs/preloader2.gif",
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        fit: BoxFit.fitHeight,
-
-      ),
-      useLoader: false,
-      //loadingText: Text("Loading"),
-      photoSize: MediaQuery.of(context).size.width*3/5,
-      //loaderColor: Colors.blue,
-    );
-  }
-}
-*/
 
 class SplashScreen extends StatefulWidget {
   @override

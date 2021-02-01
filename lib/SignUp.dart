@@ -20,6 +20,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool ieeeMenber=false;
   double _height;
   double _width;
   double _pixelRatio;
@@ -33,6 +34,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController collegeController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
   TextEditingController password1Controller=TextEditingController();
+  TextEditingController ieee=TextEditingController();
   // TextEditingController emailController;
   String name;
   String email;
@@ -69,13 +71,17 @@ class _SignUpState extends State<SignUp> {
           msg: 'Passwords do not match', backgroundColor: Colors.blue.shade600);
       return;
     }
+    if(ieeeMenber==true && ieee.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter IEEE registration ID',backgroundColor: Colors.blue.shade600);
+      return;
+    }
     setState(() {
       load=true;
     });
     String url = signUpUrl;
     Map<String, String> headers = {"Content-Type": "application/json"};
     String body =
-        '{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
+       ieeeMenber?'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName","ieee":$ieeeMenber,"ieeeid":"${ieee.text.trim()}"}':'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
     http.Response response = await http.post(url, body: body, headers: headers);
     print(url);
     print(body);
@@ -86,6 +92,7 @@ class _SignUpState extends State<SignUp> {
           key: "accToken", value: jsonDecode(response.body)['accessToken']);
       await storage.write(key: 'username', value: userName);
       await storage.write(key: 'email', value: email);
+      await storage.write(key: 'ieee', value: ieeeMenber.toString());
       Fluttertoast.showToast(msg: 'Signed Up',backgroundColor: Colors.blue.shade600);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
     } else {
@@ -291,6 +298,33 @@ class _SignUpState extends State<SignUp> {
                       },
                     ),
                   ),
+
+                  // Material(
+                  //   borderRadius: BorderRadius.circular(10.0),
+                  //   elevation: _large ? 12 : (_medium ? 10 : 8),
+                  //   child: DropdownButtonFormField<String>(
+                  //     items: [
+                  //       DropdownMenuItem(
+                  //         child: Text('IEEE member'),
+                  //         value: 'IEEE',
+                  //       ),
+                  //       DropdownMenuItem(
+                  //         child: Text('Non-IEEE member'),
+                  //         value: 'Non',
+                  //       ),
+                  //     ],
+                  //     isExpanded: true,
+                  //     onChanged: (String val) {
+                  //       setState(() {
+                  //         ieeeMenber = val;
+                  //       });
+                  //     },
+                  //     value: ieeeMenber,
+                  //     decoration: InputDecoration.collapsed(hintText: 'Select Category'),
+                  //     // hint: Text('Select Category'),
+                  //   ),
+                  // ),
+
                   SizedBox(height: _height / 30.0),
                   Material(
                     borderRadius: BorderRadius.circular(10.0),
@@ -345,6 +379,38 @@ class _SignUpState extends State<SignUp> {
                       obscureText: _obscureText,
                     ),
                   ),
+                  SizedBox(height: _height / 30.0),
+                  SwitchListTile(value: ieeeMenber, onChanged: (bool val){
+                    setState(() {
+                      ieeeMenber=val;
+                    });
+                  },
+                    activeColor:  Color(0xff0aa9d7),
+                    title: Text('IEEE Member',style: TextStyle(color: Colors.white,fontFamily: 'Segoe UI Bold'),),
+                  ),
+                  ieeeMenber?SizedBox(height: _height / 50.0):Container(),
+                  ieeeMenber?Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      controller: ieee,
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.app_registration,
+                              color: Color(0xff0aa9d7), size: 20),
+                          hintText: "IEEE registration id ",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: BorderSide.none),
+                         ),
+                      onChanged: (val) {
+                        setState(() {
+                          password1 = val;
+                        });
+                      },
+                    ),
+                  ):Container(),
                   // Padding(
                   //   padding: const EdgeInsets.symmetric(vertical: 10),child: Container(
                   //     decoration: BoxDecoration(

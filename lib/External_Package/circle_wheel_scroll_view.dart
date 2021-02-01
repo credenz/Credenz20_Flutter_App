@@ -539,7 +539,7 @@ class CircleFixedExtentScrollPhysics extends ScrollPhysics {
         metrics.pixels,
         settlingPixels,
         velocity,
-        tolerance: tolerance,
+        tolerance: tolerance
       );
     }
 
@@ -554,7 +554,7 @@ class CircleFixedExtentScrollPhysics extends ScrollPhysics {
       metrics.pixels,
       settlingPixels,
       velocity,
-      tolerance: tolerance,
+      tolerance: tolerance
     );
   }
 }

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:credenz20/External_Package/CardSilverAppBar.dart';
 import 'package:credenz20/External_Package/RaisedGradientButton.dart';
 import 'package:credenz20/External_Package/floating_action_bubble.dart';
+import 'package:credenz20/constants/API.dart';
 import 'package:credenz20/constants/EventData.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +13,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:shifting_tabbar/shifting_tabbar.dart';
-
+import 'package:http/http.dart' as http;
 import '../loginPage.dart';
 
 class EventDes extends StatefulWidget {
@@ -24,6 +27,7 @@ class EventDes extends StatefulWidget {
 
 class _EventDesState extends State<EventDes>
     with SingleTickerProviderStateMixin {
+
 
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
@@ -39,23 +43,41 @@ class _EventDesState extends State<EventDes>
   String val1;
   List<String> options1 = ["IEEE Member", "Non IEEE Member"];
   TextEditingController part1Controller=TextEditingController();
-  TextEditingController email1Controller=TextEditingController();
   TextEditingController part2Controller=TextEditingController();
-  TextEditingController email2Controller=TextEditingController();
   TextEditingController part3Controller=TextEditingController();
-  TextEditingController part4Controller=TextEditingController();
+  TextEditingController teamController=TextEditingController();
   String accToken;
 
-  addToCart() async {
+  addToCart(BuildContext context,{bool grp=false}) async {
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
     if (pre) {
       Fluttertoast.showToast(
           backgroundColor: Colors.blue.shade600,
           msg: 'Event is already added in Cart');
+      if(grp)Navigator.pop(context);
     } else {
-      await storage.write(
-          key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
-      Fluttertoast.showToast(msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+      if(grp==false) {
+        await storage.write(
+            key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+        Fluttertoast.showToast(
+          msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+      }else{
+        await storage.write(
+            key: '${widget.eventIndex}grp', value: teamController.text.trim());
+        await storage.write(
+            key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+        if(part2Controller.text.trim().isNotEmpty){
+          await storage.write(
+              key: '${widget.eventIndex}part2', value: part2Controller.text.trim());
+        }
+        if(part3Controller.text.trim().isNotEmpty){
+          await storage.write(
+              key: '${widget.eventIndex}part3', value: part3Controller.text.trim());
+        }
+        Navigator.pop(context);
+        Fluttertoast.showToast(
+          msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+      }
     }
   }
 
@@ -100,26 +122,19 @@ class _EventDesState extends State<EventDes>
         child: Scaffold(
             body: Stack(
               children: <Widget>[
-                Stack(
-                  children: [
-                    Image.asset(
-                      // "images/contactb.jpg",
-                      "gifs/giphy1.gif",
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ),
-                    // Container(
-                    //   color: Color(0xaa4E164B),
-                    // ),
-                  ],
+                Image.asset(
+                  // "images/contactb.jpg",
+                  "gifs/giphy1.gif",
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
                 ),
                 CardSliverAppBar(
                   // index: widget.eventIndex,
                   height: 250,
                   //gifs/space2.gif
-                  background:
-                      Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
+                  // background:
+                  //     Image.asset("images/enigma4.png", fit: BoxFit.fitHeight),
                   title: Text(eventName[index],
                       style: TextStyle(
                         fontFamily: 'Segoe UI Bold',
@@ -129,22 +144,22 @@ class _EventDesState extends State<EventDes>
                   card: eventimages[index],
                   backButton: true,
                   backButtonColors: [Colors.white, Colors.white],
-                  action: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        // favorite = !favorite;
-                        addToCart();
-                        checkInCart();
-                      });
-                    },
-                    icon: favorite
-                        ? Icon(Icons.shopping_cart)
-                        : Icon(Icons.add_shopping_cart),
-                    color: Colors.black,
-                    iconSize: 30.0,
-                  ),
-
-                  onTap: (int tap_index) => _get_tap(tap_index),
+                  // action: IconButton(
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       // favorite = !favorite;
+                  //       addToCart();
+                  //       checkInCart();
+                  //     });
+                  //   },
+                  //   icon: favorite
+                  //       ? Icon(Icons.shopping_cart)
+                  //       : Icon(Icons.add_shopping_cart),
+                  //   color: Colors.black,
+                  //   iconSize: 30.0,
+                  // ),
+                  //
+                  // onTap: (int tap_index) => _get_tap(tap_index),
 
                   body: Padding(
                     padding: const EdgeInsets.only(top: 30),
@@ -219,28 +234,28 @@ class _EventDesState extends State<EventDes>
               backGroundColor: Colors.white,
               items: <Bubble>[
                 // Floating action menu item
-                Bubble(
-                  title: "Solo   ",
-                  iconColor: Colors.white,
-                  bubbleColorGradient: commonGradient,
-                  icon: Icons.person,
-                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
-                  onPress: () async {
-                    if(accToken==null || accToken.isEmpty){
-                      Navigator.pop(context);
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
-                    }
-                    else {
-                      _animationController.reverse();
-
-                      await dialogue1(context);
-                    }
-                    // setState(() {
-                    //   favorite = !favorite;
-                    //   addToCart();
-                    // });
-                  },
-                ),
+                // Bubble(
+                //   title: "Solo   ",
+                //   iconColor: Colors.white,
+                //   bubbleColorGradient: commonGradient,
+                //   icon: Icons.person,
+                //   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                //   onPress: () async {
+                //     if(accToken==null || accToken.isEmpty){
+                //       Navigator.pop(context);
+                //       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                //     }
+                //     else {
+                //       _animationController.reverse();
+                //
+                //       await addToCart();
+                //     }
+                //     // setState(() {
+                //     //   favorite = !favorite;
+                //     //   addToCart();
+                //     // });
+                //   },
+                // ),
                 // Floating action menu item
                 Bubble(
                   title: "Group",
@@ -286,7 +301,7 @@ class _EventDesState extends State<EventDes>
                     }else{
                     _animationController.reverse();
 
-                    await dialogue1(context);}
+                    await addToCart(context);}
                     // setState(() {
                     //   favorite = !favorite;
                     //   // addToCart();
@@ -318,9 +333,7 @@ await dialogue(context);
     );
   }
 
-  _get_tap(int index) {
-    addToCart();
-  }
+
 
   Widget _mainbody() {
     return Stack(
@@ -390,154 +403,13 @@ await dialogue(context);
     );
   }
 
-  Future<void> dialogue1(BuildContext context) async {
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return StatefulBuilder(builder: (context, setState) {
-            return Center(
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: Center(
-                  child: Container(
-                    height: 240,
-                    width: 280,
-                    padding: EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.shade700,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15.0)
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    width: 1.0,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0)),
-                              ),
-                            ),
-                            padding:
-                            const EdgeInsets.all(10.0),
-                            child: DropdownButtonFormField(
-                              items: [
-                                DropdownMenuItem(
-                                  child: Text('IEEE member'),
-                                  value: 'IEEE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('Non-IEEE member'),
-                                  value: 'Non',
-                                ),
-                              ],
-                              isExpanded: true,
-                              onChanged: (String val) {
-                                setState(() {
-                                  ieeeMenber = val;
-                                });
-                              },
-                              value: ieeeMenber,
-                              decoration: InputDecoration.collapsed(hintText: 'Select Category'),
-                              // hint: Text('Select Category'),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            padding: EdgeInsets.all(10),
-                            child: DropdownButtonFormField<String>(
-                              items: [
-                                DropdownMenuItem(
-                                  child: Text('FE'),
-                                  value: 'FE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('SE'),
-                                  value: 'SE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('TE'),
-                                  value: 'TE',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('BE'),
-                                  value: 'BE',
-                                ),
-                              ],
-                              isExpanded: true,
-                              onChanged: (String val) {
-                                setState(() {
-                                  val1 = val;
-                                });
-                              },
-                              value: val1,
-                              decoration: InputDecoration.collapsed(hintText: 'Select Year'),
-                              // hint: Text('Select Year'),
-                            ),
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    width: 1.0,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RaisedGradientButton(
-                                height: 40,
-                                width: 80,
-                                gradient: LinearGradient(colors: commonGradient),
-                                child: Text("Cancel"),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                              RaisedGradientButton(
-                                height: 40,
-                                width: 80,
-                                gradient: LinearGradient(colors: commonGradient),
-                                child: Text("Submit"),
-                                onPressed: () async{
-                                  if(ieeeMenber==null||val1==null){
-                                    Fluttertoast.showToast(msg: "Please fill the details", backgroundColor: Colors.blue.shade600,);
 
-                                  }else{
-                                    await addToCart();
-                                    Navigator.pop(context);
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ),
-                ),
-              ),
-            );
-          });
-        });
-  }
 
   Future<void> dialogue(BuildContext context) async {
+    final _formKey = GlobalKey<FormState>();
     part1Controller.text=name;
     String val1;
+    bool a=false;
     String val2;
     return await showDialog(
         context: context,
@@ -558,343 +430,187 @@ await dialogue(context);
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15.0)
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        NumberStepper(
-                          numbers: [
-                            1,
-                            2,
-                          ],
-                          stepRadius: 12,
-                          activeStep: activeStep,
-                          onStepReached: (x) {
-                            setState(() {
-                              activeStep = x;
-                            });
-                          },
-                        ),
-                        activeStep == 0
-                            ? Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      enabled: false,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      controller: part1Controller,
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.name,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 1',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: teamController,
+                                        validator: (String value) {
+                                          if (value.isEmpty) return 'Team Name cannot be empty';
+
+                                          return null;
+                                        },
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                            BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Team Name',
+                                          labelStyle:
+                                          TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                            BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(5.0),
+                                          ),
                                         ),
                                       ),
                                     ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        // enabled: false,
+                                        // validator: (String value) {
+                                        //   if (value.isEmpty) return 'Email cannot be empty';
+                                        //
+                                        //   return null;
+                                        // },
+                                        readOnly: true,
+                                        onTap: () {
+                                          Fluttertoast.showToast(backgroundColor: Colors.blue.shade600,
+                                              msg: "First username is non-editable.");
+                                          },
+                                        controller: part1Controller,
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.name,
+                                        decoration: InputDecoration(
+                                          // enabled: false,
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Username 1',
+                                          labelStyle:
+                                              TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: part2Controller,
+                                        // validator: (String value) {
+                                        //   if (value.isEmpty) return 'Email cannot be empty';
+                                        //
+                                        //   return null;
+                                        // },
+
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Username 2',
+                                          labelStyle:
+                                              TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: part3Controller,
+                                        // validator: (String value) {
+                                        //   if (value.isEmpty) return 'Email cannot be empty';
+                                        //
+                                        //   return null;
+                                        // },
+                                        style: TextStyle(color: Colors.black),
+                                        keyboardType: TextInputType.emailAddress,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          isDense: true,
+                                          labelText: 'Username 3',
+                                          labelStyle:
+                                              TextStyle(color: Colors.black),
+                                          disabledBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.black),
+                                          ),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  RaisedGradientButton(
+                                    height: 40,
+                                    width: 80,
+                                    gradient: LinearGradient(colors: commonGradient),
+                                    child: activeStep == 0 ? Text("Cancel") : Text("Back"),
+                                    onPressed: () {
+                                      if (activeStep == 1) {
+                                        setState(() {
+                                          activeStep = 0;
+                                        });
+                                      } else
+                                        Navigator.of(context).pop();
+                                    },
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      controller: part2Controller,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 2',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      controller: part3Controller,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 3',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: TextFormField(
-                                      controller: part4Controller,
-                                      // validator: (String value) {
-                                      //   if (value.isEmpty) return 'Email cannot be empty';
-                                      //
-                                      //   return null;
-                                      // },
-                                      style: TextStyle(color: Colors.black),
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        isDense: true,
-                                        labelText: 'Participant 4',
-                                        labelStyle:
-                                            TextStyle(color: Colors.black),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.black),
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                      ),
-                                    ),
+                                  RaisedGradientButton(
+                                    height: 40,
+                                    width: 80,
+                                    gradient: LinearGradient(colors: commonGradient),
+                                    child: a==true?loader:Text("Submit"),
+                                    onPressed: () async{
+                                      if(_formKey.currentState.validate())
+                                        {
+                                          setState(() {
+                                            a=true;
+                                          });
+                                          await checkValidandAddToCart(context);
+                                          setState(() {
+                                            a=false;
+                                          });
+                                        }
+                                    },
                                   ),
                                 ],
-                              )
-                            : activeStep == 1
-                                ? Column(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: email1Controller,
-                                          // validator: (String value) {
-                                          //   if (value.isEmpty) return 'Email cannot be empty';
-                                          //
-                                          //   return null;
-                                          // },
-                                          style: TextStyle(color: Colors.black),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            isDense: true,
-                                            labelText: 'Email 1',
-                                            labelStyle:
-                                                TextStyle(color: Colors.black),
-                                            disabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: email2Controller,
-                                          // validator: (String value) {
-                                          //   if (value.isEmpty) return 'Email cannot be empty';
-                                          //
-                                          //   return null;
-                                          // },
-                                          style: TextStyle(color: Colors.black),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            isDense: true,
-                                            labelText: 'Email 2',
-                                            labelStyle:
-                                                TextStyle(color: Colors.black),
-                                            disabledBorder: OutlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: Colors.black),
-                                            ),
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Container(
-                                          padding: EdgeInsets.all( 10),
-                                          child: DropdownButtonFormField(
-                                            items: [
-                                              DropdownMenuItem(
-                                                child: Text('FE'),
-                                                value: 'FE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('SE'),
-                                                value: 'SE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('TE'),
-                                                value: 'TE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('BE'),
-                                                value: 'BE',
-                                              ),
-                                            ],
-                                            isExpanded: true,
-                                            onChanged: (String val) {
-                                              setState(() {
-                                                val1 = val;
-                                              });
-                                            },
-                                            value: val1,
-                                            decoration: InputDecoration.collapsed(hintText: 'Select Year'),
-                                          ),
-                                          decoration: ShapeDecoration(
-                                            shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 1.0,
-                                                  style: BorderStyle.solid),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.all( 10.0),
-                                          child: DropdownButtonFormField(
-                                            items: [
-                                              DropdownMenuItem(
-                                                child: Text('IEEE member'),
-                                                value: 'IEEE',
-                                              ),
-                                              DropdownMenuItem(
-                                                child: Text('Non-IEEE member'),
-                                                value: 'Non',
-                                              ),
-                                            ],
-                                            isExpanded: true,
-                                            onChanged: (String val) {
-                                              setState(() {
-                                                val2 = val;
-                                              });
-                                            },
-                                            value: val2,
-                                            decoration: InputDecoration.collapsed(hintText: "Select Category"),
-                                          ),
-                                          decoration: ShapeDecoration(
-                                            shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                  width: 1.0,
-                                                  style: BorderStyle.solid),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                            )
 
-                                    ],
-                                  )
-                                : Column(
-                                    children: [
-
-                                    ],
-                                  ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                                RaisedGradientButton(
-                                  height: 40,
-                                  width: 80,
-                                  gradient: LinearGradient(colors: commonGradient),
-                                  child: activeStep == 0 ? Text("Cancel") : Text("Back"),
-                                  onPressed: () {
-                                    if (activeStep == 1) {
-                                      setState(() {
-                                        activeStep = 0;
-                                      });
-                                    } else
-                                      Navigator.of(context).pop();
-                                  },
-                                ),
-                                RaisedGradientButton(
-                                  height: 40,
-                                  width: 80,
-                                  gradient: LinearGradient(colors: commonGradient),
-                                  child: activeStep == 0 ? Text('Next') : Text("Submit"),
-                                  onPressed: ()async{
-                                    if (activeStep == 0) {
-                                      setState(() {
-                                        activeStep = 1;
-                                      });
-                                    } else {
-                                      addToCart();
-                                      Navigator.of(context).pop();
-                                    }
-                                  },
-                                ),
-                              ],
-                          )
-
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -902,6 +618,61 @@ await dialogue(context);
             );
           });
         });
+  }
+
+
+  checkValidandAddToCart(BuildContext context)async{
+
+    String url=allUserUrl;
+    if(teamController.text.trim()!=null){
+      http.Response response1=await http.get(allTeamUrl);
+      List list1=jsonDecode(response1.body) as List;
+      for(int i=0;i<list1.length;i++){
+        if(list1[i]['team_username']==teamController.text.trim()){
+          Fluttertoast.showToast(msg: 'Select unique team name',backgroundColor: Colors.blue.shade600);
+          return;
+        }
+      }
+    }
+    if(part2Controller.text!=null || part3Controller.text!=null){
+      http.Response response=await http.get(url);
+      if(response.statusCode==200){
+        List list=jsonDecode(response.body) as List;
+        if(part2Controller.text!=null){
+          String user2=part2Controller.text.trim();
+          bool flag=false;
+          for(int i=0;i<list.length;i++){
+            if(list[i]['username']==user2){
+              flag=true;
+              break;
+            }
+          }
+          if(flag==false){
+            Fluttertoast.showToast(msg: 'Enter valid username for Username 2',backgroundColor: Colors.blue.shade600);
+            return;
+          }
+        }
+        if(part3Controller.text!=null){
+          String user2=part3Controller.text.trim();
+          bool flag=false;
+          for(int i=0;i<list.length;i++){
+            if(list[i]['username']==user2){
+              flag=true;
+              break;
+            }
+          }
+          if(flag==false){
+            Fluttertoast.showToast(msg: 'Enter valid username for Username 3',backgroundColor: Colors.blue.shade600);
+            return;
+          }
+        }
+        await addToCart(context,grp: true);
+      }
+
+    }else{
+      await addToCart(context,grp: true);
+    }
+
   }
 
   Widget tabcontroller() {

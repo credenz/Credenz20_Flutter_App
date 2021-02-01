@@ -21,6 +21,10 @@ class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
   int sum = 0;
   List list=List();
+  List<bool>grpEvent=[];
+  List<String>grpName;
+  List<String>user2;
+  List<String>user3;
   List list1=List();
   bool load = true;
   UpiIndia _upiIndia = UpiIndia();
@@ -67,14 +71,43 @@ class _CartState extends State<Cart> {
   loadCart() async {
     sum = 0;
     children1.clear();
+    grpEvent=[];
+    grpName=[];
+    user2=[];
+    String ieee=await storage.read(key: 'ieee');
+    user3=[];
     list = List();
     for (int i = 0; i < 12; i++) {
       bool pre = await storage.containsKey(key: '$i');
       if (pre) {
         String eventName = await storage.read(key: '$i');
+        bool b=await storage.containsKey(key: '${i}grp');
+        grpEvent.add(b);
+        if(b){
+          String name=await storage.read(key: '${i}grp');
+          grpName.add(name);
+          bool c=await storage.containsKey(key: '${i}part2');
+          if(c){
+            String us2=await storage.read(key: '${i}part2');
+            user2.add(us2);
+          }else{
+            user2.add(' ');
+          }
+          bool d=await storage.containsKey(key: '${i}part3');
+          if(d){
+            String us2=await storage.read(key: '${i}part3');
+            user3.add(us2);
+          }else{
+            user3.add(' ');
+          }
+        }else{
+          user2.add(' ');
+          user3.add(' ');
+          grpName.add(' ');
+        }
         list.add(eventName);
-        list1.add(ieeePrices[i]);
-         sum += ieeePrices[i];
+        ieee=='true'?list1.add(ieeePrices[i]):list1.add(nonIeeePrices[i]);
+         sum +=  ieee=='true'?ieeePrices[i]:nonIeeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -140,20 +173,103 @@ class _CartState extends State<Cart> {
   }
 */
   pay() async {
-    // UpiApp app = UpiApp.phonePe;
+    if(apps.isEmpty){
+      Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
+      return;
+    }
      UpiResponse upiResponse=await _upiIndia.startTransaction(
       app: apps[0],
       receiverUpiId: '9834570868@okbizaxis',
       //  I took only the first app from List<UpiApp> app.
       // receiverId: 'tester@test', // Make Sure to change this UPI Id
-      receiverName: 'Tester',
-      transactionRefId: 'TestingId',
-      transactionNote: 'Not actual. Just an example.',
-      amount: 1,
+      receiverName: 'PISB',
+      transactionRefId: 'PISB ID',
+      transactionNote: 'Event payment',
+      amount: sum.toDouble(),
     );
-     Fluttertoast.showToast(msg: upiResponse.status);
-     print(upiResponse.transactionId);
-     print(upiResponse.status);
+     // Fluttertoast.showToast(msg: upiResponse.status);
+     // print(upiResponse.transactionId);
+     // print(upiResponse.status);
+    if(upiResponse.status=='success'){
+      String an="";
+      String username = await storage.read(key: 'username');
+      String accToken = await storage.read(key: "accToken");
+      for (int i = 0; i < list.length; i++) {
+        print(list[i]);
+        print(grpEvent[i]);
+        if(grpEvent[i]){
+          print(user2[i]);
+          print(user3[i]);}
+        if(grpEvent[i]==false) {
+          String url =
+              baseUrl + username + '/${list[i].toString().toLowerCase()}';
+          print(accToken);
+          Map<String,dynamic>mapp={
+            "approved":true,
+            "trans_id":"T2101292246376173901775"
+          };
+          String body='{"approved":true,"trans_id":"T2101292246376173901775"}';
+          print(body);
+          Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+          http.Response response = await http.post(url, headers: header,body: body);
+          print(header);
+          print(response.body);
+          print(url);
+          print(response.statusCode);
+          if (response.statusCode == 201||response.statusCode == 200) {
+            print(response.body);
+            String msg = jsonDecode(response.body)['message'];
+            if (msg == null) {
+            }
+          }else{
+            an=an+list[i]+" ";
+          }
+        }else{
+          String url=groupRegisterUrl;
+          int nop=1;
+          List<String>ls=[];
+          if(user2[i]!=" "){
+            nop++;
+            ls.add('"${user2[i]}"');
+          }
+          if(user3[i]!=" "){
+            nop++;
+            ls.add("${user3[i]}");
+          }
+          String body='{"event_name":"${list[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":"T2101292246376173901775"}';
+          Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+          http.Response response=await http.post(url,headers: header,body: body);
+          print(url);
+          print(header);
+          print(body);
+          print(response.body);
+          if(response.statusCode==200||response.statusCode==201){
+            print(response.body);
+          }else{
+            an=an+list[i]+" ";
+          }
+        }
+      }
+      if(an==""){
+        for(int i=0;i<12;i++){
+          if(await storage.containsKey(key: '$i')){
+            await storage.delete(key: '$i');
+
+          }
+        };
+        await loadCart();
+        Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
+
+      }else{
+        Fluttertoast.showToast(msg: "Error in registration for $an",backgroundColor: Colors.blue.shade600);
+      }
+    }else if(upiResponse.status=='failure'){
+      Fluttertoast.showToast(msg: 'Payment Failed',backgroundColor: Colors.blue.shade600);
+    }else{
+      Fluttertoast.showToast(msg: 'Payment ${upiResponse.status}',backgroundColor: Colors.blue.shade600);
+    }
+
+
     /*  var response = AllInOneSdk.startTransaction(
         mid, orderId, "100", txnToken, null, isStaging, restrictAppInvoke);
     response.then((value) {
@@ -175,50 +291,7 @@ class _CartState extends State<Cart> {
     
     */
 
-    /*  String username = await storage.read(key: 'username');
-    String accToken = await storage.read(key: "accToken");
-    if (username != null && accToken != null) {
-      int amt = 0;
-      for (int i = 0; i < list.length; i++) {
-        String url =
-            baseUrl + username + '/${list[i].toString().toLowerCase()}';
-
-        ///rc
-        print(accToken);
-        Map<String, String> header = {"Authorization": "Bearer $accToken"};
-        http.Response response = await http.post(url, headers: header);
-        print(header);
-        print(response.body);
-        print(url);
-        print(response.statusCode);
-        if (response.statusCode == 200) {
-          String msg = jsonDecode(response.body)['message'];
-          if (msg == null) {
-            amt = amt + jsonDecode(response.body)['price'];
-          }
-        }
-      }
-      if (amt != 0) {
-        var options = {
-          'key': 'rzp_test_8OXCvHsV5OiOpe',
-          'amount': amt,
-          'name': 'Acme Corp.',
-          'description': 'Fine T-Shirt',
-          'prefill': {
-            'contact': '7397865565',
-            'email': 'sarafatharva123@gmail.com'
-          }
-        };
-        // _razorpay.open(options);
-      } else {
-        Fluttertoast.showToast(msg: "Events already registered");
-      }
-    } else {
-      Fluttertoast.showToast(msg: "Please login before you register");
-      Navigator.push(context,
-          MaterialPageRoute(builder: (BuildContext context) => Login()));
-    }*/
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -353,6 +426,17 @@ class _CartState extends State<Cart> {
                                               fontWeight: FontWeight.w600,
                                               color: textColor),
                                         ),
+                                        SizedBox(height: 5),
+                                        grpEvent[pos]?Text(
+                                          "Group: ${grpName[pos]}",
+                                          style: TextStyle(
+                                              fontFamily: 'Segoe UI',
+                                              fontWeight: FontWeight.w600,
+                                              color: textColor),
+                                        ):Text('Solo',style: TextStyle(
+                                            fontFamily: 'Segoe UI',
+                                            fontWeight: FontWeight.w600,
+                                            color: textColor),),
                                       ],
                                     ),
                                   ],
@@ -447,10 +531,10 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  async{
-                                          // await pay();
-                                          Fluttertoast.showToast(
-                                              backgroundColor: Colors.blue.shade600,
-                                              msg: 'Payment gateway will open soon. Stay tuned!');
+                                          await pay();
+                                          // Fluttertoast.showToast(
+                                          //     backgroundColor: Colors.blue.shade600,
+                                          //     msg: 'Payment gateway will open soon. Stay tuned!');
                                         }),
 
                                     /*child: RaisedButton(
