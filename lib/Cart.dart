@@ -130,9 +130,14 @@ class _CartState extends State<Cart> {
           user3.add(' ');
           grpName.add(' ');
         }
-        list.add(eventName);
-        ieee=='true'?list1.add(ieeePrices[i]):list1.add(nonIeeePrices[i]);
-         sum +=  ieee=='true'?ieeePrices[i]:nonIeeePrices[i];
+        String e='';
+        for(int i=0;i<eventName.split(' ').length;i++) {
+          e=e+eventName.split(' ')[i];}
+        print(e);
+          list.add(e);
+          ieee == 'true' ? list1.add(ieeePrices[i]) : list1.add(
+              nonIeeePrices[i]);
+          sum += ieee == 'true' ? ieeePrices[i] : nonIeeePrices[i];
       }
     }
     for (var i = 0; i < list.length; i++) {
@@ -206,7 +211,7 @@ class _CartState extends State<Cart> {
       receiverName: 'PISB',
       transactionRefId: 'PISB ID',
       transactionNote: 'Event payment',
-      amount: sum.toDouble(),
+      amount: 1.00,
     );
      // Fluttertoast.showToast(msg: upiResponse.status);
      // print(upiResponse.transactionId);
