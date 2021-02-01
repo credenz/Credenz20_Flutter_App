@@ -222,7 +222,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                               IconButton(
                                   iconSize: 42.0,
                                   icon: Image.asset('images/call.png'),
-                                  onPressed:  () => _launchURL("tel://"+number[x].toString())),
+                                  onPressed:  () => _launchURL("tel://"+number[x].substring(4))),
                               IconButton(
                                   iconSize: 55.0,
                                   icon: Image.asset('images/linkdin.png'),
