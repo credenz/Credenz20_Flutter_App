@@ -178,7 +178,7 @@ class _EventDesState extends State<EventDes>
                               topRight: Radius.circular(45.0),
                             ),
                             child: Card(
-                                color: Color(0x22000000),
+                                color: Color(0x33000000),
                                 child: Padding(
                                     padding: EdgeInsets.only(top: 10),
                                     child: tabcontroller())),

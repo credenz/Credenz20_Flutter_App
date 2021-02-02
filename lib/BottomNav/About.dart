@@ -88,7 +88,7 @@ class _AboutUsState extends State<AboutUs> with SingleTickerProviderStateMixin {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(  // Image goes here
-            height: 190,
+            height: 185,
             // width: 500,
             decoration: BoxDecoration(
               //color: Colors.white,

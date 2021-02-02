@@ -104,6 +104,7 @@ class _CartState extends State<Cart> {
     user2=[];
     String ieee=await storage.read(key: 'ieee');
     user3=[];
+    list1=[];
     list = List();
     list2=[];
     for (int i = 0; i < 12; i++) {
