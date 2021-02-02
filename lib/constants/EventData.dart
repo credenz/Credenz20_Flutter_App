@@ -35,28 +35,28 @@ const List<String> eventName = [
 ];
 
 List ieeePrices=[
-  60,
-  60,
+  50,
+  50,
   40,
   40,
   100,
   40,
-  60,
+  50,
   40,
   40,
-  60,
+  50,
   120,
   0
 ];
 
 List nonIeeePrices=[
-  80,
-  80,
+  60,
+  60,
   50,
   50,
   120,
   50,
-  80,
+  60,
   50,
   50,
   60,
@@ -71,8 +71,8 @@ List<RichText> intro = [
     children: <TextSpan>[
       TextSpan(text: 'Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++.\n\nShowcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 60/-\n' +
-      'Non IEEE Members: 80/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 50/-\n' +
+      'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 
@@ -85,8 +85,8 @@ List<RichText> intro = [
     children: <TextSpan>[
       TextSpan(text: 'A coding competition to test your compilation of the combinations of algorithms and conceptual understanding of the programming languages C/C++. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 60/-\n' +
-          'Non IEEE Members: 80/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 50/-\n' +
+          'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 
@@ -159,8 +159,8 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
     children: <TextSpan>[
       TextSpan(text: 'Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 60/-\n' +
-          'Non IEEE Members: 80/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 50/-\n' +
+          'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 
@@ -203,8 +203,8 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
     children: <TextSpan>[
       TextSpan(text: 'An aesthetically pleasing and user-friendly website is necessary to keep visitors engaged online. If you think you have the flair to create such a site, WebWeaver is the competition for you! A perfect integration of technology and creativity will lead you to win this competition.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: 'IEEE Members: 60/-\n' +
-          'Non IEEE Members: 80/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'IEEE Members: 50/-\n' +
+          'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
   ),),
 

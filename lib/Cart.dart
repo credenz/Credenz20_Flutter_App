@@ -207,6 +207,106 @@ class _CartState extends State<Cart> {
         msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
   }
 */
+
+  register () async
+  {
+    Fluttertoast.showToast(msg: "Please Wait while we register you to your events.",backgroundColor: Colors.blue.shade600);
+    setState(() {
+      load=true;
+    });
+
+    String an="";
+    String username = await storage.read(key: 'username');
+    String accToken = await storage.read(key: "accToken");
+    for (int i = 0; i < list2.length; i++) {
+      print(list[i]);
+      print(grpEvent[i]);
+      if(grpEvent[i]){
+        print(user2[i]);
+        print(user3[i]);}
+      if(grpEvent[i]==false) {
+        String url;
+        if(list2[i].toString().toLowerCase()=='reversecoding'){
+          url= baseUrl + username + '/rc';
+        }
+        else if(list2[i].toString().toLowerCase()=='networktreasurehunt'){
+          url= baseUrl + username + '/nth';
+        }
+        else
+          url= baseUrl + username + '/${list2[i].toString().toLowerCase()}';
+        print(accToken);
+        String body='{"approved":true,"trans_id":""}';
+        print(body);
+        Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+        http.Response response = await http.post(url, headers: header,body: body);
+        print(header);
+        print(response.body);
+        print(url);
+        print(response.statusCode);
+        if (response.statusCode == 201||response.statusCode == 200) {
+          print(response.body);
+          String msg = jsonDecode(response.body)['message'];
+          if (msg == null) {
+          }
+        }else{
+          an=an+list2[i]+" ";
+        }
+      }else{
+        String url=groupRegisterUrl;
+        int nop=1;
+        List<String>ls=[];
+        if(user2[i]!=" "){
+          nop++;
+          ls.add('"${user2[i]}"');
+        }
+        if(user3[i]!=" "){
+          nop++;
+          ls.add("${user3[i]}");
+        }
+        String body;
+        if(list2[i].toString().toLowerCase()=='reversecoding'){
+          body='{"event_name":"rc","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":""}';
+        }
+        else if(list2[i].toString().toLowerCase()=='networktreasurehunt'){
+          body='{"event_name":"nth","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":""}';
+        }
+        else
+          body='{"event_name":"${list2[i].toString().toLowerCase()}","team_username":"${grpName[i]}","players":$ls,"no_of_players":$nop,"approved":true,"trans_id":""}';
+        Map<String, String> header = {"Authorization": "Bearer $accToken","Content-Type":"application/json"};
+        http.Response response=await http.post(url,headers: header,body: body);
+        print(url);
+        print(header);
+        print(body);
+        print(response.body);
+        if(response.statusCode==200||response.statusCode==201){
+          print(response.body);
+        }else{
+          an=an+list2[i]+" ";
+        }
+      }
+    }
+    if(an==""){
+      for(int i=0;i<12;i++){
+        if(await storage.containsKey(key: '$i')){
+          await storage.delete(key: '$i');
+
+        }
+      }
+      await loadCart();
+      setState(() {
+        load=false;
+      });
+
+      Fluttertoast.showToast(msg: "Events registered",backgroundColor: Colors.blue.shade600);
+
+    }else{
+      setState(() {
+        load=false;
+      });
+      Fluttertoast.showToast(msg: "Error in registration for $an",backgroundColor: Colors.blue.shade600);
+    }
+  }
+
   pay(UpiApp app, BuildContext context1) async {
      UpiResponse upiResponse=await _upiIndia.startTransaction(
       app: app,
@@ -588,8 +688,13 @@ class _CartState extends State<Cart> {
                                         onPressed: ()  async{
                                           if(apps.length==0){
                                             Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
-                                          }else
-                                          await dialogue(context);
+                                          }else {
+                                            if(sum==0)
+                                              await register();
+                                            else
+                                              await dialogue(context);
+                                          }
+
                                           //await pay();
                                           // Fluttertoast.showToast(
                                           //     backgroundColor: Colors.blue.shade600,

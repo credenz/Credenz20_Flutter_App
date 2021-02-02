@@ -624,16 +624,6 @@ await dialogue(context);
   checkValidandAddToCart(BuildContext context)async{
 
     String url=allUserUrl;
-    if(teamController.text.trim()!=null){
-      http.Response response1=await http.get(allTeamUrl);
-      List list1=jsonDecode(response1.body) as List;
-      for(int i=0;i<list1.length;i++){
-        if(list1[i]['team_username']==teamController.text.trim()){
-          Fluttertoast.showToast(msg: 'Select unique team name',backgroundColor: Colors.blue.shade600);
-          return;
-        }
-      }
-    }
     if(part2Controller.text!=null || part3Controller.text!=null){
       http.Response response=await http.get(url);
       if(response.statusCode==200){

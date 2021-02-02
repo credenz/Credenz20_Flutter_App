@@ -24,29 +24,41 @@ class _MyEventsState extends State<MyEvents> {
     String username=await storage.read(key: 'username');
     String accToken=await storage.read(key: "accToken");
 
-    if(accToken==null || accToken.isEmpty){
+    if(accToken==null || accToken==null){
       Navigator.pop(context);
       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
     }
+    else {
 
-    if(username!=null && accToken!=null){
-      String url=baseUrl+username+'/present';
-      Map<String,String>headers={
-        "Authorization":"Bearer $accToken"
-      };
-      http.Response response=await http.get(url,headers: headers);
-      if(response.statusCode==200){
-        setState(() {
-          eventList=jsonDecode(response.body) as List;
-          load=false;
-        });
-        print(eventList);
+      if (username != null && accToken != null && username.isNotEmpty && accToken.isNotEmpty) {
+
+        print(accToken);
+        String url = baseUrl + username + '/present';
+        Map<String, String>headers = {
+          "Authorization": "Bearer $accToken"
+        };
+        http.Response response = await http.get(url, headers: headers);
+        if (response.statusCode == 200) {
+          setState(() {
+            eventList = jsonDecode(response.body) as List;
+            load = false;
+          });
+          print(eventList);
+        }
+        else {
+          Fluttertoast.showToast(
+              msg: 'Cannot get events', backgroundColor: Colors.blue.shade600);
+          setState(() {
+            load = false;
+          });
+        }
+      } else {
+        Fluttertoast.showToast(
+            msg: 'Please login first!', backgroundColor: Colors.blue.shade600);
+        Navigator.pop(context);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) => Login()));
       }
-    }else{
-      Fluttertoast.showToast(msg: 'Cannot get events',backgroundColor: Colors.blue.shade600);
-      setState(() {
-        load=false;
-      });
     }
   }
 
