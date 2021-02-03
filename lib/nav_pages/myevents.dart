@@ -24,7 +24,7 @@ class _MyEventsState extends State<MyEvents> {
     String username=await storage.read(key: 'username');
     String accToken=await storage.read(key: "accToken");
 
-    if(accToken==null || accToken==null){
+    if(username==null || accToken==null){
       Navigator.pop(context);
       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
     }

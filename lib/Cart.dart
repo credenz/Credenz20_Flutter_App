@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 // import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'External_Package/RaisedGradientButton.dart';
 import 'constants/theme.dart';
+import 'loginPage.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -82,7 +83,16 @@ class _CartState extends State<Cart> {
                 itemBuilder: (BuildContext context, int pos){
                   return ListTile(contentPadding:EdgeInsets.symmetric(vertical: 15, horizontal: 10),title: Text(apps[pos].name),leading: Image.memory(apps[pos].icon),
                   onTap: () async{
-                    await pay(apps[pos], context);
+                    String username=await storage.read(key: 'username');
+                    String accToken=await storage.read(key: "accToken");
+                    if(username!=null && accToken !=null)
+                      await pay(apps[pos], context);
+                    else
+                      {
+                        Navigator.push(context,  MaterialPageRoute(
+                            builder: (BuildContext cotext) => Login()));
+                      }
+
 
                   },);
                 },

@@ -428,7 +428,7 @@ List<RichText> contact = [
 List<RichText> judging = [
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: 'Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) Judging in round 1 will be based on programming skills, ability to understand code, algorithms and knowledge of the fundamentals of C/C++ and Python.\n\n2)Judging for round 2 will be based on the time and space efficiency of your code to solve the given challenges in restricted time.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
       TextSpan(text: '\n\nJunior Category:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: '\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
@@ -438,7 +438,7 @@ List<RichText> judging = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: "1) The competition will test the participants' logical and coding skills.\n\n2) Time and cost efficiency of the code will be tested in round 2.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: "1) Judging in round 1 will be based on the correctness of the decoded mathematical pattern with or without coding.\n\n2) Judging for round 2 will be based on the time and space efficiency of your code to solve the given challenges in restricted time.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
       TextSpan(text: '\n\nJunior Category:', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: '\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
@@ -543,12 +543,12 @@ List<RichText> judging = [
 List<RichText> rules = [
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) MCQs based on coding concepts in C/C++ and python. (Python, C/C++ for FE and C/C++ for SE, TE and BE)', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) A maximum of 1 participant pursuing under-graduate program at their institution is allowed to participate.\n\n2) The participants must keep their college verification in handy as you can be asked to disclose it any point of time. Before the final round, all participants will be asked to verify their identity as an under-graduate student and failure to do so will lead to immediate disqualification.\n\n3)Marking scheme and further rules and regulation while playing Clash will be released during the time of the event itself.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) A maximum of 2 candidates pursuing undergraduate program at their institution are allowed per team.\n\n2) Marking scheme will be declared on spot.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) A maximum of 1 participant pursuing under-graduate program at their institution is allowed to participate.\n\n2) The participants must keep their college verification in handy as you can be asked to disclose it any point of time. Before the final round, all participants will be asked to verify their identity as an under-graduate student and failure to do so will lead to immediate disqualification.\n\n3) Marking scheme and further rules and regulation while playing RC will be released during the time of the event itself.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
@@ -563,7 +563,7 @@ List<RichText> rules = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) Each team can consist of maximum 3 members.\n\n2) Participants will be provided with credentials to join tinkercad for the 2nd round.\n\n3) Participants can use data-sheets for the components they are using and are supposed to provide a link of the same.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) Participants will be provided with credentials to join tinkercad for the 2nd round.\n\n2) Participants can use data-sheets for the components they are using and are supposed to provide a link of the same.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
@@ -578,7 +578,7 @@ List<RichText> rules = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) Each team of students may consist of a maximum of 3 participants.\n\n2) One account per participant.\n\n3) Signing In on Kaggle through Multiple accounts is prohibited.\n\n4) No private sharing outside teams.\n\n5) No private sharing outside teams.\n\n6) Privately sharing code or data outside of teams is not permitted.\n\n7) Results should be reproducible to be eligible for prizes.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) Each team of students may consist of a maximum of 3 participants.\n\n2) One account per participant.\n\n3) Signing In on Kaggle through Multiple accounts is prohibited.\n\n4) No private sharing outside teams.\n\n5) Results should be reproducible to be eligible for prizes.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
@@ -634,12 +634,12 @@ List<RichText> rules = [
 List<RichText> structure = [
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) A 28-minute game for a person or a team of two people.\n\n2) Teams or players are not allowed to use any IDE or software after the game has started.\n\n3) You will have 3 lifelines (description will be provided in the game itself) to help yourself.\n\n4) You are not allowed to switch tabs or close the browser during the game. If you do so, you will be automatically logged out.\n\n5) The primary marks allotted are +4 if answered correctly and -2 if the answer for a particular question is incorrect. If a question attempted is incorrect, then from the next question +2 marks are allotted for each correctly answered question, else -1 until you get a correct answer for upcoming questions.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) There are two rounds in clash:\n\ta. MCQ Round(elimination)\n\tb. Coding Round(final)\n\n2) Participants can register via the Credenz app or the website.\n\n3) The event will be divided into two levels, Junior and Senior where the difficulty will vary accordingly. All the levels will test out your knowledge of C/C++ and Python.\n\n4) The FE and SE participants will be taking on the Junior Category and the TE and BE participants will take on the Senior Category.\n\n5) The participants clearing out the cut off score in round 1 will be notified for round 2 and will be able to participate in the final round for the prize.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) Integer type questions which involve complex mathematical problems which are not easy to solve without coding.\n\n2) A 28-minute game for a person or a team of two people.\n\n3) Teams or players are allowed to use any IDE or software after the game has started.\n\n4) You will have 3 lifelines (description will be provided in the game itself) to help yourself.\n\n5) You will have two attempts to answer a particular question. In the first attempt, the marking scheme will be +4 0. In the second attempt, the marking scheme will be changed to +2 -1.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) There are two rounds in RC:\n\ta. Logic Round (elimination)\n\tb. Decipher and code Round (final)\n\n2) Participants can register via the Credenz app or the website.\n\n3) The event will be divided into two levels, Junior and Senior where the difficulty will vary accordingly. All the levels will test out your knowledge of C/C++ and Python.\n\n4) The FE and SE participants will be taking on the Junior Category and the TE and BE participants will take on the Senior Category.\n\n5) The participants clearing out the cut off score in round 1 will be notified for round 2 and will be able to participate in the final round for the prize.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
