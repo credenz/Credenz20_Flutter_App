@@ -624,11 +624,13 @@ await dialogue(context);
   checkValidandAddToCart(BuildContext context)async{
 
     String url=allUserUrl;
-    if(part2Controller.text!=null || part3Controller.text!=null){
+    print(part2Controller.text);
+    print(part3Controller.text);
+    if((part2Controller.text.trim()!=null&&part2Controller.text.trim().isNotEmpty) || (part3Controller.text.trim()!=null&&part3Controller.text.trim().isNotEmpty)){
       http.Response response=await http.get(url);
       if(response.statusCode==200){
         List list=jsonDecode(response.body) as List;
-        if(part2Controller.text!=null){
+        if(part2Controller.text.trim()!=null&&part2Controller.text.trim().isNotEmpty){
           String user2=part2Controller.text.trim();
           bool flag=false;
           for(int i=0;i<list.length;i++){
@@ -638,11 +640,11 @@ await dialogue(context);
             }
           }
           if(flag==false){
-            Fluttertoast.showToast(msg: 'Enter valid username for Username 2',backgroundColor: Colors.blue.shade600);
+            Fluttertoast.showToast(msg: 'Username 2 does not seem to be registered',backgroundColor: Colors.blue.shade600);
             return;
           }
         }
-        if(part3Controller.text!=null){
+        if(part3Controller.text.trim()!=null&&part3Controller.text.trim().isNotEmpty){
           String user2=part3Controller.text.trim();
           bool flag=false;
           for(int i=0;i<list.length;i++){
@@ -652,7 +654,7 @@ await dialogue(context);
             }
           }
           if(flag==false){
-            Fluttertoast.showToast(msg: 'Enter valid username for Username 3',backgroundColor: Colors.blue.shade600);
+            Fluttertoast.showToast(msg: 'Username 3 does not seem to be registered',backgroundColor: Colors.blue.shade600);
             return;
           }
         }
