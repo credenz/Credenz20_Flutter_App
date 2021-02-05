@@ -697,13 +697,22 @@ class _CartState extends State<Cart> {
                                           colors: commonGradient,
                                         ),
                                         onPressed: ()  async{
-                                          if(apps.length==0){
-                                            Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
-                                          }else {
-                                            if(sum==0)
-                                              await register();
-                                            else
-                                              await dialogue(context);
+                                          // if(apps.length==0){
+                                          //   Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
+                                          // }else {
+                                          //   if(sum==0)
+                                          //     await register();
+                                          //   else
+                                          //     await dialogue(context);
+                                          // }
+                                          if(sum==0){
+                                            await register();
+                                          }else{
+                                              if(apps.length==0){
+                                                Fluttertoast.showToast(msg: 'No UPI apps found',backgroundColor: Colors.blue.shade600);
+                                              }else{
+                                                await dialogue(context);
+                                              }
                                           }
 
                                           //await pay();
