@@ -308,13 +308,8 @@ class _PageViewWidgetState extends State<PageViewWidget> {
   }
 }
 
-_launchURL(var url) async {
-
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
+_launchURL(var url) {
+  launch(url);
 }
 
 /*
