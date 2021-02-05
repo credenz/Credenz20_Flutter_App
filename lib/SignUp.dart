@@ -24,9 +24,11 @@ class _SignUpState extends State<SignUp> {
   double _height;
   double _width;
   double _pixelRatio;
+  bool pict=false;
   bool _large;
   bool _medium;
   bool _obscureText = true;
+  String pictRegID;
   TextEditingController nameController=TextEditingController();
   TextEditingController usernameController=TextEditingController();
   TextEditingController emailController=TextEditingController();
@@ -35,12 +37,15 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordController=TextEditingController();
   TextEditingController password1Controller=TextEditingController();
   TextEditingController ieee=TextEditingController();
+  TextEditingController registrationController=TextEditingController();
+  List allowedReg=['C2K18','I2K18','E2K18','C2K17','I2K17','E2K17','C2K19','I2K19','E2K19','C2K20','I2K20','E2K20'];
   // TextEditingController emailController;
   String name;
   String email;
   String collegeName;
   String password="";
   String password1="";
+  bool disable=false;
   String phoneNumber;
   String userName;
   bool load=false;
@@ -75,13 +80,21 @@ class _SignUpState extends State<SignUp> {
       Fluttertoast.showToast(msg: 'Please enter IEEE registration ID',backgroundColor: Colors.blue.shade600);
       return;
     }
+    if(pict==true && registrationController.text.trim().isEmpty){
+      Fluttertoast.showToast(msg: 'Please enter PICT registration ID',backgroundColor: Colors.blue.shade600);
+      return;
+    }
+    if(pict==true&&!allowedReg.contains(pictRegID.toUpperCase().substring(0,5))){
+      Fluttertoast.showToast(msg: 'Please enter valid PICT registration ID',backgroundColor: Colors.blue.shade600);
+      return;
+    }
     setState(() {
       load=true;
     });
     String url = signUpUrl;
     Map<String, String> headers = {"Content-Type": "application/json"};
     String body =
-       ieeeMenber?'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName","ieee":$ieeeMenber,"ieeeid":"${ieee.text.trim()}"}':'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName"}';
+       ieeeMenber?'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName","ieee":${ieeeMenber.toString()},"ieeeid":"${ieee.text.trim()}","isPict":${pict.toString()}}':'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName","isPict":${pict.toString()},"ieee":${ieeeMenber.toString()}}';
     http.Response response = await http.post(url, body: body, headers: headers);
     print(url);
     print(body);
@@ -93,6 +106,7 @@ class _SignUpState extends State<SignUp> {
       await storage.write(key: 'username', value: userName);
       await storage.write(key: 'email', value: email);
       await storage.write(key: 'ieee', value: ieeeMenber.toString());
+      await storage.write(key: 'pict', value: pict.toString());
       Fluttertoast.showToast(msg: 'Signed Up',backgroundColor: Colors.blue.shade600);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
     } else {
@@ -275,29 +289,7 @@ class _SignUpState extends State<SignUp> {
                       },
                     ),
                   ),
-                  SizedBox(height: _height / 30.0),
-                  Material(
-                    borderRadius: BorderRadius.circular(10.0),
-                    elevation: _large ? 12 : (_medium ? 10 : 8),
-                    child: TextFormField(
-                      controller: collegeController,
-                      keyboardType: TextInputType.text,
-                      cursorColor: Color(0xff0aa9d7),
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.school,
-                            color: Color(0xff0aa9d7), size: 20),
-                        hintText: "College Name",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: BorderSide.none),
-                      ),
-                      onChanged: (val) {
-                        setState(() {
-                          collegeName = val;
-                        });
-                      },
-                    ),
-                  ),
+
 
                   // Material(
                   //   borderRadius: BorderRadius.circular(10.0),
@@ -380,6 +372,69 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   SizedBox(height: _height / 30.0),
+                  SwitchListTile(value: pict, onChanged: (bool val){
+                    setState(() {
+                      pict=val;
+                      if(pict){
+                        collegeController.text='Pune Institute of Computer Technology';
+                        disable=true;
+                      }else{
+                        collegeController.text='';
+                        disable=false;
+                      }
+                    });
+                  },
+                    activeColor:  Color(0xff0aa9d7),
+                    title: Text('PICTian',style: TextStyle(color: Colors.white,fontFamily: 'Segoe UI Bold'),),
+                  ),
+                  SizedBox(height: _height / 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      controller: collegeController,
+                      readOnly: disable,
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.school,
+                            color: Color(0xff0aa9d7), size: 20),
+                        hintText: "College Name",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          collegeName = val;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: _height / 30.0),
+                  pict?Material(
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: _large ? 12 : (_medium ? 10 : 8),
+                    child: TextFormField(
+                      // maxLength: 11,
+                      controller: registrationController,
+                      keyboardType: TextInputType.text,
+                      cursorColor: Color(0xff0aa9d7),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.app_registration,
+                            color: Color(0xff0aa9d7), size: 20),
+                        hintText: "PICT registration id ",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            borderSide: BorderSide.none),
+                      ),
+                      onChanged: (val) {
+                        setState(() {
+                          pictRegID = val;
+                        });
+                      },
+                    ),
+                  ):Container(),
                   SwitchListTile(value: ieeeMenber, onChanged: (bool val){
                     setState(() {
                       ieeeMenber=val;
