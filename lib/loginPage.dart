@@ -69,9 +69,11 @@ class _LoginState extends State<Login> {
         Map<String, String> headers = {"Authorization": "Bearer $accessToken"};
         http.Response response1 = await http.get(url1, headers: headers);
         if (response1.statusCode == 200) {
+          print(response1.body);
           print(jsonDecode(response1.body)['ieee']);
-          await storage.write(key: 'ieee', value: jsonDecode(response1.body)['ieee']);
-          await storage.write(key: 'pict', value: jsonDecode(response1.body)['isPict']);
+          await storage.write(key: 'ieee', value: jsonDecode(response1.body)['ieee'].toString());
+          print(jsonDecode(response1.body)['ispict'].toString());
+          await storage.write(key: 'pict', value: jsonDecode(response1.body)['ispict'].toString());
           Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
         }

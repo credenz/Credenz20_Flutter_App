@@ -94,7 +94,7 @@ class _SignUpState extends State<SignUp> {
     String url = signUpUrl;
     Map<String, String> headers = {"Content-Type": "application/json"};
     String body =
-       ieeeMenber?'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName","ieee":${ieeeMenber.toString()},"ieeeid":"${ieee.text.trim()}","isPict":${pict.toString()}}':'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"$collegeName","isPict":${pict.toString()},"ieee":${ieeeMenber.toString()}}';
+       ieeeMenber?'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"${collegeController.text.trim()}","ieee":${ieeeMenber.toString()},"ieeeid":"${ieee.text.trim()}","isPict":${pict.toString()}}':'{"username":"$userName","name":"$name","password":"$password","email":"$email","phoneno":"$phoneNumber","clgname":"${collegeController.text.trim()}","isPict":${pict.toString()},"ieee":${ieeeMenber.toString()}}';
     http.Response response = await http.post(url, body: body, headers: headers);
     print(url);
     print(body);

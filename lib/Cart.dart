@@ -295,6 +295,15 @@ class _CartState extends State<Cart> {
         print(response.body);
         if(response.statusCode==200||response.statusCode==201){
           print(response.body);
+          String emailUrl=baseUrl;
+          emailUrl+='{$username}/sendmail';
+          http.Response emailresponse=await http.post(emailUrl);
+          // if(emailresponse.statusCode==200||emailresponse.statusCode==201){
+          //
+          // }else{
+          //
+          // }
+
         }else{
           an=an+list2[i]+" ";
         }
