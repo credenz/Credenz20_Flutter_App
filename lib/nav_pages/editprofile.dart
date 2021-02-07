@@ -412,6 +412,7 @@ class _EditProfileState extends State<EditProfile> {
             Padding(
               padding: EdgeInsets.all(15.0),
               child: TextFormField(
+                readOnly: true,
                 controller: collegeController,
                 validator: (String value) {
                   if (value.isEmpty) return 'College Name cannot be empty';
