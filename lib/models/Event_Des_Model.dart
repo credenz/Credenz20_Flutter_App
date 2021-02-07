@@ -33,6 +33,7 @@ class _EventDesState extends State<EventDes>
   GlobalKey<FormState> _key;
   String ieeeMenber;
   final storage = FlutterSecureStorage();
+ List<RichText> intro;
   String selectedValue, selectedValue1;
   String name;
   String email;
@@ -85,6 +86,15 @@ class _EventDesState extends State<EventDes>
      accToken=await storage.read(key: 'accToken');
     name=await storage.read(key: 'username');
     bool pre = await storage.containsKey(key: '${widget.eventIndex}');
+     String isPict = await storage.read(key: 'pict');
+     if(isPict=='true')
+       setState(() {
+         intro=intro2;
+       });
+       else
+       setState(() {
+         intro=intro1;
+       });
     if (pre) {
       setState(() {
         isavail = true;
@@ -111,6 +121,7 @@ class _EventDesState extends State<EventDes>
   }
 
   int activeStep = 0;
+
 
   @override
   Widget build(BuildContext context) {

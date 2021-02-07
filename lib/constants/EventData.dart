@@ -65,12 +65,19 @@ List nonIeeePrices=[
 ];
 
 
-List<RichText> intro = [
+List<RichText> intro1 = [
 
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++.\n\nShowcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 11AM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 50/-\n' +
       'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -84,7 +91,14 @@ List<RichText> intro = [
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'A coding competition to test your compilation of the combinations of algorithms and conceptual understanding of the programming languages C/C++. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '12PM - 2PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 50/-\n' +
           'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -98,7 +112,10 @@ List<RichText> intro = [
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Get ready to paint virtual canvas with your creative and thoughtful designs! Come, digitalise your art and let your mouse be your brush.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '2:30PM - 5:15PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 40/-\n' +
           'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -112,7 +129,12 @@ List<RichText> intro = [
 RichText(text: TextSpan(
 children: <TextSpan>[
 TextSpan(text: 'Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics,physics, logical ability and build a circuit by interpreting the hints provided. \n\nPrerequisites: Theoretical and practical knowledge in the field of digital electronics, electrical circuits and physics.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+  TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+  TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+  TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+  TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+  TextSpan(text: '10AM - 12PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+  TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
 TextSpan(text: 'IEEE Members: 40/-\n' +
 'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
 ],
@@ -126,7 +148,10 @@ TextSpan(text: 'IEEE Members: 40/-\n' +
 RichText(text: TextSpan(
 children: <TextSpan>[
 TextSpan(text: 'Ever dreamt of having your own business or a product? B-Plan is the perfect platform for you! A perfect presentation describing your business idea will help you grab a chance to win funding from the investors. So showcase your ideas before a panel of best marketing professionals.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+  TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+  TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+  TextSpan(text: '10:30AM - 4PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+  TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
 TextSpan(text: 'IEEE Members: 100/-\n' +
 'Non IEEE Members: 120/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
 ],
@@ -143,7 +168,14 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Let the rise and fall of market shares bring out your inner businessman! Get an insight in the field of Investment banking, corporate financing and trading to take over the virtual stock market. After all, every investment is one step closer to your dream bank balance!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 40/-\n' +
           'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -158,7 +190,10 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '1PM - 3:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 50/-\n' +
           'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -172,7 +207,14 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Are you diligent enough to face the mind-boggling questions which will push your logical reasoning to its limits? Then do not miss this amazing opportunity. Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '2PM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 40/-\n' +
           'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -187,7 +229,20 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Brainstorm on the questions ranging from Greek mythology to world politics, from Shakespeare to business gurus. Set out on a voyage through mind-boggling questions captained by a witty quiz master. Flex your IQ in a set of three quizzes, designed to be a battle of wits.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'BizTech Quiz: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 1: 4:30PM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\nRound 2: 5:30PM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nGeneral Quiz: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '13th Feb, Saturday ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 1: 12PM - 12:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\nRound 2: 1:30PM - 3PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nMela Quiz: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 1: 11:30AM - 12PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\nRound 2: 1PM - 2:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 40/-\n' +
           'Non IEEE Members: 50/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -202,7 +257,10 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'An aesthetically pleasing and user-friendly website is necessary to keep visitors engaged online. If you think you have the flair to create such a site, WebWeaver is the competition for you! A perfect integration of technology and creativity will lead you to win this competition.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '1PM - 4PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 50/-\n' +
           'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -217,7 +275,10 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '1PM - 3:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 120/-\n' +
           'Non IEEE Members: 150/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
     ],
@@ -232,12 +293,244 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
   RichText(text: TextSpan(
     children: <TextSpan>[
       TextSpan(text: 'Network Treasure Hunt is an online treasure hunt where participants follow a trail of clues, surfing a range of websites to decipher the puzzles.Tread carefully along your way, solving a series of strategic clues, watching out for the concealed misdirection.Decrypt the clues, enjoy the hunt and race your way to the finish to win some exciting goodies!This is your chance to put your logic and reasoning to test. So, log on to our website and be a Sherlock for a day!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
-      TextSpan(text: 'Registration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'NTH2 is Coming Soon',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
     ],
   ),),
 
  /* "Network Treasure Hunt is an online treasure hunt where participants follow a trail of clues, surfing a range of websites to decipher the puzzles.Tread carefully along your way, solving a series of strategic clues, watching out for the concealed misdirection.Decrypt the clues, enjoy the hunt and race your way to the finish to win some exciting goodies!This is your chance to put your logic and reasoning to test. So, log on to our website and be a Sherlock for a day!"+
+      "\n\nRegistration Fees:  Free!",*/
+
+
+];
+
+List<RichText> intro2 = [
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++.\n\nShowcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 11AM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"Put your logical acumen and coding expertise to the test as you clash with a round of perplexing MCQs followed by a set of time-bound coding challenges, carefully designed to assess your command over programming in the language of your choice- Python, C or C++.\n\nShowcase your technical proficiency as you have a go at competitive coding with plenty to learn and nothing to lose.\n\n" +
+      "Registration Fees:\n\n" +
+      "IEEE Members: 60/-\n" +
+      "Non IEEE Members: 80/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'A coding competition to test your compilation of the combinations of algorithms and conceptual understanding of the programming languages C/C++. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '12PM - 2PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"A coding competition to test your compilation of the combinations of algorithms and conceptual understanding of the programming languages C/C++. Combine logic and agility to decipher given patterns and code to decode these sequences to find the final answer.\n\n" +
+      "Registration Fees:\n\n" +
+      "IEEE Members: 60/-\n" +
+      "Non-IEEE Members: 80/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Get ready to paint virtual canvas with your creative and thoughtful designs! Come, digitalise your art and let your mouse be your brush.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '2:30PM - 5:15PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"Get ready to paint virtual canvas with your creative and thoughtful designs! Come, digitalise your art and let your mouse be your brush." +
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 120/- \n" +
+      "Non-IEEE Members: 150/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics,physics, logical ability and build a circuit by interpreting the hints provided. \n\nPrerequisites: Theoretical and practical knowledge in the field of digital electronics, electrical circuits and physics.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 12PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"Challenge your brains to clear a test where you demonstrate your knowledge in the field of electronics,physics, logical ability and build a circuit by interpreting the hints provided. \n\nPrerequisites: Theoretical and practical knowledge in the field of digital electronics, electrical circuits and physics." +
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 40/-\n" +
+      "Non-IEEE Members: 50/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Ever dreamt of having your own business or a product? B-Plan is the perfect platform for you! A perfect presentation describing your business idea will help you grab a chance to win funding from the investors. So showcase your ideas before a panel of best marketing professionals.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10:30AM - 4PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+
+
+  /*"Ever dreamt of having your own business or a product? B-Plan is the perfect platform for you! A perfect presentation describing your business idea will help you grab a chance to win funding from the investors. So showcase your ideas before a panel of best marketing professionals." +
+      "\n" +
+      "\nRegistration Fees: \n\n" +
+      "IEEE Members: 100/- \n" +
+      "Non-IEEE Members: 120/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Let the rise and fall of market shares bring out your inner businessman! Get an insight in the field of Investment banking, corporate financing and trading to take over the virtual stock market. After all, every investment is one step closer to your dream bank balance!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '9AM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+
+  /*"Let the rise and fall of market shares bring out your inner businessman! Get an insight in the field of Investment banking, corporate financing and trading to take over the virtual stock market. After all, every investment is one step closer to your dream bank balance!" +
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 40/-\n" +
+      "Non-IEEE Members: 50/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '1PM - 3:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners." +
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 40/-\n" +
+      "Non-IEEE Members: 50/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Are you diligent enough to face the mind-boggling questions which will push your logical reasoning to its limits? Then do not miss this amazing opportunity. Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n13th Feb, Saturday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '10AM - 6PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '2PM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"Are you diligent enough to face the mind-boggling questions which will push your logical reasoning to its limits? Then do not miss this amazing opportunity. Enigma is a logical reasoning based questionnaire, which will test your aptitude, thinking capability, response time and mental ability. Get ready to put your Grey Cells to work! "
+      +
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 40/-\n" +
+      "Non IEEE Members: 50/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Brainstorm on the questions ranging from Greek mythology to world politics, from Shakespeare to business gurus. Set out on a voyage through mind-boggling questions captained by a witty quiz master. Flex your IQ in a set of three quizzes, designed to be a battle of wits.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'BizTech Quiz: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '12th Feb, Friday ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 1: 4:30PM - 5PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\nRound 2: 5:30PM - 7PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nGeneral Quiz: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '13th Feb, Saturday ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 1: 12PM - 12:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\nRound 2: 1:30PM - 3PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nMela Quiz: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 1: 11:30AM - 12PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\nRound 2: 1PM - 2:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+
+  /*"Brainstorm on the questions ranging from Greek mythology to world politics, from Shakespeare to business gurus. Set out on a voyage through mind-boggling questions captained by a witty quiz master. Flex your IQ in a set of three quizzes, designed to be a battle of wits."+
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 40/-\n" +
+      "Non- IEEE Members: 50/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'An aesthetically pleasing and user-friendly website is necessary to keep visitors engaged online. If you think you have the flair to create such a site, WebWeaver is the competition for you! A perfect integration of technology and creativity will lead you to win this competition.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '1PM - 4PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+
+  /* "An aesthetically pleasing and user-friendly website is necessary to keep visitors engaged online. If you think you have the flair to create such a site, WebWeaver is the competition for you! A perfect integration of technology and creativity will lead you to win this competition."+
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 60/-\n" +
+      "Non IEEE Members : 80/-",*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '1PM - 3:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /*"An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!  "+
+      "\n\nRegistration Fees: \n\n" +
+      "IEEE Members: 180/-\n" +
+      "Non IEEE Members : 200/-",
+*/
+
+  RichText(text: TextSpan(
+    children: <TextSpan>[
+      TextSpan(text: 'Network Treasure Hunt is an online treasure hunt where participants follow a trail of clues, surfing a range of websites to decipher the puzzles.Tread carefully along your way, solving a series of strategic clues, watching out for the concealed misdirection.Decrypt the clues, enjoy the hunt and race your way to the finish to win some exciting goodies!This is your chance to put your logic and reasoning to test. So, log on to our website and be a Sherlock for a day!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'NTH2 is Coming Soon',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
+      TextSpan(text: 'Free!',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI'),),
+    ],
+  ),),
+
+  /* "Network Treasure Hunt is an online treasure hunt where participants follow a trail of clues, surfing a range of websites to decipher the puzzles.Tread carefully along your way, solving a series of strategic clues, watching out for the concealed misdirection.Decrypt the clues, enjoy the hunt and race your way to the finish to win some exciting goodies!This is your chance to put your logic and reasoning to test. So, log on to our website and be a Sherlock for a day!"+
       "\n\nRegistration Fees:  Free!",*/
 
 
@@ -694,7 +987,7 @@ List<RichText> structure = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: "1st ROUND:\n\nThe problem statement for this year is Fictional universe. Fiction fanatics flaunt your development skills, creating a website on your favourite series anime, movies, books!\n\nThe team should mail the files to webweaver.credenzlive@gmail.com in zip archive. (All files with understandable documentation.)\n\n2nd ROUND:\n\nThe second round shall be conducted during Credenz Live.\n\nApproximately 10 teams shall be shortlisted.\n\nThe teams shall be given certain add-ons over the pages designed earlier.\n\nFive add-ons shall be given, specific to the pages designed by the participants.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: "1st ROUND:\n\nThe problem statement for this year is Fictional universe. Fiction fanatics flaunt your development skills, creating a website on your favourite series anime, movies, books!\n\nThe team should mail the files to webweaver.credenzlive@gmail.com in zip archive. (All files with understandable documentation.)\n\nDeadline: 11th February, 2021\n\n2nd ROUND:\n\nThe second round shall be conducted during Credenz Live.\n\nApproximately 10 teams shall be shortlisted.\n\nThe teams shall be given certain add-ons over the pages designed earlier.\n\nFive add-ons shall be given, specific to the pages designed by the participants.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
