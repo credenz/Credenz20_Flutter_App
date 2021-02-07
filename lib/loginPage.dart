@@ -72,8 +72,16 @@ class _LoginState extends State<Login> {
           print(response1.body);
           print(jsonDecode(response1.body)['ieee']);
           await storage.write(key: 'ieee', value: jsonDecode(response1.body)['ieee'].toString());
-          print(jsonDecode(response1.body)['ispict'].toString());
-          await storage.write(key: 'pict', value: jsonDecode(response1.body)['ispict'].toString());
+          if(jsonDecode(response1.body)['ispict']==null){
+            String clgname=jsonDecode(response1.body)['clgname'];
+            if(clgname.toLowerCase().contains('pict') || clgname.toLowerCase().contains('pune institute of computer technology')){
+              await storage.write(key: 'pict', value: 'true');
+            }else{
+              await storage.write(key: 'pict', value: 'false');
+            }
+          }else{
+              await storage.write(key: 'pict', value: jsonDecode(response1.body)['ispict'].toString());
+          }
           Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
         }
