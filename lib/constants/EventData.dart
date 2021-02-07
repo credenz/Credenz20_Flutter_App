@@ -694,7 +694,7 @@ List<RichText> structure = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: "1st ROUND:\n\nA problem statement shall be given to the participants online.\n\nThe problem statement shall be released approximately 20 days prior on the official website of Credenz '21.\n\nThe team should mail the files to webweaver.credenzlive@gmail.com in zip archive. (All files with understandable documentation.)\n\n2nd ROUND:\n\nThe second round shall be conducted during Credenz Live.\n\nApproximately 10 teams shall be shortlisted.\n\nThe teams shall be given certain add-ons over the pages designed earlier.\n\nFive add-ons shall be given, specific to the pages designed by the participants.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: "1st ROUND:\n\nThe problem statement for this year is Fictional universe. Fiction fanatics flaunt your development skills, creating a website on your favourite series anime, movies, books!\n\nThe team should mail the files to webweaver.credenzlive@gmail.com in zip archive. (All files with understandable documentation.)\n\n2nd ROUND:\n\nThe second round shall be conducted during Credenz Live.\n\nApproximately 10 teams shall be shortlisted.\n\nThe teams shall be given certain add-ons over the pages designed earlier.\n\nFive add-ons shall be given, specific to the pages designed by the participants.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
