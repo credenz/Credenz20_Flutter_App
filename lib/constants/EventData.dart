@@ -191,8 +191,8 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
     children: <TextSpan>[
       TextSpan(text: 'Get ready to set off on a journey to the world of data science. DataWiz gives you an opportunity to test your machine learning and data analytics skills, work on datasets to analyse and make predictions using your models. Datawiz is a week-long machine learning competition hosted on Kaggle. The participants can form teams of up to 3 members and submit their predicted data values. The team with the highest accuracy on the leaderboard at the end of the week will be declared as winners.\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
-      TextSpan(text: '1PM - 3:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'Round 1: 12th - 16th February 2021',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 2: 17th - 20th February 2021',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
       TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 50/-\n' +
           'Non IEEE Members: 60/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
@@ -276,8 +276,8 @@ TextSpan(text: 'IEEE Members: 100/-\n' +
     children: <TextSpan>[
       TextSpan(text: 'An investment in knowledge always pays the best interest.Compete against the most intellectual minds and their progressive ideas!Paper presentation is the perfect platform for undergraduate/postgraduate students to present technical papers with advanced perspectives while honing their skills of research and creating new dimensions of technology!\n\n', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: 'Schedule:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
-      TextSpan(text: '14th Feb, Sunday: ',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
-      TextSpan(text: '1PM - 3:30PM',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
+      TextSpan(text: 'Round 1: 12th - 16th February 2021',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', )),
+      TextSpan(text: '\nRound 2: 17th - 20th February 2021',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
       TextSpan(text: '\n\nRegistration Fees:\n\n',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.bold)),
       TextSpan(text: 'IEEE Members: 120/-\n' +
           'Non IEEE Members: 150/-',style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI')),
@@ -763,7 +763,7 @@ List<RichText> judging = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: 'Top 3 participants with Highest Capital at the end of Day 3 will be declared as winners.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Top 2 participants with Highest Capital at the end of Day 3 will be declared as winners.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
       TextSpan(text: '\n\nWinner - 3000/-\nRunner-up - 2000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
@@ -856,7 +856,7 @@ List<RichText> rules = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: '1) Participants will be provided with credentials to join tinkercad for the 2nd round.\n\n2) Participants can use data-sheets for the components they are using and are supposed to provide a link of the same.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '1) A maximum of 1 participant pursuing under-graduate program at their institution is allowed to participate\n\n2) Participants will be provided with credentials to join tinkercad for the 2nd round.\n\n3) Participants can use datasheets for the components they are using and are supposed to provide a link of the same.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
@@ -892,7 +892,7 @@ List<RichText> rules = [
 
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: "1) Oratory and Presentation skills will be of prime importance.\n\n2) Relevance of the content in context with the chosen topic.\n\n3) Judge's decision will be final and binding on all.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: "1) A team of maximum three candidates pursuing undergraduate/postgraduate program is allowed.\n\n2) Marking Scheme will be declared on the spot.\n\n3) Research Papers sent after 11th February, 2021 won’t be accepted.", style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],
   ),),
   RichText(text: TextSpan(
