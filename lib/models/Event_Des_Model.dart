@@ -31,6 +31,7 @@ class _EventDesState extends State<EventDes>
 
   bool favorite = false, isavail = false;
   GlobalKey<FormState> _key;
+  bool load=true;
   String ieeeMenber;
   final storage = FlutterSecureStorage();
  List<RichText> intro;
@@ -39,7 +40,7 @@ class _EventDesState extends State<EventDes>
   String email;
   Animation<double> _animation;
   AnimationController _animationController;
-  List eventGroupIndex=[4,9,10];
+  List eventGroupIndex=[4,6,9,10];
   List<String> options = ["FE", "SE", "TE", "BE"];
   String val1;
   List<String> options1 = ["IEEE Member", "Non IEEE Member"];
@@ -90,10 +91,12 @@ class _EventDesState extends State<EventDes>
      if(isPict=='true')
        setState(() {
          intro=intro2;
+         load=false;
        });
        else
        setState(() {
          intro=intro1;
+         load=false;
        });
     if (pre) {
       setState(() {
@@ -131,7 +134,15 @@ class _EventDesState extends State<EventDes>
       debugShowCheckedModeBanner: false,
       home: Material(
         child: Scaffold(
-            body: Stack(
+            body:  load==true?Container(
+                color: notiBackColor,
+
+                child: Center(
+                  child: Container(
+                    child: animatedloader,
+                    color: notiBackColor,
+                  ),)
+            ):Stack(
               children: <Widget>[
                 Image.asset(
                   // "images/contactb.jpg",

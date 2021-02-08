@@ -114,6 +114,10 @@ class _SignUpState extends State<SignUp> {
         load=false;
       });
       String msg = jsonDecode(response.body)['message'];
+      if(msg.contains('email')){
+        Fluttertoast.showToast(
+            msg: 'Email already in use',backgroundColor: Colors.blue.shade600);
+      }else
       Fluttertoast.showToast(
           msg: msg.substring(0, 1).toUpperCase() + msg.substring(1),backgroundColor: Colors.blue.shade600);
     }
