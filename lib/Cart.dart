@@ -21,7 +21,7 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   final storage = FlutterSecureStorage();
   int sum = 0;
-  List list=List();
+  List<String>list=List();
   List<bool>grpEvent=[];
   List<String>grpName;
   List<String>user2;
@@ -119,6 +119,53 @@ class _CartState extends State<Cart> {
     list = List();
     list2=[];
     for (int i = 0; i < 12; i++) {
+      if(i==8){
+        bool pre1 = await storage.containsKey(key: '81');
+        bool pre2 = await storage.containsKey(key: '82');
+        bool pre3 = await storage.containsKey(key: '83');
+        if(pre1){
+          grpEvent.add(false);
+          user2.add(' ');
+          user3.add(' ');
+          grpName.add(' ');
+          list2.add('quiz');
+          list.add(quizTypes[0]);
+          if(pict=='true'){
+            list1.add(0);
+          }else{
+            ieee == 'true' ? list1.add(ieeePrices[i]) : list1.add(
+                nonIeeePrices[i]);}
+          sum += pict=='true'?0:ieee == 'true' ? ieeePrices[i] : nonIeeePrices[i];
+        }
+        if(pre2){
+          grpEvent.add(false);
+          user2.add(' ');
+          user3.add(' ');
+          grpName.add(' ');
+          list2.add('quiz');
+          list.add(quizTypes[1]);
+          if(pict=='true'){
+            list1.add(0);
+          }else{
+            ieee == 'true' ? list1.add(ieeePrices[i]) : list1.add(
+                nonIeeePrices[i]);}
+          sum += pict=='true'?0:ieee == 'true' ? ieeePrices[i] : nonIeeePrices[i];
+        }
+        if(pre3){
+          grpEvent.add(false);
+          user2.add(' ');
+          user3.add(' ');
+          grpName.add(' ');
+          list2.add('quiz');
+          list.add(quizTypes[2]);
+          if(pict=='true'){
+            list1.add(0);
+          }else{
+            ieee == 'true' ? list1.add(ieeePrices[i]) : list1.add(
+                nonIeeePrices[i]);}
+          sum += pict=='true'?0:ieee == 'true' ? ieeePrices[i] : nonIeeePrices[i];
+        }
+      }
       bool pre = await storage.containsKey(key: '$i');
       if (pre) {
         String eventName = await storage.read(key: '$i');
@@ -181,7 +228,7 @@ class _CartState extends State<Cart> {
               ), //[Color(0xff615de3), Color(0xff6c73ed)]),
               //color: Colors.purple,
             ),
-            child: eventName.indexOf(list[i], 0)==-1?Container():Image.asset(
+            child: list[i].toLowerCase().contains('quiz')?Image.asset(eventimages[8].assetName):eventName.indexOf(list[i], 0)==-1?Container():Image.asset(
                 eventimages[eventName.indexOf(list[i], 0)].assetName),
           ),
         ),
@@ -197,12 +244,19 @@ class _CartState extends State<Cart> {
   }
 
   deleteFromCart(String title) async {
-    int pos = eventName.indexOf(title);
-    await storage.delete(key: '$pos');
-    await loadCart();
-    setState(() {
-      load = false;
-    });
+    if(quizTypes.contains(title)){
+      int x=quizTypes.indexOf(title);
+      x++;
+      await storage.delete(key: '8$x');
+      await loadCart();
+    }else {
+      int pos = eventName.indexOf(title);
+      await storage.delete(key: '$pos');
+      await loadCart();
+      setState(() {
+        load = false;
+      });
+    }
     // await storage.delete(key: null);
   }
 
@@ -311,6 +365,17 @@ class _CartState extends State<Cart> {
     }
     if(an==""){
       for(int i=0;i<12;i++){
+        if(i==8){
+          if(await storage.containsKey(key: '81')){
+            await storage.delete(key: '81');
+          }
+          if(await storage.containsKey(key: '82')){
+            await storage.delete(key: '81');
+          }
+          if(await storage.containsKey(key: '83')){
+            await storage.delete(key: '82');
+          }
+        }
         if(await storage.containsKey(key: '$i')){
           await storage.delete(key: '$i');
 
@@ -555,7 +620,7 @@ class _CartState extends State<Cart> {
                       ListView.builder(
                         itemBuilder: (BuildContext context, int pos) {
                           AssetImage ig =
-                          eventName.indexOf(list[pos], 0)==-1?null:eventimages[eventName.indexOf(list[pos], 0)];
+                          list[pos].toLowerCase().contains('quiz')?eventimages[8]:eventName.indexOf(list[pos], 0)==-1?null:eventimages[eventName.indexOf(list[pos], 0)];
                           return Card(
                             color: Color(0x221f67de),
                             elevation: 10.0,
@@ -581,7 +646,7 @@ class _CartState extends State<Cart> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child: eventName.indexOf(list[pos], 0)==-1?Container():Image.asset(ig.assetName),
+                                          child:   list[pos].toLowerCase().contains('quiz')?Image.asset(ig.assetName):eventName.indexOf(list[pos], 0)==-1?Container():Image.asset(ig.assetName),
                                         ),
                                       ),
                                     ),

@@ -1,5 +1,6 @@
 
 import 'package:badges/badges.dart';
+import 'package:credenz20/constants/EventData.dart';
 import 'package:credenz20/constants/theme.dart';
 import 'package:credenz20/loginPage.dart';
 import 'package:credenz20/size_config.dart';
@@ -100,10 +101,25 @@ class _HomeState extends State<Home> {
     list.clear();
 
     for (int i = 0; i < 12; i++) {
-      bool pre = await securestorage.containsKey(key: '$i');
-      if (pre) {
-        String eventName = await securestorage.read(key: '$i');
-        list.add(eventName);
+      if(i==8){
+        bool pre = await securestorage.containsKey(key: '81');
+        if(pre){
+          list.add(quizTypes[0]);
+        }
+        bool pre1 = await securestorage.containsKey(key: '82');
+        if(pre1){
+          list.add(quizTypes[1]);
+        }
+        bool pre2= await securestorage.containsKey(key: '83');
+        if(pre2){
+          list.add(quizTypes[2]);
+        }
+      }else {
+        bool pre = await securestorage.containsKey(key: '$i');
+        if (pre) {
+          String eventName = await securestorage.read(key: '$i');
+          list.add(eventName);
+        }
       }
     }
     // print(list.length);

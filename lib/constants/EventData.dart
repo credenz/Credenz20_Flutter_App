@@ -64,7 +64,7 @@ List nonIeeePrices=[
   0
 ];
 
-
+List<String >quizTypes=['BizTech Quiz','General Quiz','Mela Quiz'];
 List<RichText> intro1 = [
 
   RichText(text: TextSpan(

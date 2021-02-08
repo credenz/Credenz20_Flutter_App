@@ -50,35 +50,62 @@ class _EventDesState extends State<EventDes>
   TextEditingController teamController=TextEditingController();
   String accToken;
 
-  addToCart(BuildContext context,{bool grp=false}) async {
-    bool pre = await storage.containsKey(key: '${widget.eventIndex}');
-    if (pre) {
-      Fluttertoast.showToast(
-          backgroundColor: Colors.blue.shade600,
-          msg: 'Event is already added in Cart');
-      if(grp)Navigator.pop(context);
-    } else {
-      if(grp==false) {
-        await storage.write(
-            key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
-        Fluttertoast.showToast(
-          msg: 'Event added', backgroundColor: Colors.blue.shade600,);
-      }else{
-        await storage.write(
-            key: '${widget.eventIndex}grp', value: teamController.text.trim());
-        await storage.write(
-            key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
-        if(part2Controller.text.trim().isNotEmpty){
-          await storage.write(
-              key: '${widget.eventIndex}part2', value: part2Controller.text.trim());
+  addToCart(BuildContext context,{bool grp=false,int x=1}) async {
+
+
+    if(widget.eventIndex==8){
+        print('${widget.eventIndex}$x');
+        bool pre = await storage.containsKey(key: '${widget.eventIndex}$x');
+        if(pre){
+          Fluttertoast.showToast(
+              backgroundColor: Colors.blue.shade600,
+              msg: 'Event is already added in Cart');
+        }else{
+          await storage.write(key: '${widget.eventIndex}$x', value:quizTypes[x-1]);
+          Fluttertoast.showToast(
+            msg: 'Event added',
+            backgroundColor: Colors.blue.shade600,
+          );
         }
-        if(part3Controller.text.trim().isNotEmpty){
-          await storage.write(
-              key: '${widget.eventIndex}part3', value: part3Controller.text.trim());
-        }
-        Navigator.pop(context);
+
+    }
+    else{
+      bool pre = await storage.containsKey(key: '${widget.eventIndex}');
+      if (pre) {
         Fluttertoast.showToast(
-          msg: 'Event added', backgroundColor: Colors.blue.shade600,);
+            backgroundColor: Colors.blue.shade600,
+            msg: 'Event is already added in Cart');
+        if (grp) Navigator.pop(context);
+      } else {
+        if (grp == false) {
+          await storage.write(
+              key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+          Fluttertoast.showToast(
+            msg: 'Event added',
+            backgroundColor: Colors.blue.shade600,
+          );
+        } else {
+          await storage.write(
+              key: '${widget.eventIndex}grp',
+              value: teamController.text.trim());
+          await storage.write(
+              key: '${widget.eventIndex}', value: eventName[widget.eventIndex]);
+          if (part2Controller.text.trim().isNotEmpty) {
+            await storage.write(
+                key: '${widget.eventIndex}part2',
+                value: part2Controller.text.trim());
+          }
+          if (part3Controller.text.trim().isNotEmpty) {
+            await storage.write(
+                key: '${widget.eventIndex}part3',
+                value: part3Controller.text.trim());
+          }
+          Navigator.pop(context);
+          Fluttertoast.showToast(
+            msg: 'Event added',
+            backgroundColor: Colors.blue.shade600,
+          );
+        }
       }
     }
   }
@@ -246,7 +273,98 @@ class _EventDesState extends State<EventDes>
 */
               ],
             ),
-            floatingActionButton: eventGroupIndex.contains(widget.eventIndex)==true?FloatingActionBubble(
+            floatingActionButton: widget.eventIndex==8?FloatingActionBubble(
+              animation: _animation,
+              onPress: () => _animationController.isCompleted
+                  ? _animationController.reverse()
+                  : _animationController.forward(),
+              iconColor: Colors.grey.shade800,
+              iconData: Icons.shopping_cart_outlined,
+              backGroundColor: Colors.white,
+              items: <Bubble>[
+                // Floating action menu item
+                // Bubble(
+                //   title: "Solo   ",
+                //   iconColor: Colors.white,
+                //   bubbleColorGradient: commonGradient,
+                //   icon: Icons.person,
+                //   titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                //   onPress: () async {
+                //     if(accToken==null || accToken.isEmpty){
+                //       Navigator.pop(context);
+                //       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                //     }
+                //     else {
+                //       _animationController.reverse();
+                //
+                //       await addToCart();
+                //     }
+                //     // setState(() {
+                //     //   favorite = !favorite;
+                //     //   addToCart();
+                //     // });
+                //   },
+                // ),
+                // Floating action menu item
+                Bubble(
+                  title: "BizTech",
+                  iconColor: Colors.white,
+                  bubbleColorGradient: commonGradient,
+                  icon: Icons.business,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () async {
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
+                      _animationController.reverse();
+                    await addToCart(context,x: 1);}
+                    // setState(() {
+                    //   favorite = !favorite;
+                    //   // addToCart();
+                    // });
+                  },
+                ),
+                Bubble(
+                  title: "General ",
+                  iconColor: Colors.white,
+                  bubbleColorGradient: commonGradient,
+                  icon: Icons.school,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () async {
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
+                      _animationController.reverse();
+                    await addToCart(context,x: 2);}
+                    // setState(() {
+                    //   favorite = !favorite;
+                    //   // addToCart();
+                    // });
+                  },
+                ),
+                Bubble(
+                  title: "Mela      ",
+                  iconColor: Colors.white,
+                  bubbleColorGradient: commonGradient,
+                  icon: Icons.movie,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () async {
+                    if(accToken==null || accToken.isEmpty){
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Login()));
+                    }else{
+                      _animationController.reverse();
+                    await addToCart(context,x: 3);}
+                    // setState(() {
+                    //   favorite = !favorite;
+                    //   // addToCart();
+                    // });
+                  },
+                ),
+              ],
+            ):eventGroupIndex.contains(widget.eventIndex)==true?FloatingActionBubble(
               animation: _animation,
               onPress: () => _animationController.isCompleted
                   ? _animationController.reverse()
