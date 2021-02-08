@@ -571,7 +571,12 @@ List<RichText> contact = [
   // "Sanket Landge: +91 70209 83032\nKaustubh Odak: +91 96502 11332",
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: 'Shreya Deshpande: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Digvijay Chaudhari: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: '+91 96070 07049', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
+      TapGestureRecognizer()..onTap= () {
+        launch("tel://9607007049");
+      }),
+      TextSpan(text: '\n\nShreya Deshpande: ', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '+91 7588404218', style: TextStyle(color: Colors.blue, fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200), recognizer:
       TapGestureRecognizer()..onTap= () {
         launch("tel://7588404218");
@@ -749,7 +754,7 @@ List<RichText> judging = [
   ),),
   RichText(text: TextSpan(
     children: <TextSpan>[
-      TextSpan(text: 'Round 1:\nEach question carries a single mark. No negative marking. Teams having score above the score threshold will be selected for Round 2.\n\nRound 2:\nTop two teams earning maximum credits based on the understanding of the problem statement, component selection, practical performance and explanation of the implemented circuit will be declared as winners.Winner and runner-up will be awarded.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
+      TextSpan(text: 'Round 1:\nEach question carries a single mark. No negative marking. Participants having score above the score threshold will be selected for Round 2.\n\nRound 2:\nTop two Participants earning maximum credits based on the understanding of the problem statement, component selection, practical performance and explanation of the implemented circuit will be declared as winners.Winner and runner-up will be awarded.', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
       TextSpan(text: '\n\nPrizes', style: TextStyle(fontSize: 20, fontFamily: 'Segoe UI Bold', fontWeight: FontWeight.bold)),
       TextSpan(text: '\n\nWinner - 2000/-\nRunner-up - 1000/-', style: TextStyle(fontSize: 18, fontFamily: 'Segoe UI', fontWeight: FontWeight.w200)),
     ],

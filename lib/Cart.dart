@@ -370,12 +370,13 @@ class _CartState extends State<Cart> {
             await storage.delete(key: '81');
           }
           if(await storage.containsKey(key: '82')){
-            await storage.delete(key: '81');
-          }
-          if(await storage.containsKey(key: '83')){
             await storage.delete(key: '82');
           }
+          if(await storage.containsKey(key: '83')){
+            await storage.delete(key: '83');
+          }
         }
+        else
         if(await storage.containsKey(key: '$i')){
           await storage.delete(key: '$i');
 
@@ -489,6 +490,18 @@ class _CartState extends State<Cart> {
       }
       if(an==""){
         for(int i=0;i<12;i++){
+          if(i==8){
+            if(await storage.containsKey(key: '81')){
+              await storage.delete(key: '81');
+            }
+            if(await storage.containsKey(key: '82')){
+              await storage.delete(key: '82');
+            }
+            if(await storage.containsKey(key: '83')){
+              await storage.delete(key: '83');
+            }
+          }
+          else
           if(await storage.containsKey(key: '$i')){
             await storage.delete(key: '$i');
 
