@@ -114,12 +114,21 @@ class _SignUpState extends State<SignUp> {
         load=false;
       });
       String msg = jsonDecode(response.body)['message'];
-      if(msg.contains('email')){
+      if(msg!=null&&msg.contains('email')){
         Fluttertoast.showToast(
             msg: 'Email already in use',backgroundColor: Colors.blue.shade600);
-      }else
-      Fluttertoast.showToast(
-          msg: msg.substring(0, 1).toUpperCase() + msg.substring(1),backgroundColor: Colors.blue.shade600);
+      }else if(msg!=null && msg.contains('username')){
+        Fluttertoast.showToast(
+            msg: 'Username already in use',backgroundColor: Colors.blue.shade600);
+      }else if(msg!=null) {
+        Fluttertoast.showToast(
+            msg: msg.substring(0, 1).toUpperCase() + msg.substring(1),
+            backgroundColor: Colors.blue.shade600);
+      }else{
+        String error = jsonDecode(response.body)['error'];
+        if(error!=null)Fluttertoast.showToast(msg: error,backgroundColor: Colors.blue.shade600);
+        else Fluttertoast.showToast(msg: 'Please try again later',backgroundColor: Colors.blue.shade600);
+      }
     }
   }
 

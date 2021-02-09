@@ -128,7 +128,7 @@ class _CartState extends State<Cart> {
           user2.add(' ');
           user3.add(' ');
           grpName.add(' ');
-          list2.add('quiz');
+          list2.add('biztechquiz');
           list.add(quizTypes[0]);
           if(pict=='true'){
             list1.add(0);
@@ -142,7 +142,7 @@ class _CartState extends State<Cart> {
           user2.add(' ');
           user3.add(' ');
           grpName.add(' ');
-          list2.add('quiz');
+          list2.add('generalquiz');
           list.add(quizTypes[1]);
           if(pict=='true'){
             list1.add(0);
@@ -156,7 +156,7 @@ class _CartState extends State<Cart> {
           user2.add(' ');
           user3.add(' ');
           grpName.add(' ');
-          list2.add('quiz');
+          list2.add('melaquiz');
           list.add(quizTypes[2]);
           if(pict=='true'){
             list1.add(0);
