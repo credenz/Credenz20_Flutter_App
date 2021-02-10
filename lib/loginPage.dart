@@ -38,6 +38,7 @@ class _LoginState extends State<Login> {
   makeRequest()async{ 
     userName = usernameController.text;
     password = passwordController.text;
+    print('hello ${passwordController.text}');
     String url=loginUrl;
     Map<String,String>headers={"Content-Type":"application/json"};
     String body='{"username":"${userName.trim()}","password":"${password.trim()}"}';
@@ -47,7 +48,8 @@ class _LoginState extends State<Login> {
     print(response.body);
     print(response.statusCode);
     if(response.statusCode==200){
-      String msg=jsonDecode(response.body)['message'];
+      print(response.body);
+      String msg=jsonDecode(response.body)['error'];
       print(msg);
       if(msg!=null){
         setState(() {
@@ -84,13 +86,17 @@ class _LoginState extends State<Login> {
           }
           Fluttertoast.showToast(msg: 'Logged in',backgroundColor: Colors.blue.shade600);
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context)=>SlideDrawer(drawer: MenuDrawer(), child: Home(title: "CREDENZ LIVE"))), (route) => false);
+        }else{
+          // Fluttertoast.showToast(msg: 'Please enter correct user details',backgroundColor: Colors.blue.shade600);
         }
       }
     }else{
+      Fluttertoast.showToast(msg: 'Please enter correct user details',backgroundColor: Colors.blue.shade600);
       String msg=jsonDecode(response.body)['message'];
       // Fluttertoast.showToast(msg: msg.substring(0,1).toUpperCase()+msg.substring(1));
       setState(() {
-        error = "msg";
+        load = false;
+        error=msg;
       });
     }
   }

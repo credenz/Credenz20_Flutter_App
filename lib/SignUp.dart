@@ -126,7 +126,11 @@ class _SignUpState extends State<SignUp> {
             backgroundColor: Colors.blue.shade600);
       }else{
         String error = jsonDecode(response.body)['error'];
-        if(error!=null)Fluttertoast.showToast(msg: error,backgroundColor: Colors.blue.shade600);
+        if(error!=null){
+          if(error.contains('email')){
+            Fluttertoast.showToast(msg: 'Email is taken',backgroundColor: Colors.blue.shade600);
+          }else
+          Fluttertoast.showToast(msg: error,backgroundColor: Colors.blue.shade600);}
         else Fluttertoast.showToast(msg: 'Please try again later',backgroundColor: Colors.blue.shade600);
       }
     }
