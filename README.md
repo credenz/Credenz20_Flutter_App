@@ -10,12 +10,12 @@ This year the app comes with great UI and you can register for all the events in
 
 
 
-<img src="./ss.jpg"  width="190px" style="float:left">         <img src="./ss1.jpg"  width="190px" style="float:right">
+<img src="./ss.jpg"  width="190px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss1.jpg"  width="190px" style="float:right">
 
 
-<img src="./ss2.jpg"  width="190px">        <img src="./ss3.jpg"  width="190px">
+<img src="./ss3.jpg"  width="190px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss2.jpg"  width="190px">
 
-<img src="./ss.jpg"  width="190px">
+<img src="./ss4.jpg"  width="190px">
 
 
 ## Download & install
