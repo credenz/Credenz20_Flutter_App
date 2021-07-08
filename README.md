@@ -9,9 +9,6 @@ Credenz is the annual technical fest organised by PICT IEEE Student Branch. It h
 This year the app comes with great UI and you can register for all the events in one click.
 
 
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
-![](https://...Dark.png)  |  ![](https://...Ocean.png)
 
 <img src="./ss.jpg"  width="190px" style="float:left">         <img src="./ss1.jpg"  width="190px" style="float:right">
 
