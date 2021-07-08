@@ -8,22 +8,26 @@
 Credenz is the annual technical fest organised by PICT IEEE Student Branch. It has grown by leaps and bounds ever since it started in 2004.
 This year the app comes with great UI and you can register for all the events in one click.
 
+Video
+-----
+[![https://www.youtube.com/watch?v=1mCEkzJCkYU](/youtube_preview2.png)](https://www.youtube.com/watch?v=1mCEkzJCkYU)
 
 
-<img src="./ss.jpg"  width="190px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss1.jpg"  width="190px" style="float:right">
 
+Pictures
+-----
+<img src="./ss.jpg"  width="220px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss6.jpeg"  width="220px" >
 
-<img src="./ss3.jpg"  width="190px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss2.jpg"  width="190px">
+<img src="./ss3.jpg"  width="220px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss2.jpg"  width="220px">
 
-<img src="./ss4.jpg"  width="190px">
-
+<img src="./ss4.jpg"  width="220px" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./ss5.jpeg"  width="220px" style="float:right">
 
 ## Download & install
 
 First, clone the repository with the 'clone' command, or just download the zip.
 
 
-$ git clone git@github.com:atharvasaraf123/Credenz20_Flutter_App
+$ git clone https://github.com/credenz/Credenz20_Flutter_App.git
 
 
 Then, download either Android Studio or Visual Studio Code, with their respective [Flutter editor plugins](https://flutter.io/get-started/editor/). For more information about Flutter installation procedure, check the [official install guide](https://flutter.io/get-started/install/).
@@ -43,6 +47,7 @@ There you go, you can now open & edit the project. Enjoy!
 + [Animated Theme Switcher](https://pub.dev/packages/animated_theme_switcher)
 + [Cached Network Image](https://pub.dev/packages/cached_network_image)
 + [Secure Storage](https://pub.dev/packages/flutter_secure_storage)
++ 
 
 ## Built with
 
